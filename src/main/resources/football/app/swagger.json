@@ -6,8 +6,7 @@
         "termsOfService":"",
         "contact":{
             "email": "chaochaog@l99.com",
-            "name": "谷超超",
-            "url": "chaochaog@l99.com"
+            "name": "曾光伟  苗慧杰  谷超超"
         },
         "license":{
             "name":"Apache 2.0",
@@ -39,8 +38,8 @@
             "in":"header"
         },
         "limitParam": {
-            "default": 10,
-            "description": "一页显示数目，如果不传默认=10",
+            "default": 20,
+            "description": "一页显示数目，如果不传默认=20",
             "name": "limit",
             "format": "int32",
             "type": "integer",
@@ -54,16 +53,16 @@
             "required": true,
             "in": "path"
         },
-         "tlplayerPath": {
-            "description": "球员Id",
-            "name": "tlplayerId",
+        "categoryPath": {
+            "description": "类目Id",
+            "name": "categoryId",
             "type": "string",
             "required": true,
             "in": "path"
         },
-        "commentPath": {
-            "description": "评论Id",
-            "name": "commentId",
+         "tlplayerPath": {
+            "description": "球员Id",
+            "name": "tlplayerId",
             "type": "string",
             "required": true,
             "in": "path"

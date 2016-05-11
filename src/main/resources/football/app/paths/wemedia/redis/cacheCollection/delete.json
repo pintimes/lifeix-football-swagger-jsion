@@ -1,11 +1,10 @@
 {
-                "summary": "用户删除Post",
+                "summary": "管理员删除zset",
                 "tags": [
-                    "posts",
-                    "admin",
-                    "post"
+                    "redis",
+                    "admin"
                 ],
-                "description": "用户删除Post，只能删除自己的Post",
+                "description": "管理员删除zset",
                 "produces": [
                     "application/json"
                 ],
@@ -14,8 +13,8 @@
                         "$ref": "#/parameters/apiKeyYHeader"
                     },
                     {
-                        "description": "帖子Id列表,删除多个时，传多次postIds.example:xxx?postIds=111&postIds=222",
-                        "name": "postIds",
+                        "description": "接口对应的cacheName",
+                        "name": "collectionName",
                         "type": "string",
                         "required": true,
                         "in": "query"
@@ -27,10 +26,7 @@
                 "responses": {
                     "200": {
                         "description": "delete success"
-                    },
-                    "401": {
-                        "description": "don't have the right"
                     }
                 },
-                "operationId": "deletePost"
+                "operationId": "deleteRedisByKey"
             }

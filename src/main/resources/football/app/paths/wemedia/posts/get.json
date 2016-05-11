@@ -11,51 +11,29 @@
                         "$ref": "#/parameters/apiKeyYHeader"
                     },
                     {
-                        "description": "文章的标题",
-                        "name": "title",
+                        "description": "文章的id,多个时以,分隔",
+                        "name": "postIds",
                         "type": "string",
                         "required": false,
                         "in": "query"
                     },
                     {
-                        "description": "是否是热帖",
-                        "name": "hot",
-                        "type": "boolean",
-                        "required": false,
-                        "in": "query"
-                    },
-                    {
-                        "description": "是否已加精",
-                        "name": "good",
-                        "type": "boolean",
-                        "required": false,
-                        "in": "query"
-                    },
-                    {
-                        "description": "是否已置顶",
-                        "name": "top",
-                        "type": "boolean",
-                        "required": false,
-                        "in": "query"
-                    },
-                    {
-                        "description": "作者名字",
-                        "name": "author.name",
+                        "description": "类目id",
+                        "name": "categoryId",
                         "type": "string",
                         "required": false,
                         "in": "query"
                     },
                     {
-                        "description": "作者id",
-                        "name": "author.id",
+                        "description": "查询开始日期,单位天",
+                        "name": "startDate",
                         "type": "string",
                         "required": false,
                         "in": "query"
                     },
                     {
-                        "default": "commentTime",
-                        "description": "根据哪一个字段进行排序：createTime,commentTime",
-                        "name": "orderBy",
+                        "description": "查询结束日期,单位天",
+                        "name": "endDate",
                         "type": "string",
                         "required": false,
                         "in": "query"
@@ -65,6 +43,13 @@
                     },
                     {
                         "$ref": "#/parameters/ascParam"
+                    },
+                    {
+                        "description": "是否按时间倒序,默认值true",
+                        "name": "isDesc",
+                        "type": "boolean",
+                        "required": false,
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -78,5 +63,5 @@
                         "description": "Post列表响应对象"
                     }
                 },
-                "operationId": "getPostList"
+                "operationId": "list"
             }

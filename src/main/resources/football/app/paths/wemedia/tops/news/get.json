@@ -1,0 +1,47 @@
+{
+                "summary": "top新闻的news表现形式",
+                "tags": [
+                    "tops",
+                    "visitor",
+                    "get"
+                ],
+                "description": "top新闻的news表现形式",
+                "parameters": [
+                    {
+                        "description": "目录id",
+                        "name": "categoryId",
+                        "type": "string",
+                        "required": false,
+                        "in": "query"
+                    },
+                    {
+			            "default": 20,
+			            "description": "一页显示数目，如果不传默认=20",
+			            "name": "limit",
+			            "format": "int32",
+			            "type": "integer",
+			            "required": false,
+			            "in": "query"
+			        },
+			        {
+			        	"default": "createTime",
+                        "description": "排序字段",
+                        "name": "orderBy",
+                        "type": "string",
+                        "required": false,
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Post"
+                            }
+                        },
+                        "description": "Post列表响应对象"
+                    }
+                },
+                "operationId": "getTopNews"
+            }

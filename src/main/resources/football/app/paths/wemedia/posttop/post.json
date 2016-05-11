@@ -1,11 +1,11 @@
 {
-                "summary": "创建一个Post",
+                "summary": "创建一个PostTop即修改或添加类目下的文章",
                 "tags": [
-                    "posts",
+                    "posttop",
                     "admin",
                     "post"
                 ],
-                "description": "创建一个Post,其中title必填。content、images、videos三者至少有一个不为空",
+                "description": "创建一个PostTop即修改或添加类目下的文章",
                 "produces": [
                     "application/json"
                 ],
@@ -15,9 +15,9 @@
                     },
                     {
                         "schema": {
-                            "$ref": "#/definitions/Post"
+                            "$ref": "#/definitions/PostTop"
                         },
-                        "description": "帖子",
+                        "description": "文章置顶对象",
                         "name": "post",
                         "required": true,
                         "in": "body"
@@ -29,16 +29,16 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/Post"
+                            "$ref": "#/definitions/PostTop"
                         },
-                        "description": "Post响应对象"
+                        "description": "添加成功的postTop"
                     },
                     "400": {
-                        "description": "post's content images videos can not be empty at the same time or post's title must have values"
+                        "description": "parameters in postTop are wrong"
                     },
                     "401": {
                         "description": "don't have the right"
                     }
                 },
-                "operationId": "addPost"
+                "operationId": "addOrUpdatePostTop"
             }

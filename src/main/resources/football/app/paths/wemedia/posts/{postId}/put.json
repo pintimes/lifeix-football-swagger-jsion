@@ -2,7 +2,6 @@
                 "summary": "修改一个Post",
                 "tags": [
                     "posts",
-                    "user",
                     "admin",
                     "post"
                 ],
@@ -11,10 +10,13 @@
                         "$ref": "#/parameters/apiKeyYHeader"
                     },
                     {
+                        "$ref": "#/parameters/postPath"
+                    },
+                    {
                         "schema": {
                             "$ref": "#/definitions/Post"
                         },
-                        "description": "帖子 postId必须传",
+                        "description": "完整的post json格式。example:将查询结果修改后  完整传回",
                         "name": "post",
                         "required": true,
                         "in": "body"
@@ -28,10 +30,10 @@
                         "description": "Post响应对象"
                     },
                     "400": {
-                        "description": "post's\tid can not be null"
+                        "description": "post's every field must have value"
                     },
                     "401": {
-                        "description": "by userId can not find a user"
+                        "description": "don't have the right"
                     }
                 }
             }

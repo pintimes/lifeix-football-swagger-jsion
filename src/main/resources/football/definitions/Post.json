@@ -5,30 +5,21 @@
                     "description": "id",
                     "type": "string"
                 },
-                "content": {
-                    "description": "内容",
-                    "type": "string"
-                },
-                "author": {
-                    "$ref": "#/definitions/User"
-                },
                 "title": {
                     "description": "标题",
                     "type": "string"
                 },
-                "description": {
-                    "description": "描述：短描",
-                    "type": "string"
+                "author": {
+                	"description": "作者",
+            		"type": "array",
+            		"items": 
+            		{
+                		"$ref": "#/definitions/Author"
+            		}
                 },
-                "createTime": {
-                    "description": "post创建日期",
-                    "format": "date-time",
+                "content": {
+                    "description": "内容",
                     "type": "string"
-                },
-                "commentNum": {
-                    "description": "评论数目",
-                    "format": "int32",
-                    "type": "integer"
                 },
                 "images": {
                     "items": {
@@ -37,22 +28,38 @@
                     "description": "图片地址",
                     "type": "array"
                 },
-                "likeNum": {
-                    "description": "喜欢的数目",
-                    "format": "int32",
-                    "type": "integer"
+                "videos": {
+                    "items": {
+                        "$ref": "#/definitions/Video"
+                    },
+                    "description": "视频地址",
+                    "type": "array"
                 },
-                "commentTime": {
-                    "description": "最新评论的更新时间",
+                "createDate": {
+                    "description": "创建日期(天)",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "post创建日期",
                     "format": "date-time",
                     "type": "string"
                 },
-                "tags": {
+                "classification": {
+                    "description": "分类",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "categories": {
                     "items": {
                         "type": "string"
                     },
-                    "description": "post标签",
+                    "description": "文章类别",
                     "type": "array"
+                },
+                "status": {
+                    "description": "状态,默认1:可见 0:不可见",
+                    "type": "integer",
+                    "format": "int32"
                 }
             },
             "type": "object"

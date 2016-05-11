@@ -20,8 +20,8 @@ public class CombineJsons {
         swagger.put("paths", paths);
         return swagger.toString(4);
     }
-    
-    public String toSwaggerJson(File swaggerFile,File definationRoot,File pathRoot){
+
+    public String toSwaggerJson(File swaggerFile, File definationRoot, File pathRoot) {
         JSONObject swagger = readSwagger(swaggerFile.getAbsolutePath());
         JSONObject paths = readPaths(pathRoot.getAbsolutePath());
         JSONObject definitions = readDefinitions(definationRoot.getAbsolutePath());
@@ -84,7 +84,7 @@ public class CombineJsons {
     }
 
     private JSONObject fromFile(File file) {
-//         System.out.println(file.getAbsolutePath());
+        System.out.println(file.getAbsolutePath());
         String json = FileUtil.readFileContent(file.getAbsolutePath());
         JSONObject jsonObj = new JSONObject(json);
         return jsonObj;
