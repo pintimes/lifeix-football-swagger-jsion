@@ -1,0 +1,59 @@
+{
+            "description": "帖子",
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "content": {
+                    "description": "内容",
+                    "type": "string"
+                },
+                "author": {
+                    "$ref": "#/definitions/User"
+                },
+                "title": {
+                    "description": "标题",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "描述：短描",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "post创建日期",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "commentNum": {
+                    "description": "评论数目",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "images": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "图片地址",
+                    "type": "array"
+                },
+                "likeNum": {
+                    "description": "喜欢的数目",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "commentTime": {
+                    "description": "最新评论的更新时间",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "tags": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "post标签",
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        }

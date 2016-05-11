@@ -1,0 +1,41 @@
+{
+    "tags": [
+        "posts","user","post"
+    ],
+    "summary": "创建一个Post",
+    "description": "创建一个Post,只有Editor才能上传",
+    "operationId": "addPost",
+    "produces":[
+        "application/json"
+    ],
+    "consumes":["application/json"],
+    "parameters": [
+		 {
+            "$ref":"#/parameters/authorHeader"
+        },
+        {
+            "$ref":"#/parameters/apiKeyHeader"
+        },    	
+         {
+           "name": "post",
+            "in": "body",
+            "description": "Post",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/Post"
+            }
+        },
+         
+    ],
+    "responses": {
+        "200":{
+            "description":"Post响应对象",
+            "schema":{
+                "$ref":"#/definitions/Post"
+            }
+        },
+        "400":{
+            "description":"无授权",
+        }
+    }
+}

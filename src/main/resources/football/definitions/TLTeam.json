@@ -1,0 +1,34 @@
+{
+    "description": "参赛队",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
+        "name": 
+        {
+            "description": "球队名称：中国队",
+            "type": "string"
+        },
+
+        "avatarUrl": 
+        {
+            "description": "头像地址",
+            "type": "string"
+        },
+
+        "players": 
+        {
+            "description": "客场球队",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/TLPlayer"
+            }
+        }
+    }
+}

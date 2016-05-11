@@ -1,0 +1,87 @@
+{
+    "swagger":"2.0",
+    "info":{
+        "title":"Lifeix Designer API",
+        "description":"此API用于Lifeix Football Wemedia",
+        "termsOfService":"",
+        "contact":{
+            "email": "chaochaog@l99.com",
+            "name": "谷超超",
+            "url": "chaochaog@l99.com"
+        },
+        "license":{
+            "name":"Apache 2.0",
+            "url":"http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version":"1.0.0"
+    },
+    "host":"api.c-f.com:8000",
+    "schemes":[
+        "http","https"
+    ],
+    "basePath":"/football",
+    "produces":[
+        "application/json"
+    ],
+    "consumes":["application/json"],
+    "tags":[
+        
+    ],
+    "responses":{
+    },
+    "parameters": {
+        "apiKeyYHeader":{
+            "description":"key",
+            "name":"apiKey",
+            "type":"string",
+            "required": true,
+            "default":"visitor",
+            "in":"header"
+        },
+        "limitParam": {
+            "default": 10,
+            "description": "一页显示数目，如果不传默认=10",
+            "name": "limit",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        "authorPath": {
+            "description": "作者的Id",
+            "name": "authorId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+         "tlplayerPath": {
+            "description": "球员Id",
+            "name": "tlplayerId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+        "commentPath": {
+            "description": "评论Id",
+            "name": "commentId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+        "postPath": {
+            "description": "Post的ID",
+            "name": "postId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+        "ascParam": {
+            "default": false,
+            "description": "是否是升序，默认是升序",
+            "name": "isAsc",
+            "type": "boolean",
+            "required": false,
+            "in": "query"
+        }
+    }
+}

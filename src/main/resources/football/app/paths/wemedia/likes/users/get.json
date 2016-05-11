@@ -1,0 +1,34 @@
+{
+                "summary": "根据postId获取对此篇文章点赞的用户列表",
+                "tags": [
+                    "likes",
+                    "visitor",
+                    "get"
+                ],
+                "description": "返回点赞的用户列表",
+                "parameters": [{
+                        "$ref": "#/parameters/apiKeyYHeader"
+                    },
+                    {
+                        "description": "用户喜欢的PostId",
+                        "name": "postId",
+                        "type": "string",
+                        "required": true,
+                        "in": "query"
+                    },
+                    {
+                        "$ref": "#/parameters/limitParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        },
+                        "description": "Post的like列表"
+                    }
+                }
+            }

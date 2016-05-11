@@ -1,0 +1,41 @@
+{
+                "summary": "创建一个Category",
+                "tags": [
+                    "categories",
+                    "admin",
+                    "post"
+                ],
+                "description": "创建一个Category，并刷新缓存列表",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/apiKeyYHeader"
+                    },
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/Category"
+                        },
+                        "description": "类目",
+                        "name": "category",
+                        "required": true,
+                        "in": "body"
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Category"
+                        },
+                        "description": "Category响应对象"
+                    },
+                    "400": {
+                        "description": ""
+                    }
+                },
+                "operationId": "addCategory"
+            }

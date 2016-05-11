@@ -1,0 +1,30 @@
+{
+                "summary": "用户对Post点赞",
+                "tags": [
+                    "likes",
+                    "user",
+                    "post"
+                ],
+                "description": "用户对Post点赞",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/apiKeyYHeader"
+                    },
+                    {
+                        "description": "用户喜欢的PostId",
+                        "name": "postId",
+                        "type": "string",
+                        "required": true,
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                },
+                "operationId": "addPostLike"
+            }

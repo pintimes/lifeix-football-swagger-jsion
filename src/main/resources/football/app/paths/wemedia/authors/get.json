@@ -1,0 +1,39 @@
+{
+                "summary": "获得Authors列表",
+                "tags": [
+                    "authors",
+                    "admin",
+                    "get"
+                ],
+                "description": "查看Post的评论列表",
+                "parameters": [{
+                        "$ref": "#/parameters/apiKeyYHeader"
+                    },
+                    {
+                        "$ref": "#/parameters/limitParam"
+                    },
+                    {
+                        "default": "name",
+                        "in": "query",
+                        "name": "orderBy",
+                        "description": "根据哪一个字段进行排序：id,name",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "$ref": "#/parameters/ascParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Author"
+                            }
+                        },
+                        "description": "Author列表响应对象"
+                    }
+                },
+                "operationId": "getAuthors"
+            }

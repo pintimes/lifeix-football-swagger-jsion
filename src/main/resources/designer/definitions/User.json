@@ -1,0 +1,18 @@
+{
+	"type": "object",
+	"description":"用户",
+    "properties": {
+    	"id": {
+            "type": "string",
+            "description": "id"
+        },
+        "name": {
+            "type": "string",
+            "description": "昵称"
+        },
+        "picture": {
+            "type": "string",
+            "description": "头像地址"
+        }
+    }
+}

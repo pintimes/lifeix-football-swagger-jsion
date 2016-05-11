@@ -1,0 +1,45 @@
+{
+    "tags":[
+        "users",
+        "user",
+        "post"
+    ],
+    "summary":"用户注册",
+    "description":"调用这个接口返回用户数据",
+    "operationId":"addUser",
+    "produces":[
+        "application/json"
+    ],
+    "consumes":[
+        "application/json"
+    ],
+    "parameters":[
+        {
+            "name":"user",
+            "in":"body",
+            "description":"User",
+            "required":true,
+            "schema":{
+                "$ref":"#/definitions/User"
+            }
+        },
+        
+    ],
+    "responses":{
+        "200":{
+            "description":"User响应对象",
+            "schema":{
+                "$ref":"#/definitions/User"
+            },
+            "headers":{
+                "apiKey":{
+                    "type":"string"
+                }
+            }
+        },
+        "400":{
+            "description":"无授权",
+            
+        }
+    }
+}

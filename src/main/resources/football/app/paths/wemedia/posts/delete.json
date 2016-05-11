@@ -1,0 +1,37 @@
+{
+                "summary": "用户删除Post",
+                "tags": [
+                    "posts",
+                    "user",
+                    "admin",
+                    "post"
+                ],
+                "description": "用户删除Post，只能删除自己的Post；评论等不变",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/apiKeyYHeader"
+                    },
+                    {
+                        "description": "帖子Id列表,删除多个时，传多次postIds",
+                        "name": "postIds",
+                        "type": "string",
+                        "required": true,
+                        "in": "query"
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "delete sucess"
+                    },
+                    "401": {
+                        "description": "by userId can not find a user"
+                    }
+                },
+                "operationId": "deletePost"
+            }

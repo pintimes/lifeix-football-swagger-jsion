@@ -1,0 +1,37 @@
+{
+                "summary": "修改一个Post",
+                "tags": [
+                    "posts",
+                    "user",
+                    "admin",
+                    "post"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/apiKeyYHeader"
+                    },
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/Post"
+                        },
+                        "description": "帖子 postId必须传",
+                        "name": "post",
+                        "required": true,
+                        "in": "body"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Post"
+                        },
+                        "description": "Post响应对象"
+                    },
+                    "400": {
+                        "description": "post's\tid can not be null"
+                    },
+                    "401": {
+                        "description": "by userId can not find a user"
+                    }
+                }
+            }

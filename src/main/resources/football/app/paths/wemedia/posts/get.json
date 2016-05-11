@@ -1,0 +1,82 @@
+{
+                "summary": "根据搜索条件获取Post列表",
+                "tags": [
+                    "posts",
+                    "visitor",
+                    "get"
+                ],
+                "description": "根据搜索条件获取Post列表，每次搜索不能超过30条",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/apiKeyYHeader"
+                    },
+                    {
+                        "description": "文章的标题",
+                        "name": "title",
+                        "type": "string",
+                        "required": false,
+                        "in": "query"
+                    },
+                    {
+                        "description": "是否是热帖",
+                        "name": "hot",
+                        "type": "boolean",
+                        "required": false,
+                        "in": "query"
+                    },
+                    {
+                        "description": "是否已加精",
+                        "name": "good",
+                        "type": "boolean",
+                        "required": false,
+                        "in": "query"
+                    },
+                    {
+                        "description": "是否已置顶",
+                        "name": "top",
+                        "type": "boolean",
+                        "required": false,
+                        "in": "query"
+                    },
+                    {
+                        "description": "作者名字",
+                        "name": "author.name",
+                        "type": "string",
+                        "required": false,
+                        "in": "query"
+                    },
+                    {
+                        "description": "作者id",
+                        "name": "author.id",
+                        "type": "string",
+                        "required": false,
+                        "in": "query"
+                    },
+                    {
+                        "default": "commentTime",
+                        "description": "根据哪一个字段进行排序：createTime,commentTime",
+                        "name": "orderBy",
+                        "type": "string",
+                        "required": false,
+                        "in": "query"
+                    },
+                    {
+                        "$ref": "#/parameters/limitParam"
+                    },
+                    {
+                        "$ref": "#/parameters/ascParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Post"
+                            }
+                        },
+                        "description": "Post列表响应对象"
+                    }
+                },
+                "operationId": "getPostList"
+            }

@@ -1,0 +1,163 @@
+{
+    "swagger":"2.0",
+    "info":{
+        "title":"Lifeix Designer API",
+        "description":"此API用于Lifeix Designer",
+        "termsOfService":"",
+        "contact":{
+            "name":"曾光伟",
+            "url":"guangweiz@l99.com",
+            "email":"guangweiz@l99.com"
+        },
+        "license":{
+            "name":"Apache 2.0",
+            "url":"http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version":"1.0.0"
+    },
+    "host":"127.0.0.1:8080",
+    "schemes":[
+        "http",
+    ],
+    "basePath":"/",
+    "produces":[
+        "application/json"
+    ],
+    "consumes":["application/json"],
+    "tags":[
+        
+    ],
+    "responses":{
+    },
+    "parameters":{
+        "authorHeader":{
+            "description":"authorization",
+            "name":"authorization",
+            "type":"string",
+            "default":"Basic MzA4MDE1Mjo2Wkp5dExkL3haNnlhQ3c4QnNveS8wNnJmR0ZZQTZRUUsrWmp3amFRNStOTitvSndmVU52bUhtWnNDQ215S2FJ",
+            "in":"header"
+        },
+        "authorYHeader":{
+            "description":"authorization",
+            "name":"authorization",
+            "type":"string",
+            "default":"Basic MzA4MDE1Mjo2Wkp5dExkL3haNnlhQ3c4QnNveS8wNnJmR0ZZQTZRUUsrWmp3amFRNStOTitvSndmVU52bUhtWnNDQ215S2FJ",
+            "in":"header"
+        },
+        "apiKeyHeader":{
+            "description":"apiKey",
+            "name":"apiKey",
+            "type":"string",
+            "in":"header",
+        },
+        "apiKeyYHeader":{
+            "description":"apiKey",
+            "name":"apiKey",
+            "type":"string",
+            "default":"1221",
+            "in":"header",
+        },
+        "limitParam":{
+            "name":"limit",
+            "in":"query",
+            "description":"一页显示数目，如果不传默认=10",
+            "default":10,
+            "required":true,
+            "type":"integer",
+            "format":"int32"
+        },
+        "ascParam":{
+            "in": "query",
+            "name": "asc",
+            "description": "是否是升序，默认是升序",
+            "required": false,
+            "default":false,
+            "type": "boolean"
+        },
+         "commentPath":{
+            "in": "path",
+            "name": "commentId",
+            "description": "评论Id",
+            "required": true,
+            "type": "string",
+        },
+		"postPath":{
+            "in":"path",
+            "name":"postId",
+            "description":"Post的ID",
+            "required":true,
+            "type":"string",
+        },
+        "userPath":{
+            "in":"path",
+            "name":"userId",
+            "description":"User的ID",
+            "required":true,
+            "type":"string",
+        },
+        "commentParam":{
+            "in": "query",
+            "name": "commentId",
+            "description": "评论Id",
+            "required": true,
+            "type": "string",
+        },
+		"postParam":{
+            "in":"query",
+            "name":"postId",
+            "description":"Post的ID",
+            "required":true,
+            "type":"string",
+        },
+        "userParam":{
+            "in":"query",
+            "name":"userId",
+            "description":"User的ID",
+            "required":true,
+            "type":"string",
+        },
+        "usernameParam":{
+            "in":"query",
+            "name":"name",
+            "description":"User的name",
+            "required":false,
+            "type":"string",
+        },
+        "statusParam":{
+            "in": "query",
+            "name": "status",
+            "description": "状态码：0 deactive，1 active",
+            "required": false,
+            "type": "integer",
+            "default":1,
+            "format": "int32",
+            "enum":[
+                0,
+                1
+            ],
+        },
+        "orderbyParam":{
+            "in": "query",
+            "name": "orderby",
+            "description": "根据哪一个字段进行排序",
+            "required": false,
+            "type": "string",
+            "default":"createTime"
+        },
+        "dateParam":{
+            "in": "query",
+            "name": "date",
+            "description": "定位的date",
+            "required": false,
+            "type": "integer",
+           "format": "int64",
+        },
+        "authorIdParam":{
+            "in": "query",
+            "name": "authorId",
+            "description": "作者Id",
+            "required": false,
+            "type": "string",
+        },
+    }
+}

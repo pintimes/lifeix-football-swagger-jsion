@@ -1,0 +1,45 @@
+{
+                "summary": "创建一个Post",
+                "tags": [
+                    "posts",
+                    "user",
+                    "admin",
+                    "post"
+                ],
+                "description": "创建一个Post,其中title,content必填。",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/apiKeyYHeader"
+                    },
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/Post"
+                        },
+                        "description": "帖子",
+                        "name": "post",
+                        "required": true,
+                        "in": "body"
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Post"
+                        },
+                        "description": "Post响应对象"
+                    },
+                    "400": {
+                        "description": "post's\ttitle or content(iamges) can not be empty a the same time"
+                    },
+                    "401": {
+                        "description": "by userId can not find a user"
+                    }
+                },
+                "operationId": "addPost"
+            }

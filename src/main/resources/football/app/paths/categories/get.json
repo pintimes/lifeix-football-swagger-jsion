@@ -1,0 +1,34 @@
+{
+    "summary": "获取类目",
+    "tags": 
+    [
+        "categories",
+        "visitor",
+        "get"
+    ],
+
+    "description": "返回所有的类目",
+    "parameters": 
+    [
+        
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Category"
+                }
+            },
+
+            "description": "Category列表响应对象"
+        }
+    },
+
+    "operationId": "getCategoryList"
+}

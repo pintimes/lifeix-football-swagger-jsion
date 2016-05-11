@@ -1,0 +1,38 @@
+{
+                "summary": "评论",
+                "tags": [
+                    "comment",
+                    "user",
+                    "post"
+                ],
+                "description": "评论，postId（必须）、content(必须)、images(非必须，不上传图片可以不传),其他字段后台生成。",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/apiKeyYHeader"
+                    },
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/Comment"
+                        },
+                        "description": "评论",
+                        "name": "comment",
+                        "required": true,
+                        "in": "body"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Comment"
+                        },
+                        "description": "Comment响应对象"
+                    },
+                    "400": {
+                        "description": "post's\tid is null or post can not be find or content(images) is null"
+                    },
+                    "401": {
+                        "description": "by userId can not find a user"
+                    }
+                },
+                "operationId": "addComment"
+            }

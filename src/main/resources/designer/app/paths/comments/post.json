@@ -1,0 +1,34 @@
+{
+    "tags": [
+        "comments","user","post"
+    ],
+    "summary": "评论",
+    "description": "",
+    "operationId": "addComment",
+    "parameters": [{
+            "$ref":"#/parameters/authorHeader"
+        },{
+            "$ref":"#/parameters/apiKeyHeader"
+        },
+        {
+            "name": "comment",
+            "in": "body",
+            "description": "评论",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/Comment"
+            }
+        }
+    ],
+    "responses": {
+        "200": {
+             "description": "成功",
+             "schema":{
+                "$ref":"#/definitions/Comment"
+            }
+        },
+        "400":{
+            "description":"无授权",
+        }
+    }
+}

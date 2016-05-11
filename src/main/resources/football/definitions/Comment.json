@@ -1,0 +1,42 @@
+{
+            "description": "评论",
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "floorNum": {
+                    "description": "楼层",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "content": {
+                    "description": "内容",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "true 可见默认 false 不可见",
+                    "type": "boolean"
+                },
+                "createTime": {
+                    "description": "创建日期",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "images": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "图片地址",
+                    "type": "array"
+                },
+                "postId": {
+                    "description": "评论对应的post id",
+                    "type": "string"
+                },
+                "user": {
+                    "$ref": "#/definitions/User"
+                }
+            },
+            "type": "object"
+        }

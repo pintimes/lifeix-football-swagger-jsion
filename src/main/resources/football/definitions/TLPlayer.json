@@ -1,0 +1,75 @@
+{
+    "description": "队员",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
+        "name": 
+        {
+            "description": "名字：李铁",
+            "type": "string"
+        },
+
+        "avatarUrl": 
+        {
+            "description": "头像地址",
+            "type": "string"
+        },
+        
+        "likeNum": 
+        {
+            "description": "用户点赞数目",
+            "format": "int32",
+            "type": "integer"
+        },
+        
+        "position": 
+        {
+            "description": "位置：前锋",
+            "type": "string"
+        },
+
+        "number": 
+        {
+            "description": "号码",
+            "format": "int32",
+            "type": "integer"
+        },
+        
+        "score": 
+        {
+            "description": "本次赛事进球数",
+            "format": "int32",
+            "type": "integer"
+        },
+        
+        "birthplace": 
+        {
+            "description": "出生地  中国北京",
+            "type": "string"
+        },
+        
+        "team": 
+        {
+            "description": "所属球队：国家队",
+            "type": "string"
+        },
+        
+        "country": 
+        {
+            "description": "国家： 中国",
+            "type": "string"
+        },
+        
+        "showNum": 
+        {
+            "description": "本次赛事出场次数",
+            "type": "string"
+        }
+    }
+}
