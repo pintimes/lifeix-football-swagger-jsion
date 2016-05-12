@@ -1,10 +1,10 @@
 {
-                "summary": "管理员删除zset",
+                "summary": "管理员删除zset,目前collectionName[ posts timelineNews topNews homepageNews]",
                 "tags": [
                     "redis",
                     "admin"
                 ],
-                "description": "管理员删除zset",
+                "description": "管理员删除zset,categoryId有值时删除zset下含有categoryId的缓存。没有值时，清空zset",
                 "produces": [
                     "application/json"
                 ],
@@ -17,6 +17,13 @@
                         "name": "collectionName",
                         "type": "string",
                         "required": true,
+                        "in": "query"
+                    },
+                    {
+                        "description": "类目id",
+                        "name": "categoryId",
+                        "type": "string",
+                        "required": false,
                         "in": "query"
                     }
                 ],
