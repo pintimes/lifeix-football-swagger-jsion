@@ -13,9 +13,12 @@ public class Footaball {
         File definationRoot = new File("src/main/resources/football/definitions");
         File pathRoot = new File("src/main/resources/football/app/paths");
         String json = new CombineJsons().toSwaggerJson(swaggerFile, definationRoot, pathRoot);
-        File file = new File("D:/football.json");
+        String path = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+        path = path.substring(0, path.indexOf("target"));
+        File file = new File(path + "/football.json");
         PrintWriter out = new PrintWriter(new FileOutputStream(file));
         out.println(json);
         out.close();
     }
+
 }
