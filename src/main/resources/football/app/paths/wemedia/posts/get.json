@@ -39,6 +39,13 @@
                         "in": "query"
                     },
                     {
+                        "description": "查询开始时间。example:分页时，传递第一页最后一条记录的createTime(long)",
+                        "name": "startTime",
+                        "type": "string",
+                        "required": false,
+                        "in": "query"
+                    },
+                    {
                         "$ref": "#/parameters/limitParam"
                     },
                     {
