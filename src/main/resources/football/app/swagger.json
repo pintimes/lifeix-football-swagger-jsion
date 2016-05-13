@@ -31,7 +31,7 @@
     "parameters": {
         "apiKeyYHeader":{
             "description":"key",
-            "name":"apiKey",
+            "name":"key",
             "type":"string",
             "required": true,
             "default":"visitor",
