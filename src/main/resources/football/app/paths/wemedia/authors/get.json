@@ -8,20 +8,6 @@
                 "description": "查看Post的评论列表",
                 "parameters": [{
                         "$ref": "#/parameters/apiKeyYHeader"
-                    },
-                    {
-                        "$ref": "#/parameters/limitParam"
-                    },
-                    {
-                        "default": "name",
-                        "in": "query",
-                        "name": "orderBy",
-                        "description": "根据哪一个字段进行排序：id,name",
-                        "type": "string",
-                        "required": false
-                    },
-                    {
-                        "$ref": "#/parameters/ascParam"
                     }
                 ],
                 "responses": {

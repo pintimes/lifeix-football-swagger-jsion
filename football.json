@@ -1,0 +1,1131 @@
+{
+    "basePath": "/football",
+    "paths": {
+        "/timeline/tlteams": {"get": {
+            "summary": "根据搜索条件获取球队列表",
+            "description": "获得球队信息",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/TLTeam"}
+                },
+                "description": "Team列表响应对象"
+            }},
+            "operationId": "getTeamList",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": [
+                "tlteam",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/file/token": {"get": {
+            "summary": "令牌",
+            "description": "获取文件上传令牌",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/UploadToken"},
+                "description": "令牌信息"
+            }},
+            "operationId": "getToken",
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "type",
+                    "description": "上传文件类型，|null 所有类型|0 图片|1 音频|2 视频|",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "key",
+                    "description": "已存在云上的文件key，如果不为空，则此令牌只用于替换和覆盖",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "file_list",
+                    "description": "要上传的原始文件名称列表",
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "required": false
+                }
+            ],
+            "tags": [
+                "token",
+                "get"
+            ]
+        }},
+        "/timeline/tlplayers/{tlplayerId}": {"get": {
+            "summary": "获得球员信息",
+            "description": "查看球员信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/TLPlayer"},
+                "description": "TLPlayer响应对象"
+            }},
+            "operationId": "getTLPlayer",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/tlplayerPath"}
+            ],
+            "tags": [
+                "tlplayer",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/timeline/tlcompetitions": {"get": {
+            "summary": "根据搜索条件获取赛事列表",
+            "description": "获得赛事信息",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/TLCompetition"}
+                },
+                "description": "Competition列表响应对象"
+            }},
+            "operationId": "getCompetitionList",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": [
+                "tlcompetition",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/wemedia/tops/category/{categoryId}": {"get": {
+            "summary": "每个类目下top部分的新闻",
+            "description": "每个类目下top部分的新闻",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Post"}
+                },
+                "description": "Post列表响应对象"
+            }},
+            "operationId": "getPostsByCategoryId",
+            "parameters": [
+                {"$ref": "#/parameters/categoryPath"},
+                {
+                    "default": 6,
+                    "in": "query",
+                    "name": "topNum",
+                    "format": "int32",
+                    "description": "一页显示数目，如果不传默认=6",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "default": "createTime",
+                    "in": "query",
+                    "name": "orderBy",
+                    "description": "排序字段",
+                    "type": "string",
+                    "required": false
+                }
+            ],
+            "tags": [
+                "tops",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/admins": {"get": {
+            "summary": "获得Admin列表",
+            "description": "返回所有的管理员",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Admin"}
+                },
+                "description": "Admin列表响应对象"
+            }},
+            "operationId": "getAdminList",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": [
+                "admin",
+                "admins",
+                "get"
+            ]
+        }},
+        "/wemedia/posts/{postId}": {
+            "get": {
+                "summary": "根据Id获取Post详情",
+                "description": "返回Post详情对象",
+                "responses": {"200": {
+                    "schema": {"$ref": "#/definitions/Post"},
+                    "description": "Post响应对象"
+                }},
+                "operationId": "getPost",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {"$ref": "#/parameters/postPath"}
+                ],
+                "tags": [
+                    "posts",
+                    "post",
+                    "visitor",
+                    "get"
+                ]
+            },
+            "put": {
+                "summary": "修改一个Post",
+                "responses": {
+                    "200": {
+                        "schema": {"$ref": "#/definitions/Post"},
+                        "description": "Post响应对象"
+                    },
+                    "400": {"description": "post's every field must have value"},
+                    "401": {"description": "don't have the right"}
+                },
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {"$ref": "#/parameters/postPath"},
+                    {
+                        "schema": {"$ref": "#/definitions/Post"},
+                        "in": "body",
+                        "name": "post",
+                        "description": "完整的post json格式。example:将查询结果修改后  完整传回",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "posts",
+                    "admin",
+                    "post"
+                ]
+            }
+        },
+        "/admins/regist": {"post": {
+            "summary": "Admin注册",
+            "produces": ["application/json"],
+            "description": "Admin注册，必须提供Email,Password,Name",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Admin"},
+                "description": "Admin响应对象"
+            }},
+            "operationId": "registAdmin",
+            "parameters": [{
+                "schema": {"$ref": "#/definitions/Admin"},
+                "in": "body",
+                "name": "admin",
+                "description": "管理员",
+                "required": true
+            }],
+            "tags": [
+                "post",
+                "admins",
+                "admin"
+            ],
+            "consumes": ["application/json"]
+        }},
+        "/categories": {
+            "post": {
+                "summary": "创建一个Category",
+                "produces": ["application/json"],
+                "description": "创建一个Category，并刷新缓存列表",
+                "responses": {
+                    "200": {
+                        "schema": {"$ref": "#/definitions/Category"},
+                        "description": "Category响应对象"
+                    },
+                    "400": {"description": ""}
+                },
+                "operationId": "addCategory",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "schema": {"$ref": "#/definitions/Category"},
+                        "in": "body",
+                        "name": "category",
+                        "description": "类目",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "categories",
+                    "admin",
+                    "post"
+                ],
+                "consumes": ["application/json"]
+            },
+            "get": {
+                "summary": "获取类目",
+                "description": "返回所有的类目",
+                "responses": {"200": {
+                    "schema": {
+                        "type": "array",
+                        "items": {"$ref": "#/definitions/Category"}
+                    },
+                    "description": "Category列表响应对象"
+                }},
+                "operationId": "getCategoryList",
+                "parameters": [],
+                "tags": [
+                    "categories",
+                    "visitor",
+                    "get"
+                ]
+            }
+        },
+        "/wemedia/tops/news": {"get": {
+            "summary": "top新闻的news表现形式",
+            "description": "top新闻的news表现形式",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Post"}
+                },
+                "description": "Post列表响应对象"
+            }},
+            "operationId": "getTopNews",
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "categoryId",
+                    "description": "目录id",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "default": 20,
+                    "in": "query",
+                    "name": "limit",
+                    "format": "int32",
+                    "description": "一页显示数目，如果不传默认=20",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "default": "createTime",
+                    "in": "query",
+                    "name": "orderBy",
+                    "description": "排序字段",
+                    "type": "string",
+                    "required": false
+                }
+            ],
+            "tags": [
+                "tops",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/categories/refresh": {"post": {
+            "summary": "刷新缓存",
+            "produces": ["application/json"],
+            "description": "刷新缓存，返回数据",
+            "responses": {
+                "200": {
+                    "schema": {
+                        "type": "array",
+                        "items": {"$ref": "#/definitions/Category"}
+                    },
+                    "description": "Category列表响应对象"
+                },
+                "400": {"description": ""}
+            },
+            "operationId": "refreshCategory",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": [
+                "categories",
+                "admin",
+                "post"
+            ],
+            "consumes": ["application/json"]
+        }},
+        "/wemedia/authors": {
+            "post": {
+                "summary": "创建一个Author",
+                "produces": ["application/json"],
+                "description": "创建一个Author,其中name必填",
+                "responses": {
+                    "200": {
+                        "schema": {"$ref": "#/definitions/Author"},
+                        "description": "Author响应对象"
+                    },
+                    "400": {"description": "author's name must have value"},
+                    "401": {"description": "don't have the right"}
+                },
+                "operationId": "addAuthor",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "schema": {"$ref": "#/definitions/Author"},
+                        "in": "body",
+                        "name": "author",
+                        "description": "作者",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "authors",
+                    "admin",
+                    "post"
+                ],
+                "consumes": ["application/json"]
+            },
+            "get": {
+                "summary": "获得Authors列表",
+                "description": "查看Post的评论列表",
+                "responses": {"200": {
+                    "schema": {
+                        "type": "array",
+                        "items": {"$ref": "#/definitions/Author"}
+                    },
+                    "description": "Author列表响应对象"
+                }},
+                "operationId": "getAuthors",
+                "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+                "tags": [
+                    "authors",
+                    "admin",
+                    "get"
+                ]
+            }
+        },
+        "/wemedia/posttop/category/{categoryId}": {"get": {
+            "summary": "获取一个类目下置顶的文章id列表",
+            "description": "获取一个类目下置顶的文章id列表",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/PostTop"},
+                "description": "PostTop响应对象"
+            }},
+            "operationId": "getTopPosts",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/categoryPath"}
+            ],
+            "tags": [
+                "posttop",
+                "admin",
+                "get"
+            ]
+        }},
+        "/wemedia/posts/news/category/{categoryId}": {"get": {
+            "summary": "获取时间轴形式的新闻",
+            "description": "返回TimeLineNews对象",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/TimeLineNews"}
+                },
+                "description": "TimeLineNews列表响应对象"
+            }},
+            "operationId": "getTimeLineNewsByCategoryId",
+            "parameters": [
+                {"$ref": "#/parameters/categoryPath"},
+                {
+                    "in": "query",
+                    "name": "startDate",
+                    "description": "查询开始日期,单位天.默认为当天",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "default": 5,
+                    "in": "query",
+                    "name": "limit",
+                    "format": "int32",
+                    "description": "一页显示数目，如果不传默认=5",
+                    "type": "integer",
+                    "required": false
+                }
+            ],
+            "tags": [
+                "posts",
+                "news",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/admins/login": {"post": {
+            "summary": "Admin登录",
+            "produces": ["application/json"],
+            "description": "Admin登录，传入Email,Password的加密形式·",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Admin"},
+                "description": "Admin响应对象"
+            }},
+            "operationId": "loginAdmin",
+            "parameters": [{
+                "schema": {"$ref": "#/definitions/Admin"},
+                "in": "body",
+                "name": "admin",
+                "description": "管理员",
+                "required": true
+            }],
+            "tags": [
+                "get",
+                "admins",
+                "admin"
+            ],
+            "consumes": ["application/json"]
+        }},
+        "/wemedia/redis/cacheCollection": {"delete": {
+            "summary": "管理员删除zset,目前collectionName[ posts timelineNews topNews homepageNews]",
+            "produces": ["application/json"],
+            "description": "管理员删除zset,categoryId有值时删除zset下含有categoryId的缓存。没有值时，清空zset",
+            "responses": {"200": {"description": "delete success"}},
+            "operationId": "deleteRedisByKey",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "query",
+                    "name": "collectionName",
+                    "description": "接口对应的cacheName",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "in": "query",
+                    "name": "categoryId",
+                    "description": "类目id",
+                    "type": "string",
+                    "required": false
+                }
+            ],
+            "tags": [
+                "redis",
+                "admin"
+            ],
+            "consumes": ["application/json"]
+        }},
+        "/timeline/tlplayers/{tlplayerId}/tlclub": {"get": {
+            "summary": "获得球员俱乐部信息",
+            "description": "查看球员信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/TLClub"},
+                "description": "TlClub响应对象"
+            }},
+            "operationId": "getTLPlayerClub",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/tlplayerPath"}
+            ],
+            "tags": [
+                "tlclub",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/wemedia/posttop": {
+            "post": {
+                "summary": "创建一个PostTop即修改或添加类目下的文章",
+                "produces": ["application/json"],
+                "description": "创建一个PostTop即修改或添加类目下的文章",
+                "responses": {
+                    "200": {
+                        "schema": {"$ref": "#/definitions/PostTop"},
+                        "description": "添加成功的postTop"
+                    },
+                    "400": {"description": "parameters in postTop are wrong"},
+                    "401": {"description": "don't have the right"}
+                },
+                "operationId": "addOrUpdatePostTop",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "schema": {"$ref": "#/definitions/PostTop"},
+                        "in": "body",
+                        "name": "post",
+                        "description": "文章置顶对象",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "posttop",
+                    "admin",
+                    "post"
+                ],
+                "consumes": ["application/json"]
+            },
+            "get": {
+                "summary": "通过父categoryId获取所有子集category的置顶post",
+                "description": "通过父categoryId获取所有子集category的置顶post",
+                "responses": {"200": {
+                    "schema": {
+                        "type": "array",
+                        "items": {"type": "string"}
+                    },
+                    "description": "PostId列表"
+                }},
+                "operationId": "getChildTopPosts",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "query",
+                        "name": "parent",
+                        "description": "父类目的categoryId",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "tags": [
+                    "posttop",
+                    "admin",
+                    "get"
+                ]
+            }
+        },
+        "/wemedia/posts": {
+            "post": {
+                "summary": "创建一个Post",
+                "produces": ["application/json"],
+                "description": "创建一个Post,其中title必填。content、images、videos三者至少有一个不为空",
+                "responses": {
+                    "200": {
+                        "schema": {"$ref": "#/definitions/Post"},
+                        "description": "Post响应对象"
+                    },
+                    "400": {"description": "post's content images videos can not be empty at the same time or post's title must have values"},
+                    "401": {"description": "don't have the right"}
+                },
+                "operationId": "addPost",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "schema": {"$ref": "#/definitions/Post"},
+                        "in": "body",
+                        "name": "post",
+                        "description": "帖子",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "posts",
+                    "admin",
+                    "post"
+                ],
+                "consumes": ["application/json"]
+            },
+            "get": {
+                "summary": "根据搜索条件获取Post列表",
+                "description": "根据搜索条件获取Post列表，每次搜索不能超过30条",
+                "responses": {"200": {
+                    "schema": {
+                        "type": "array",
+                        "items": {"$ref": "#/definitions/Post"}
+                    },
+                    "description": "Post列表响应对象"
+                }},
+                "operationId": "list",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "query",
+                        "name": "postIds",
+                        "description": "文章的id,多个时以,分隔",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "categoryId",
+                        "description": "类目id",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "authorId",
+                        "description": "作者id",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "startDate",
+                        "description": "查询开始日期,单位天",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "endDate",
+                        "description": "查询结束日期,单位天",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "startTime",
+                        "description": "查询开始时间。example:分页时，传递第一页最后一条记录的createTime(long)",
+                        "type": "string",
+                        "required": false
+                    },
+                    {"$ref": "#/parameters/limitParam"},
+                    {"$ref": "#/parameters/ascParam"},
+                    {
+                        "in": "query",
+                        "name": "isDesc",
+                        "description": "是否按时间倒序,默认值true",
+                        "type": "boolean",
+                        "required": false
+                    }
+                ],
+                "tags": [
+                    "posts",
+                    "visitor",
+                    "get"
+                ]
+            },
+            "delete": {
+                "summary": "用户删除Post",
+                "produces": ["application/json"],
+                "description": "用户删除Post，只能删除自己的Post",
+                "responses": {
+                    "200": {"description": "delete success"},
+                    "401": {"description": "don't have the right"}
+                },
+                "operationId": "deletePost",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "query",
+                        "name": "postIds",
+                        "description": "帖子Id列表,删除多个时，传多次postIds.example:xxx?postIds=111&postIds=222",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "posts",
+                    "admin",
+                    "post"
+                ],
+                "consumes": ["application/json"]
+            }
+        },
+        "/wemedia/authors/{authorId}": {"get": {
+            "summary": "获得单个作者",
+            "description": "查看单个作者的信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Author"},
+                "description": "Author响应对象"
+            }},
+            "operationId": "getAuthor",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/authorPath"}
+            ],
+            "tags": [
+                "author",
+                "admin",
+                "get"
+            ]
+        }}
+    },
+    "host": "api.c-f.com:8000",
+    "produces": ["application/json"],
+    "responses": {},
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "parameters": {
+        "apiKeyYHeader": {
+            "default": "visitor",
+            "in": "header",
+            "name": "apiKey",
+            "description": "key",
+            "type": "string",
+            "required": true
+        },
+        "limitParam": {
+            "default": 20,
+            "in": "query",
+            "name": "limit",
+            "format": "int32",
+            "description": "一页显示数目，如果不传默认=20",
+            "type": "integer",
+            "required": false
+        },
+        "authorPath": {
+            "in": "path",
+            "name": "authorId",
+            "description": "作者的Id",
+            "type": "string",
+            "required": true
+        },
+        "categoryPath": {
+            "in": "path",
+            "name": "categoryId",
+            "description": "类目Id",
+            "type": "string",
+            "required": true
+        },
+        "postPath": {
+            "in": "path",
+            "name": "postId",
+            "description": "Post的ID",
+            "type": "string",
+            "required": true
+        },
+        "tlplayerPath": {
+            "in": "path",
+            "name": "tlplayerId",
+            "description": "球员Id",
+            "type": "string",
+            "required": true
+        },
+        "ascParam": {
+            "default": false,
+            "in": "query",
+            "name": "isAsc",
+            "description": "是否是升序，默认是升序",
+            "type": "boolean",
+            "required": false
+        }
+    },
+    "definitions": {
+        "PostTop": {
+            "description": "置顶文章",
+            "type": "object",
+            "properties": {
+                "parent": {
+                    "description": "父类目id",
+                    "type": "string"
+                },
+                "postIds": {
+                    "description": "文章id.example:111,222,333 置顶的文章id以,分隔.top新闻的显示顺序即id在字符串中的显示顺序",
+                    "type": "string"
+                },
+                "categoryName": {
+                    "description": "类目名称",
+                    "type": "string"
+                },
+                "categoryId": {
+                    "description": "categoryId",
+                    "type": "string"
+                }
+            }
+        },
+        "Category": {
+            "description": "类目",
+            "properties": {
+                "fId": {
+                    "description": "父目录Id",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "类目名称",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "iconUrl": {
+                    "description": "类目图标地址",
+                    "type": "string"
+                },
+                "categories": {
+                    "description": "子类目",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Category"}
+                }
+            }
+        },
+        "Post": {
+            "description": "帖子",
+            "type": "object",
+            "properties": {
+                "images": {
+                    "description": "图片地址",
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "createTime": {
+                    "format": "date-time",
+                    "description": "post创建日期",
+                    "type": "string"
+                },
+                "author": {
+                    "description": "作者",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Author"}
+                },
+                "videos": {
+                    "description": "视频地址",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Video"}
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "categories": {
+                    "description": "文章类别",
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "title": {
+                    "description": "标题",
+                    "type": "string"
+                },
+                "classification": {
+                    "format": "int32",
+                    "description": "分类",
+                    "type": "integer"
+                },
+                "content": {
+                    "description": "内容",
+                    "type": "string"
+                },
+                "createDate": {
+                    "description": "创建日期(天)",
+                    "type": "string"
+                },
+                "status": {
+                    "format": "int32",
+                    "description": "状态,默认1:可见 0:不可见",
+                    "type": "integer"
+                }
+            }
+        },
+        "TLPlayer": {
+            "description": "队员",
+            "type": "object",
+            "properties": {
+                "number": {
+                    "format": "int32",
+                    "description": "号码",
+                    "type": "integer"
+                },
+                "score": {
+                    "format": "int32",
+                    "description": "本次赛事进球数",
+                    "type": "integer"
+                },
+                "country": {
+                    "description": "国家： 中国",
+                    "type": "string"
+                },
+                "showNum": {
+                    "description": "本次赛事出场次数",
+                    "type": "string"
+                },
+                "birthplace": {
+                    "description": "出生地  中国北京",
+                    "type": "string"
+                },
+                "avatarUrl": {
+                    "description": "头像地址",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名字：李铁",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "position": {
+                    "description": "位置：前锋",
+                    "type": "string"
+                },
+                "team": {
+                    "description": "所属球队：国家队",
+                    "type": "string"
+                },
+                "likeNum": {
+                    "format": "int32",
+                    "description": "用户点赞数目",
+                    "type": "integer"
+                }
+            }
+        },
+        "Video": {
+            "description": "视频",
+            "type": "object",
+            "properties": {
+                "preview": {
+                    "description": "预览图片",
+                    "type": "string"
+                },
+                "time": {
+                    "format": "int32",
+                    "description": "视频时常",
+                    "type": "integer"
+                },
+                "url": {
+                    "description": "视频访问地址",
+                    "type": "string"
+                }
+            }
+        },
+        "TLClub": {
+            "description": "俱乐部",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "名称：山东鲁能",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "iconUrl": {
+                    "description": "俱乐部图片地址",
+                    "type": "string"
+                }
+            }
+        },
+        "TLTeam": {
+            "description": "参赛队",
+            "type": "object",
+            "properties": {
+                "avatarUrl": {
+                    "description": "头像地址",
+                    "type": "string"
+                },
+                "players": {
+                    "description": "客场球队",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/TLPlayer"}
+                },
+                "name": {
+                    "description": "球队名称：中国队",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                }
+            }
+        },
+        "Author": {
+            "description": "作者",
+            "type": "object",
+            "properties": {
+                "image": {
+                    "description": "头像地址",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "昵称",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                }
+            }
+        },
+        "TimeLineNews": {
+            "description": "时间轴形式的新闻",
+            "type": "object",
+            "properties": {
+                "date": {
+                    "description": "date,时间轴上日期",
+                    "type": "string"
+                },
+                "posts": {
+                    "description": "文章",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Post"}
+                }
+            }
+        },
+        "Admin": {
+            "description": "管理员",
+            "type": "object",
+            "properties": {
+                "password": {
+                    "description": "加密",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名称",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "头像地址",
+                    "type": "string"
+                },
+                "key": {
+                    "description": "授权，只有在注册登录的情况下会返回",
+                    "type": "string"
+                }
+            }
+        },
+        "TLCompetition": {
+            "description": "12强赛对象",
+            "type": "object",
+            "properties": {
+                "hostTeam": {"$ref": "#/definitions/TLTeam"},
+                "guestScore": {
+                    "format": "int32",
+                    "description": "当前客场得分",
+                    "type": "integer"
+                },
+                "hostScore": {
+                    "format": "int32",
+                    "description": "当前主场得分",
+                    "type": "integer"
+                },
+                "lal": {
+                    "format": "double",
+                    "description": "经纬度：longitude and latitude",
+                    "type": "number"
+                },
+                "name": {
+                    "description": "比赛名称：中国队主场对韩国",
+                    "type": "string"
+                },
+                "guestTeam": {"$ref": "#/definitions/TLTeam"},
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "time": {
+                    "format": "date-time",
+                    "description": "比赛时间:2016-02-01 12:00:00",
+                    "type": "string"
+                },
+                "place": {
+                    "description": "比赛地点：中国北京",
+                    "type": "string"
+                }
+            }
+        },
+        "UploadToken": {
+            "description": "上传文件令牌",
+            "type": "object",
+            "properties": {
+                "keys": {
+                    "description": "上传文件名列表",
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "token": {
+                    "description": "令牌值",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "swagger": "2.0",
+    "info": {
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "contact": {
+            "name": "曾光伟  苗慧杰  谷超超",
+            "email": "chaochaog@l99.com"
+        },
+        "description": "此API用于Lifeix Football Wemedia",
+        "termsOfService": "",
+        "title": "Lifeix Designer API",
+        "version": "1.0.0"
+    },
+    "consumes": ["application/json"],
+    "tags": []
+}

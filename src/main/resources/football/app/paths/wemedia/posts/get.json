@@ -25,6 +25,13 @@
                         "in": "query"
                     },
                     {
+                        "description": "作者id",
+                        "name": "authorId",
+                        "type": "string",
+                        "required": false,
+                        "in": "query"
+                    },
+                    {
                         "description": "查询开始日期,单位天",
                         "name": "startDate",
                         "type": "string",
