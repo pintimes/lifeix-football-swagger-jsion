@@ -113,14 +113,6 @@
                     "description": "一页显示数目，如果不传默认=6",
                     "type": "integer",
                     "required": false
-                },
-                {
-                    "default": "createTime",
-                    "in": "query",
-                    "name": "orderBy",
-                    "description": "排序字段",
-                    "type": "string",
-                    "required": false
                 }
             ],
             "tags": [
@@ -293,14 +285,6 @@
                     "format": "int32",
                     "description": "一页显示数目，如果不传默认=20",
                     "type": "integer",
-                    "required": false
-                },
-                {
-                    "default": "createTime",
-                    "in": "query",
-                    "name": "orderBy",
-                    "description": "排序字段",
-                    "type": "string",
                     "required": false
                 }
             ],
@@ -527,7 +511,7 @@
                     {
                         "schema": {"$ref": "#/definitions/PostTop"},
                         "in": "body",
-                        "name": "post",
+                        "name": "posttop",
                         "description": "文章置顶对象",
                         "required": true
                     }
@@ -840,11 +824,7 @@
                     "description": "post创建日期",
                     "type": "string"
                 },
-                "author": {
-                    "description": "作者",
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Author"}
-                },
+                "author": {"$ref": "#/definitions/Author"},
                 "videos": {
                     "description": "视频地址",
                     "type": "array",

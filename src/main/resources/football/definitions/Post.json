@@ -10,12 +10,7 @@
                     "type": "string"
                 },
                 "author": {
-                	"description": "作者",
-            		"type": "array",
-            		"items": 
-            		{
-                		"$ref": "#/definitions/Author"
-            		}
+                	"$ref": "#/definitions/Author"
                 },
                 "content": {
                     "description": "内容",

@@ -18,7 +18,7 @@
                             "$ref": "#/definitions/PostTop"
                         },
                         "description": "文章置顶对象",
-                        "name": "post",
+                        "name": "posttop",
                         "required": true,
                         "in": "body"
                     }

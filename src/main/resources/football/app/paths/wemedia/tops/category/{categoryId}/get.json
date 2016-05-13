@@ -18,15 +18,7 @@
 			            "type": "integer",
 			            "required": false,
 			            "in": "query"
-			        },
-			        {
-			        	"default": "createTime",
-                        "description": "排序字段",
-                        "name": "orderBy",
-                        "type": "string",
-                        "required": false,
-                        "in": "query"
-                    }
+			        }
                 ],
                 "responses": {
                     "200": {
