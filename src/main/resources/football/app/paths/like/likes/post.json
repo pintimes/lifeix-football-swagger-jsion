@@ -1,0 +1,37 @@
+{
+                "summary": "用户like一个对象",
+                "tags": [
+                    "likes",
+                    "post"
+                ],
+                "description": "用户like一个对象",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/LikeAction"
+                        },
+                        "description": "喜欢动作",
+                        "name": "action",
+                        "required": true,
+                        "in": "body"
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/ObjectLiked"
+                        },
+                        "description": "喜欢此对象的用户信息"
+                    },
+                    "400": {
+                        "description": "action's params must all have value"
+                    }
+                },
+                "operationId": "addLike"
+            }

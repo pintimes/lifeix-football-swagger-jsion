@@ -74,6 +74,31 @@
                 "get"
             ]
         }},
+        "/like/likes": {"post": {
+            "summary": "用户like一个对象",
+            "produces": ["application/json"],
+            "description": "用户like一个对象",
+            "responses": {
+                "200": {
+                    "schema": {"$ref": "#/definitions/ObjectLiked"},
+                    "description": "喜欢此对象的用户信息"
+                },
+                "400": {"description": "action's params must all have value"}
+            },
+            "operationId": "addLike",
+            "parameters": [{
+                "schema": {"$ref": "#/definitions/LikeAction"},
+                "in": "body",
+                "name": "action",
+                "description": "喜欢动作",
+                "required": true
+            }],
+            "tags": [
+                "likes",
+                "post"
+            ],
+            "consumes": ["application/json"]
+        }},
         "/timeline/tlcompetitions": {"get": {
             "summary": "根据搜索条件获取赛事列表",
             "description": "获得赛事信息",
@@ -136,6 +161,32 @@
             "tags": [
                 "admin",
                 "admins",
+                "get"
+            ]
+        }},
+        "/like/likes/users/{userId}": {"get": {
+            "summary": "查询喜欢此用户喜欢的object的id",
+            "description": "查询喜欢此用户喜欢的object的id",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/UserLike"}
+                },
+                "description": "UserLike响应对象"
+            }},
+            "operationId": "getUserLike",
+            "parameters": [
+                {"$ref": "#/parameters/userPath"},
+                {
+                    "in": "query",
+                    "name": "type",
+                    "description": "object的类型",
+                    "type": "string",
+                    "required": false
+                }
+            ],
+            "tags": [
+                "likes",
                 "get"
             ]
         }},
@@ -316,6 +367,32 @@
                 "post"
             ],
             "consumes": ["application/json"]
+        }},
+        "/like/likes/objects/{objectId}": {"get": {
+            "summary": "查询喜欢此对象的用户id列表",
+            "description": "查询喜欢此对象的用户id列表",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ObjectLiked"}
+                },
+                "description": "ObjectLiked响应对象"
+            }},
+            "operationId": "getObjectLiked",
+            "parameters": [
+                {"$ref": "#/parameters/objectPath"},
+                {
+                    "in": "query",
+                    "name": "type",
+                    "description": "object的类型",
+                    "type": "string",
+                    "required": true
+                }
+            ],
+            "tags": [
+                "likes",
+                "get"
+            ]
         }},
         "/wemedia/authors": {
             "post": {
@@ -728,6 +805,13 @@
             "type": "string",
             "required": true
         },
+        "objectPath": {
+            "in": "path",
+            "name": "objectId",
+            "description": "喜欢对象的ID",
+            "type": "string",
+            "required": true
+        },
         "authorPath": {
             "in": "path",
             "name": "authorId",
@@ -755,31 +839,16 @@
             "description": "球员Id",
             "type": "string",
             "required": true
+        },
+        "userPath": {
+            "in": "path",
+            "name": "userId",
+            "description": "用户的ID",
+            "type": "string",
+            "required": true
         }
     },
     "definitions": {
-        "PostTop": {
-            "description": "置顶文章",
-            "type": "object",
-            "properties": {
-                "parent": {
-                    "description": "父类目id",
-                    "type": "string"
-                },
-                "postIds": {
-                    "description": "文章id.example:111,222,333 置顶的文章id以,分隔.top新闻的显示顺序即id在字符串中的显示顺序",
-                    "type": "string"
-                },
-                "categoryName": {
-                    "description": "类目名称",
-                    "type": "string"
-                },
-                "categoryId": {
-                    "description": "categoryId",
-                    "type": "string"
-                }
-            }
-        },
         "Category": {
             "description": "类目",
             "properties": {
@@ -912,6 +981,136 @@
                 }
             }
         },
+        "TLClub": {
+            "description": "俱乐部",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "名称：山东鲁能",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "iconUrl": {
+                    "description": "俱乐部图片地址",
+                    "type": "string"
+                }
+            }
+        },
+        "LikeAction": {
+            "description": "喜欢操作",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "description": "类型 example:球员、教练",
+                    "type": "string"
+                },
+                "userId": {
+                    "description": "userId",
+                    "type": "string"
+                },
+                "objectId": {
+                    "description": "对象id",
+                    "type": "string"
+                }
+            }
+        },
+        "Admin": {
+            "description": "管理员",
+            "type": "object",
+            "properties": {
+                "password": {
+                    "description": "加密",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名称",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "头像地址",
+                    "type": "string"
+                },
+                "key": {
+                    "description": "授权，只有在注册登录的情况下会返回",
+                    "type": "string"
+                }
+            }
+        },
+        "PostTop": {
+            "description": "置顶文章",
+            "type": "object",
+            "properties": {
+                "parent": {
+                    "description": "父类目id",
+                    "type": "string"
+                },
+                "postIds": {
+                    "description": "文章id.example:111,222,333 置顶的文章id以,分隔.top新闻的显示顺序即id在字符串中的显示顺序",
+                    "type": "string"
+                },
+                "categoryName": {
+                    "description": "类目名称",
+                    "type": "string"
+                },
+                "categoryId": {
+                    "description": "categoryId",
+                    "type": "string"
+                }
+            }
+        },
+        "ObjectLiked": {
+            "description": "存储喜欢对象的用户信息",
+            "type": "object",
+            "properties": {
+                "userIds": {
+                    "description": "喜欢此对象的用户的集合",
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "类型 example:球员、教练",
+                    "type": "string"
+                },
+                "objectId": {
+                    "description": "对象id",
+                    "type": "string"
+                }
+            }
+        },
+        "UserLike": {
+            "description": "存储用户喜欢的对象信息",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "类型 example:球员、教练",
+                    "type": "string"
+                },
+                "userId": {
+                    "description": "用户id",
+                    "type": "string"
+                },
+                "objectIds": {
+                    "description": "用户喜欢的对象集合",
+                    "type": "array",
+                    "items": {"type": "string"}
+                }
+            }
+        },
         "Video": {
             "description": "视频",
             "type": "object",
@@ -927,24 +1126,6 @@
                 },
                 "url": {
                     "description": "视频访问地址",
-                    "type": "string"
-                }
-            }
-        },
-        "TLClub": {
-            "description": "俱乐部",
-            "type": "object",
-            "properties": {
-                "name": {
-                    "description": "名称：山东鲁能",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "id",
-                    "type": "string"
-                },
-                "iconUrl": {
-                    "description": "俱乐部图片地址",
                     "type": "string"
                 }
             }
@@ -1002,32 +1183,6 @@
                     "description": "文章",
                     "type": "array",
                     "items": {"$ref": "#/definitions/Post"}
-                }
-            }
-        },
-        "Admin": {
-            "description": "管理员",
-            "type": "object",
-            "properties": {
-                "password": {
-                    "description": "加密",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "名称",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "id",
-                    "type": "string"
-                },
-                "email": {
-                    "description": "头像地址",
-                    "type": "string"
-                },
-                "key": {
-                    "description": "授权，只有在注册登录的情况下会返回",
-                    "type": "string"
                 }
             }
         },
