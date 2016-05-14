@@ -37,15 +37,6 @@
             "default":"visitor",
             "in":"header"
         },
-        "limitParam": {
-            "default": 20,
-            "description": "一页显示数目，如果不传默认=20",
-            "name": "limit",
-            "format": "int32",
-            "type": "integer",
-            "required": false,
-            "in": "query"
-        },
         "authorPath": {
             "description": "作者的Id",
             "name": "authorId",
@@ -73,14 +64,6 @@
             "type": "string",
             "required": true,
             "in": "path"
-        },
-        "ascParam": {
-            "default": false,
-            "description": "是否是升序，默认是升序",
-            "name": "isAsc",
-            "type": "boolean",
-            "required": false,
-            "in": "query"
         }
     }
 }

@@ -637,8 +637,21 @@
                         "type": "string",
                         "required": false
                     },
-                    {"$ref": "#/parameters/limitParam"},
-                    {"$ref": "#/parameters/ascParam"},
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "format": "int32",
+                        "description": "一页显示多少",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "orderBy",
+                        "description": "按照那个字段排序",
+                        "type": "string",
+                        "required": false
+                    },
                     {
                         "in": "query",
                         "name": "isDesc",
@@ -710,19 +723,10 @@
         "apiKeyYHeader": {
             "default": "visitor",
             "in": "header",
-            "name": "apiKey",
+            "name": "key",
             "description": "key",
             "type": "string",
             "required": true
-        },
-        "limitParam": {
-            "default": 20,
-            "in": "query",
-            "name": "limit",
-            "format": "int32",
-            "description": "一页显示数目，如果不传默认=20",
-            "type": "integer",
-            "required": false
         },
         "authorPath": {
             "in": "path",
@@ -751,14 +755,6 @@
             "description": "球员Id",
             "type": "string",
             "required": true
-        },
-        "ascParam": {
-            "default": false,
-            "in": "query",
-            "name": "isAsc",
-            "description": "是否是升序，默认是升序",
-            "type": "boolean",
-            "required": false
         }
     },
     "definitions": {

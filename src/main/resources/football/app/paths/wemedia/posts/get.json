@@ -53,10 +53,19 @@
                         "in": "query"
                     },
                     {
-                        "$ref": "#/parameters/limitParam"
+                        "description": "一页显示多少",
+                        "name": "limit",
+                        "format": "int32",
+            			"type": "integer",
+           				"required": false,
+        				"in": "query"
                     },
                     {
-                        "$ref": "#/parameters/ascParam"
+                        "description": "按照那个字段排序",
+                        "name": "orderBy",
+                        "type": "string",
+                        "required": false,
+                        "in": "query"
                     },
                     {
                         "description": "是否按时间倒序,默认值true",
