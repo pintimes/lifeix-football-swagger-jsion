@@ -24,10 +24,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "schema": {
-                            "$ref": "#/definitions/ObjectLiked"
-                        },
-                        "description": "喜欢此对象的用户信息"
+                        "description": "add success"
                     },
                     "400": {
                         "description": "action's params must all have value"

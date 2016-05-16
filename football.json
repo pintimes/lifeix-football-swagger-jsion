@@ -79,10 +79,7 @@
             "produces": ["application/json"],
             "description": "用户like一个对象",
             "responses": {
-                "200": {
-                    "schema": {"$ref": "#/definitions/ObjectLiked"},
-                    "description": "喜欢此对象的用户信息"
-                },
+                "200": {"description": "add success"},
                 "400": {"description": "action's params must all have value"}
             },
             "operationId": "addLike",
@@ -374,9 +371,9 @@
             "responses": {"200": {
                 "schema": {
                     "type": "array",
-                    "items": {"$ref": "#/definitions/ObjectLiked"}
+                    "items": {"$ref": "#/definitions/ObjectSummary"}
                 },
-                "description": "ObjectLiked响应对象"
+                "description": "ObjectSummary响应对象"
             }},
             "operationId": "getObjectLiked",
             "parameters": [
@@ -387,6 +384,20 @@
                     "description": "object的类型",
                     "type": "string",
                     "required": true
+                },
+                {
+                    "in": "query",
+                    "name": "startTime",
+                    "description": "开始查询时间,不传默认为当前时间的long型",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "limit",
+                    "description": "一次显示多少条",
+                    "type": "string",
+                    "required": false
                 }
             ],
             "tags": [
@@ -1065,29 +1076,6 @@
                 }
             }
         },
-        "ObjectLiked": {
-            "description": "存储喜欢对象的用户信息",
-            "type": "object",
-            "properties": {
-                "userIds": {
-                    "description": "喜欢此对象的用户的集合",
-                    "type": "array",
-                    "items": {"type": "string"}
-                },
-                "id": {
-                    "description": "id",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "类型 example:球员、教练",
-                    "type": "string"
-                },
-                "objectId": {
-                    "description": "对象id",
-                    "type": "string"
-                }
-            }
-        },
         "UserLike": {
             "description": "存储用户喜欢的对象信息",
             "type": "object",
@@ -1183,6 +1171,35 @@
                     "description": "文章",
                     "type": "array",
                     "items": {"$ref": "#/definitions/Post"}
+                }
+            }
+        },
+        "ObjectSummary": {
+            "description": "存储喜欢对象的用户信息",
+            "type": "object",
+            "properties": {
+                "userIds": {
+                    "description": "喜欢此对象的用户的集合",
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "startTime": {
+                    "format": "date-time",
+                    "description": "对象id",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "类型 example:球员、教练",
+                    "type": "string"
+                },
+                "objectId": {
+                    "description": "对象id",
+                    "type": "string"
+                },
+                "likeNum": {
+                    "format": "int32",
+                    "description": "对象id",
+                    "type": "integer"
                 }
             }
         },

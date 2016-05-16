@@ -14,6 +14,20 @@
                         "type": "string",
                         "required": true,
                         "in": "query"
+                    },
+                    {
+                        "description": "开始查询时间,不传默认为当前时间的long型",
+                        "name": "startTime",
+                        "type": "string",
+                        "required": false,
+                        "in": "query"
+                    },
+                    {
+                        "description": "一次显示多少条",
+                        "name": "limit",
+                        "type": "string",
+                        "required": false,
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -21,10 +35,10 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/ObjectLiked"
+                                "$ref": "#/definitions/ObjectSummary"
                             }
                         },
-                        "description": "ObjectLiked响应对象"
+                        "description": "ObjectSummary响应对象"
                     }
                 },
                 "operationId": "getObjectLiked"
