@@ -1,5 +1,5 @@
 {
-    "description": "参赛队",
+    "description": "队伍信息",
     "type": "object",
     "properties": 
     {
@@ -15,10 +15,25 @@
             "type": "string"
         },
 
-        "avatarUrl": 
+        "icon": 
         {
             "description": "头像地址",
             "type": "string"
+        },
+
+        "chefReferee": 
+        {
+            "$ref": "#/definitions/Coach"
+        },
+
+        "assistantCoachs": 
+        {
+            "description": "助理教练",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Coach"
+            }
         },
 
         "players": 
@@ -27,7 +42,7 @@
             "type": "array",
             "items": 
             {
-                "$ref": "#/definitions/TLPlayer"
+                "$ref": "#/definitions/Player"
             }
         }
     }

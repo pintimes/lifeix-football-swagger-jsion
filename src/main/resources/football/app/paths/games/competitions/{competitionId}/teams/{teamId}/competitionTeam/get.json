@@ -1,0 +1,40 @@
+{
+    "summary": "获得参赛球队的详细信息",
+    "tags": 
+    [
+        "team",
+        "visitor",
+        "get"
+    ],
+
+    "description": "获得球队信息",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+
+        {
+            "$ref": "#/parameters/teamPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Team"
+            },
+
+            "description": "Team响应对象"
+        }
+    },
+
+    "operationId": "getCompetitionTeamList"
+}

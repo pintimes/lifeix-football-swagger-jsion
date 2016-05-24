@@ -1,18 +1,25 @@
 {
-            "description": "喜欢操作",
-            "properties": {
-                "userId": {
-                    "description": "userId",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "类型 example:球员、教练",
-                    "type": "string"
-                },
-                "objectId": {
-                    "description": "对象id",
-                    "type": "string"
-                }
-            },
-            "type": "object"
+    "description": "喜欢操作",
+    "properties": 
+    {
+        "userId": 
+        {
+            "description": "userId",
+            "type": "string"
+        },
+
+        "type": 
+        {
+            "description": "类型 example:球员、教练",
+            "type": "string"
+        },
+
+        "objectId": 
+        {
+            "description": "对象id",
+            "type": "string"
         }
+    },
+
+    "type": "object"
+}

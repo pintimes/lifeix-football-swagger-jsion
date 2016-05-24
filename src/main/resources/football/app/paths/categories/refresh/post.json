@@ -1,35 +1,51 @@
 {
-                "summary": "刷新缓存",
-                "tags": [
-                    "categories",
-                    "admin",
-                    "post"
-                ],
-                "description": "刷新缓存，返回数据",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "$ref": "#/parameters/apiKeyYHeader"
-                    }
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                       "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Category"
-                            }
-                        },
-                        "description": "Category列表响应对象"
-                    },
-                    "400": {
-                        "description": ""
-                    }
-                },
-                "operationId": "refreshCategory"
-            }
+    "summary": "主动刷新缓存",
+    "tags": 
+    [
+        "categories",
+        "admin",
+        "post"
+    ],
+
+    "description": "刷新缓存，返回数据",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Category"
+                }
+            },
+
+            "description": "Category列表响应对象"
+        },
+
+        "400": 
+        {
+            "description": ""
+        }
+    },
+
+    "operationId": "refreshCategory"
+}

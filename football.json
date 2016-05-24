@@ -1,115 +1,20 @@
 {
     "basePath": "/football",
     "paths": {
-        "/timeline/tlteams": {"get": {
-            "summary": "根据搜索条件获取球队列表",
+        "/games/teams/{teamId}": {"get": {
+            "summary": "获得球队信息",
             "description": "获得球队信息",
             "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/TLTeam"}
-                },
-                "description": "Team列表响应对象"
+                "schema": {"$ref": "#/definitions/Team"},
+                "description": "Team响应对象"
             }},
-            "operationId": "getTeamList",
-            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-            "tags": [
-                "tlteam",
-                "visitor",
-                "get"
-            ]
-        }},
-        "/file/token": {"get": {
-            "summary": "令牌",
-            "description": "获取文件上传令牌",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/UploadToken"},
-                "description": "令牌信息"
-            }},
-            "operationId": "getToken",
-            "parameters": [
-                {
-                    "in": "query",
-                    "name": "type",
-                    "description": "上传文件类型，|null 所有类型|0 图片|1 音频|2 视频|",
-                    "type": "integer",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "key",
-                    "description": "已存在云上的文件key，如果不为空，则此令牌只用于替换和覆盖",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "file_list",
-                    "description": "要上传的原始文件名称列表",
-                    "type": "array",
-                    "items": {"type": "string"},
-                    "required": false
-                }
-            ],
-            "tags": [
-                "token",
-                "get"
-            ]
-        }},
-        "/timeline/tlplayers/{tlplayerId}": {"get": {
-            "summary": "获得球员信息",
-            "description": "查看球员信息",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/TLPlayer"},
-                "description": "TLPlayer响应对象"
-            }},
-            "operationId": "getTLPlayer",
+            "operationId": "getTeam",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/tlplayerPath"}
+                {"$ref": "#/parameters/teamPath"}
             ],
             "tags": [
-                "tlplayer",
-                "visitor",
-                "get"
-            ]
-        }},
-        "/like/likes": {"post": {
-            "summary": "用户like一个对象",
-            "produces": ["application/json"],
-            "description": "用户like一个对象",
-            "responses": {
-                "200": {"description": "add success"},
-                "400": {"description": "action's params must all have value"}
-            },
-            "operationId": "addLike",
-            "parameters": [{
-                "schema": {"$ref": "#/definitions/LikeAction"},
-                "in": "body",
-                "name": "action",
-                "description": "喜欢动作",
-                "required": true
-            }],
-            "tags": [
-                "likes",
-                "post"
-            ],
-            "consumes": ["application/json"]
-        }},
-        "/timeline/tlcompetitions": {"get": {
-            "summary": "根据搜索条件获取赛事列表",
-            "description": "获得赛事信息",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/TLCompetition"}
-                },
-                "description": "Competition列表响应对象"
-            }},
-            "operationId": "getCompetitionList",
-            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-            "tags": [
-                "tlcompetition",
+                "team",
                 "visitor",
                 "get"
             ]
@@ -139,6 +44,34 @@
             ],
             "tags": [
                 "tops",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/games/competitions/{competitionId}/teams": {"get": {
+            "summary": "获得某一次赛事下的参赛队伍列表",
+            "operationId": "getCompetitionTeams",
+            "description": "获得赛事列表",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Team"}
+                },
+                "description": "Team列表响应对象"
+            }},
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/competitionPath"},
+                {
+                    "in": "query",
+                    "name": "teamId",
+                    "description": "teamId",
+                    "type": "string",
+                    "required": false
+                }
+            ],
+            "tags": [
+                "player",
                 "visitor",
                 "get"
             ]
@@ -260,9 +193,9 @@
         }},
         "/categories": {
             "post": {
-                "summary": "创建一个Category",
+                "summary": "创建一个展示类目",
                 "produces": ["application/json"],
-                "description": "创建一个Category，并刷新缓存列表",
+                "description": "类目用于WEB菜单栏",
                 "responses": {
                     "200": {
                         "schema": {"$ref": "#/definitions/Category"},
@@ -289,8 +222,9 @@
                 "consumes": ["application/json"]
             },
             "get": {
-                "summary": "获取类目",
-                "description": "返回所有的类目",
+                "summary": "获取整个类目",
+                "produces": ["application/json"],
+                "description": "将数据库（缓存）中所有类目都返回",
                 "responses": {"200": {
                     "schema": {
                         "type": "array",
@@ -304,66 +238,51 @@
                     "categories",
                     "visitor",
                     "get"
-                ]
+                ],
+                "consumes": ["application/json"]
             }
         },
-        "/wemedia/tops/news": {"get": {
-            "summary": "top新闻的news表现形式",
-            "description": "top新闻的news表现形式",
+        "/games/players": {"get": {
+            "summary": "获得球员列表",
+            "operationId": "getPlayers",
+            "description": "获得球员列表",
             "responses": {"200": {
                 "schema": {
                     "type": "array",
-                    "items": {"$ref": "#/definitions/Post"}
+                    "items": {"$ref": "#/definitions/Competition"}
                 },
-                "description": "Post列表响应对象"
+                "description": "Competition列表响应对象"
             }},
-            "operationId": "getTopNews",
             "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
                 {
                     "in": "query",
-                    "name": "categoryId",
-                    "description": "目录id",
+                    "name": "limit",
+                    "format": "int32",
+                    "description": "一页显示多少",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "orderBy",
+                    "description": "按照那个字段排序",
                     "type": "string",
                     "required": false
                 },
                 {
-                    "default": 20,
                     "in": "query",
-                    "name": "limit",
-                    "format": "int32",
-                    "description": "一页显示数目，如果不传默认=20",
-                    "type": "integer",
+                    "name": "isDesc",
+                    "description": "是否按时间倒序,默认值true",
+                    "type": "boolean",
                     "required": false
                 }
             ],
             "tags": [
-                "tops",
+                "player",
                 "visitor",
                 "get"
             ]
-        }},
-        "/categories/refresh": {"post": {
-            "summary": "刷新缓存",
-            "produces": ["application/json"],
-            "description": "刷新缓存，返回数据",
-            "responses": {
-                "200": {
-                    "schema": {
-                        "type": "array",
-                        "items": {"$ref": "#/definitions/Category"}
-                    },
-                    "description": "Category列表响应对象"
-                },
-                "400": {"description": ""}
-            },
-            "operationId": "refreshCategory",
-            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-            "tags": [
-                "categories",
-                "admin",
-                "post"
-            ],
-            "consumes": ["application/json"]
         }},
         "/like/likes/objects/{objectId}": {"get": {
             "summary": "查询喜欢此对象的用户id列表",
@@ -455,21 +374,71 @@
                 ]
             }
         },
-        "/wemedia/posttop/category/{categoryId}": {"get": {
-            "summary": "获取一个类目下置顶的文章id列表",
-            "description": "获取一个类目下置顶的文章id列表",
+        "/games/matches": {"get": {
+            "summary": "获得赛事列表",
+            "operationId": "getMatches",
+            "description": "获得赛事列表",
             "responses": {"200": {
-                "schema": {"$ref": "#/definitions/PostTop"},
-                "description": "PostTop响应对象"
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Match"}
+                },
+                "description": "Match列表响应对象"
             }},
-            "operationId": "getTopPosts",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/categoryPath"}
+                {
+                    "in": "query",
+                    "name": "competitionId",
+                    "description": "赛事Id",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "limit",
+                    "format": "int32",
+                    "description": "一页显示多少",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "orderBy",
+                    "description": "按照那个字段排序",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "isDesc",
+                    "description": "是否按时间倒序,默认值true",
+                    "type": "boolean",
+                    "required": false
+                }
             ],
             "tags": [
-                "posttop",
-                "admin",
+                "competition",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/games/competitions/{competitionId}/matches/{matchId}": {"get": {
+            "summary": "获得比赛信息",
+            "description": "获得比赛信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Match"},
+                "description": "Match响应对象"
+            }},
+            "operationId": "getCompetionMatch",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/competitionPath"},
+                {"$ref": "#/parameters/matchPath"}
+            ],
+            "tags": [
+                "team",
+                "visitor",
                 "get"
             ]
         }},
@@ -533,6 +502,287 @@
             ],
             "consumes": ["application/json"]
         }},
+        "/games/players/{playerId}": {"get": {
+            "summary": "获得球员信息",
+            "description": "查看球员信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Player"},
+                "description": "TLPlayer响应对象"
+            }},
+            "operationId": "getPlayer",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/playerPath"}
+            ],
+            "tags": [
+                "tlplayer",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam": {"get": {
+            "summary": "获得参赛球队的详细信息",
+            "description": "获得球队信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Team"},
+                "description": "Team响应对象"
+            }},
+            "operationId": "getCompetitionTeamList",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/competitionPath"},
+                {"$ref": "#/parameters/teamPath"}
+            ],
+            "tags": [
+                "team",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/games/competitions/{competitionId}/teams/{teamId}/matchteam": {"get": {
+            "summary": "获得参赛球队的详细信息",
+            "description": "获得球队信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Team"},
+                "description": "Team响应对象"
+            }},
+            "operationId": "getMatchTeamList",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/competitionPath"},
+                {"$ref": "#/parameters/teamPath"}
+            ],
+            "tags": [
+                "team",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/file/token": {"get": {
+            "summary": "从文件授权服务器上获取令牌",
+            "description": "从文件授权服务器上获取令牌",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/UploadToken"},
+                "description": "令牌信息"
+            }},
+            "operationId": "getToken",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "query",
+                    "name": "type",
+                    "description": "上传文件类型，|null 所有类型|0 图片|1 音频|2 视频|",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "key",
+                    "description": "已存在云上的文件key，如果不为空，则此令牌只用于替换和覆盖",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "file_list",
+                    "description": "要上传的原始文件名称列表",
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "required": false
+                }
+            ],
+            "tags": [
+                "token",
+                "get"
+            ]
+        }},
+        "/like/likes": {"post": {
+            "summary": "用户like一个对象",
+            "produces": ["application/json"],
+            "description": "用户like一个对象",
+            "responses": {
+                "200": {"description": "add success"},
+                "400": {"description": "action's params must all have value"}
+            },
+            "operationId": "addLike",
+            "parameters": [{
+                "schema": {"$ref": "#/definitions/LikeAction"},
+                "in": "body",
+                "name": "action",
+                "description": "喜欢动作",
+                "required": true
+            }],
+            "tags": [
+                "likes",
+                "post"
+            ],
+            "consumes": ["application/json"]
+        }},
+        "/games/competitions/{competitionId}/players": {"get": {
+            "summary": "获得球员列表",
+            "operationId": "getCompetitionPlayers",
+            "description": "获得赛事列表",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Competition"}
+                },
+                "description": "Competition列表响应对象"
+            }},
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/competitionPath"},
+                {
+                    "in": "query",
+                    "name": "teamId",
+                    "description": "队伍Id",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "limit",
+                    "format": "int32",
+                    "description": "一页显示多少",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "orderBy",
+                    "description": "按照那个字段排序",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "isDesc",
+                    "description": "是否按时间倒序,默认值true",
+                    "type": "boolean",
+                    "required": false
+                }
+            ],
+            "tags": [
+                "player",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/wemedia/tops/news": {"get": {
+            "summary": "top新闻的news表现形式",
+            "description": "top新闻的news表现形式",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Post"}
+                },
+                "description": "Post列表响应对象"
+            }},
+            "operationId": "getTopNews",
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "categoryId",
+                    "description": "目录id",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "default": 20,
+                    "in": "query",
+                    "name": "limit",
+                    "format": "int32",
+                    "description": "一页显示数目，如果不传默认=20",
+                    "type": "integer",
+                    "required": false
+                }
+            ],
+            "tags": [
+                "tops",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/games/competitions/{competitionId}/matches": {"get": {
+            "summary": "获取赛事比赛列表",
+            "description": "获取赛事比赛列表",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Match"}
+                },
+                "description": "Match列表响应对象"
+            }},
+            "operationId": "getCompetitionMatchList",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/competitionPath"}
+            ],
+            "tags": [
+                "competitions",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/categories/refresh": {"post": {
+            "summary": "主动刷新缓存",
+            "produces": ["application/json"],
+            "description": "刷新缓存，返回数据",
+            "responses": {
+                "200": {
+                    "schema": {
+                        "type": "array",
+                        "items": {"$ref": "#/definitions/Category"}
+                    },
+                    "description": "Category列表响应对象"
+                },
+                "400": {"description": ""}
+            },
+            "operationId": "refreshCategory",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": [
+                "categories",
+                "admin",
+                "post"
+            ],
+            "consumes": ["application/json"]
+        }},
+        "/games/teams": {"get": {
+            "summary": "获得球队信息",
+            "description": "获得球队信息",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Team"}
+                },
+                "description": "Team列表响应对象"
+            }},
+            "operationId": "getTeamList",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": [
+                "team",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/wemedia/posttop/category/{categoryId}": {"get": {
+            "summary": "获取一个类目下置顶的文章id列表",
+            "description": "获取一个类目下置顶的文章id列表",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/PostTop"},
+                "description": "PostTop响应对象"
+            }},
+            "operationId": "getTopPosts",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/categoryPath"}
+            ],
+            "tags": [
+                "posttop",
+                "admin",
+                "get"
+            ]
+        }},
         "/wemedia/redis/cacheCollection": {"delete": {
             "summary": "管理员删除zset,目前collectionName[ posts timelineNews topNews homepageNews]",
             "produces": ["application/json"],
@@ -561,24 +811,6 @@
                 "admin"
             ],
             "consumes": ["application/json"]
-        }},
-        "/timeline/tlplayers/{tlplayerId}/tlclub": {"get": {
-            "summary": "获得球员俱乐部信息",
-            "description": "查看球员信息",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/TLClub"},
-                "description": "TlClub响应对象"
-            }},
-            "operationId": "getTLPlayerClub",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/tlplayerPath"}
-            ],
-            "tags": [
-                "tlclub",
-                "visitor",
-                "get"
-            ]
         }},
         "/wemedia/posttop": {
             "post": {
@@ -639,6 +871,24 @@
                 ]
             }
         },
+        "/games/competitions": {"get": {
+            "summary": "获取赛事列表",
+            "description": "获得赛事列表",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Competition"}
+                },
+                "description": "Competition列表响应对象"
+            }},
+            "operationId": "getCompetitionList",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": [
+                "competitions",
+                "visitor",
+                "get"
+            ]
+        }},
         "/wemedia/posts": {
             "post": {
                 "summary": "创建一个Post",
@@ -844,10 +1094,17 @@
             "type": "string",
             "required": true
         },
-        "tlplayerPath": {
+        "competitionPath": {
             "in": "path",
-            "name": "tlplayerId",
-            "description": "球员Id",
+            "name": "competitionId",
+            "description": "赛事Id",
+            "type": "string",
+            "required": true
+        },
+        "teamPath": {
+            "in": "path",
+            "name": "teamId",
+            "description": "队伍Id",
             "type": "string",
             "required": true
         },
@@ -857,9 +1114,145 @@
             "description": "用户的ID",
             "type": "string",
             "required": true
+        },
+        "playerPath": {
+            "in": "path",
+            "name": "playerId",
+            "description": "球员Id",
+            "type": "string",
+            "required": true
+        },
+        "matchPath": {
+            "in": "path",
+            "name": "matchId",
+            "description": "比赛Id",
+            "type": "string",
+            "required": true
         }
     },
     "definitions": {
+        "Competition": {
+            "description": "赛事：比如12强赛",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "12强赛",
+                    "type": "string"
+                },
+                "startTime": {
+                    "format": "date-time",
+                    "description": "赛季起始时间",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "endTime": {
+                    "format": "date-time",
+                    "description": "赛季起始时间",
+                    "type": "string"
+                },
+                "matches": {
+                    "description": "比赛",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Match"}
+                }
+            }
+        },
+        "Player": {
+            "description": "队员",
+            "type": "object",
+            "properties": {
+                "teamName": {
+                    "description": "所属球队：国家队",
+                    "type": "string"
+                },
+                "country": {
+                    "description": "国家： 中国",
+                    "type": "string"
+                },
+                "career": {
+                    "description": "职业生涯",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/TeamInfo"}
+                },
+                "avatarUrl": {
+                    "description": "头像地址",
+                    "type": "string"
+                },
+                "matches": {"$ref": "#/definitions/MatchInfo"},
+                "likeNum": {
+                    "format": "int32",
+                    "description": "用户点赞数目",
+                    "type": "integer"
+                },
+                "number": {
+                    "format": "int32",
+                    "description": "号码",
+                    "type": "integer"
+                },
+                "score": {
+                    "format": "int32",
+                    "description": "本次赛事进球数",
+                    "type": "integer"
+                },
+                "showNum": {
+                    "description": "本次赛事出场次数",
+                    "type": "string"
+                },
+                "birthplace": {
+                    "description": "出生地  中国北京",
+                    "type": "string"
+                },
+                "teamId": {
+                    "description": "所属球队：国家队",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名字：李铁",
+                    "type": "string"
+                },
+                "club": {
+                    "description": "当前效力俱乐部",
+                    "$ref": "#/definitions/TeamInfo"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "position": {
+                    "description": "位置：前锋",
+                    "type": "string"
+                }
+            }
+        },
+        "TeamCategory": {
+            "description": "球队分类",
+            "properties": {
+                "fId": {
+                    "description": "父目录Id",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "类目名称",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "iconUrl": {
+                    "description": "类目图标地址",
+                    "type": "string"
+                },
+                "categories": {
+                    "description": "子类目",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/TeamCategory"}
+                }
+            }
+        },
         "Category": {
             "description": "类目",
             "properties": {
@@ -883,6 +1276,36 @@
                     "description": "子类目",
                     "type": "array",
                     "items": {"$ref": "#/definitions/Category"}
+                }
+            }
+        },
+        "Referee": {
+            "description": "教练",
+            "type": "object",
+            "properties": {
+                "country": {
+                    "description": "国家： 中国",
+                    "type": "string"
+                },
+                "birthplace": {
+                    "description": "出生地  中国北京",
+                    "type": "string"
+                },
+                "avatarUrl": {
+                    "description": "头像地址",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名字：郎平",
+                    "type": "string"
+                },
+                "photo": {
+                    "description": "照片",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
                 }
             }
         },
@@ -939,65 +1362,44 @@
                 }
             }
         },
-        "TLPlayer": {
-            "description": "队员",
+        "TeamInfo": {
+            "description": "队伍信息",
             "type": "object",
             "properties": {
-                "number": {
-                    "format": "int32",
-                    "description": "号码",
-                    "type": "integer"
+                "assistantCoachs": {
+                    "description": "助理教练",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Coach"}
                 },
-                "score": {
-                    "format": "int32",
-                    "description": "本次赛事进球数",
-                    "type": "integer"
-                },
-                "country": {
-                    "description": "国家： 中国",
-                    "type": "string"
-                },
-                "showNum": {
-                    "description": "本次赛事出场次数",
-                    "type": "string"
-                },
-                "birthplace": {
-                    "description": "出生地  中国北京",
-                    "type": "string"
-                },
-                "avatarUrl": {
-                    "description": "头像地址",
-                    "type": "string"
+                "players": {
+                    "description": "客场球队",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Player"}
                 },
                 "name": {
-                    "description": "名字：李铁",
+                    "description": "球队名称：中国队",
+                    "type": "string"
+                },
+                "icon": {
+                    "description": "头像地址",
                     "type": "string"
                 },
                 "id": {
                     "description": "id",
                     "type": "string"
                 },
-                "position": {
-                    "description": "位置：前锋",
-                    "type": "string"
-                },
-                "team": {
-                    "description": "所属球队：国家队",
-                    "type": "string"
-                },
-                "likeNum": {
-                    "format": "int32",
-                    "description": "用户点赞数目",
-                    "type": "integer"
-                }
+                "chefReferee": {"$ref": "#/definitions/Coach"}
             }
         },
-        "TLClub": {
-            "description": "俱乐部",
-            "type": "object",
+        "CompetionCategory": {
+            "description": "类目",
             "properties": {
+                "fId": {
+                    "description": "父目录Id",
+                    "type": "string"
+                },
                 "name": {
-                    "description": "名称：山东鲁能",
+                    "description": "类目名称",
                     "type": "string"
                 },
                 "id": {
@@ -1005,8 +1407,13 @@
                     "type": "string"
                 },
                 "iconUrl": {
-                    "description": "俱乐部图片地址",
+                    "description": "类目图标地址",
                     "type": "string"
+                },
+                "categories": {
+                    "description": "子类目",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Category"}
                 }
             }
         },
@@ -1054,6 +1461,47 @@
                 }
             }
         },
+        "Match": {
+            "description": "参赛队",
+            "type": "object",
+            "properties": {
+                "hostTeam": {"$ref": "#/definitions/Team"},
+                "fourthReferee": {"$ref": "#/definitions/Referee"},
+                "competionName": {
+                    "description": "12强赛",
+                    "type": "string"
+                },
+                "hostScore": {
+                    "format": "int32",
+                    "description": "主场得分",
+                    "type": "integer"
+                },
+                "awayScore": {
+                    "format": "int32",
+                    "description": "客场得分",
+                    "type": "integer"
+                },
+                "awayTeam": {"$ref": "#/definitions/Team"},
+                "competionId": {
+                    "description": "12强赛ID",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "球队名称：中国队",
+                    "type": "string"
+                },
+                "sideReferees": {
+                    "description": "边裁",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Referee"}
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "chefReferee": {"$ref": "#/definitions/Referee"}
+            }
+        },
         "PostTop": {
             "description": "置顶文章",
             "type": "object",
@@ -1072,6 +1520,55 @@
                 },
                 "categoryId": {
                     "description": "categoryId",
+                    "type": "string"
+                }
+            }
+        },
+        "MatchInfo": {
+            "description": "管理员",
+            "type": "object",
+            "properties": {
+                "password": {
+                    "description": "加密",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名称",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "头像地址",
+                    "type": "string"
+                },
+                "key": {
+                    "description": "授权，只有在注册登录的情况下会返回",
+                    "type": "string"
+                }
+            }
+        },
+        "Club": {
+            "description": "俱乐部",
+            "type": "object",
+            "properties": {
+                "players": {
+                    "description": "球员列表",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Player"}
+                },
+                "name": {
+                    "description": "名称：山东鲁能",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "iconUrl": {
+                    "description": "俱乐部图片地址",
                     "type": "string"
                 }
             }
@@ -1118,29 +1615,6 @@
                 }
             }
         },
-        "TLTeam": {
-            "description": "参赛队",
-            "type": "object",
-            "properties": {
-                "avatarUrl": {
-                    "description": "头像地址",
-                    "type": "string"
-                },
-                "players": {
-                    "description": "客场球队",
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/TLPlayer"}
-                },
-                "name": {
-                    "description": "球队名称：中国队",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "id",
-                    "type": "string"
-                }
-            }
-        },
         "Author": {
             "description": "作者",
             "type": "object",
@@ -1174,6 +1648,35 @@
                 }
             }
         },
+        "Team": {
+            "description": "队伍信息",
+            "type": "object",
+            "properties": {
+                "assistantCoachs": {
+                    "description": "助理教练",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Coach"}
+                },
+                "players": {
+                    "description": "客场球队",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Player"}
+                },
+                "name": {
+                    "description": "球队名称：中国队",
+                    "type": "string"
+                },
+                "icon": {
+                    "description": "头像地址",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "chefReferee": {"$ref": "#/definitions/Coach"}
+            }
+        },
         "ObjectSummary": {
             "description": "存储喜欢对象的用户信息",
             "type": "object",
@@ -1203,42 +1706,32 @@
                 }
             }
         },
-        "TLCompetition": {
-            "description": "12强赛对象",
+        "Coach": {
+            "description": "教练",
             "type": "object",
             "properties": {
-                "hostTeam": {"$ref": "#/definitions/TLTeam"},
-                "guestScore": {
-                    "format": "int32",
-                    "description": "当前客场得分",
-                    "type": "integer"
+                "country": {
+                    "description": "国家： 中国",
+                    "type": "string"
                 },
-                "hostScore": {
-                    "format": "int32",
-                    "description": "当前主场得分",
-                    "type": "integer"
+                "birthplace": {
+                    "description": "出生地  中国北京",
+                    "type": "string"
                 },
-                "lal": {
-                    "format": "double",
-                    "description": "经纬度：longitude and latitude",
-                    "type": "number"
+                "avatarUrl": {
+                    "description": "头像地址",
+                    "type": "string"
                 },
                 "name": {
-                    "description": "比赛名称：中国队主场对韩国",
+                    "description": "名字：郎平",
                     "type": "string"
                 },
-                "guestTeam": {"$ref": "#/definitions/TLTeam"},
+                "photo": {
+                    "description": "照片",
+                    "type": "string"
+                },
                 "id": {
                     "description": "id",
-                    "type": "string"
-                },
-                "time": {
-                    "format": "date-time",
-                    "description": "比赛时间:2016-02-01 12:00:00",
-                    "type": "string"
-                },
-                "place": {
-                    "description": "比赛地点：中国北京",
                     "type": "string"
                 }
             }

@@ -19,6 +19,16 @@
         {
             "description": "俱乐部图片地址",
             "type": "string"
+        },
+
+        "players": 
+        {
+            "description": "球员列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Player"
+            }
         }
     }
 }

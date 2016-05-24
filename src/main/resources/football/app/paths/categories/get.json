@@ -1,5 +1,5 @@
 {
-    "summary": "获取类目",
+    "summary": "获取整个类目",
     "tags": 
     [
         "categories",
@@ -7,7 +7,17 @@
         "get"
     ],
 
-    "description": "返回所有的类目",
+    "description": "将数据库（缓存）中所有类目都返回",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
     "parameters": 
     [
         

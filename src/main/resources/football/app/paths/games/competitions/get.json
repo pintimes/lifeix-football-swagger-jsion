@@ -1,0 +1,36 @@
+{
+    "summary": "获取赛事列表",
+    "tags": 
+    [
+        "competitions",
+        "visitor",
+        "get"
+    ],
+
+    "description": "获得赛事列表",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Competition"
+                }
+            },
+
+            "description": "Competition列表响应对象"
+        }
+    },
+
+    "operationId": "getCompetitionList"
+}

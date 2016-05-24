@@ -1,41 +1,57 @@
 {
-                "summary": "创建一个Category",
-                "tags": [
-                    "categories",
-                    "admin",
-                    "post"
-                ],
-                "description": "创建一个Category，并刷新缓存列表",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "$ref": "#/parameters/apiKeyYHeader"
-                    },
-                    {
-                        "schema": {
-                            "$ref": "#/definitions/Category"
-                        },
-                        "description": "类目",
-                        "name": "category",
-                        "required": true,
-                        "in": "body"
-                    }
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "schema": {
-                            "$ref": "#/definitions/Category"
-                        },
-                        "description": "Category响应对象"
-                    },
-                    "400": {
-                        "description": ""
-                    }
-                },
-                "operationId": "addCategory"
+    "summary": "创建一个展示类目",
+    "tags": 
+    [
+        "categories",
+        "admin",
+        "post"
+    ],
+
+    "description": "类目用于WEB菜单栏",
+    "produces": 
+    [
+        "application/json"
+    ],
+     "consumes": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "description": "类目",
+            "name": "category",
+            "required": true,
+            "in": "body",
+            "schema": 
+            {
+                "$ref": "#/definitions/Category"
             }
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Category"
+            },
+
+            "description": "Category响应对象"
+        },
+
+        "400": 
+        {
+            "description": ""
+        }
+    },
+
+    "operationId": "addCategory"
+}

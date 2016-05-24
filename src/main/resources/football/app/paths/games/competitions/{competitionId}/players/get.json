@@ -1,0 +1,72 @@
+{
+    "summary": "获得球员列表",
+    "tags": 
+    [
+        "player",
+        "visitor",
+        "get"
+    ],
+
+    "operationId": "getCompetitionPlayers",
+    "description": "获得赛事列表",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+
+         {
+            "description": "队伍Id",
+            "name": "teamId",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "一页显示多少",
+            "name": "limit",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "按照那个字段排序",
+            "name": "orderBy",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "是否按时间倒序,默认值true",
+            "name": "isDesc",
+            "type": "boolean",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Competition"
+                }
+            },
+
+            "description": "Competition列表响应对象"
+        }
+    }
+}
