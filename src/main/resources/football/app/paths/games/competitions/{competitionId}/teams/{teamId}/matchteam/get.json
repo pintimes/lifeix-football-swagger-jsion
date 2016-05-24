@@ -36,5 +36,5 @@
         }
     },
 
-    "operationId": "getMatchTeamList"
+    "operationId": "getMatchTeam"
 }

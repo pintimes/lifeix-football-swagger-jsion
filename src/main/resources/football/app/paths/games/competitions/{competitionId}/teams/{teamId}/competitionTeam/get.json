@@ -36,5 +36,5 @@
         }
     },
 
-    "operationId": "getCompetitionTeamList"
+    "operationId": "getCompetitionTeam"
 }

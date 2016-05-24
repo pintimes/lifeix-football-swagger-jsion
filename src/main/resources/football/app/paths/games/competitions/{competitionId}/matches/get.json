@@ -36,5 +36,5 @@
         }
     },
 
-    "operationId": "getCompetitionMatchList"
+    "operationId": "getCompetitionMatches"
 }
