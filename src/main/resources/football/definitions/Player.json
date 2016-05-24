@@ -34,20 +34,6 @@
             "type": "string"
         },
 
-        "number": 
-        {
-            "description": "号码",
-            "format": "int32",
-            "type": "integer"
-        },
-
-        "score": 
-        {
-            "description": "本次赛事进球数",
-            "format": "int32",
-            "type": "integer"
-        },
-
         "birthplace": 
         {
             "description": "出生地  中国北京",
@@ -56,7 +42,7 @@
 
         "teamId": 
         {
-            "description": "所属球队：国家队",
+            "description": "所属球队：球队id",
             "type": "string"
         },
 
@@ -71,19 +57,26 @@
             "description": "国家： 中国",
             "type": "string"
         },
-
-        "showNum": 
+		 "selectedNum": 
         {
-            "description": "本次赛事出场次数",
+            "description": "国家队入选次数",
             "type": "string"
         },
-
+        "showNum": 
+        {
+            "description": "国家队出场次数",
+            "type": "string"
+        },
+        "score": 
+        {
+            "description": "国家队进球数",
+            "format": "int32",
+            "type": "integer"
+        },
         "club": 
         {
-            "description": "当前效力俱乐部",
             "$ref": "#/definitions/TeamInfo"
         },
-
         "career": 
         {
             "description": "职业生涯",

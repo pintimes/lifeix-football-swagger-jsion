@@ -8,37 +8,35 @@
             "description": "id",
             "type": "string"
         },
-
         "name": 
         {
             "description": "球队名称：中国队",
             "type": "string"
         },
-
-        "icon": 
+        "flag": 
         {
-            "description": "头像地址",
+            "description": "队旗",
             "type": "string"
         },
-
-        "chefReferee": 
+        "chiefCoach": 
         {
             "$ref": "#/definitions/Coach"
         },
-
-        "assistantCoachs": 
+        "assistantCoach": 
         {
-            "description": "助理教练",
-            "type": "array",
-            "items": 
-            {
-                "$ref": "#/definitions/Coach"
-            }
+           "$ref": "#/definitions/Coach"
         },
-
+        "gkCoach": 
+        {
+            "$ref": "#/definitions/Coach"
+        },
+        "physical Coach": 
+        {
+            "$ref": "#/definitions/Coach"
+        },
         "players": 
         {
-            "description": "客场球队",
+            "description": "球员",
             "type": "array",
             "items": 
             {
