@@ -1,0 +1,39 @@
+{
+    "description": "球队分类",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
+        "name": 
+        {
+            "description": "类目名称",
+            "type": "string"
+        },
+
+        "iconUrl": 
+        {
+            "description": "类目图标地址",
+            "type": "string"
+        },
+
+        "fId": 
+        {
+            "description": "父目录Id",
+            "type": "string"
+        },
+
+        "categories": 
+        {
+            "description": "子类目",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/TeamCategory"
+            }
+        }
+    }
+}

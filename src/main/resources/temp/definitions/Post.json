@@ -1,0 +1,61 @@
+{
+            "description": "帖子",
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "标题",
+                    "type": "string"
+                },
+                "author": {
+                	"$ref": "#/definitions/Author"
+                },
+                "content": {
+                    "description": "内容",
+                    "type": "string"
+                },
+                "images": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "图片地址",
+                    "type": "array"
+                },
+                "videos": {
+                    "items": {
+                        "$ref": "#/definitions/Video"
+                    },
+                    "description": "视频地址",
+                    "type": "array"
+                },
+                "createDate": {
+                    "description": "创建日期(天)",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "post创建日期",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "classification": {
+                    "description": "分类",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "categories": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "文章类别",
+                    "type": "array"
+                },
+                "status": {
+                    "description": "状态,默认1:可见 0:不可见",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        }

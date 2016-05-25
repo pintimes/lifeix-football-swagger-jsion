@@ -1,0 +1,39 @@
+{
+                "summary": "管理员删除zset,目前collectionName[ posts timelineNews topNews homepageNews]",
+                "tags": [
+                    "redis",
+                    "admin"
+                ],
+                "description": "管理员删除zset,categoryId有值时删除zset下含有categoryId的缓存。没有值时，清空zset",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/apiKeyYHeader"
+                    },
+                    {
+                        "description": "接口对应的cacheName",
+                        "name": "collectionName",
+                        "type": "string",
+                        "required": true,
+                        "in": "query"
+                    },
+                    {
+                        "description": "类目id",
+                        "name": "categoryId",
+                        "type": "string",
+                        "required": false,
+                        "in": "query"
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "delete success"
+                    }
+                },
+                "operationId": "deleteRedisByKey"
+            }

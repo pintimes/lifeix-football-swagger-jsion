@@ -80,6 +80,7 @@
 
         "club": 
         {
+            "description": "当前效力俱乐部",
             "$ref": "#/definitions/TeamInfo"
         },
 

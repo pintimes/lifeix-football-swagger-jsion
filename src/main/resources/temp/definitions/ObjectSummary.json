@@ -1,0 +1,44 @@
+{
+    "description": "存储喜欢对象的用户信息",
+    "properties": 
+    {
+        "type": 
+        {
+            "description": "类型 example:球员、教练",
+            "type": "string"
+        },
+
+        "objectId": 
+        {
+            "description": "对象id",
+            "type": "string"
+        },
+
+        "likeNum": 
+        {
+            "description": "对象id",
+            "type": "integer",
+            "format": "int32"
+        },
+
+        "startTime": 
+        {
+            "description": "对象id",
+            "format": "date-time",
+            "type": "string"
+        },
+
+        "userIds": 
+        {
+            "items": 
+            {
+                "type": "string"
+            },
+
+            "description": "喜欢此对象的用户的集合",
+            "type": "array"
+        }
+    },
+
+    "type": "object"
+}

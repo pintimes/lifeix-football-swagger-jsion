@@ -1,0 +1,39 @@
+{
+                "summary": "修改一个Post",
+                "tags": [
+                    "posts",
+                    "admin",
+                    "post"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/apiKeyYHeader"
+                    },
+                    {
+                        "$ref": "#/parameters/postPath"
+                    },
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/Post"
+                        },
+                        "description": "完整的post json格式。example:将查询结果修改后  完整传回",
+                        "name": "post",
+                        "required": true,
+                        "in": "body"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Post"
+                        },
+                        "description": "Post响应对象"
+                    },
+                    "400": {
+                        "description": "post's every field must have value"
+                    },
+                    "401": {
+                        "description": "don't have the right"
+                    }
+                }
+            }

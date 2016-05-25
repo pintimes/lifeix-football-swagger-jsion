@@ -1,6 +1,23 @@
 {
     "basePath": "/football",
     "paths": {
+        "/like/nationalteam/getSourceLikes": {"get": {
+            "summary": "获得当前Ip喜欢的国足成员",
+            "operationId": "getNationalteamSourceLikes",
+            "description": "获得当前Ip喜欢的国足成员",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Like"}
+                },
+                "description": "Like列表响应对象"
+            }},
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": [
+                "nationalteamlike",
+                "get"
+            ]
+        }},
         "/games/teams/{teamId}": {"get": {
             "summary": "获得球队信息",
             "description": "获得球队信息",
@@ -91,32 +108,6 @@
             "tags": [
                 "admin",
                 "admins",
-                "get"
-            ]
-        }},
-        "/like/likes/users/{userId}": {"get": {
-            "summary": "查询喜欢此用户喜欢的object的id",
-            "description": "查询喜欢此用户喜欢的object的id",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/UserLike"}
-                },
-                "description": "UserLike响应对象"
-            }},
-            "operationId": "getUserLike",
-            "parameters": [
-                {"$ref": "#/parameters/userPath"},
-                {
-                    "in": "query",
-                    "name": "type",
-                    "description": "object的类型",
-                    "type": "string",
-                    "required": false
-                }
-            ],
-            "tags": [
-                "likes",
                 "get"
             ]
         }},
@@ -281,46 +272,6 @@
             "tags": [
                 "player",
                 "visitor",
-                "get"
-            ]
-        }},
-        "/like/likes/objects/{objectId}": {"get": {
-            "summary": "查询喜欢此对象的用户id列表",
-            "description": "查询喜欢此对象的用户id列表",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/ObjectSummary"}
-                },
-                "description": "ObjectSummary响应对象"
-            }},
-            "operationId": "getObjectLiked",
-            "parameters": [
-                {"$ref": "#/parameters/objectPath"},
-                {
-                    "in": "query",
-                    "name": "type",
-                    "description": "object的类型",
-                    "type": "string",
-                    "required": true
-                },
-                {
-                    "in": "query",
-                    "name": "startTime",
-                    "description": "开始查询时间,不传默认为当前时间的long型",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "limit",
-                    "description": "一次显示多少条",
-                    "type": "string",
-                    "required": false
-                }
-            ],
-            "tags": [
-                "likes",
                 "get"
             ]
         }},
@@ -527,7 +478,7 @@
                 "schema": {"$ref": "#/definitions/Team"},
                 "description": "Team响应对象"
             }},
-            "operationId": "getCompetitionTeamList",
+            "operationId": "getCompetitionTeam",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
                 {"$ref": "#/parameters/competitionPath"},
@@ -546,7 +497,7 @@
                 "schema": {"$ref": "#/definitions/Team"},
                 "description": "Team响应对象"
             }},
-            "operationId": "getMatchTeamList",
+            "operationId": "getMatchTeam",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
                 {"$ref": "#/parameters/competitionPath"},
@@ -596,27 +547,24 @@
                 "get"
             ]
         }},
-        "/like/likes": {"post": {
-            "summary": "用户like一个对象",
-            "produces": ["application/json"],
-            "description": "用户like一个对象",
-            "responses": {
-                "200": {"description": "add success"},
-                "400": {"description": "action's params must all have value"}
-            },
-            "operationId": "addLike",
-            "parameters": [{
-                "schema": {"$ref": "#/definitions/LikeAction"},
-                "in": "body",
-                "name": "action",
-                "description": "喜欢动作",
-                "required": true
-            }],
-            "tags": [
-                "likes",
-                "post"
+        "/like/nationalteam": {"post": {
+            "summary": "对某一个国家队成员点赞",
+            "operationId": "likeNationTeamMember",
+            "description": "一个Ip地址只能对一个成员点赞一次",
+            "responses": {"200": {"description": "不管什么操作都会返回200"}},
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "formData",
+                    "name": "target",
+                    "description": "target即国家队成员的Id",
+                    "type": "string"
+                }
             ],
-            "consumes": ["application/json"]
+            "tags": [
+                "nationalteamlike",
+                "post"
+            ]
         }},
         "/games/competitions/{competitionId}/players": {"get": {
             "summary": "获得球员列表",
@@ -668,6 +616,23 @@
                 "get"
             ]
         }},
+        "/like/nationalteam/getTargetLiked": {"get": {
+            "summary": "获得国足所有成员点赞信息",
+            "operationId": "getNationalteamLiked",
+            "description": "获得国足所有成员点赞信息",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Like"}
+                },
+                "description": "Like列表响应对象"
+            }},
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": [
+                "nationalteamlike",
+                "get"
+            ]
+        }},
         "/wemedia/tops/news": {"get": {
             "summary": "top新闻的news表现形式",
             "description": "top新闻的news表现形式",
@@ -713,7 +678,7 @@
                 },
                 "description": "Match列表响应对象"
             }},
-            "operationId": "getCompetitionMatchList",
+            "operationId": "getCompetitionMatches",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
                 {"$ref": "#/parameters/competitionPath"}
@@ -723,29 +688,6 @@
                 "visitor",
                 "get"
             ]
-        }},
-        "/categories/refresh": {"post": {
-            "summary": "主动刷新缓存",
-            "produces": ["application/json"],
-            "description": "刷新缓存，返回数据",
-            "responses": {
-                "200": {
-                    "schema": {
-                        "type": "array",
-                        "items": {"$ref": "#/definitions/Category"}
-                    },
-                    "description": "Category列表响应对象"
-                },
-                "400": {"description": ""}
-            },
-            "operationId": "refreshCategory",
-            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-            "tags": [
-                "categories",
-                "admin",
-                "post"
-            ],
-            "consumes": ["application/json"]
         }},
         "/games/teams": {"get": {
             "summary": "获得球队信息",
@@ -1066,13 +1008,6 @@
             "type": "string",
             "required": true
         },
-        "objectPath": {
-            "in": "path",
-            "name": "objectId",
-            "description": "喜欢对象的ID",
-            "type": "string",
-            "required": true
-        },
         "authorPath": {
             "in": "path",
             "name": "authorId",
@@ -1213,10 +1148,7 @@
                     "description": "名字：李铁",
                     "type": "string"
                 },
-                "club": {
-                    "description": "当前效力俱乐部",
-                    "$ref": "#/definitions/TeamInfo"
-                },
+                "club": {"$ref": "#/definitions/TeamInfo"},
                 "id": {
                     "description": "id",
                     "type": "string"
@@ -1417,24 +1349,6 @@
                 }
             }
         },
-        "LikeAction": {
-            "description": "喜欢操作",
-            "type": "object",
-            "properties": {
-                "type": {
-                    "description": "类型 example:球员、教练",
-                    "type": "string"
-                },
-                "userId": {
-                    "description": "userId",
-                    "type": "string"
-                },
-                "objectId": {
-                    "description": "对象id",
-                    "type": "string"
-                }
-            }
-        },
         "Admin": {
             "description": "管理员",
             "type": "object",
@@ -1524,6 +1438,29 @@
                 }
             }
         },
+        "Like": {
+            "description": "Like",
+            "type": "object",
+            "properties": {
+                "num": {
+                    "format": "int32",
+                    "description": "toId被喜欢的总数",
+                    "type": "integer"
+                },
+                "source": {
+                    "description": "发起者，比如：当前Ip地址",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "类型或者说业务系统，比如：timeline",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "目标，比如国家队成员",
+                    "type": "string"
+                }
+            }
+        },
         "MatchInfo": {
             "description": "管理员",
             "type": "object",
@@ -1570,29 +1507,6 @@
                 "iconUrl": {
                     "description": "俱乐部图片地址",
                     "type": "string"
-                }
-            }
-        },
-        "UserLike": {
-            "description": "存储用户喜欢的对象信息",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "description": "id",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "类型 example:球员、教练",
-                    "type": "string"
-                },
-                "userId": {
-                    "description": "用户id",
-                    "type": "string"
-                },
-                "objectIds": {
-                    "description": "用户喜欢的对象集合",
-                    "type": "array",
-                    "items": {"type": "string"}
                 }
             }
         },
@@ -1675,35 +1589,6 @@
                     "type": "string"
                 },
                 "chefReferee": {"$ref": "#/definitions/Coach"}
-            }
-        },
-        "ObjectSummary": {
-            "description": "存储喜欢对象的用户信息",
-            "type": "object",
-            "properties": {
-                "userIds": {
-                    "description": "喜欢此对象的用户的集合",
-                    "type": "array",
-                    "items": {"type": "string"}
-                },
-                "startTime": {
-                    "format": "date-time",
-                    "description": "对象id",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "类型 example:球员、教练",
-                    "type": "string"
-                },
-                "objectId": {
-                    "description": "对象id",
-                    "type": "string"
-                },
-                "likeNum": {
-                    "format": "int32",
-                    "description": "对象id",
-                    "type": "integer"
-                }
             }
         },
         "Coach": {

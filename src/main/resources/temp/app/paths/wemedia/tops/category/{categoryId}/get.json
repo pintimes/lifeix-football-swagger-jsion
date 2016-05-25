@@ -1,0 +1,35 @@
+{
+                "summary": "每个类目下top部分的新闻",
+                "tags": [
+                    "tops",
+                    "visitor",
+                    "get"
+                ],
+                "description": "每个类目下top部分的新闻",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/categoryPath"
+                    },
+                    {
+			            "default": 6,
+			            "description": "一页显示数目，如果不传默认=6",
+			            "name": "topNum",
+			            "format": "int32",
+			            "type": "integer",
+			            "required": false,
+			            "in": "query"
+			        }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Post"
+                            }
+                        },
+                        "description": "Post列表响应对象"
+                    }
+                },
+                "operationId": "getPostsByCategoryId"
+            }

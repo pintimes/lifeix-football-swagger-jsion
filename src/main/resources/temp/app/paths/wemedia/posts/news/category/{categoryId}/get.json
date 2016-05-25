@@ -1,0 +1,43 @@
+{
+                "summary": "获取时间轴形式的新闻",
+                "tags": [
+                    "posts",
+                    "news",
+                    "visitor",
+                    "get"
+                ],
+                "description": "返回TimeLineNews对象",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/categoryPath"
+                    },
+                    {
+                        "description": "查询开始日期,单位天.默认为当天",
+                        "name": "startDate",
+                        "type": "string",
+                        "required": false,
+                        "in": "query"
+                    },
+                    {
+			            "default": 5,
+			            "description": "一页显示数目，如果不传默认=5",
+			            "name": "limit",
+			            "format": "int32",
+			            "type": "integer",
+			            "required": false,
+			            "in": "query"
+			        }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TimeLineNews"
+                            }
+                        },
+                        "description": "TimeLineNews列表响应对象"
+                    }
+                },
+                "operationId": "getTimeLineNewsByCategoryId"
+            }

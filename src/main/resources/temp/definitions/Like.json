@@ -1,0 +1,32 @@
+{
+    "description": "Like",
+    "properties": 
+    {
+        "source": 
+        {
+            "description": "发起者，比如：当前Ip地址",
+            "type": "string"
+        },
+
+        "target": 
+        {
+            "description": "目标，比如国家队成员",
+            "type": "string"
+        },
+
+        "type": 
+        {
+            "description": "类型或者说业务系统，比如：timeline",
+            "type": "string"
+        },
+
+        "num": 
+        {
+            "description": "toId被喜欢的总数",
+            "type": "integer",
+            "format": "int32"
+        }
+    },
+
+    "type": "object"
+}

@@ -1,0 +1,60 @@
+{
+    "summary": "从文件授权服务器上获取令牌",
+    "tags": 
+    [
+        "token",
+        "get"
+    ],
+
+    "description": "从文件授权服务器上获取令牌",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "description": "上传文件类型，|null 所有类型|0 图片|1 音频|2 视频|",
+            "name": "type",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "已存在云上的文件key，如果不为空，则此令牌只用于替换和覆盖",
+            "name": "key",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "要上传的原始文件名称列表",
+            "name": "file_list",
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            },
+
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/UploadToken"
+            },
+
+            "description": "令牌信息"
+        }
+    },
+
+    "operationId": "getToken"
+}

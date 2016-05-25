@@ -1,0 +1,32 @@
+{
+    "summary": "对某一个国家队成员点赞",
+    "tags": 
+    [
+        "nationalteamlike",
+        "post"
+    ],
+
+    "operationId": "likeNationTeamMember",
+    "description": "一个Ip地址只能对一个成员点赞一次",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "name":"target",
+            "in": "formData",
+            "type": "string",
+            "description": "target即国家队成员的Id"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "不管什么操作都会返回200"
+        }
+    }
+}
