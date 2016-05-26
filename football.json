@@ -1,6 +1,30 @@
 {
     "basePath": "/football",
     "paths": {
+        "/wemedia/posttop/posts": {"get": {
+            "summary": "当前类目下top新闻",
+            "description": "仅仅是当前类目",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Post"}
+                },
+                "description": "Post列表响应对象"
+            }},
+            "operationId": "getTopPosts",
+            "parameters": [{
+                "in": "query",
+                "name": "categoryId",
+                "description": "类目Id",
+                "type": "string",
+                "required": false
+            }],
+            "tags": [
+                "tops",
+                "visitor",
+                "get"
+            ]
+        }},
         "/like/nationalteam/getSourceLikes": {"get": {
             "summary": "获得当前Ip喜欢的国足成员",
             "operationId": "getNationalteamSourceLikes",
@@ -18,6 +42,104 @@
                 "get"
             ]
         }},
+        "/wemedia/posts/timeline": {"get": {
+            "summary": "获取时间轴形式的Post列表",
+            "operationId": "getTimelinePosts",
+            "description": "返回TimeLineNews对象，默认按时间倒叙",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/TimeLineNews"}
+                },
+                "description": "TimeLineNews列表响应对象"
+            }},
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "categoryId",
+                    "description": "类目Id",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "startDate",
+                    "format": "date-time",
+                    "description": "查询开始日期,单位天.默认为当天",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "default": 5,
+                    "in": "query",
+                    "name": "limit",
+                    "format": "int32",
+                    "description": "一页显示数目，如果不传默认=5",
+                    "type": "integer",
+                    "required": false
+                }
+            ],
+            "tags": [
+                "timelineposts",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/wemedia/posts/{postId}/categories": {
+            "post": {
+                "summary": "为Post添加类目",
+                "produces": ["application/json"],
+                "description": "如果类目有层级需要把多层id都传入，比如<国家队>,<男足>，<M23>",
+                "responses": {"200": {"description": "添加成功"}},
+                "operationId": "addPostCategories",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {"$ref": "#/parameters/postPath"},
+                    {
+                        "in": "formData",
+                        "name": "categoryIds",
+                        "description": "类目Id",
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "posts",
+                    "admin",
+                    "post"
+                ],
+                "consumes": ["application/json"]
+            },
+            "delete": {
+                "summary": "删除Post的分类",
+                "produces": ["application/json"],
+                "description": "删除Post Category",
+                "responses": {
+                    "200": {"description": "delete success"},
+                    "401": {"description": "don't have the right"}
+                },
+                "operationId": "deletePostCategories",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {"$ref": "#/parameters/postPath"},
+                    {
+                        "in": "formData",
+                        "name": "categoryIds",
+                        "description": "类目Id",
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "posts",
+                    "admin",
+                    "post"
+                ],
+                "consumes": ["application/json"]
+            }
+        },
         "/games/teams/{teamId}": {"get": {
             "summary": "获得球队信息",
             "description": "获得球队信息",
@@ -32,35 +154,6 @@
             ],
             "tags": [
                 "team",
-                "visitor",
-                "get"
-            ]
-        }},
-        "/wemedia/tops/category/{categoryId}": {"get": {
-            "summary": "每个类目下top部分的新闻",
-            "description": "每个类目下top部分的新闻",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Post"}
-                },
-                "description": "Post列表响应对象"
-            }},
-            "operationId": "getPostsByCategoryId",
-            "parameters": [
-                {"$ref": "#/parameters/categoryPath"},
-                {
-                    "default": 6,
-                    "in": "query",
-                    "name": "topNum",
-                    "format": "int32",
-                    "description": "一页显示数目，如果不传默认=6",
-                    "type": "integer",
-                    "required": false
-                }
-            ],
-            "tags": [
-                "tops",
                 "visitor",
                 "get"
             ]
@@ -111,54 +204,25 @@
                 "get"
             ]
         }},
-        "/wemedia/posts/{postId}": {
-            "get": {
-                "summary": "根据Id获取Post详情",
-                "description": "返回Post详情对象",
-                "responses": {"200": {
-                    "schema": {"$ref": "#/definitions/Post"},
-                    "description": "Post响应对象"
-                }},
-                "operationId": "getPost",
-                "parameters": [
-                    {"$ref": "#/parameters/apiKeyYHeader"},
-                    {"$ref": "#/parameters/postPath"}
-                ],
-                "tags": [
-                    "posts",
-                    "post",
-                    "visitor",
-                    "get"
-                ]
-            },
-            "put": {
-                "summary": "修改一个Post",
-                "responses": {
-                    "200": {
-                        "schema": {"$ref": "#/definitions/Post"},
-                        "description": "Post响应对象"
-                    },
-                    "400": {"description": "post's every field must have value"},
-                    "401": {"description": "don't have the right"}
-                },
-                "parameters": [
-                    {"$ref": "#/parameters/apiKeyYHeader"},
-                    {"$ref": "#/parameters/postPath"},
-                    {
-                        "schema": {"$ref": "#/definitions/Post"},
-                        "in": "body",
-                        "name": "post",
-                        "description": "完整的post json格式。example:将查询结果修改后  完整传回",
-                        "required": true
-                    }
-                ],
-                "tags": [
-                    "posts",
-                    "admin",
-                    "post"
-                ]
-            }
-        },
+        "/wemedia/posts/{postId}": {"get": {
+            "summary": "根据Id获取Post详情",
+            "description": "返回Post详情对象",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Post"},
+                "description": "Post响应对象"
+            }},
+            "operationId": "getPostDetail",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/postPath"}
+            ],
+            "tags": [
+                "posts",
+                "post",
+                "visitor",
+                "get"
+            ]
+        }},
         "/admins/regist": {"post": {
             "summary": "Admin注册",
             "produces": ["application/json"],
@@ -308,7 +372,7 @@
             },
             "get": {
                 "summary": "获得Authors列表",
-                "description": "查看Post的评论列表",
+                "description": "获得Authors列表",
                 "responses": {"200": {
                     "schema": {
                         "type": "array",
@@ -389,43 +453,6 @@
             ],
             "tags": [
                 "team",
-                "visitor",
-                "get"
-            ]
-        }},
-        "/wemedia/posts/news/category/{categoryId}": {"get": {
-            "summary": "获取时间轴形式的新闻",
-            "description": "返回TimeLineNews对象",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/TimeLineNews"}
-                },
-                "description": "TimeLineNews列表响应对象"
-            }},
-            "operationId": "getTimeLineNewsByCategoryId",
-            "parameters": [
-                {"$ref": "#/parameters/categoryPath"},
-                {
-                    "in": "query",
-                    "name": "startDate",
-                    "description": "查询开始日期,单位天.默认为当天",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "default": 5,
-                    "in": "query",
-                    "name": "limit",
-                    "format": "int32",
-                    "description": "一页显示数目，如果不传默认=5",
-                    "type": "integer",
-                    "required": false
-                }
-            ],
-            "tags": [
-                "posts",
-                "news",
                 "visitor",
                 "get"
             ]
@@ -633,9 +660,9 @@
                 "get"
             ]
         }},
-        "/wemedia/tops/news": {"get": {
-            "summary": "top新闻的news表现形式",
-            "description": "top新闻的news表现形式",
+        "/wemedia/posts/search": {"get": {
+            "summary": "搜索Post",
+            "description": "根据搜索条件获取Post列表，每次搜索不能超过30条",
             "responses": {"200": {
                 "schema": {
                     "type": "array",
@@ -643,27 +670,72 @@
                 },
                 "description": "Post列表响应对象"
             }},
-            "operationId": "getTopNews",
+            "operationId": "search",
             "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
                 {
                     "in": "query",
                     "name": "categoryId",
-                    "description": "目录id",
+                    "description": "类目id",
                     "type": "string",
                     "required": false
                 },
                 {
-                    "default": 20,
+                    "in": "query",
+                    "name": "authorId",
+                    "description": "作者id",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "startDate",
+                    "format": "date-time",
+                    "description": "查询开始日期,单位天",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "endDate",
+                    "format": "date-time",
+                    "description": "查询结束日期,单位天",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "startTime",
+                    "format": "date-time",
+                    "description": "查询开始时间。example:分页时，传递第一页最后一条记录的createTime(long)",
+                    "type": "string",
+                    "required": false
+                },
+                {
                     "in": "query",
                     "name": "limit",
                     "format": "int32",
-                    "description": "一页显示数目，如果不传默认=20",
+                    "description": "一页显示多少",
                     "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "orderBy",
+                    "description": "按照那个字段排序",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "isDesc",
+                    "description": "是否按时间倒序,默认值true",
+                    "type": "boolean",
                     "required": false
                 }
             ],
             "tags": [
-                "tops",
+                "posts",
                 "visitor",
                 "get"
             ]
@@ -706,53 +778,6 @@
                 "visitor",
                 "get"
             ]
-        }},
-        "/wemedia/posttop/category/{categoryId}": {"get": {
-            "summary": "获取一个类目下置顶的文章id列表",
-            "description": "获取一个类目下置顶的文章id列表",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/PostTop"},
-                "description": "PostTop响应对象"
-            }},
-            "operationId": "getTopPosts",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/categoryPath"}
-            ],
-            "tags": [
-                "posttop",
-                "admin",
-                "get"
-            ]
-        }},
-        "/wemedia/redis/cacheCollection": {"delete": {
-            "summary": "管理员删除zset,目前collectionName[ posts timelineNews topNews homepageNews]",
-            "produces": ["application/json"],
-            "description": "管理员删除zset,categoryId有值时删除zset下含有categoryId的缓存。没有值时，清空zset",
-            "responses": {"200": {"description": "delete success"}},
-            "operationId": "deleteRedisByKey",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {
-                    "in": "query",
-                    "name": "collectionName",
-                    "description": "接口对应的cacheName",
-                    "type": "string",
-                    "required": true
-                },
-                {
-                    "in": "query",
-                    "name": "categoryId",
-                    "description": "类目id",
-                    "type": "string",
-                    "required": false
-                }
-            ],
-            "tags": [
-                "redis",
-                "admin"
-            ],
-            "consumes": ["application/json"]
         }},
         "/wemedia/posttop": {
             "post": {
@@ -863,8 +888,8 @@
                 "consumes": ["application/json"]
             },
             "get": {
-                "summary": "根据搜索条件获取Post列表",
-                "description": "根据搜索条件获取Post列表，每次搜索不能超过30条",
+                "summary": "获得Posts",
+                "description": "根据Id获取Post",
                 "responses": {"200": {
                     "schema": {
                         "type": "array",
@@ -879,64 +904,8 @@
                         "in": "query",
                         "name": "postIds",
                         "description": "文章的id,多个时以,分隔",
-                        "type": "string",
-                        "required": false
-                    },
-                    {
-                        "in": "query",
-                        "name": "categoryId",
-                        "description": "类目id",
-                        "type": "string",
-                        "required": false
-                    },
-                    {
-                        "in": "query",
-                        "name": "authorId",
-                        "description": "作者id",
-                        "type": "string",
-                        "required": false
-                    },
-                    {
-                        "in": "query",
-                        "name": "startDate",
-                        "description": "查询开始日期,单位天",
-                        "type": "string",
-                        "required": false
-                    },
-                    {
-                        "in": "query",
-                        "name": "endDate",
-                        "description": "查询结束日期,单位天",
-                        "type": "string",
-                        "required": false
-                    },
-                    {
-                        "in": "query",
-                        "name": "startTime",
-                        "description": "查询开始时间。example:分页时，传递第一页最后一条记录的createTime(long)",
-                        "type": "string",
-                        "required": false
-                    },
-                    {
-                        "in": "query",
-                        "name": "limit",
-                        "format": "int32",
-                        "description": "一页显示多少",
-                        "type": "integer",
-                        "required": false
-                    },
-                    {
-                        "in": "query",
-                        "name": "orderBy",
-                        "description": "按照那个字段排序",
-                        "type": "string",
-                        "required": false
-                    },
-                    {
-                        "in": "query",
-                        "name": "isDesc",
-                        "description": "是否按时间倒序,默认值true",
-                        "type": "boolean",
+                        "type": "array",
+                        "items": {"type": "string"},
                         "required": false
                     }
                 ],
@@ -947,21 +916,22 @@
                 ]
             },
             "delete": {
-                "summary": "用户删除Post",
+                "summary": "删除Post",
                 "produces": ["application/json"],
-                "description": "用户删除Post，只能删除自己的Post",
+                "description": "删除Post：只有管理员才有权限",
                 "responses": {
                     "200": {"description": "delete success"},
                     "401": {"description": "don't have the right"}
                 },
-                "operationId": "deletePost",
+                "operationId": "deletePosts",
                 "parameters": [
                     {"$ref": "#/parameters/apiKeyYHeader"},
                     {
-                        "in": "query",
+                        "in": "formData",
                         "name": "postIds",
                         "description": "帖子Id列表,删除多个时，传多次postIds.example:xxx?postIds=111&postIds=222",
-                        "type": "string",
+                        "type": "array",
+                        "items": {"type": "string"},
                         "required": true
                     }
                 ],
@@ -1040,13 +1010,6 @@
             "in": "path",
             "name": "teamId",
             "description": "队伍Id",
-            "type": "string",
-            "required": true
-        },
-        "userPath": {
-            "in": "path",
-            "name": "userId",
-            "description": "用户的ID",
             "type": "string",
             "required": true
         },

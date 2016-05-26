@@ -1,0 +1,104 @@
+{
+    "summary": "搜索Post",
+    "tags": 
+    [
+        "posts",
+        "visitor",
+        "get"
+    ],
+
+    "description": "根据搜索条件获取Post列表，每次搜索不能超过30条",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "description": "类目id",
+            "name": "categoryId",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "作者id",
+            "name": "authorId",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "查询开始日期,单位天",
+            "name": "startDate",
+            "type": "string",
+            "format":"date-time",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "查询结束日期,单位天",
+            "name": "endDate",
+            "type": "string",
+            "format":"date-time",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "查询开始时间。example:分页时，传递第一页最后一条记录的createTime(long)",
+            "name": "startTime",
+            "type": "string",
+            "format":"date-time",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "一页显示多少",
+            "name": "limit",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "按照那个字段排序",
+            "name": "orderBy",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "是否按时间倒序,默认值true",
+            "name": "isDesc",
+            "type": "boolean",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Post"
+                }
+            },
+
+            "description": "Post列表响应对象"
+        }
+    },
+
+    "operationId": "search"
+}

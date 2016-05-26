@@ -1,27 +1,19 @@
 {
-    "summary": "获得Posts",
+    "summary": "当前类目下top新闻",
     "tags": 
     [
-        "posts",
+        "tops",
         "visitor",
         "get"
     ],
 
-    "description": "根据Id获取Post",
+    "description": "仅仅是当前类目",
     "parameters": 
     [
         {
-            "$ref": "#/parameters/apiKeyYHeader"
-        },
-
-        {
-            "description": "文章的id,多个时以,分隔",
-            "name": "postIds",
-            "type": "array",
-            "items": 
-            {
-                "type": "string"
-            },
+            "description": "类目Id",
+            "name": "categoryId",
+            "type": "string",
             "required": false,
             "in": "query"
         }
@@ -44,5 +36,5 @@
         }
     },
 
-    "operationId": "list"
+    "operationId": "getTopPosts"
 }
