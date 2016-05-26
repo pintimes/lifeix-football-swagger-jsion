@@ -1,27 +1,27 @@
 {
-            "description": "管理员",
+            "description": "比赛信息",
             "properties": {
                 "id": {
                     "description": "id",
                     "type": "string"
                 },
-                "name": {
-                    "description": "名称",
+                "competitionName": {
+                    "description": "赛事名称",
                     "type": "string"
                 },
-                "email": {
-                    "description": "头像地址",
+                "matchName": {
+                    "description": "xx vs xx",
                     "type": "string"
                 },
-                "password": {
-                    "description": "加密",
+                "matchDate": {
+                    "description": "比赛时间",
+                    "format": "date-time",
                     "type": "string"
                 },
-                "key": {
-                    "description": "授权，只有在注册登录的情况下会返回",
+                 "matchResult": {
+                    "description": "比赛结果",
                     "type": "string"
                 }
-                
             },
             "type": "object"
         }

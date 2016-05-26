@@ -11,39 +11,14 @@
 
         "name": 
         {
-            "description": "球队名称：中国队",
+            "description": "球队名称：山东鲁能队",
             "type": "string"
         },
 
-        "icon": 
+        "flag": 
         {
-            "description": "头像地址",
+            "description": "队旗",
             "type": "string"
-        },
-
-        "chefReferee": 
-        {
-            "$ref": "#/definitions/Coach"
-        },
-
-        "assistantCoachs": 
-        {
-            "description": "助理教练",
-            "type": "array",
-            "items": 
-            {
-                "$ref": "#/definitions/Coach"
-            }
-        },
-
-        "players": 
-        {
-            "description": "客场球队",
-            "type": "array",
-            "items": 
-            {
-                "$ref": "#/definitions/Player"
-            }
         }
     }
 }

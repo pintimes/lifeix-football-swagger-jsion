@@ -11,16 +11,9 @@
 
         "name": 
         {
-            "description": "名字：郎平",
+            "description": "名字：高洪波",
             "type": "string"
         },
-
-        "avatarUrl": 
-        {
-            "description": "头像地址",
-            "type": "string"
-        },
-
         "photo": 
         {
             "description": "照片",
@@ -37,6 +30,19 @@
         {
             "description": "国家： 中国",
             "type": "string"
+        },
+        "team": 
+        {
+            "$ref": "#/definitions/TeamInfo"
+        },
+        "career": 
+        {
+            "description": "职业生涯",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/TeamInfo"
+            }
         }
     }
 }

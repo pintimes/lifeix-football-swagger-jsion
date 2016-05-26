@@ -1,5 +1,5 @@
 {
-    "description": "教练",
+    "description": "裁判员",
     "type": "object",
     "properties": 
     {
@@ -14,29 +14,31 @@
             "description": "名字：郎平",
             "type": "string"
         },
-
-        "avatarUrl": 
+        "level": 
         {
-            "description": "头像地址",
+            "description": "级别",
             "type": "string"
         },
-
         "photo": 
         {
             "description": "照片",
             "type": "string"
         },
-
         "birthplace": 
         {
             "description": "出生地  中国北京",
             "type": "string"
         },
-
         "country": 
         {
             "description": "国家： 中国",
             "type": "string"
-        }
+        },
+         "showNum": 
+        {
+            "description": "顶级联赛出场次数",
+            "format": "int32",
+            "type": "integer"
+        },
     }
 }

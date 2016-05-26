@@ -8,7 +8,6 @@
             "description": "id",
             "type": "string"
         },
-
         "name": 
         {
             "description": "12强赛",
@@ -21,14 +20,16 @@
             "type": "string",
             "format": "date-time"
         },
-
         "endTime": 
         {
             "description": "赛季起始时间",
             "type": "string",
             "format": "date-time"
         },
-
+        "competitionCategory": 
+        {
+            "$ref": "#/definitions/CompetitionCategory"
+        },
         "matches": 
         {
             "description": "比赛",
@@ -36,6 +37,15 @@
             "items": 
             {
                 "$ref": "#/definitions/Match"
+            }
+        },
+        "teams": 
+        {
+            "description": "参赛队伍",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Team"
             }
         }
     }
