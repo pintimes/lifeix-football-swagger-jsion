@@ -1,47 +1,6 @@
 {
     "basePath": "/football",
     "paths": {
-        "/wemedia/posttop/posts": {"get": {
-            "summary": "当前类目下top新闻",
-            "description": "仅仅是当前类目",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Post"}
-                },
-                "description": "Post列表响应对象"
-            }},
-            "operationId": "getTopPosts",
-            "parameters": [{
-                "in": "query",
-                "name": "categoryId",
-                "description": "类目Id",
-                "type": "string",
-                "required": false
-            }],
-            "tags": [
-                "tops",
-                "visitor",
-                "get"
-            ]
-        }},
-        "/like/nationalteam/getSourceLikes": {"get": {
-            "summary": "获得当前Ip喜欢的国足成员",
-            "operationId": "getNationalteamSourceLikes",
-            "description": "获得当前Ip喜欢的国足成员",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Like"}
-                },
-                "description": "Like列表响应对象"
-            }},
-            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-            "tags": [
-                "nationalteamlike",
-                "get"
-            ]
-        }},
         "/wemedia/posts/timeline": {"get": {
             "summary": "获取时间轴形式的Post列表",
             "operationId": "getTimelinePosts",
@@ -297,6 +256,25 @@
                 "consumes": ["application/json"]
             }
         },
+        "/likes/ip": {"post": {
+            "summary": "对某一个国家队成员点赞",
+            "operationId": "likeTarget",
+            "description": "一个Ip地址只能对一个成员点赞一次",
+            "responses": {"200": {"description": "不管什么操作都会返回200"}},
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "formData",
+                    "name": "target",
+                    "description": "target即国家队成员的Id",
+                    "type": "string"
+                }
+            ],
+            "tags": [
+                "nationalteamlike",
+                "post"
+            ]
+        }},
         "/games/players": {"get": {
             "summary": "获得球员列表",
             "operationId": "getPlayers",
@@ -336,6 +314,23 @@
             "tags": [
                 "player",
                 "visitor",
+                "get"
+            ]
+        }},
+        "/likes/ip/getSourceLikes": {"get": {
+            "summary": "获得当前Ip喜欢的国足成员",
+            "operationId": "getSourceLikes",
+            "description": "获得当前Ip喜欢的国足成员",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Like"}
+                },
+                "description": "Like列表响应对象"
+            }},
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": [
+                "nationalteamlike",
                 "get"
             ]
         }},
@@ -389,6 +384,23 @@
                 ]
             }
         },
+        "/likes/ip/getTargetLiked": {"get": {
+            "summary": "获得国足所有成员点赞信息",
+            "operationId": "getTargetLikes",
+            "description": "获得国足所有成员点赞信息",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Like"}
+                },
+                "description": "Like列表响应对象"
+            }},
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": [
+                "nationalteamlike",
+                "get"
+            ]
+        }},
         "/games/matches": {"get": {
             "summary": "获得赛事列表",
             "operationId": "getMatches",
@@ -517,6 +529,89 @@
                 "get"
             ]
         }},
+        "/wemedia/tops": {
+            "post": {
+                "summary": "创建一个PostTop",
+                "produces": ["application/json"],
+                "description": "将一个Post挂载到某一类目的Top上",
+                "responses": {
+                    "200": {
+                        "schema": {"$ref": "#/definitions/PostTop"},
+                        "description": "添加成功的postTop"
+                    },
+                    "400": {"description": "parameters in postTop are wrong"},
+                    "401": {"description": "don't have the right"}
+                },
+                "operationId": "addOrUpdatePostTop",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "schema": {"$ref": "#/definitions/PostTop"},
+                        "in": "body",
+                        "name": "posttop",
+                        "description": "",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "posttop",
+                    "admin",
+                    "post"
+                ],
+                "consumes": ["application/json"]
+            },
+            "get": {
+                "summary": "通过父categoryId获取所有子集category的置顶post",
+                "description": "通过父categoryId获取所有子集category的置顶post",
+                "responses": {"200": {
+                    "schema": {
+                        "type": "array",
+                        "items": {"type": "string"}
+                    },
+                    "description": "PostId列表"
+                }},
+                "operationId": "getChildTopPosts",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "query",
+                        "name": "parent",
+                        "description": "父类目的categoryId",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "tags": [
+                    "posttop",
+                    "admin",
+                    "get"
+                ]
+            }
+        },
+        "/wemedia/tops/posts": {"get": {
+            "summary": "当前类目下top新闻",
+            "description": "仅仅是当前类目",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Post"}
+                },
+                "description": "Post列表响应对象"
+            }},
+            "operationId": "getTopPosts",
+            "parameters": [{
+                "in": "query",
+                "name": "categoryId",
+                "description": "类目Id",
+                "type": "string",
+                "required": false
+            }],
+            "tags": [
+                "tops",
+                "visitor",
+                "get"
+            ]
+        }},
         "/games/competitions/{competitionId}/teams/{teamId}/matchteam": {"get": {
             "summary": "获得参赛球队的详细信息",
             "description": "获得球队信息",
@@ -574,25 +669,6 @@
                 "get"
             ]
         }},
-        "/like/nationalteam": {"post": {
-            "summary": "对某一个国家队成员点赞",
-            "operationId": "likeNationTeamMember",
-            "description": "一个Ip地址只能对一个成员点赞一次",
-            "responses": {"200": {"description": "不管什么操作都会返回200"}},
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {
-                    "in": "formData",
-                    "name": "target",
-                    "description": "target即国家队成员的Id",
-                    "type": "string"
-                }
-            ],
-            "tags": [
-                "nationalteamlike",
-                "post"
-            ]
-        }},
         "/games/competitions/{competitionId}/players": {"get": {
             "summary": "获得球员列表",
             "operationId": "getCompetitionPlayers",
@@ -640,23 +716,6 @@
             "tags": [
                 "player",
                 "visitor",
-                "get"
-            ]
-        }},
-        "/like/nationalteam/getTargetLiked": {"get": {
-            "summary": "获得国足所有成员点赞信息",
-            "operationId": "getNationalteamLiked",
-            "description": "获得国足所有成员点赞信息",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Like"}
-                },
-                "description": "Like列表响应对象"
-            }},
-            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-            "tags": [
-                "nationalteamlike",
                 "get"
             ]
         }},
@@ -761,6 +820,23 @@
                 "get"
             ]
         }},
+        "/likes/ip/getTargetLiked/{target}": {"get": {
+            "summary": "获得国足所有成员点赞信息",
+            "operationId": "getTargetLike",
+            "description": "获得国足所有成员点赞信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Like"},
+                "description": "Like响应对象"
+            }},
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/targetPath"}
+            ],
+            "tags": [
+                "nationalteamlike",
+                "get"
+            ]
+        }},
         "/games/teams": {"get": {
             "summary": "获得球队信息",
             "description": "获得球队信息",
@@ -779,65 +855,6 @@
                 "get"
             ]
         }},
-        "/wemedia/posttop": {
-            "post": {
-                "summary": "创建一个PostTop即修改或添加类目下的文章",
-                "produces": ["application/json"],
-                "description": "创建一个PostTop即修改或添加类目下的文章",
-                "responses": {
-                    "200": {
-                        "schema": {"$ref": "#/definitions/PostTop"},
-                        "description": "添加成功的postTop"
-                    },
-                    "400": {"description": "parameters in postTop are wrong"},
-                    "401": {"description": "don't have the right"}
-                },
-                "operationId": "addOrUpdatePostTop",
-                "parameters": [
-                    {"$ref": "#/parameters/apiKeyYHeader"},
-                    {
-                        "schema": {"$ref": "#/definitions/PostTop"},
-                        "in": "body",
-                        "name": "posttop",
-                        "description": "文章置顶对象",
-                        "required": true
-                    }
-                ],
-                "tags": [
-                    "posttop",
-                    "admin",
-                    "post"
-                ],
-                "consumes": ["application/json"]
-            },
-            "get": {
-                "summary": "通过父categoryId获取所有子集category的置顶post",
-                "description": "通过父categoryId获取所有子集category的置顶post",
-                "responses": {"200": {
-                    "schema": {
-                        "type": "array",
-                        "items": {"type": "string"}
-                    },
-                    "description": "PostId列表"
-                }},
-                "operationId": "getChildTopPosts",
-                "parameters": [
-                    {"$ref": "#/parameters/apiKeyYHeader"},
-                    {
-                        "in": "query",
-                        "name": "parent",
-                        "description": "父类目的categoryId",
-                        "type": "string",
-                        "required": false
-                    }
-                ],
-                "tags": [
-                    "posttop",
-                    "admin",
-                    "get"
-                ]
-            }
-        },
         "/games/competitions": {"get": {
             "summary": "获取赛事列表",
             "description": "获得赛事列表",
@@ -996,6 +1013,13 @@
             "in": "path",
             "name": "postId",
             "description": "Post的ID",
+            "type": "string",
+            "required": true
+        },
+        "targetPath": {
+            "in": "path",
+            "name": "target",
+            "description": "target的标识",
             "type": "string",
             "required": true
         },
@@ -1223,12 +1247,20 @@
                     "type": "array",
                     "items": {"type": "string"}
                 },
+                "categoryIds": {
+                    "description": "文章类别ID",
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
                 "createTime": {
                     "format": "date-time",
                     "description": "post创建日期",
                     "type": "string"
                 },
-                "author": {"$ref": "#/definitions/Author"},
+                "author": {
+                    "description": "可以理解成作者或者来源",
+                    "$ref": "#/definitions/Author"
+                },
                 "videos": {
                     "description": "视频地址",
                     "type": "array",
@@ -1238,31 +1270,17 @@
                     "description": "id",
                     "type": "string"
                 },
-                "categories": {
-                    "description": "文章类别",
-                    "type": "array",
-                    "items": {"type": "string"}
-                },
                 "title": {
-                    "description": "标题",
+                    "description": "标题，5-50个字符",
                     "type": "string"
-                },
-                "classification": {
-                    "format": "int32",
-                    "description": "分类",
-                    "type": "integer"
                 },
                 "content": {
-                    "description": "内容",
-                    "type": "string"
-                },
-                "createDate": {
-                    "description": "创建日期(天)",
+                    "description": "内容，可以是纯文本或者html形式，最长字符5000",
                     "type": "string"
                 },
                 "status": {
                     "format": "int32",
-                    "description": "状态,默认1:可见 0:不可见",
+                    "description": "状态 ：1可用 ，0不可用",
                     "type": "integer"
                 }
             }
@@ -1403,22 +1421,23 @@
             "description": "Like",
             "type": "object",
             "properties": {
-                "num": {
-                    "format": "int32",
-                    "description": "toId被喜欢的总数",
-                    "type": "integer"
-                },
-                "source": {
-                    "description": "发起者，比如：当前Ip地址",
-                    "type": "string"
-                },
                 "type": {
-                    "description": "类型或者说业务系统，比如：timeline",
+                    "description": "类型或者说业务系统:比如：nationalteam,post",
                     "type": "string"
+                },
+                "unlikeNum": {
+                    "format": "int32",
+                    "description": "被踩的总数",
+                    "type": "integer"
                 },
                 "target": {
                     "description": "目标，比如国家队成员",
                     "type": "string"
+                },
+                "likeNum": {
+                    "format": "int32",
+                    "description": "被喜欢的总数",
+                    "type": "integer"
                 }
             }
         },

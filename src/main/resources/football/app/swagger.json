@@ -121,6 +121,15 @@
             "type": "string",
             "required": true,
             "in": "path"
+        },
+
+        "targetPath": 
+        {
+            "description": "target的标识",
+            "name": "target",
+            "type": "string",
+            "required": true,
+            "in": "path"
         }
     }
 }

@@ -1,13 +1,13 @@
 {
-    "summary": "获得当前Ip喜欢的国足成员",
+    "summary": "获得国足所有成员点赞信息",
     "tags": 
     [
         "nationalteamlike",
         "get"
     ],
 
-    "operationId": "getNationalteamSourceLikes",
-    "description": "获得当前Ip喜欢的国足成员",
+    "operationId": "getTargetLikes",
+    "description": "获得国足所有成员点赞信息",
     "parameters": 
     [
         {

@@ -1,5 +1,5 @@
 {
-    "summary": "创建一个PostTop即修改或添加类目下的文章",
+    "summary": "创建一个PostTop",
     "tags": 
     [
         "posttop",
@@ -7,7 +7,7 @@
         "post"
     ],
 
-    "description": "创建一个PostTop即修改或添加类目下的文章",
+    "description": "将一个Post挂载到某一类目的Top上",
     "produces": 
     [
         "application/json"
@@ -30,7 +30,7 @@
                 "$ref": "#/definitions/PostTop"
             },
 
-            "description": "文章置顶对象",
+            "description": "",
             "name": "posttop",
             "required": true,
             "in": "body"

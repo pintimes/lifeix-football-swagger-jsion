@@ -6,7 +6,7 @@
         "post"
     ],
 
-    "operationId": "likeNationTeamMember",
+    "operationId": "likeTarget",
     "description": "一个Ip地址只能对一个成员点赞一次",
     "parameters": 
     [
