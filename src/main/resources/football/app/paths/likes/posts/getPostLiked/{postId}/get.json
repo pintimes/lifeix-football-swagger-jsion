@@ -1,13 +1,12 @@
 {
-    "summary": "获得国足所有成员点赞信息",
+    "summary": "获得某一个Post的点赞信息",
     "tags": 
     [
-        "nationalteamlike",
-        "get"
+        "postLikes"
     ],
 
-    "operationId": "getTargetLike",
-    "description": "获得国足所有成员点赞信息",
+    "operationId": "getPostLikeds",
+    "description": "比如：立方体育XX like 100 unlike20",
     "parameters": 
     [
         {
@@ -15,7 +14,7 @@
         },
 
         {
-            "$ref": "#/parameters/targetPath"
+            "$ref": "#/parameters/postPath"
         }
     ],
 

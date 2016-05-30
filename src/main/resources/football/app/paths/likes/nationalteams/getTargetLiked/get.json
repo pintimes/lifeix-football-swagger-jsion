@@ -1,13 +1,12 @@
 {
-    "summary": "获得当前Ip喜欢的国足成员",
+    "summary": "获得所有国家队成员的点赞数据",
     "tags": 
     [
-        "nationalteamlike",
-        "get"
+        "nationalteamlikes"
     ],
 
-    "operationId": "getSourceLikes",
-    "description": "获得当前Ip喜欢的国足成员",
+    "operationId": "getNationalTeamLikeds",
+    "description": "整个国家队所有成员的喜欢数据：李铁 喜欢100, 不喜欢20 ，浩林 喜欢200 不喜欢20",
     "parameters": 
     [
         {
