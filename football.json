@@ -1,28 +1,6 @@
 {
     "basePath": "/football",
     "paths": {
-        "/likes/nationalteams": {"post": {
-            "summary": "对某一个国家队成员点赞/踩",
-            "operationId": "likeNationalTeamMember",
-            "description": "一个Ip地址只能对一个成员点赞一次",
-            "responses": {"200": {"description": "不管什么操作都会返回200"}},
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {
-                    "in": "formData",
-                    "name": "memberId",
-                    "description": "即国家队成员的Id,不管是教练员还是球员等",
-                    "type": "string"
-                },
-                {
-                    "in": "formData",
-                    "name": "like",
-                    "description": "ture 点赞，false 踩",
-                    "type": "boolean"
-                }
-            ],
-            "tags": ["nationalteamlikes"]
-        }},
         "/wemedia/posts/timeline": {"get": {
             "summary": "获取时间轴形式的Post列表",
             "operationId": "getTimelinePosts",
@@ -65,20 +43,6 @@
                 "visitor",
                 "get"
             ]
-        }},
-        "/likes/posts/getSourceLikes/{postId}": {"get": {
-            "summary": "获得某一个Post的点赞信息",
-            "operationId": "getPostLikes",
-            "description": "比如：立方体育XX like 100 unlike20",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Like"},
-                "description": "Like响应对象"
-            }},
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/postPath"}
-            ],
-            "tags": ["postLikes"]
         }},
         "/wemedia/posts/{postId}/categories": {
             "post": {
@@ -334,20 +298,6 @@
                 "get"
             ]
         }},
-        "/likes/posts/getPostLiked/{postId}": {"get": {
-            "summary": "获得某一个Post的点赞信息",
-            "operationId": "getPostLikeds",
-            "description": "比如：立方体育XX like 100 unlike20",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Like"},
-                "description": "Like响应对象"
-            }},
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/postPath"}
-            ],
-            "tags": ["postLikes"]
-        }},
         "/wemedia/authors": {
             "post": {
                 "summary": "创建一个Author",
@@ -398,43 +348,6 @@
                 ]
             }
         },
-        "/likes/nationalteams/getTargetLiked": {"get": {
-            "summary": "获得所有国家队成员的点赞数据",
-            "operationId": "getNationalTeamLikeds",
-            "description": "整个国家队所有成员的喜欢数据：李铁 喜欢100, 不喜欢20 ，浩林 喜欢200 不喜欢20",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Like"}
-                },
-                "description": "Like列表响应对象"
-            }},
-            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-            "tags": ["nationalteamlikes"]
-        }},
-        "/likes/posts": {"post": {
-            "summary": "对某一个Post点赞",
-            "operationId": "likePost",
-            "description": "一个Ip地址只能对一个Post点赞一次",
-            "responses": {"200": {"description": "不管什么操作都会返回200"}},
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {
-                    "in": "formData",
-                    "name": "postId",
-                    "description": "Post.id",
-                    "type": "string",
-                    "required": true
-                },
-                {
-                    "in": "formData",
-                    "name": "like",
-                    "description": "ture 点赞，false 踩",
-                    "type": "boolean"
-                }
-            ],
-            "tags": ["postLikes"]
-        }},
         "/games/matches": {"get": {
             "summary": "获得赛事列表",
             "operationId": "getMatches",
@@ -703,20 +616,6 @@
                 "get"
             ]
         }},
-        "/likes/nationalteams/getSourceLikes": {"get": {
-            "summary": "获得当前Ip喜欢的国足成员",
-            "operationId": "getNationalTeamLikes",
-            "description": "获得当前Ip喜欢的国足成员",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Like"}
-                },
-                "description": "Like列表响应对象"
-            }},
-            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-            "tags": ["nationalteamlikes"]
-        }},
         "/games/competitions/{competitionId}/players": {"get": {
             "summary": "获得球员列表",
             "operationId": "getCompetitionPlayers",
@@ -868,6 +767,33 @@
                 "get"
             ]
         }},
+        "/likes/{target}": {"get": {
+            "summary": "获得某一个Post的点赞信息",
+            "operationId": "getPostLikeds",
+            "description": "比如：立方体育XX like 100 unlike20 like true",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Like"},
+                "description": "Like响应对象"
+            }},
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "path",
+                    "name": "target",
+                    "description": "目标：比如可以nationteam的memberid，也可以是post的id",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "in": "formData",
+                    "name": "type",
+                    "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
+                    "type": "string",
+                    "required": true
+                }
+            ],
+            "tags": ["postLikes"]
+        }},
         "/games/teams": {"get": {
             "summary": "获得球队信息",
             "description": "获得球队信息",
@@ -886,26 +812,63 @@
                 "get"
             ]
         }},
-        "/likes/nationalteams/getTargetLiked/{memberId}": {"get": {
-            "summary": "获得国足某一个成员点赞信息",
-            "operationId": "getNationalTeamMemeberLiked",
-            "description": "获得国足某一个成员点赞信息",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Like"},
-                "description": "Like响应对象"
-            }},
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {
-                    "in": "path",
-                    "name": "memberId",
-                    "description": "即国家队成员的Id,不管是教练员还是球员等",
-                    "type": "string",
-                    "required": true
-                }
-            ],
-            "tags": ["nationalteamlikes"]
-        }},
+        "/likes": {
+            "post": {
+                "summary": "对某一个目标点赞",
+                "operationId": "addLike",
+                "description": "一个Ip地址只能对一个目标点赞/踩一次，第二次仍会返回正确，但是数目不会变化",
+                "responses": {"200": {"description": "不管什么操作都会返回200"}},
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "formData",
+                        "name": "type",
+                        "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "formData",
+                        "name": "target",
+                        "description": "目标：比如可以nationteam的memberid，也可以是post的id",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "formData",
+                        "name": "like",
+                        "description": "ture 点赞，false 踩",
+                        "type": "boolean"
+                    }
+                ],
+                "tags": ["postLikes"]
+            },
+            "get": {
+                "summary": "获取喜欢列表",
+                "produces": ["application/json"],
+                "description": "将type=${type}的所有目标的喜欢情况返回，同时加入当前喜欢与否情况",
+                "responses": {"200": {
+                    "schema": {
+                        "type": "array",
+                        "items": {"$ref": "#/definitions/Like"}
+                    },
+                    "description": "Like列表响应对象"
+                }},
+                "operationId": "getLikes",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "formData",
+                        "name": "type",
+                        "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "tags": ["likes"],
+                "consumes": ["application/json"]
+            }
+        },
         "/games/competitions": {"get": {
             "summary": "获取赛事列表",
             "description": "获得赛事列表",
@@ -1465,6 +1428,10 @@
             "description": "Like",
             "type": "object",
             "properties": {
+                "like": {
+                    "description": "当前用户/设备/ip 是否喜欢过该target",
+                    "type": "boolean"
+                },
                 "type": {
                     "description": "类型或者说业务系统:比如：nationalteam,post",
                     "type": "string"

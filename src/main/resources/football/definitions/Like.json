@@ -26,6 +26,12 @@
             "description": "被踩的总数",
             "type": "integer",
             "format": "int32"
+        },
+        
+        "like": 
+        {
+            "description": "当前用户/设备/ip 是否喜欢过该target",
+            "type": "boolean"
         }
     },
 

@@ -1,0 +1,47 @@
+{
+    "summary": "对某一个目标点赞",
+    "tags": 
+    [
+        "likes"
+    ],
+
+    "operationId": "addLike",
+    "description": "一个Ip地址只能对一个目标点赞/踩一次，第二次仍会返回正确，但是数目不会变化",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "name": "type",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post"
+        },
+
+        {
+            "name": "target",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "目标：比如可以nationteam的memberid，也可以是post的id"
+        },
+
+        {
+            "name": "like",
+            "in": "formData",
+            "type": "boolean",
+            "description": "ture 点赞，false 踩"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "不管什么操作都会返回200"
+        }
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "summary": "获得某一个Post的点赞信息",
+    "tags": 
+    [
+        "likes"
+    ],
+
+    "operationId": "getPostLikeds",
+    "description": "比如：立方体育XX like 100 unlike20 like true",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "name": "target",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": "目标：比如可以nationteam的memberid，也可以是post的id"
+        },
+
+        {
+            "name": "type",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Like"
+            },
+
+            "description": "Like响应对象"
+        }
+    }
+}
