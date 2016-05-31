@@ -1,0 +1,31 @@
+{
+    "summary": "获得裁判详细信息",
+    "tags": 
+    [
+        "referee",
+        "visitor",
+        "get"
+    ],
+    "description": "查看裁判信息",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/refereePath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Referee"
+            },
+
+            "description": "Referee响应对象"
+        }
+    },
+
+    "operationId": "findReferee"
+}

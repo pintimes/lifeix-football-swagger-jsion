@@ -1,5 +1,5 @@
 {
-    "description": "队伍信息",
+    "description": "赛事队伍信息",
     "type": "object",
     "properties": 
     {
@@ -10,13 +10,22 @@
         },
         "name": 
         {
-            "description": "球队名称：中国队",
+            "description": "球队名称：参见xxx赛事的中国队",
             "type": "string"
         },
-        "flag": 
+        "setupDate": 
         {
-            "description": "队旗",
-            "type": "string"
+            "description": "大名单公布时间",
+            "type": "string",
+            "format": "date-time"
+        },
+         "competitionInfo": 
+        {
+            "$ref": "#/definitions/CompetitionInfo"
+        },
+         "teamInfo": 
+        {
+            "$ref": "#/definitions/TeamInfo"
         },
         "chiefCoach": 
         {
@@ -48,16 +57,9 @@
             "type": "array",
             "items": 
             {
-                "$ref": "#/definitions/Player"
+                "$ref": "#/definitions/PlayerInfo"
             }
-        },
-         "teamCategory": 
-        {
-            "$ref": "#/definitions/TeamCategory"
-        },
-        "jerseys": 
-        {
-            "$ref": "#/definitions/Jerseys"
         }
+        
     }
 }

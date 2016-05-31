@@ -2,18 +2,13 @@
     "summary": "获得球员信息",
     "tags": 
     [
-        "tlplayer",
+        "player",
         "visitor",
         "get"
     ],
-
     "description": "查看球员信息",
     "parameters": 
     [
-        {
-            "$ref": "#/parameters/apiKeyYHeader"
-        },
-
         {
             "$ref": "#/parameters/playerPath"
         }

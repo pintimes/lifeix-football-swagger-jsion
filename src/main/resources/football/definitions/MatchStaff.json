@@ -1,18 +1,17 @@
 {
-    "description": "教练",
+    "description": "比赛工作人员",
     "type": "object",
     "properties": 
     {
         "id": 
         {
             "description": "id",
-            "format": "int64",
-            "type": "integer"
+            "type": "string"
         },
 
         "name": 
         {
-            "description": "名字：高洪波",
+            "description": "名字",
             "type": "string"
         },
         "avatar": 
@@ -36,33 +35,15 @@
             "description": "出生地  中国北京",
             "type": "string"
         },
-         "level": 
-        {
-            "description": "裁判级别",
-            "type": "string"
-        },
 		 "position": 
         {
-            "description": "职位：主教练,助理教练",
+            "description": "职位：领队,队医....",
             "type": "string"
         },
          "introduce": 
         {
             "description": "介绍",
             "type": "string"
-        },
-        "team": 
-        {
-            "$ref": "#/definitions/TeamInfo"
-        },
-        "career": 
-        {
-            "description": "职业生涯",
-            "type": "array",
-            "items": 
-            {
-                "$ref": "#/definitions/TeamInfo"
-            }
         }
     }
 }

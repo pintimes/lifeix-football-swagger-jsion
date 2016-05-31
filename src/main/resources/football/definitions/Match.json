@@ -1,37 +1,52 @@
 {
-    "description": "参赛队",
+    "description": "比赛",
     "type": "object",
     "properties": 
     {
         "id": 
         {
             "description": "id",
-            "type": "string"
+            "format": "int64",
+            "type": "integer"
         },
-
-        "name": 
+        "hostTeam": 
         {
-            "description": "球队名称：中国队",
-            "type": "string"
+            "$ref": "#/definitions/MatchTeam"
         },
-
-        "competionId": 
+         "hostScore": 
         {
-            "description": "12强赛ID",
-            "type": "string"
+            "description": "主队进球数",
+            "format": "int32",
+            "type": "integer"
         },
-
-        "competionName": 
+        "awayTeam": 
         {
-            "description": "12强赛",
+            "$ref": "#/definitions/MatchTeam"
+        },
+  		"awayScore": 
+        {
+            "description": "客队进球数",
+            "format": "int32",
+            "type": "integer"
+        },
+        "startTime": 
+        {
+            "description": "比赛开始时间",
             "type": "string"
         },
-
-        "chefReferee": 
+        "position": 
+        {
+            "description": "比赛开始地点",
+            "type": "string"
+        },
+        "competitionInfo": 
+        {
+            "$ref": "#/definitions/CompetitionInfo"
+        },
+        "chiefReferee": 
         {
             "$ref": "#/definitions/Referee"
         },
-
         "sideReferees": 
         {
             "description": "边裁",
@@ -41,34 +56,38 @@
                 "$ref": "#/definitions/Referee"
             }
         },
-
         "fourthReferee": 
         {
             "$ref": "#/definitions/Referee"
         },
-
-        "hostScore": 
+        "state": 
         {
-            "description": "主场得分",
+            "description": "比赛状态 0：未开始，1：已结束",
             "format": "int32",
             "type": "integer"
         },
-
-        "awayScore": 
+        "introduce": 
         {
-            "description": "客场得分",
-            "format": "int32",
-            "type": "integer"
+            "description": "比赛介绍，如历史战绩等",
+            "type": "string"
         },
-
-        "hostTeam": 
+        "bsjd": 
         {
-            "$ref": "#/definitions/Team"
+            "$ref": "#/definitions/MatchStaff"
         },
-
-        "awayTeam": 
+        "cpjd": 
         {
-            "$ref": "#/definitions/Team"
+            "$ref": "#/definitions/MatchStaff"
+        },
+        "stage": 
+        {
+            "description": "比赛阶段",
+            "type": "string"
+        },
+        "court": 
+        {
+            "$ref": "#/definitions/Court"
         }
+        
     }
 }

@@ -1,0 +1,45 @@
+{
+            "description": "球衣",
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "teamId": {
+                    "description": "球队id",
+                    "type": "string"
+                },
+                "jacket": {
+                    "description": "上衣",
+                    "type": "string"
+                },
+                "shorts": {
+                    "description": "球裤",
+                    "type": "string"
+                },
+                "socks": {
+                    "description": "袜子",
+                    "type": "string"
+                },
+                "image": {
+                    "description": "球衣图片",
+                    "type": "string"
+                },
+                "startDate": {
+                    "description": "球衣开始使用时间",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "endDate": {
+                    "description": "球衣停止使用时间",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "introduce": {
+                    "description": "球衣创意介绍",
+                    "type": "string"
+                }
+                
+            },
+            "type": "object"
+        }

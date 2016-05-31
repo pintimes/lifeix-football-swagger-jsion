@@ -1,8 +1,9 @@
 {
-    "summary": "获取赛事比赛列表",
+    "summary": "获取赛事比赛列表,即时间轴",
     "tags": 
     [
         "competitions",
+        "matches",
         "visitor",
         "get"
     ],
@@ -11,11 +12,15 @@
     "parameters": 
     [
         {
-            "$ref": "#/parameters/apiKeyYHeader"
-        },
-
-        {
             "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "description": "球队id",
+            "name": "teamId",
+            "format": "int64",
+            "type": "integer",
+            "required": true,
+            "in": "query"
         }
     ],
 
@@ -28,7 +33,7 @@
                 "type": "array",
                 "items": 
                 {
-                    "$ref": "#/definitions/Match"
+                    "$ref": "#/definitions/MatchInfo"
                 }
             },
 
@@ -36,5 +41,5 @@
         }
     },
 
-    "operationId": "getCompetitionMatches"
+    "operationId": "findByCompetitionIdAndTeamId"
 }

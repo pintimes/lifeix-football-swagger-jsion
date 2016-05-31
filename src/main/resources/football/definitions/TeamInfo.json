@@ -8,17 +8,28 @@
             "description": "id",
             "type": "string"
         },
-
         "name": 
         {
             "description": "球队名称：山东鲁能队",
             "type": "string"
         },
-
         "flag": 
         {
             "description": "队旗",
             "type": "string"
+        },
+         "position": 
+        {
+            "description": "教练或者职员引用teamInfo时有数据,此人在球队中的位置",
+            "type": "string"
+        },
+         "teamCategory": 
+        {
+            "$ref": "#/definitions/TeamCategory"
+        },
+        "jerseys": 
+        {
+            "$ref": "#/definitions/Jerseys"
         }
     }
 }

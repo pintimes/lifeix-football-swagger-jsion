@@ -14,18 +14,17 @@
             "type": "string"
         },
 
-        "iconUrl": 
-        {
-            "description": "类目图标地址",
-            "type": "string"
-        },
-
         "fId": 
         {
             "description": "父目录Id",
             "type": "string"
         },
-
+		"isLeaf": 
+        {
+            "description": "是否是叶子节点",
+            "format": "int32",
+            "type": "integer"
+        },
         "categories": 
         {
             "description": "子类目",

@@ -1,24 +1,6 @@
 {
     "basePath": "/football",
     "paths": {
-        "/games/teams/{teamId}": {"get": {
-            "summary": "获得球队信息",
-            "description": "获得球队信息",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Team"},
-                "description": "Team响应对象"
-            }},
-            "operationId": "getTeam",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/teamPath"}
-            ],
-            "tags": [
-                "team",
-                "visitor",
-                "get"
-            ]
-        }},
         "/wemedia/tops/category/{categoryId}": {"get": {
             "summary": "每个类目下top部分的新闻",
             "description": "每个类目下top部分的新闻",
@@ -44,34 +26,6 @@
             ],
             "tags": [
                 "tops",
-                "visitor",
-                "get"
-            ]
-        }},
-        "/games/competitions/{competitionId}/teams": {"get": {
-            "summary": "获得某一次赛事下的参赛队伍列表",
-            "operationId": "getCompetitionTeams",
-            "description": "获得赛事列表",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Team"}
-                },
-                "description": "Team列表响应对象"
-            }},
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/competitionPath"},
-                {
-                    "in": "query",
-                    "name": "teamId",
-                    "description": "teamId",
-                    "type": "string",
-                    "required": false
-                }
-            ],
-            "tags": [
-                "player",
                 "visitor",
                 "get"
             ]
@@ -242,44 +196,58 @@
                 "consumes": ["application/json"]
             }
         },
-        "/games/players": {"get": {
-            "summary": "获得球员列表",
-            "operationId": "getPlayers",
-            "description": "获得球员列表",
+        "/games/referees": {"get": {
+            "summary": "获得裁判列表",
+            "description": "获得裁判列表",
             "responses": {"200": {
                 "schema": {
                     "type": "array",
-                    "items": {"$ref": "#/definitions/Competition"}
+                    "items": {"$ref": "#/definitions/Referee"}
                 },
-                "description": "Competition列表响应对象"
+                "description": "Referee列表响应对象"
             }},
+            "operationId": "getReferees",
             "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
                 {
                     "in": "query",
-                    "name": "limit",
-                    "format": "int32",
-                    "description": "一页显示多少",
+                    "name": "level",
+                    "description": "裁判级别",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "in": "query",
+                    "name": "startId",
+                    "format": "int64",
+                    "description": "开始查询的id",
                     "type": "integer",
                     "required": false
                 },
                 {
                     "in": "query",
-                    "name": "orderBy",
-                    "description": "按照那个字段排序",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "isDesc",
-                    "description": "是否按时间倒序,默认值true",
-                    "type": "boolean",
+                    "name": "pageSize",
+                    "format": "int32",
+                    "description": "一页显示多少",
+                    "type": "integer",
                     "required": false
                 }
             ],
             "tags": [
-                "player",
+                "referees",
+                "get"
+            ]
+        }},
+        "/games/coaches/{coachId}": {"get": {
+            "summary": "查看教练详情",
+            "description": "查看一个教练详情",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Coach"},
+                "description": "查询单个教练的信息"
+            }},
+            "operationId": "findOne",
+            "parameters": [{"$ref": "#/parameters/coachPath"}],
+            "tags": [
+                "coaches",
                 "visitor",
                 "get"
             ]
@@ -374,55 +342,6 @@
                 ]
             }
         },
-        "/games/matches": {"get": {
-            "summary": "获得赛事列表",
-            "operationId": "getMatches",
-            "description": "获得赛事列表",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Match"}
-                },
-                "description": "Match列表响应对象"
-            }},
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {
-                    "in": "query",
-                    "name": "competitionId",
-                    "description": "赛事Id",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "limit",
-                    "format": "int32",
-                    "description": "一页显示多少",
-                    "type": "integer",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "orderBy",
-                    "description": "按照那个字段排序",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "isDesc",
-                    "description": "是否按时间倒序,默认值true",
-                    "type": "boolean",
-                    "required": false
-                }
-            ],
-            "tags": [
-                "competition",
-                "visitor",
-                "get"
-            ]
-        }},
         "/games/competitions/{competitionId}/matches/{matchId}": {"get": {
             "summary": "获得比赛信息",
             "description": "获得比赛信息",
@@ -430,14 +349,13 @@
                 "schema": {"$ref": "#/definitions/Match"},
                 "description": "Match响应对象"
             }},
-            "operationId": "getCompetionMatch",
+            "operationId": "findMatchTeam",
             "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
                 {"$ref": "#/parameters/competitionPath"},
                 {"$ref": "#/parameters/matchPath"}
             ],
             "tags": [
-                "team",
+                "match",
                 "visitor",
                 "get"
             ]
@@ -502,6 +420,21 @@
             ],
             "consumes": ["application/json"]
         }},
+        "/games/coaches/teamcategory/{teamCategoryId}": {"get": {
+            "summary": "查看球队分类下的所有教练",
+            "description": "查看球队分类下的所有教练",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/TeamCategoryCoach"},
+                "description": "map形式，如：中国队：教练1，教练2.国奥队：教练3，教练4"
+            }},
+            "operationId": "findCoachByTeamCategory",
+            "parameters": [{"$ref": "#/parameters/teamCategoryPath"}],
+            "tags": [
+                "coaches",
+                "visitor",
+                "get"
+            ]
+        }},
         "/games/players/{playerId}": {"get": {
             "summary": "获得球员信息",
             "description": "查看球员信息",
@@ -510,50 +443,27 @@
                 "description": "TLPlayer响应对象"
             }},
             "operationId": "getPlayer",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/playerPath"}
-            ],
+            "parameters": [{"$ref": "#/parameters/playerPath"}],
             "tags": [
-                "tlplayer",
+                "player",
                 "visitor",
                 "get"
             ]
         }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam": {"get": {
-            "summary": "获得参赛球队的详细信息",
+            "summary": "获得参赛球队的详细信息,包括教练、球员、工作人员信息",
             "description": "获得球队信息",
             "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Team"},
-                "description": "Team响应对象"
+                "schema": {"$ref": "#/definitions/CompetitionTeam"},
+                "description": "CompetitionTeam响应对象"
             }},
-            "operationId": "getCompetitionTeam",
+            "operationId": "findCompetitionTeam",
             "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
                 {"$ref": "#/parameters/competitionPath"},
                 {"$ref": "#/parameters/teamPath"}
             ],
             "tags": [
-                "team",
-                "visitor",
-                "get"
-            ]
-        }},
-        "/games/competitions/{competitionId}/teams/{teamId}/matchteam": {"get": {
-            "summary": "获得参赛球队的详细信息",
-            "description": "获得球队信息",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Team"},
-                "description": "Team响应对象"
-            }},
-            "operationId": "getMatchTeam",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/competitionPath"},
-                {"$ref": "#/parameters/teamPath"}
-            ],
-            "tags": [
-                "team",
+                "competitionteam",
                 "visitor",
                 "get"
             ]
@@ -596,6 +506,21 @@
                 "get"
             ]
         }},
+        "/games/referees/{refereeId}": {"get": {
+            "summary": "获得裁判详细信息",
+            "description": "查看裁判信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Referee"},
+                "description": "Referee响应对象"
+            }},
+            "operationId": "findReferee",
+            "parameters": [{"$ref": "#/parameters/refereePath"}],
+            "tags": [
+                "referee",
+                "visitor",
+                "get"
+            ]
+        }},
         "/like/likes": {"post": {
             "summary": "用户like一个对象",
             "produces": ["application/json"],
@@ -618,52 +543,17 @@
             ],
             "consumes": ["application/json"]
         }},
-        "/games/competitions/{competitionId}/players": {"get": {
-            "summary": "获得球员列表",
-            "operationId": "getCompetitionPlayers",
-            "description": "获得赛事列表",
+        "/games/staffs/{staffId}": {"get": {
+            "summary": "获得职员信息",
+            "description": "查看职员信息",
             "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Competition"}
-                },
-                "description": "Competition列表响应对象"
+                "schema": {"$ref": "#/definitions/Staff"},
+                "description": "Staff响应对象"
             }},
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/competitionPath"},
-                {
-                    "in": "query",
-                    "name": "teamId",
-                    "description": "队伍Id",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "limit",
-                    "format": "int32",
-                    "description": "一页显示多少",
-                    "type": "integer",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "orderBy",
-                    "description": "按照那个字段排序",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "isDesc",
-                    "description": "是否按时间倒序,默认值true",
-                    "type": "boolean",
-                    "required": false
-                }
-            ],
+            "operationId": "findStaff",
+            "parameters": [{"$ref": "#/parameters/staffPath"}],
             "tags": [
-                "player",
+                "staff",
                 "visitor",
                 "get"
             ]
@@ -704,22 +594,45 @@
             ]
         }},
         "/games/competitions/{competitionId}/matches": {"get": {
-            "summary": "获取赛事比赛列表",
+            "summary": "获取赛事比赛列表,即时间轴",
             "description": "获取赛事比赛列表",
             "responses": {"200": {
                 "schema": {
                     "type": "array",
-                    "items": {"$ref": "#/definitions/Match"}
+                    "items": {"$ref": "#/definitions/MatchInfo"}
                 },
                 "description": "Match列表响应对象"
             }},
-            "operationId": "getCompetitionMatches",
+            "operationId": "findByCompetitionIdAndTeamId",
             "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/competitionPath"}
+                {"$ref": "#/parameters/competitionPath"},
+                {
+                    "in": "query",
+                    "name": "teamId",
+                    "format": "int64",
+                    "description": "球队id",
+                    "type": "integer",
+                    "required": true
+                }
             ],
             "tags": [
                 "competitions",
+                "matches",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/games/competitions/{competitionId}": {"get": {
+            "summary": "赛事所有的参赛球队信息和比赛信息（赛程）",
+            "description": "赛事所有的参赛球队信息和比赛信息（赛程）",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Competition"},
+                "description": "Competition响应对象"
+            }},
+            "operationId": "findCompetition",
+            "parameters": [{"$ref": "#/parameters/competitionPath"}],
+            "tags": [
+                "player",
                 "visitor",
                 "get"
             ]
@@ -746,24 +659,6 @@
                 "post"
             ],
             "consumes": ["application/json"]
-        }},
-        "/games/teams": {"get": {
-            "summary": "获得球队信息",
-            "description": "获得球队信息",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Team"}
-                },
-                "description": "Team列表响应对象"
-            }},
-            "operationId": "getTeamList",
-            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-            "tags": [
-                "team",
-                "visitor",
-                "get"
-            ]
         }},
         "/wemedia/posttop/category/{categoryId}": {"get": {
             "summary": "获取一个类目下置顶的文章id列表",
@@ -871,24 +766,6 @@
                 ]
             }
         },
-        "/games/competitions": {"get": {
-            "summary": "获取赛事列表",
-            "description": "获得赛事列表",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Competition"}
-                },
-                "description": "Competition列表响应对象"
-            }},
-            "operationId": "getCompetitionList",
-            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-            "tags": [
-                "competitions",
-                "visitor",
-                "get"
-            ]
-        }},
         "/wemedia/posts": {
             "post": {
                 "summary": "创建一个Post",
@@ -1066,6 +943,61 @@
             "type": "string",
             "required": true
         },
+        "refereePath": {
+            "in": "path",
+            "name": "refereeId",
+            "format": "int64",
+            "description": "裁判Id",
+            "type": "integer",
+            "required": true
+        },
+        "categoryPath": {
+            "in": "path",
+            "name": "categoryId",
+            "format": "int64",
+            "description": "类目Id",
+            "type": "integer",
+            "required": true
+        },
+        "competitionPath": {
+            "in": "path",
+            "name": "competitionId",
+            "format": "int64",
+            "description": "赛事的Id",
+            "type": "integer",
+            "required": true
+        },
+        "teamPath": {
+            "in": "path",
+            "name": "teamId",
+            "format": "int64",
+            "description": "队伍Id",
+            "type": "integer",
+            "required": true
+        },
+        "userPath": {
+            "in": "path",
+            "name": "userId",
+            "description": "用户的ID",
+            "type": "string",
+            "required": true
+        },
+        "playerPath": {
+            "in": "path",
+            "name": "playerId",
+            "format": "int64",
+            "description": "球员Id",
+            "type": "integer",
+            "required": true
+        },
+        "teamCategoryPath": {
+            "in": "path",
+            "name": "teamCategoryId",
+            "format": "int64",
+            "description": "球队分类的Id",
+            "type": "integer",
+            "required": true
+        },
         "objectPath": {
             "in": "path",
             "name": "objectId",
@@ -1080,11 +1012,12 @@
             "type": "string",
             "required": true
         },
-        "categoryPath": {
+        "staffPath": {
             "in": "path",
-            "name": "categoryId",
-            "description": "类目Id",
-            "type": "string",
+            "name": "staffId",
+            "format": "int64",
+            "description": "员工的Id",
+            "type": "integer",
             "required": true
         },
         "postPath": {
@@ -1094,39 +1027,20 @@
             "type": "string",
             "required": true
         },
-        "competitionPath": {
+        "coachPath": {
             "in": "path",
-            "name": "competitionId",
-            "description": "赛事Id",
-            "type": "string",
-            "required": true
-        },
-        "teamPath": {
-            "in": "path",
-            "name": "teamId",
-            "description": "队伍Id",
-            "type": "string",
-            "required": true
-        },
-        "userPath": {
-            "in": "path",
-            "name": "userId",
-            "description": "用户的ID",
-            "type": "string",
-            "required": true
-        },
-        "playerPath": {
-            "in": "path",
-            "name": "playerId",
-            "description": "球员Id",
-            "type": "string",
+            "name": "coachId",
+            "format": "int64",
+            "description": "教练Id",
+            "type": "integer",
             "required": true
         },
         "matchPath": {
             "in": "path",
             "name": "matchId",
+            "format": "int64",
             "description": "比赛Id",
-            "type": "string",
+            "type": "integer",
             "required": true
         }
     },
@@ -1140,22 +1054,17 @@
                     "type": "array",
                     "items": {"$ref": "#/definitions/Team"}
                 },
+                "endDate": {
+                    "format": "date-time",
+                    "description": "赛季起始时间",
+                    "type": "string"
+                },
                 "name": {
                     "description": "12强赛",
                     "type": "string"
                 },
-                "startTime": {
-                    "format": "date-time",
-                    "description": "赛季起始时间",
-                    "type": "string"
-                },
                 "id": {
                     "description": "id",
-                    "type": "string"
-                },
-                "endTime": {
-                    "format": "date-time",
-                    "description": "赛季起始时间",
                     "type": "string"
                 },
                 "competitionCategory": {"$ref": "#/definitions/CompetitionCategory"},
@@ -1163,68 +1072,54 @@
                     "description": "比赛",
                     "type": "array",
                     "items": {"$ref": "#/definitions/Match"}
+                },
+                "startDate": {
+                    "format": "date-time",
+                    "description": "赛季起始时间",
+                    "type": "string"
                 }
             }
         },
-        "Player": {
-            "description": "队员",
+        "Jerseys": {
+            "description": "球衣",
             "type": "object",
             "properties": {
-                "teamName": {
-                    "description": "所属球队：国家队",
+                "image": {
+                    "description": "球衣图片",
                     "type": "string"
                 },
-                "country": {
-                    "description": "国家： 中国",
+                "endDate": {
+                    "format": "date-time",
+                    "description": "球衣停止使用时间",
                     "type": "string"
                 },
-                "career": {
-                    "description": "职业生涯",
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/TeamInfo"}
-                },
-                "avatarUrl": {
-                    "description": "头像地址",
-                    "type": "string"
-                },
-                "matches": {"$ref": "#/definitions/MatchInfo"},
-                "likeNum": {
-                    "format": "int32",
-                    "description": "用户点赞数目",
-                    "type": "integer"
-                },
-                "selectedNum": {
-                    "description": "国家队入选次数",
-                    "type": "string"
-                },
-                "showNum": {
-                    "description": "国家队出场次数",
-                    "type": "string"
-                },
-                "score": {
-                    "format": "int32",
-                    "description": "国家队进球数",
-                    "type": "integer"
-                },
-                "birthplace": {
-                    "description": "出生地  中国北京",
+                "introduce": {
+                    "description": "球衣创意介绍",
                     "type": "string"
                 },
                 "teamId": {
-                    "description": "所属球队：球队id",
+                    "description": "球队id",
                     "type": "string"
                 },
-                "name": {
-                    "description": "名字：李铁",
+                "socks": {
+                    "description": "袜子",
                     "type": "string"
                 },
-                "club": {"$ref": "#/definitions/TeamInfo"},
+                "jacket": {
+                    "description": "上衣",
+                    "type": "string"
+                },
                 "id": {
                     "description": "id",
                     "type": "string"
                 },
-                "position": {
-                    "description": "位置：前锋",
+                "shorts": {
+                    "description": "球裤",
+                    "type": "string"
+                },
+                "startDate": {
+                    "format": "date-time",
+                    "description": "球衣开始使用时间",
                     "type": "string"
                 }
             }
@@ -1244,14 +1139,15 @@
                     "description": "id",
                     "type": "string"
                 },
-                "iconUrl": {
-                    "description": "类目图标地址",
-                    "type": "string"
-                },
                 "categories": {
                     "description": "子类目",
                     "type": "array",
                     "items": {"$ref": "#/definitions/TeamCategory"}
+                },
+                "isLeaf": {
+                    "format": "int32",
+                    "description": "是否是叶子节点",
+                    "type": "integer"
                 }
             }
         },
@@ -1281,10 +1177,517 @@
                 }
             }
         },
+        "Staff": {
+            "description": "工作人员",
+            "type": "object",
+            "properties": {
+                "birthday": {
+                    "format": "date-time",
+                    "description": "出生地  中国北京",
+                    "type": "string"
+                },
+                "country": {
+                    "description": "国家： 中国",
+                    "type": "string"
+                },
+                "birthplace": {
+                    "description": "出生地  中国北京",
+                    "type": "string"
+                },
+                "introduce": {
+                    "description": "介绍",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名字：高洪波",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "avatar": {
+                    "description": "照片",
+                    "type": "string"
+                },
+                "position": {
+                    "description": "职位：领队,队医....",
+                    "type": "string"
+                }
+            }
+        },
+        "CompetitionCategory": {
+            "description": "赛事类目",
+            "properties": {
+                "name": {
+                    "description": "赛事类目名称",
+                    "type": "string"
+                },
+                "rule": {
+                    "description": "赛事规则",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "iconUrl": {
+                    "description": "赛事类目图标地址",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "赛事类型 类别 0：双循环比赛  1：淘汰赛  2：小组赛+主客场淘汰赛  3：小组赛+单场淘汰赛  4：小组赛+单场淘汰赛+主客场淘汰赛 ",
+                    "type": "string"
+                }
+            }
+        },
+        "Court": {
+            "description": "球场",
+            "type": "object",
+            "properties": {
+                "images": {
+                    "description": "球场照片",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名字：鲁能大球场",
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "description": "id",
+                    "type": "integer"
+                },
+                "position": {
+                    "description": "位置，例如：济南",
+                    "type": "string"
+                },
+                "capacity": {
+                    "format": "int32",
+                    "description": "球场容量",
+                    "type": "integer"
+                }
+            }
+        },
+        "Match": {
+            "description": "比赛",
+            "type": "object",
+            "properties": {
+                "chiefReferee": {"$ref": "#/definitions/Referee"},
+                "hostScore": {
+                    "format": "int32",
+                    "description": "主队进球数",
+                    "type": "integer"
+                },
+                "awayTeam": {"$ref": "#/definitions/MatchTeam"},
+                "bsjd": {"$ref": "#/definitions/MatchStaff"},
+                "competitionInfo": {"$ref": "#/definitions/CompetitionInfo"},
+                "introduce": {
+                    "description": "比赛介绍，如历史战绩等",
+                    "type": "string"
+                },
+                "cpjd": {"$ref": "#/definitions/MatchStaff"},
+                "court": {"$ref": "#/definitions/Court"},
+                "hostTeam": {"$ref": "#/definitions/MatchTeam"},
+                "fourthReferee": {"$ref": "#/definitions/Referee"},
+                "stage": {
+                    "description": "比赛阶段",
+                    "type": "string"
+                },
+                "awayScore": {
+                    "format": "int32",
+                    "description": "客队进球数",
+                    "type": "integer"
+                },
+                "sideReferees": {
+                    "description": "边裁",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Referee"}
+                },
+                "startTime": {
+                    "description": "比赛开始时间",
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "description": "id",
+                    "type": "integer"
+                },
+                "position": {
+                    "description": "比赛开始地点",
+                    "type": "string"
+                },
+                "state": {
+                    "format": "int32",
+                    "description": "比赛状态 0：未开始，1：已结束",
+                    "type": "integer"
+                }
+            }
+        },
+        "CompetitionTeamInfo": {
+            "description": "赛事队伍信息",
+            "type": "object",
+            "properties": {
+                "setupDate": {
+                    "format": "date-time",
+                    "description": "大名单公布时间",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "球队名称：参见xxx赛事的中国队",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "teamInfo": {"$ref": "#/definitions/TeamInfo"},
+                "group": {
+                    "description": "球队分组",
+                    "type": "string"
+                }
+            }
+        },
+        "PostTop": {
+            "description": "置顶文章",
+            "type": "object",
+            "properties": {
+                "parent": {
+                    "description": "父类目id",
+                    "type": "string"
+                },
+                "postIds": {
+                    "description": "文章id.example:111,222,333 置顶的文章id以,分隔.top新闻的显示顺序即id在字符串中的显示顺序",
+                    "type": "string"
+                },
+                "categoryName": {
+                    "description": "类目名称",
+                    "type": "string"
+                },
+                "categoryId": {
+                    "description": "categoryId",
+                    "type": "string"
+                }
+            }
+        },
+        "CompetitionInfo": {
+            "description": "赛事概要",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "12强赛",
+                    "type": "string"
+                },
+                "startTime": {
+                    "format": "date-time",
+                    "description": "赛季起始时间",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "endTime": {
+                    "format": "date-time",
+                    "description": "赛季起始时间",
+                    "type": "string"
+                }
+            }
+        },
+        "UserLike": {
+            "description": "存储用户喜欢的对象信息",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "类型 example:球员、教练",
+                    "type": "string"
+                },
+                "userId": {
+                    "description": "用户id",
+                    "type": "string"
+                },
+                "objectIds": {
+                    "description": "用户喜欢的对象集合",
+                    "type": "array",
+                    "items": {"type": "string"}
+                }
+            }
+        },
+        "Team": {
+            "description": "队伍信息",
+            "type": "object",
+            "properties": {
+                "doctor": {"$ref": "#/definitions/Staff"},
+                "chiefCoach": {"$ref": "#/definitions/Coach"},
+                "flag": {
+                    "description": "队旗",
+                    "type": "string"
+                },
+                "physicalCoach": {"$ref": "#/definitions/Coach"},
+                "players": {
+                    "description": "球员",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Player"}
+                },
+                "teamCategory": {"$ref": "#/definitions/TeamCategory"},
+                "name": {
+                    "description": "球队名称：中国队",
+                    "type": "string"
+                },
+                "assistantCoach": {"$ref": "#/definitions/Coach"},
+                "jerseys": {"$ref": "#/definitions/Jerseys"},
+                "gkCoach": {"$ref": "#/definitions/Coach"},
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "teamLeader": {"$ref": "#/definitions/Staff"}
+            }
+        },
+        "ObjectSummary": {
+            "description": "存储喜欢对象的用户信息",
+            "type": "object",
+            "properties": {
+                "userIds": {
+                    "description": "喜欢此对象的用户的集合",
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "startTime": {
+                    "format": "date-time",
+                    "description": "对象id",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "类型 example:球员、教练",
+                    "type": "string"
+                },
+                "objectId": {
+                    "description": "对象id",
+                    "type": "string"
+                },
+                "likeNum": {
+                    "format": "int32",
+                    "description": "对象id",
+                    "type": "integer"
+                }
+            }
+        },
+        "Coach": {
+            "description": "教练",
+            "type": "object",
+            "properties": {
+                "birthday": {
+                    "format": "date-time",
+                    "description": "出生地  中国北京",
+                    "type": "string"
+                },
+                "country": {
+                    "description": "国家： 中国",
+                    "type": "string"
+                },
+                "career": {
+                    "description": "职业生涯",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/TeamInfo"}
+                },
+                "birthplace": {
+                    "description": "出生地  中国北京",
+                    "type": "string"
+                },
+                "level": {
+                    "description": "裁判级别",
+                    "type": "string"
+                },
+                "introduce": {
+                    "description": "介绍",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名字：高洪波",
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "description": "id",
+                    "type": "integer"
+                },
+                "avatar": {
+                    "description": "照片",
+                    "type": "string"
+                },
+                "position": {
+                    "description": "职位：主教练,助理教练",
+                    "type": "string"
+                },
+                "team": {"$ref": "#/definitions/TeamInfo"}
+            }
+        },
+        "MatchTeamInfo": {
+            "description": "比赛队伍信息",
+            "type": "object",
+            "properties": {
+                "setupDate": {
+                    "format": "date-time",
+                    "description": "大名单公布时间",
+                    "type": "string"
+                },
+                "introduce": {
+                    "description": "介绍",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "球队名称：参见某场比赛的中国队",
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "description": "id",
+                    "type": "integer"
+                },
+                "teamInfo": {"$ref": "#/definitions/TeamInfo"}
+            }
+        },
+        "UploadToken": {
+            "description": "上传文件令牌",
+            "type": "object",
+            "properties": {
+                "keys": {
+                    "description": "上传文件名列表",
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "token": {
+                    "description": "令牌值",
+                    "type": "string"
+                }
+            }
+        },
+        "CompetitionTeam": {
+            "description": "赛事队伍信息",
+            "type": "object",
+            "properties": {
+                "doctor": {"$ref": "#/definitions/Staff"},
+                "setupDate": {
+                    "format": "date-time",
+                    "description": "大名单公布时间",
+                    "type": "string"
+                },
+                "chiefCoach": {"$ref": "#/definitions/Coach"},
+                "physicalCoach": {"$ref": "#/definitions/Coach"},
+                "competitionInfo": {"$ref": "#/definitions/CompetitionInfo"},
+                "players": {
+                    "description": "球员",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/PlayerInfo"}
+                },
+                "name": {
+                    "description": "球队名称：参见xxx赛事的中国队",
+                    "type": "string"
+                },
+                "assistantCoach": {"$ref": "#/definitions/Coach"},
+                "gkCoach": {"$ref": "#/definitions/Coach"},
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "teamLeader": {"$ref": "#/definitions/Staff"},
+                "teamInfo": {"$ref": "#/definitions/TeamInfo"}
+            }
+        },
+        "TeamCategoryCoach": {
+            "additionalProperties": {
+                "type": "array",
+                "items": {"$ref": "#/definitions/Coach"}
+            },
+            "type": "object"
+        },
+        "Player": {
+            "description": "队员",
+            "type": "object",
+            "properties": {
+                "birthday": {
+                    "format": "date-time",
+                    "description": "出生地  中国北京",
+                    "type": "string"
+                },
+                "teamName": {
+                    "description": "所属球队：国家队",
+                    "type": "string"
+                },
+                "country": {
+                    "description": "国家： 中国",
+                    "type": "string"
+                },
+                "career": {
+                    "description": "职业生涯",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/TeamInfo"}
+                },
+                "competitions": {
+                    "description": "用户喜欢的对象集合",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/CompetitionInfo"}
+                },
+                "weight": {
+                    "description": "体重",
+                    "type": "string"
+                },
+                "avatar": {
+                    "description": "头像地址",
+                    "type": "string"
+                },
+                "matches": {
+                    "description": "参加过的国家队比赛",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/PlayerNationalMatch"}
+                },
+                "selectedNum": {
+                    "description": "国家队入选次数",
+                    "type": "string"
+                },
+                "birthplace": {
+                    "description": "出生地  中国北京",
+                    "type": "string"
+                },
+                "teamId": {
+                    "description": "所属球队：球队id",
+                    "type": "string"
+                },
+                "record": {"$ref": "#/definitions/PlayerNationalRecord"},
+                "nationTeam": {"$ref": "#/definitions/TeamInfo"},
+                "name": {
+                    "description": "名字：李铁",
+                    "type": "string"
+                },
+                "club": {"$ref": "#/definitions/TeamInfo"},
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "position": {
+                    "description": "位置：前锋",
+                    "type": "string"
+                },
+                "height": {
+                    "description": "身高",
+                    "type": "string"
+                }
+            }
+        },
         "Referee": {
             "description": "裁判员",
             "type": "object",
             "properties": {
+                "birthday": {
+                    "format": "date-time",
+                    "description": "出生地  中国北京",
+                    "type": "string"
+                },
                 "country": {
                     "description": "国家： 中国",
                     "type": "string"
@@ -1302,16 +1705,24 @@
                     "description": "级别",
                     "type": "string"
                 },
+                "sex": {
+                    "description": "性别",
+                    "type": "string"
+                },
                 "name": {
                     "description": "名字：郎平",
                     "type": "string"
                 },
-                "photo": {
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "avatar": {
                     "description": "照片",
                     "type": "string"
                 },
-                "id": {
-                    "description": "id",
+                "position": {
+                    "description": "主裁、边裁、第四官员",
                     "type": "string"
                 }
             }
@@ -1369,28 +1780,46 @@
                 }
             }
         },
-        "CompetitionCategory": {
-            "description": "赛事类目",
+        "MatchTeam": {
+            "description": "比赛队伍信息",
+            "type": "object",
             "properties": {
-                "name": {
-                    "description": "赛事类目名称",
+                "chiefCoach": {"$ref": "#/definitions/Coach"},
+                "physicalCoach": {"$ref": "#/definitions/Coach"},
+                "introduce": {
+                    "description": "介绍",
                     "type": "string"
                 },
-                "rule": {
-                    "description": "赛事规则",
+                "competitionInfo": {"$ref": "#/definitions/CompetitionInfo"},
+                "substitutionPlayers": {
+                    "description": "球员",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/PlayerInfo"}
+                },
+                "assistantCoach": {"$ref": "#/definitions/Coach"},
+                "gkCoach": {"$ref": "#/definitions/Coach"},
+                "teamLeader": {"$ref": "#/definitions/Staff"},
+                "teamInfo": {"$ref": "#/definitions/TeamInfo"},
+                "competitionTeamInfo": {"$ref": "#/definitions/CompetitionTeamInfo"},
+                "doctor": {"$ref": "#/definitions/Staff"},
+                "setupDate": {
+                    "format": "date-time",
+                    "description": "大名单公布时间",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "球队名称：参见某场比赛的中国队",
                     "type": "string"
                 },
                 "id": {
+                    "format": "int64",
                     "description": "id",
-                    "type": "string"
+                    "type": "integer"
                 },
-                "iconUrl": {
-                    "description": "赛事类目图标地址",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "赛事类型 类别 0：双循环比赛  1：淘汰赛  2：小组赛+主客场淘汰赛  3：小组赛+单场淘汰赛  4：小组赛+单场淘汰赛+主客场淘汰赛 ",
-                    "type": "string"
+                "firstPlayers": {
+                    "description": "球员",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/PlayerInfo"}
                 }
             }
         },
@@ -1402,12 +1831,18 @@
                     "description": "队旗",
                     "type": "string"
                 },
+                "teamCategory": {"$ref": "#/definitions/TeamCategory"},
                 "name": {
                     "description": "球队名称：山东鲁能队",
                     "type": "string"
                 },
+                "jerseys": {"$ref": "#/definitions/Jerseys"},
                 "id": {
                     "description": "id",
+                    "type": "string"
+                },
+                "position": {
+                    "description": "教练或者职员引用teamInfo时有数据,此人在球队中的位置",
                     "type": "string"
                 }
             }
@@ -1456,66 +1891,83 @@
                 }
             }
         },
-        "Match": {
-            "description": "参赛队",
+        "MatchStaff": {
+            "description": "比赛工作人员",
             "type": "object",
             "properties": {
-                "hostTeam": {"$ref": "#/definitions/Team"},
-                "fourthReferee": {"$ref": "#/definitions/Referee"},
-                "competionName": {
-                    "description": "12强赛",
+                "birthday": {
+                    "format": "date-time",
+                    "description": "出生地  中国北京",
                     "type": "string"
                 },
-                "hostScore": {
-                    "format": "int32",
-                    "description": "主场得分",
-                    "type": "integer"
+                "country": {
+                    "description": "国家： 中国",
+                    "type": "string"
                 },
-                "awayScore": {
-                    "format": "int32",
-                    "description": "客场得分",
-                    "type": "integer"
+                "birthplace": {
+                    "description": "出生地  中国北京",
+                    "type": "string"
                 },
-                "awayTeam": {"$ref": "#/definitions/Team"},
-                "competionId": {
-                    "description": "12强赛ID",
+                "introduce": {
+                    "description": "介绍",
                     "type": "string"
                 },
                 "name": {
-                    "description": "球队名称：中国队",
+                    "description": "名字",
                     "type": "string"
-                },
-                "sideReferees": {
-                    "description": "边裁",
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Referee"}
                 },
                 "id": {
                     "description": "id",
                     "type": "string"
                 },
-                "chefReferee": {"$ref": "#/definitions/Referee"}
+                "avatar": {
+                    "description": "照片",
+                    "type": "string"
+                },
+                "position": {
+                    "description": "职位：领队,队医....",
+                    "type": "string"
+                }
             }
         },
-        "PostTop": {
-            "description": "置顶文章",
+        "PlayerNationalRecord": {
+            "description": "球员国家队记录",
             "type": "object",
             "properties": {
-                "parent": {
-                    "description": "父类目id",
-                    "type": "string"
+                "substitution": {
+                    "format": "int32",
+                    "description": "替补上场次数",
+                    "type": "integer"
                 },
-                "postIds": {
-                    "description": "文章id.example:111,222,333 置顶的文章id以,分隔.top新闻的显示顺序即id在字符串中的显示顺序",
-                    "type": "string"
+                "gamesplayed": {
+                    "format": "int32",
+                    "description": "上场次数",
+                    "type": "integer"
                 },
-                "categoryName": {
-                    "description": "类目名称",
-                    "type": "string"
+                "dismissals": {
+                    "format": "int32",
+                    "description": "红牌数",
+                    "type": "integer"
                 },
-                "categoryId": {
-                    "description": "categoryId",
-                    "type": "string"
+                "starts": {
+                    "format": "int32",
+                    "description": "首发上场次数",
+                    "type": "integer"
+                },
+                "bookings": {
+                    "format": "int32",
+                    "description": "黄牌数",
+                    "type": "integer"
+                },
+                "playerId": {
+                    "format": "int64",
+                    "description": "playerId",
+                    "type": "integer"
+                },
+                "goals": {
+                    "format": "int32",
+                    "description": "进球数",
+                    "type": "integer"
                 }
             }
         },
@@ -1523,49 +1975,49 @@
             "description": "比赛信息",
             "type": "object",
             "properties": {
-                "matchDate": {
-                    "format": "date-time",
-                    "description": "比赛时间",
+                "hostTeam": {"$ref": "#/definitions/MatchTeamInfo"},
+                "hostScore": {
+                    "format": "int32",
+                    "description": "主队进球数",
+                    "type": "integer"
+                },
+                "stage": {
+                    "format": "int32",
+                    "description": "比赛阶段",
+                    "type": "integer"
+                },
+                "awayTeam": {"$ref": "#/definitions/MatchTeamInfo"},
+                "awayScore": {
+                    "format": "int32",
+                    "description": "客队进球数",
+                    "type": "integer"
+                },
+                "competitionInfo": {"$ref": "#/definitions/CompetitionInfo"},
+                "introduce": {
+                    "description": "比赛介绍，如历史战绩等",
                     "type": "string"
                 },
-                "matchName": {
-                    "description": "xx vs xx",
-                    "type": "string"
-                },
-                "competitionName": {
-                    "description": "赛事名称",
-                    "type": "string"
-                },
-                "matchResult": {
-                    "description": "比赛结果",
+                "startTime": {
+                    "description": "比赛开始时间",
                     "type": "string"
                 },
                 "id": {
+                    "format": "int64",
                     "description": "id",
-                    "type": "string"
-                }
-            }
-        },
-        "UserLike": {
-            "description": "存储用户喜欢的对象信息",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "description": "id",
+                    "type": "integer"
+                },
+                "position": {
+                    "description": "比赛开始地点",
                     "type": "string"
                 },
-                "type": {
-                    "description": "类型 example:球员、教练",
-                    "type": "string"
+                "state": {
+                    "format": "int32",
+                    "description": "比赛状态",
+                    "type": "integer"
                 },
-                "userId": {
-                    "description": "用户id",
+                "group": {
+                    "description": "赛事分组",
                     "type": "string"
-                },
-                "objectIds": {
-                    "description": "用户喜欢的对象集合",
-                    "type": "array",
-                    "items": {"type": "string"}
                 }
             }
         },
@@ -1584,6 +2036,61 @@
                 },
                 "url": {
                     "description": "视频访问地址",
+                    "type": "string"
+                }
+            }
+        },
+        "PlayerInfo": {
+            "description": "队员",
+            "type": "object",
+            "properties": {
+                "birthday": {
+                    "format": "date-time",
+                    "description": "出生地  中国北京",
+                    "type": "string"
+                },
+                "country": {
+                    "description": "国籍",
+                    "type": "string"
+                },
+                "birthplace": {
+                    "description": "出生地  中国北京",
+                    "type": "string"
+                },
+                "record": {"$ref": "#/definitions/PlayerNationalRecord"},
+                "name": {
+                    "description": "名字：李铁",
+                    "type": "string"
+                },
+                "weight": {
+                    "description": "体重",
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "description": "id",
+                    "type": "integer"
+                },
+                "avatar": {
+                    "description": "头像地址",
+                    "type": "string"
+                },
+                "position": {
+                    "description": "位置：前锋",
+                    "type": "string"
+                },
+                "jeserysNum": {
+                    "format": "int32",
+                    "description": "球衣号码",
+                    "type": "integer"
+                },
+                "first": {
+                    "format": "int32",
+                    "description": "1:首发 2：替补",
+                    "type": "integer"
+                },
+                "height": {
+                    "description": "身高",
                     "type": "string"
                 }
             }
@@ -1621,106 +2128,57 @@
                 }
             }
         },
-        "Team": {
-            "description": "队伍信息",
+        "PlayerNationalMatch": {
+            "description": "队员国家队比赛记录",
             "type": "object",
             "properties": {
-                "chiefCoach": {"$ref": "#/definitions/Coach"},
-                "flag": {
-                    "description": "队旗",
-                    "type": "string"
-                },
-                "players": {
-                    "description": "球员",
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Player"}
-                },
-                "name": {
-                    "description": "球队名称：中国队",
-                    "type": "string"
-                },
-                "assistantCoach": {"$ref": "#/definitions/Coach"},
-                "gkCoach": {"$ref": "#/definitions/Coach"},
-                "id": {
-                    "description": "id",
-                    "type": "string"
-                },
-                "physical Coach": {"$ref": "#/definitions/Coach"}
-            }
-        },
-        "ObjectSummary": {
-            "description": "存储喜欢对象的用户信息",
-            "type": "object",
-            "properties": {
-                "userIds": {
-                    "description": "喜欢此对象的用户的集合",
-                    "type": "array",
-                    "items": {"type": "string"}
-                },
-                "startTime": {
-                    "format": "date-time",
-                    "description": "对象id",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "类型 example:球员、教练",
-                    "type": "string"
-                },
-                "objectId": {
-                    "description": "对象id",
-                    "type": "string"
-                },
-                "likeNum": {
+                "hostTeam": {"$ref": "#/definitions/TeamInfo"},
+                "booking": {
                     "format": "int32",
-                    "description": "对象id",
+                    "description": "黄牌数",
                     "type": "integer"
-                }
-            }
-        },
-        "Coach": {
-            "description": "教练",
-            "type": "object",
-            "properties": {
-                "country": {
-                    "description": "国家： 中国",
-                    "type": "string"
                 },
-                "career": {
-                    "description": "职业生涯",
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/TeamInfo"}
+                "goal": {
+                    "format": "int32",
+                    "description": "进球数",
+                    "type": "integer"
                 },
-                "birthplace": {
-                    "description": "出生地  中国北京",
-                    "type": "string"
+                "hostScore": {
+                    "format": "int32",
+                    "description": "主队进球",
+                    "type": "integer"
                 },
-                "name": {
-                    "description": "名字：高洪波",
-                    "type": "string"
+                "dismissal": {
+                    "format": "int32",
+                    "description": "红牌数",
+                    "type": "integer"
                 },
-                "photo": {
-                    "description": "照片",
-                    "type": "string"
+                "awayTeam": {"$ref": "#/definitions/TeamInfo"},
+                "awayScore": {
+                    "format": "int32",
+                    "description": "客队进球",
+                    "type": "integer"
                 },
+                "showTime": {
+                    "format": "int32",
+                    "description": "上场时间",
+                    "type": "integer"
+                },
+                "competition": {"$ref": "#/definitions/CompetitionInfo"},
                 "id": {
+                    "format": "int64",
                     "description": "id",
-                    "type": "string"
+                    "type": "integer"
                 },
-                "team": {"$ref": "#/definitions/TeamInfo"}
-            }
-        },
-        "UploadToken": {
-            "description": "上传文件令牌",
-            "type": "object",
-            "properties": {
-                "keys": {
-                    "description": "上传文件名列表",
-                    "type": "array",
-                    "items": {"type": "string"}
+                "first": {
+                    "format": "int32",
+                    "description": "是否首发 0：为首发 1：首发",
+                    "type": "integer"
                 },
-                "token": {
-                    "description": "令牌值",
-                    "type": "string"
+                "playerId": {
+                    "format": "int64",
+                    "description": "playerId",
+                    "type": "integer"
                 }
             }
         }
