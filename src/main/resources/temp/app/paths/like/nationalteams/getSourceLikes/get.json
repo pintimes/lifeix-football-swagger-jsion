@@ -1,0 +1,33 @@
+{
+    "summary": "获得当前Ip喜欢的国足成员",
+    "tags": 
+    [
+        "nationalteamlikes"
+    ],
+
+    "operationId": "getNationalTeamLikes",
+    "description": "获得当前Ip喜欢的国足成员",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Like"
+                }
+            },
+
+            "description": "Like列表响应对象"
+        }
+    }
+}

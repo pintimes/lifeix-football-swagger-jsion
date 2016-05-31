@@ -1,0 +1,47 @@
+{
+    "summary": "获得某一次赛事下的参赛队伍列表",
+    "tags": 
+    [
+        "player",
+        "visitor",
+        "get"
+    ],
+
+    "operationId": "getCompetitionTeams",
+    "description": "获得赛事列表",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+
+        {
+            "description": "teamId",
+            "name": "teamId",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Team"
+                }
+            },
+
+            "description": "Team列表响应对象"
+        }
+    }
+}

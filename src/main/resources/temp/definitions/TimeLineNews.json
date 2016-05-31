@@ -1,0 +1,18 @@
+{
+            "description": "时间轴形式的新闻",
+            "properties": {
+                "date": {
+                    "description": "date,时间轴上日期",
+                    "type": "string"
+                },
+                "posts": {
+                	"description": "文章",
+            		"type": "array",
+            		"items": 
+            		{
+                		"$ref": "#/definitions/Post"
+            		}
+                }
+            },
+            "type": "object"
+        }

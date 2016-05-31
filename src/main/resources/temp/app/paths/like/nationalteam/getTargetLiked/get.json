@@ -1,0 +1,34 @@
+{
+    "summary": "获得国足所有成员点赞信息",
+    "tags": 
+    [
+        "nationalteamlike",
+        "get"
+    ],
+
+    "operationId": "getNationalteamLiked",
+    "description": "获得国足所有成员点赞信息",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Like"
+                }
+            },
+
+            "description": "Like列表响应对象"
+        }
+    }
+}

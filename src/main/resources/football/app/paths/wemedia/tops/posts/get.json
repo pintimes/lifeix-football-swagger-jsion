@@ -1,0 +1,40 @@
+{
+    "summary": "当前类目下top新闻",
+    "tags": 
+    [
+        "tops",
+        "visitor",
+        "get"
+    ],
+
+    "description": "仅仅是当前类目",
+    "parameters": 
+    [
+        {
+            "description": "类目Id",
+            "name": "categoryId",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Post"
+                }
+            },
+
+            "description": "Post列表响应对象"
+        }
+    },
+
+    "operationId": "getTopPosts"
+}

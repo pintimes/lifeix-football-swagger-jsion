@@ -1,28 +1,26 @@
 {
-    "summary": "主动刷新缓存",
+    "summary": "获取整个类目",
     "tags": 
     [
         "categories",
-        "admin",
-        "post"
+        "visitor",
+        "get"
     ],
 
-    "description": "刷新缓存，返回数据",
+    "description": "将数据库（缓存）中所有类目都返回",
     "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
     [
         "application/json"
     ],
 
     "parameters": 
     [
-        {
-            "$ref": "#/parameters/apiKeyYHeader"
-        }
-    ],
-
-    "consumes": 
-    [
-        "application/json"
+        
     ],
 
     "responses": 
@@ -39,13 +37,8 @@
             },
 
             "description": "Category列表响应对象"
-        },
-
-        "400": 
-        {
-            "description": ""
         }
     },
 
-    "operationId": "refreshCategory"
+    "operationId": "getCategoryList"
 }
