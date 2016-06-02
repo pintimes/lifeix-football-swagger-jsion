@@ -50,7 +50,7 @@
 
         {
             "description": "查询开始时间。example:分页时，传递第一页最后一条记录的createTime(long)",
-            "name": "startTime",
+            "name": "date",
             "type": "string",
             "format":"date-time",
             "required": false,
