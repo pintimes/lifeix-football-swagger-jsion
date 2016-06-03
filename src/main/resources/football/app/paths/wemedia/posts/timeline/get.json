@@ -1,0 +1,58 @@
+{
+    "summary": "获取时间轴形式的Post列表",
+    "tags": 
+    [
+        "timelineposts",
+        "visitor",
+        "get"
+    ],
+
+    "operationId": "getTimelinePosts",
+    "description": "返回TimeLineNews对象，默认按时间倒叙",
+    "parameters": 
+    [
+        {
+            "description": "类目Id",
+            "name": "categoryId",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "查询开始日期,单位天.默认为当天",
+            "name": "startDate",
+            "type": "string",
+            "format":"date-time",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "default": 5,
+            "description": "一页显示数目，如果不传默认=5",
+            "name": "limit",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/TimeLineNews"
+                }
+            },
+
+            "description": "TimeLineNews列表响应对象"
+        }
+    }
+}

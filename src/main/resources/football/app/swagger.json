@@ -60,7 +60,7 @@
             "in": "header"
         },
 
-        "authorPath": 
+		 "authorPath": 
         {
             "description": "作者的Id",
             "name": "authorId",
@@ -69,11 +69,41 @@
             "in": "path"
         },
 
+        "staffPath": 
+        {
+            "description": "员工的Id",
+            "name": "staffId",
+            "format": "int64",
+            "type": "integer",
+            "required": true,
+            "in": "path"
+        },
+        
+        "competitionPath": 
+        {
+            "description": "赛事的Id",
+            "name": "competitionId",
+            "format": "int64",
+            "type": "integer",
+            "required": true,
+            "in": "path"
+        },
+        "teamCategoryPath": 
+        {
+            "description": "球队分类的Id",
+            "name": "teamCategoryId",
+            "format": "int64",
+            "type": "integer",
+            "required": true,
+            "in": "path"
+        },
+
         "categoryPath": 
         {
             "description": "类目Id",
             "name": "categoryId",
-            "type": "string",
+            "format": "int64",
+            "type": "integer",
             "required": true,
             "in": "path"
         },
@@ -82,7 +112,28 @@
         {
             "description": "球员Id",
             "name": "playerId",
-            "type": "string",
+            "format": "int64",
+            "type": "integer",
+            "required": true,
+            "in": "path"
+        },
+        
+        "coachPath": 
+        {
+            "description": "教练Id",
+            "name": "coachId",
+            "format": "int64",
+            "type": "integer",
+            "required": true,
+            "in": "path"
+        },
+        
+        "refereePath": 
+        {
+            "description": "裁判Id",
+            "name": "refereeId",
+            "format": "int64",
+            "type": "integer",
             "required": true,
             "in": "path"
         },
@@ -91,7 +142,8 @@
         {
             "description": "队伍Id",
             "name": "teamId",
-            "type": "string",
+            "format": "int64",
+            "type": "integer",
             "required": true,
             "in": "path"
         },
@@ -100,16 +152,8 @@
         {
             "description": "比赛Id",
             "name": "matchId",
-            "type": "string",
-            "required": true,
-            "in": "path"
-        },
-
-        "competitionPath": 
-        {
-            "description": "赛事Id",
-            "name": "competitionId",
-            "type": "string",
+            "format": "int64",
+            "type": "integer",
             "required": true,
             "in": "path"
         },

@@ -1,0 +1,31 @@
+{
+    "summary": "查看教练详情",
+    "tags": 
+    [
+        "coaches",
+        "visitor",
+        "get"
+    ],
+    "description": "查看一个教练详情",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/coachPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Coach"
+            },
+
+            "description": "查询单个教练的信息"
+        }
+    },
+
+    "operationId": "findOne"
+}

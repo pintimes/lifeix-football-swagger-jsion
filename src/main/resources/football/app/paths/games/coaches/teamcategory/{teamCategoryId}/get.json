@@ -1,0 +1,31 @@
+{
+    "summary": "查看球队分类下的所有教练",
+    "tags": 
+    [
+        "coaches",
+        "visitor",
+        "get"
+    ],
+    "description": "查看球队分类下的所有教练",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/teamCategoryPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/TeamCategoryCoach"
+            },
+
+            "description": "map形式，如：中国队：教练1，教练2.国奥队：教练3，教练4"
+        }
+    },
+
+    "operationId": "findCoachByTeamCategory"
+}

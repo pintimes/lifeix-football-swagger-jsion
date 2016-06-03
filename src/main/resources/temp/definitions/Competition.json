@@ -1,0 +1,42 @@
+{
+    "description": "赛事：比如12强赛",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
+        "name": 
+        {
+            "description": "12强赛",
+            "type": "string"
+        },
+
+        "startTime": 
+        {
+            "description": "赛季起始时间",
+            "type": "string",
+            "format": "date-time"
+        },
+
+        "endTime": 
+        {
+            "description": "赛季起始时间",
+            "type": "string",
+            "format": "date-time"
+        },
+
+        "matches": 
+        {
+            "description": "比赛",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Match"
+            }
+        }
+    }
+}

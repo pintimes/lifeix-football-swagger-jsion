@@ -1,0 +1,31 @@
+{
+    "summary": "获得职员信息",
+    "tags": 
+    [
+        "staff",
+        "visitor",
+        "get"
+    ],
+    "description": "查看职员信息",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/staffPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Staff"
+            },
+
+            "description": "Staff响应对象"
+        }
+    },
+
+    "operationId": "findStaff"
+}

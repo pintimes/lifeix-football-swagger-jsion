@@ -1,0 +1,33 @@
+{
+    "description": "比赛队伍信息",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "name": 
+        {
+            "description": "球队名称：参见某场比赛的中国队",
+            "type": "string"
+        },
+        "introduce": 
+        {
+            "description": "介绍",
+            "type": "string"
+        },
+        "setupDate": 
+        {
+            "description": "大名单公布时间",
+            "type": "string",
+            "format": "date-time"
+        },
+         "teamInfo": 
+        {
+            "$ref": "#/definitions/TeamInfo"
+        }
+    }
+}

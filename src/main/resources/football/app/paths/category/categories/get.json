@@ -1,0 +1,44 @@
+{
+    "summary": "获取整个类目",
+    "tags": 
+    [
+        "categories",
+        "visitor",
+        "get"
+    ],
+
+    "description": "将数据库（缓存）中所有类目都返回",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Category"
+                }
+            },
+
+            "description": "Category列表响应对象"
+        }
+    },
+
+    "operationId": "getCategoryList"
+}

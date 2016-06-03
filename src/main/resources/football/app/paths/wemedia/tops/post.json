@@ -1,0 +1,64 @@
+{
+    "summary": "创建一个PostTop",
+    "tags": 
+    [
+        "posttop",
+        "admin",
+        "post"
+    ],
+
+    "description": "将一个Post挂载到某一类目的Top上",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/PostTop"
+            },
+
+            "description": "",
+            "name": "posttop",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/PostTop"
+            },
+
+            "description": "添加成功的postTop"
+        },
+
+        "400": 
+        {
+            "description": "parameters in postTop are wrong"
+        },
+
+        "401": 
+        {
+            "description": "don't have the right"
+        }
+    },
+
+    "operationId": "addOrUpdatePostTop"
+}

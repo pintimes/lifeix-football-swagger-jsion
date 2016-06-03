@@ -1,22 +1,31 @@
 {
-            "description": "置顶文章",
-            "properties": {
-                "categoryId": {
-                    "description": "categoryId",
-                    "type": "string"
-                },
-                "categoryName": {
-                    "description": "类目名称",
-                    "type": "string"
-                },
-                "postIds": {
-                    "description": "文章id.example:111,222,333 置顶的文章id以,分隔.top新闻的显示顺序即id在字符串中的显示顺序",
-                    "type": "string"
-                },
-                "parent": {
-                    "description": "父类目id",
-                    "type": "string"
-                }
-            },
-            "type": "object"
+    "description": "置顶文章",
+    "properties": 
+    {
+        "categoryId": 
+        {
+            "description": "categoryId",
+            "type": "string"
+        },
+
+        "categoryName": 
+        {
+            "description": "类目名称",
+            "type": "string"
+        },
+
+        "postIds": 
+        {
+            "description": "文章id.example:111,222,333 置顶的文章id以,分隔.top新闻的显示顺序即id在字符串中的显示顺序",
+            "type": "string"
+        },
+
+        "parent": 
+        {
+            "description": "父类目id",
+            "type": "string"
         }
+    },
+
+    "type": "object"
+}

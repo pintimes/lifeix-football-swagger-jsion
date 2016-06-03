@@ -1,0 +1,44 @@
+{
+    "summary": "通过父categoryId获取所有子集category的置顶post",
+    "tags": 
+    [
+        "posttop",
+        "admin",
+        "get"
+    ],
+
+    "description": "通过父categoryId获取所有子集category的置顶post",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "description": "父类目的categoryId",
+            "name": "parent",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "type": "string"
+                }
+            },
+
+            "description": "PostId列表"
+        }
+    },
+
+    "operationId": "getChildTopPosts"
+}

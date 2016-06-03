@@ -6,7 +6,8 @@
         "id": 
         {
             "description": "id",
-            "type": "string"
+            "format": "int64",
+            "type": "integer"
         },
 
         "name": 
@@ -14,21 +15,40 @@
             "description": "名字：高洪波",
             "type": "string"
         },
-        "photo": 
+        "avatar": 
         {
             "description": "照片",
             "type": "string"
         },
-
+        "country": 
+        {
+            "description": "国家： 中国",
+            "type": "string"
+        },
+        "birthday": 
+        {
+            "description": "出生地  中国北京",
+            "type": "string",
+            "format": "date-time"
+        },
         "birthplace": 
         {
             "description": "出生地  中国北京",
             "type": "string"
         },
-
-        "country": 
+         "level": 
         {
-            "description": "国家： 中国",
+            "description": "裁判级别",
+            "type": "string"
+        },
+		 "position": 
+        {
+            "description": "职位：主教练,助理教练",
+            "type": "string"
+        },
+         "introduce": 
+        {
+            "description": "介绍",
             "type": "string"
         },
         "team": 

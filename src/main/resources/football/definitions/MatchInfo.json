@@ -1,27 +1,68 @@
 {
             "description": "比赛信息",
+            "type": "object",
             "properties": {
                 "id": {
                     "description": "id",
-                    "type": "string"
+                    "format": "int64",
+            		"type": "integer"
                 },
-                "competitionName": {
-                    "description": "赛事名称",
-                    "type": "string"
-                },
-                "matchName": {
-                    "description": "xx vs xx",
-                    "type": "string"
-                },
-                "matchDate": {
-                    "description": "比赛时间",
-                    "format": "date-time",
-                    "type": "string"
-                },
-                 "matchResult": {
-                    "description": "比赛结果",
-                    "type": "string"
-                }
-            },
-            "type": "object"
+                "hostTeam": 
+		        {
+		            "$ref": "#/definitions/MatchTeamInfo"
+		        },
+		         "hostScore": 
+		        {
+		            "description": "主队进球数",
+		            "format": "int32",
+		            "type": "integer"
+		        },
+		        "awayTeam": 
+		        {
+		            "$ref": "#/definitions/MatchTeamInfo"
+		        },
+		  		"awayScore": 
+		        {
+		            "description": "客队进球数",
+		            "format": "int32",
+		            "type": "integer"
+		        },
+		        "startTime": 
+		        {
+		            "description": "比赛开始时间",
+		            "type": "string"
+		        },
+		        "position": 
+		        {
+		            "description": "比赛开始地点",
+		            "type": "string"
+		        },
+		        "state": 
+		        {
+		            "description": "比赛状态",
+		            "format": "int32",
+		            "type": "integer"
+		        },
+		        "stage": 
+		        {
+		            "description": "比赛阶段",
+		            "format": "int32",
+		            "type": "integer"
+		        },
+		        "group": 
+		        {
+		            "description": "赛事分组",
+		            "type": "string"
+		        },
+		        "competitionInfo": 
+		        {
+		            "$ref": "#/definitions/CompetitionInfo"
+		        },
+		        "introduce": 
+		        {
+		            "description": "比赛介绍，如历史战绩等",
+		            "type": "string"
+		        }
+            }
+           
         }

@@ -1,0 +1,18 @@
+{
+            "description": "作者",
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "昵称",
+                    "type": "string"
+                },
+                "image": {
+                    "description": "头像地址",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }

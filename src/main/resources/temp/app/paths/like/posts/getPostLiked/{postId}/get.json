@@ -1,0 +1,33 @@
+{
+    "summary": "获得某一个Post的点赞信息",
+    "tags": 
+    [
+        "postLikes"
+    ],
+
+    "operationId": "getPostLikeds",
+    "description": "比如：立方体育XX like 100 unlike20",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "$ref": "#/parameters/postPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Like"
+            },
+
+            "description": "Like响应对象"
+        }
+    }
+}

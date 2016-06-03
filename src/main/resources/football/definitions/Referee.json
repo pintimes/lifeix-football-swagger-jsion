@@ -8,10 +8,19 @@
             "description": "id",
             "type": "string"
         },
-
         "name": 
         {
             "description": "名字：郎平",
+            "type": "string"
+        },
+        "avatar": 
+        {
+            "description": "照片",
+            "type": "string"
+        },
+         "sex": 
+        {
+            "description": "性别",
             "type": "string"
         },
         "level": 
@@ -19,10 +28,11 @@
             "description": "级别",
             "type": "string"
         },
-        "photo": 
+        "birthday": 
         {
-            "description": "照片",
-            "type": "string"
+            "description": "出生地  中国北京",
+            "type": "string",
+            "format": "date-time"
         },
         "birthplace": 
         {
@@ -40,5 +50,10 @@
             "format": "int32",
             "type": "integer"
         },
+        "position": 
+        {
+            "description": "主裁、边裁、第四官员",
+            "type": "string"
+        }
     }
 }

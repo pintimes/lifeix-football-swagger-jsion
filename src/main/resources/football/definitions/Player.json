@@ -8,35 +8,40 @@
             "description": "id",
             "type": "string"
         },
-
-        "name": 
+		"name": 
         {
             "description": "名字：李铁",
             "type": "string"
         },
-
-        "avatarUrl": 
+        "avatar": 
         {
             "description": "头像地址",
             "type": "string"
         },
-
-        "likeNum": 
+		"birthday": 
         {
-            "description": "用户点赞数目",
-            "format": "int32",
-            "type": "integer"
+            "description": "出生地  中国北京",
+            "type": "string",
+            "format": "date-time"
         },
-
+  		"birthplace": 
+        {
+            "description": "出生地  中国北京",
+            "type": "string"
+        },
+        "height": 
+        {
+            "description": "身高",
+            "type": "string"
+        },
+        "weight": 
+        {
+            "description": "体重",
+            "type": "string"
+        },
         "position": 
         {
             "description": "位置：前锋",
-            "type": "string"
-        },
-
-        "birthplace": 
-        {
-            "description": "出生地  中国北京",
             "type": "string"
         },
 
@@ -62,16 +67,13 @@
             "description": "国家队入选次数",
             "type": "string"
         },
-        "showNum": 
+        "record": 
         {
-            "description": "国家队出场次数",
-            "type": "string"
+            "$ref": "#/definitions/PlayerNationalRecord"
         },
-        "score": 
+        "nationTeam": 
         {
-            "description": "国家队进球数",
-            "format": "int32",
-            "type": "integer"
+            "$ref": "#/definitions/TeamInfo"
         },
         "club": 
         {
@@ -86,10 +88,21 @@
                 "$ref": "#/definitions/TeamInfo"
             }
         },
-
         "matches": 
         {
-            "$ref": "#/definitions/MatchInfo"
-        }
+            "description": "参加过的国家队比赛",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/PlayerNationalMatch"
+            }
+        },
+        "competitions": {
+            "description": "用户喜欢的对象集合",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/CompetitionInfo"
+            }
+         }
     }
 }

@@ -14,13 +14,13 @@
             "type": "string"
         },
 
-        "startTime": 
+        "startDate": 
         {
             "description": "赛季起始时间",
             "type": "string",
             "format": "date-time"
         },
-        "endTime": 
+        "endDate": 
         {
             "description": "赛季起始时间",
             "type": "string",

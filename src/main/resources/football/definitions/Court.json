@@ -1,0 +1,35 @@
+{
+    "description": "球场",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+
+        "name": 
+        {
+            "description": "名字：鲁能大球场",
+            "type": "string"
+        },
+        "position": 
+        {
+            "description": "位置，例如：济南",
+            "type": "string"
+        },
+        "capacity": 
+        {
+            "description": "球场容量",
+            "format": "int32",
+            "type": "integer"
+        },
+        "images": 
+        {
+            "description": "球场照片",
+            "type": "string"
+        }
+    }
+}

@@ -30,9 +30,17 @@
         {
             "$ref": "#/definitions/Coach"
         },
-        "physical Coach": 
+        "physicalCoach": 
         {
             "$ref": "#/definitions/Coach"
+        },
+        "teamLeader": 
+        {
+            "$ref": "#/definitions/Staff"
+        },
+        "doctor": 
+        {
+            "$ref": "#/definitions/Staff"
         },
         "players": 
         {
@@ -42,6 +50,14 @@
             {
                 "$ref": "#/definitions/Player"
             }
+        },
+         "teamCategory": 
+        {
+            "$ref": "#/definitions/TeamCategory"
+        },
+        "jerseys": 
+        {
+            "$ref": "#/definitions/Jerseys"
         }
     }
 }

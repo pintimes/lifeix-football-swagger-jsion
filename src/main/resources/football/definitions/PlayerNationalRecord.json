@@ -1,0 +1,52 @@
+{
+    "description": "球员国家队记录",
+    "type": "object",
+    "properties": 
+    {
+        "playerId": 
+        {
+            "description": "playerId",
+            "type": "integer",
+            "format": "int64"
+        },
+
+        "gamesplayed": 
+        {
+            "description": "上场次数",
+            "type": "integer",
+            "format": "int32"
+        },
+
+        "starts": 
+        {
+            "description": "首发上场次数",
+            "type": "integer",
+            "format": "int32"
+        },
+
+        "substitution": 
+        {
+            "description": "替补上场次数",
+            "type": "integer",
+            "format": "int32"
+        },
+        "goals": 
+        {
+            "description": "进球数",
+            "type": "integer",
+            "format": "int32"
+        },
+        "bookings": 
+        {
+            "description": "黄牌数",
+            "type": "integer",
+            "format": "int32"
+        },
+        "dismissals": 
+        {
+            "description": "红牌数",
+            "type": "integer",
+            "format": "int32"
+        }
+    }
+}

@@ -1,25 +1,36 @@
 {
-                "summary": "获得Authors列表",
-                "tags": [
-                    "authors",
-                    "admin",
-                    "get"
-                ],
-                "description": "查看Post的评论列表",
-                "parameters": [{
-                        "$ref": "#/parameters/apiKeyYHeader"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Author"
-                            }
-                        },
-                        "description": "Author列表响应对象"
-                    }
-                },
-                "operationId": "getAuthors"
-            }
+    "summary": "获得Authors列表",
+    "tags": 
+    [
+        "authors",
+        "admin",
+        "get"
+    ],
+
+    "description": "获得Authors列表",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Author"
+                }
+            },
+
+            "description": "Author列表响应对象"
+        }
+    },
+
+    "operationId": "getAuthors"
+}
