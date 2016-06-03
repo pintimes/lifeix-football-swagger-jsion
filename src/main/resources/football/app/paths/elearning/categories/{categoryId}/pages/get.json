@@ -1,0 +1,59 @@
+{
+    "summary": "分页获取某个分类下的单篇列表",
+    "tags": 
+    [
+    	"category",
+        "pages",
+        "get"
+    ],
+
+    "description": "分页获取某个分类下的单篇列表",
+    
+    "produces": 
+    [
+        "application/json"
+    ],
+    
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/categoryPath"
+        },
+        {
+            "description": "分类下存在多个单篇时，向下加载单篇列表的起始pageIndex，不传默认返回第一页数据",
+            "name": "loadMorePageIndex",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "每页显示单篇的数量，默认值20",
+            "name": "pageLimit",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+		{
+            "description": "每个单篇显示的视频数量，默认值30",
+            "name": "videoLimit",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/ElearningPageList"
+            },
+
+            "description": "单篇列表"
+        }
+    },
+
+    "operationId": "getElearningPageList"
+}

@@ -1,0 +1,46 @@
+{
+    "summary": "按videoIds获取视频详情列表",
+    "tags": 
+    [
+    	"videos",
+        "videoIds",
+        "get"
+    ],
+
+    "description": "按videoIds获取视频详情列表",
+    
+    "produces": 
+    [
+        "application/json"
+    ],
+    
+    "parameters": 
+    [
+        {
+            "description": "多个videoId，参数传多次，videoIds.example:videoIds=xxx&videoIds=xxx",
+            "name": "videoIds",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/ElearningVideo"
+                }
+            },
+
+            "description": "视频详情列表"
+        }
+    },
+
+    "operationId": "getElearningVideoListByIds"
+}

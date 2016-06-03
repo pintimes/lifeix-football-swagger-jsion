@@ -1,0 +1,21 @@
+{
+    "description": "elearning视频列表",
+    "properties": 
+    {
+		"loadMoreVideoIndex": 
+        {
+            "description": "单篇下有多个视频时，向下加载的videoIndex，如果为空，则表示没有下一页了，如果非空，则作为请求下一页的参数",
+            "format": "int32",
+            "type": "integer"
+        },
+        "videos": 
+        {
+            "description": "视频列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/ElearningVideo"
+            }
+        }
+    }
+}
