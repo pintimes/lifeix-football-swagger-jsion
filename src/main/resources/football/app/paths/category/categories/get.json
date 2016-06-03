@@ -2,9 +2,7 @@
     "summary": "获取整个类目",
     "tags": 
     [
-        "categories",
-        "visitor",
-        "get"
+        "category"
     ],
 
     "description": "将数据库（缓存）中所有类目都返回",

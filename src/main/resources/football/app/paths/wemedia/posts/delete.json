@@ -2,9 +2,7 @@
     "summary": "删除Post",
     "tags": 
     [
-        "posts",
-        "admin",
-        "post"
+       "posts"
     ],
 
     "description": "删除Post：只有管理员才有权限",

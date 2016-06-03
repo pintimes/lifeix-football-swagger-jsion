@@ -1,5 +1,5 @@
 {
-    "summary": "添加Posts到对应的Category的Top",
+    "summary": "从对应的Category的Top上删除Posts",
     "tags": 
     [
         "tops"
@@ -42,5 +42,5 @@
         }
     },
 
-    "operationId": "addTopPosts"
+    "operationId": "deleteTopPosts"
 }

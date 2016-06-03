@@ -2,9 +2,7 @@
     "summary": "获得Posts",
     "tags": 
     [
-        "posts",
-        "visitor",
-        "get"
+        "posts"
     ],
 
     "description": "根据Id获取Post",

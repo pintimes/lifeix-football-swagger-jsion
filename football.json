@@ -38,11 +38,7 @@
                     "required": false
                 }
             ],
-            "tags": [
-                "timelineposts",
-                "visitor",
-                "get"
-            ]
+            "tags": ["posts"]
         }},
         "/wemedia/posts/{postId}/categories": {
             "post": {
@@ -63,11 +59,7 @@
                         "required": true
                     }
                 ],
-                "tags": [
-                    "posts",
-                    "admin",
-                    "post"
-                ],
+                "tags": ["posts"],
                 "consumes": ["application/json"]
             },
             "delete": {
@@ -91,32 +83,10 @@
                         "required": true
                     }
                 ],
-                "tags": [
-                    "posts",
-                    "admin",
-                    "post"
-                ],
+                "tags": ["posts"],
                 "consumes": ["application/json"]
             }
         },
-        "/admins": {"get": {
-            "summary": "获得Admin列表",
-            "description": "返回所有的管理员",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Admin"}
-                },
-                "description": "Admin列表响应对象"
-            }},
-            "operationId": "getAdminList",
-            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-            "tags": [
-                "admin",
-                "admins",
-                "get"
-            ]
-        }},
         "/wemedia/posts/{postId}": {"get": {
             "summary": "根据Id获取Post详情",
             "description": "返回Post详情对象",
@@ -129,35 +99,7 @@
                 {"$ref": "#/parameters/apiKeyYHeader"},
                 {"$ref": "#/parameters/postPath"}
             ],
-            "tags": [
-                "posts",
-                "post",
-                "visitor",
-                "get"
-            ]
-        }},
-        "/admins/regist": {"post": {
-            "summary": "Admin注册",
-            "produces": ["application/json"],
-            "description": "Admin注册，必须提供Email,Password,Name",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Admin"},
-                "description": "Admin响应对象"
-            }},
-            "operationId": "registAdmin",
-            "parameters": [{
-                "schema": {"$ref": "#/definitions/Admin"},
-                "in": "body",
-                "name": "admin",
-                "description": "管理员",
-                "required": true
-            }],
-            "tags": [
-                "post",
-                "admins",
-                "admin"
-            ],
-            "consumes": ["application/json"]
+            "tags": ["posts"]
         }},
         "/category/categories": {
             "post": {
@@ -182,11 +124,7 @@
                         "required": true
                     }
                 ],
-                "tags": [
-                    "categories",
-                    "admin",
-                    "post"
-                ],
+                "tags": ["category"],
                 "consumes": ["application/json"]
             },
             "get": {
@@ -202,11 +140,7 @@
                 }},
                 "operationId": "getCategoryList",
                 "parameters": [],
-                "tags": [
-                    "categories",
-                    "visitor",
-                    "get"
-                ],
+                "tags": ["category"],
                 "consumes": ["application/json"]
             }
         },
@@ -260,11 +194,34 @@
             }},
             "operationId": "findOne",
             "parameters": [{"$ref": "#/parameters/coachPath"}],
-            "tags": [
-                "coaches",
-                "visitor",
-                "get"
-            ]
+            "tags": ["coaches"]
+        }},
+        "/like/likes/{target}": {"get": {
+            "summary": "获得某一个Post的点赞信息",
+            "operationId": "getPostLikeds",
+            "description": "比如：立方体育XX like 100 unlike20 like true",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Like"},
+                "description": "Like响应对象"
+            }},
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "path",
+                    "name": "target",
+                    "description": "目标：比如可以nationteam的memberid，也可以是post的id",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "in": "formData",
+                    "name": "type",
+                    "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
+                    "type": "string",
+                    "required": true
+                }
+            ],
+            "tags": ["likes"]
         }},
         "/wemedia/authors": {
             "post": {
@@ -290,11 +247,7 @@
                         "required": true
                     }
                 ],
-                "tags": [
-                    "authors",
-                    "admin",
-                    "post"
-                ],
+                "tags": ["author"],
                 "consumes": ["application/json"]
             },
             "get": {
@@ -309,11 +262,7 @@
                 }},
                 "operationId": "getAuthors",
                 "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-                "tags": [
-                    "authors",
-                    "admin",
-                    "get"
-                ]
+                "tags": ["author"]
             }
         },
         "/games/competitions/{competitionId}/matches/{matchId}": {"get": {
@@ -328,21 +277,17 @@
                 {"$ref": "#/parameters/competitionPath"},
                 {"$ref": "#/parameters/matchPath"}
             ],
-            "tags": [
-                "match",
-                "visitor",
-                "get"
-            ]
+            "tags": ["match"]
         }},
-        "/admins/login": {"post": {
-            "summary": "Admin登录",
+        "/admin/admins/regist": {"post": {
+            "summary": "Admin注册",
             "produces": ["application/json"],
-            "description": "Admin登录，传入Email,Password的加密形式·",
+            "description": "Admin注册，必须提供Email,Password,Name",
             "responses": {"200": {
                 "schema": {"$ref": "#/definitions/Admin"},
                 "description": "Admin响应对象"
             }},
-            "operationId": "loginAdmin",
+            "operationId": "registAdmin",
             "parameters": [{
                 "schema": {"$ref": "#/definitions/Admin"},
                 "in": "body",
@@ -350,11 +295,7 @@
                 "description": "管理员",
                 "required": true
             }],
-            "tags": [
-                "get",
-                "admins",
-                "admin"
-            ],
+            "tags": ["admin"],
             "consumes": ["application/json"]
         }},
         "/games/coaches/teamcategory/{teamCategoryId}": {"get": {
@@ -366,11 +307,7 @@
             }},
             "operationId": "findCoachByTeamCategory",
             "parameters": [{"$ref": "#/parameters/teamCategoryPath"}],
-            "tags": [
-                "coaches",
-                "visitor",
-                "get"
-            ]
+            "tags": ["coaches"]
         }},
         "/games/players/{playerId}": {"get": {
             "summary": "获得球员信息",
@@ -399,95 +336,84 @@
                 {"$ref": "#/parameters/competitionPath"},
                 {"$ref": "#/parameters/teamPath"}
             ],
-            "tags": [
-                "competitionteam",
-                "visitor",
-                "get"
-            ]
+            "tags": ["competitionteam"]
         }},
         "/wemedia/tops": {
             "post": {
-                "summary": "创建一个PostTop",
-                "produces": ["application/json"],
-                "description": "将一个Post挂载到某一类目的Top上",
-                "responses": {
-                    "200": {
-                        "schema": {"$ref": "#/definitions/PostTop"},
-                        "description": "添加成功的postTop"
-                    },
-                    "400": {"description": "parameters in postTop are wrong"},
-                    "401": {"description": "don't have the right"}
-                },
-                "operationId": "addOrUpdatePostTop",
+                "summary": "添加Posts到对应的Category的Top",
+                "description": "传入类目Id以及对应的PostIds",
+                "responses": {"200": {"description": "Succ"}},
+                "operationId": "addTopPosts",
                 "parameters": [
                     {"$ref": "#/parameters/apiKeyYHeader"},
                     {
-                        "schema": {"$ref": "#/definitions/PostTop"},
-                        "in": "body",
-                        "name": "posttop",
-                        "description": "",
-                        "required": true
+                        "in": "formData",
+                        "name": "categoryId",
+                        "description": "类目Id",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "formData",
+                        "name": "postIds",
+                        "description": "postIds",
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "required": false
                     }
                 ],
-                "tags": [
-                    "posttop",
-                    "admin",
-                    "post"
-                ],
-                "consumes": ["application/json"]
+                "tags": ["tops"]
             },
             "get": {
-                "summary": "通过父categoryId获取所有子集category的置顶post",
-                "description": "通过父categoryId获取所有子集category的置顶post",
+                "summary": "获得类目下对应的文章列表",
+                "description": "传入类目Ids能够获得对应的posts:之所以用列表是因为console需要获知某一组类目下所有posts",
                 "responses": {"200": {
                     "schema": {
                         "type": "array",
-                        "items": {"type": "string"}
+                        "items": {"$ref": "#/definitions/Post"}
                     },
-                    "description": "PostId列表"
+                    "description": "Post列表"
                 }},
-                "operationId": "getChildTopPosts",
+                "operationId": "getTopPosts",
                 "parameters": [
                     {"$ref": "#/parameters/apiKeyYHeader"},
                     {
                         "in": "query",
-                        "name": "parent",
-                        "description": "父类目的categoryId",
-                        "type": "string",
+                        "name": "categoryIds",
+                        "description": "类目列表",
+                        "type": "array",
+                        "items": {"type": "string"},
                         "required": false
                     }
                 ],
-                "tags": [
-                    "posttop",
-                    "admin",
-                    "get"
-                ]
+                "tags": ["tops"]
+            },
+            "delete": {
+                "summary": "从对应的Category的Top上删除Posts",
+                "description": "传入类目Id以及对应的PostIds",
+                "responses": {"200": {"description": "Succ"}},
+                "operationId": "deleteTopPosts",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "formData",
+                        "name": "categoryId",
+                        "description": "类目Id",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "formData",
+                        "name": "postIds",
+                        "description": "postIds",
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "required": false
+                    }
+                ],
+                "tags": ["tops"]
             }
         },
-        "/wemedia/tops/posts": {"get": {
-            "summary": "当前类目下top新闻",
-            "description": "仅仅是当前类目",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Post"}
-                },
-                "description": "Post列表响应对象"
-            }},
-            "operationId": "getTopPosts",
-            "parameters": [{
-                "in": "query",
-                "name": "categoryId",
-                "description": "类目Id",
-                "type": "string",
-                "required": false
-            }],
-            "tags": [
-                "tops",
-                "visitor",
-                "get"
-            ]
-        }},
         "/file/token": {"get": {
             "summary": "从文件授权服务器上获取令牌",
             "description": "从文件授权服务器上获取令牌",
@@ -521,10 +447,7 @@
                     "required": false
                 }
             ],
-            "tags": [
-                "token",
-                "get"
-            ]
+            "tags": ["file-token"]
         }},
         "/games/referees/{refereeId}": {"get": {
             "summary": "获得裁判详细信息",
@@ -541,6 +464,63 @@
                 "get"
             ]
         }},
+        "/like/likes": {
+            "post": {
+                "summary": "对某一个目标点赞",
+                "operationId": "addLike",
+                "description": "一个Ip地址只能对一个目标点赞/踩一次，第二次仍会返回正确，但是数目不会变化",
+                "responses": {"200": {"description": "不管什么操作都会返回200"}},
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "formData",
+                        "name": "type",
+                        "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "formData",
+                        "name": "target",
+                        "description": "目标：比如可以nationteam的memberid，也可以是post的id",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "formData",
+                        "name": "like",
+                        "description": "ture 点赞，false 踩",
+                        "type": "boolean"
+                    }
+                ],
+                "tags": ["likes"]
+            },
+            "get": {
+                "summary": "获取喜欢列表",
+                "produces": ["application/json"],
+                "description": "将type=${type}的所有目标的喜欢情况返回，同时加入当前喜欢与否情况",
+                "responses": {"200": {
+                    "schema": {
+                        "type": "array",
+                        "items": {"$ref": "#/definitions/Like"}
+                    },
+                    "description": "Like列表响应对象"
+                }},
+                "operationId": "getLikes",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "formData",
+                        "name": "type",
+                        "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "tags": ["likes"],
+                "consumes": ["application/json"]
+            }
+        },
         "/games/staffs/{staffId}": {"get": {
             "summary": "获得职员信息",
             "description": "查看职员信息",
@@ -555,6 +535,25 @@
                 "visitor",
                 "get"
             ]
+        }},
+        "/admin/admins/login": {"post": {
+            "summary": "Admin登录",
+            "produces": ["application/json"],
+            "description": "Admin登录，传入Email,Password的加密形式·",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Admin"},
+                "description": "Admin响应对象"
+            }},
+            "operationId": "loginAdmin",
+            "parameters": [{
+                "schema": {"$ref": "#/definitions/Admin"},
+                "in": "body",
+                "name": "admin",
+                "description": "管理员",
+                "required": true
+            }],
+            "tags": ["admin"],
+            "consumes": ["application/json"]
         }},
         "/wemedia/posts/search": {"get": {
             "summary": "搜索Post",
@@ -630,11 +629,7 @@
                     "required": false
                 }
             ],
-            "tags": [
-                "posts",
-                "visitor",
-                "get"
-            ]
+            "tags": ["posts"]
         }},
         "/games/competitions/{competitionId}/matches": {"get": {
             "summary": "获取赛事比赛列表,即时间轴",
@@ -660,37 +655,8 @@
             ],
             "tags": [
                 "competitions",
-                "matches",
-                "visitor",
-                "get"
+                "matches"
             ]
-        }},
-        "/likes/{target}": {"get": {
-            "summary": "获得某一个Post的点赞信息",
-            "operationId": "getPostLikeds",
-            "description": "比如：立方体育XX like 100 unlike20 like true",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Like"},
-                "description": "Like响应对象"
-            }},
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {
-                    "in": "path",
-                    "name": "target",
-                    "description": "目标：比如可以nationteam的memberid，也可以是post的id",
-                    "type": "string",
-                    "required": true
-                },
-                {
-                    "in": "formData",
-                    "name": "type",
-                    "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
-                    "type": "string",
-                    "required": true
-                }
-            ],
-            "tags": ["likes"]
         }},
         "/games/competitions/{competitionId}": {"get": {
             "summary": "赛事所有的参赛球队信息和比赛信息（赛程）",
@@ -701,69 +667,22 @@
             }},
             "operationId": "findCompetition",
             "parameters": [{"$ref": "#/parameters/competitionPath"}],
-            "tags": [
-                "player",
-                "visitor",
-                "get"
-            ]
+            "tags": ["player"]
         }},
-        "/likes": {
-            "post": {
-                "summary": "对某一个目标点赞",
-                "operationId": "addLike",
-                "description": "一个Ip地址只能对一个目标点赞/踩一次，第二次仍会返回正确，但是数目不会变化",
-                "responses": {"200": {"description": "不管什么操作都会返回200"}},
-                "parameters": [
-                    {"$ref": "#/parameters/apiKeyYHeader"},
-                    {
-                        "in": "formData",
-                        "name": "type",
-                        "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
-                        "type": "string",
-                        "required": true
-                    },
-                    {
-                        "in": "formData",
-                        "name": "target",
-                        "description": "目标：比如可以nationteam的memberid，也可以是post的id",
-                        "type": "string",
-                        "required": true
-                    },
-                    {
-                        "in": "formData",
-                        "name": "like",
-                        "description": "ture 点赞，false 踩",
-                        "type": "boolean"
-                    }
-                ],
-                "tags": ["likes"]
-            },
-            "get": {
-                "summary": "获取喜欢列表",
-                "produces": ["application/json"],
-                "description": "将type=${type}的所有目标的喜欢情况返回，同时加入当前喜欢与否情况",
-                "responses": {"200": {
-                    "schema": {
-                        "type": "array",
-                        "items": {"$ref": "#/definitions/Like"}
-                    },
-                    "description": "Like列表响应对象"
-                }},
-                "operationId": "getLikes",
-                "parameters": [
-                    {"$ref": "#/parameters/apiKeyYHeader"},
-                    {
-                        "in": "formData",
-                        "name": "type",
-                        "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
-                        "type": "string",
-                        "required": true
-                    }
-                ],
-                "tags": ["likes"],
-                "consumes": ["application/json"]
-            }
-        },
+        "/admin/admins": {"get": {
+            "summary": "获得Admin列表",
+            "description": "返回所有的管理员",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Admin"}
+                },
+                "description": "Admin列表响应对象"
+            }},
+            "operationId": "getAdminList",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": ["admin"]
+        }},
         "/wemedia/posts": {
             "post": {
                 "summary": "创建一个Post",
@@ -788,11 +707,7 @@
                         "required": true
                     }
                 ],
-                "tags": [
-                    "posts",
-                    "admin",
-                    "post"
-                ],
+                "tags": ["posts"],
                 "consumes": ["application/json"]
             },
             "get": {
@@ -817,11 +732,7 @@
                         "required": false
                     }
                 ],
-                "tags": [
-                    "posts",
-                    "visitor",
-                    "get"
-                ]
+                "tags": ["posts"]
             },
             "delete": {
                 "summary": "删除Post",
@@ -843,11 +754,7 @@
                         "required": true
                     }
                 ],
-                "tags": [
-                    "posts",
-                    "admin",
-                    "post"
-                ],
+                "tags": ["posts"],
                 "consumes": ["application/json"]
             }
         },
@@ -863,11 +770,7 @@
                 {"$ref": "#/parameters/apiKeyYHeader"},
                 {"$ref": "#/parameters/authorPath"}
             ],
-            "tags": [
-                "author",
-                "admin",
-                "get"
-            ]
+            "tags": ["author"]
         }}
     },
     "host": "api.c-f.com:8000",

@@ -3,9 +3,7 @@
     "tags": 
     [
         "competitions",
-        "matches",
-        "visitor",
-        "get"
+        "matches"
     ],
 
     "description": "获取赛事比赛列表",

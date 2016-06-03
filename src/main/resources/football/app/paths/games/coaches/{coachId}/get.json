@@ -2,9 +2,7 @@
     "summary": "查看教练详情",
     "tags": 
     [
-        "coaches",
-        "visitor",
-        "get"
+        "coaches"
     ],
     "description": "查看一个教练详情",
     "parameters": 

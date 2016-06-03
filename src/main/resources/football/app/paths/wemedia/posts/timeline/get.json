@@ -2,9 +2,7 @@
     "summary": "获取时间轴形式的Post列表",
     "tags": 
     [
-        "timelineposts",
-        "visitor",
-        "get"
+        "posts"
     ],
 
     "operationId": "getTimelinePosts",

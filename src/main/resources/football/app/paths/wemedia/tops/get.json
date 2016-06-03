@@ -1,13 +1,11 @@
 {
-    "summary": "通过父categoryId获取所有子集category的置顶post",
+    "summary": "获得类目下对应的文章列表",
     "tags": 
     [
-        "posttop",
-        "admin",
-        "get"
+        "tops"
     ],
 
-    "description": "通过父categoryId获取所有子集category的置顶post",
+    "description": "传入类目Ids能够获得对应的posts:之所以用列表是因为console需要获知某一组类目下所有posts",
     "parameters": 
     [
         {
@@ -15,9 +13,14 @@
         },
 
         {
-            "description": "父类目的categoryId",
-            "name": "parent",
-            "type": "string",
+            "description": "类目列表",
+            "name": "categoryIds",
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            },
+
             "required": false,
             "in": "query"
         }
@@ -32,13 +35,13 @@
                 "type": "array",
                 "items": 
                 {
-                    "type": "string"
+                    "$ref": "#/definitions/Post"
                 }
             },
 
-            "description": "PostId列表"
+            "description": "Post列表"
         }
     },
 
-    "operationId": "getChildTopPosts"
+    "operationId": "getTopPosts"
 }

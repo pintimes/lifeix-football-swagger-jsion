@@ -2,9 +2,7 @@
     "summary": "删除Post的分类",
     "tags": 
     [
-        "posts",
-        "admin",
-        "post"
+        "posts"
     ],
 
     "description": "删除Post Category",

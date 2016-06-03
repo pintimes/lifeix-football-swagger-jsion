@@ -2,9 +2,7 @@
     "summary": "创建一个Author",
     "tags": 
     [
-        "authors",
-        "admin",
-        "post"
+        "author"
     ],
 
     "description": "创建一个Author,其中name必填",

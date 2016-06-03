@@ -2,9 +2,7 @@
     "summary": "获得比赛信息",
     "tags": 
     [
-        "match",
-        "visitor",
-        "get"
+        "match"
     ],
 
     "description": "获得比赛信息",

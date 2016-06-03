@@ -1,11 +1,11 @@
 {
-    "summary": "获得Authors列表",
+    "summary": "获得Admin列表",
     "tags": 
     [
-       "author"
+        "admin"
     ],
 
-    "description": "获得Authors列表",
+    "description": "返回所有的管理员",
     "parameters": 
     [
         {
@@ -22,13 +22,13 @@
                 "type": "array",
                 "items": 
                 {
-                    "$ref": "#/definitions/Author"
+                    "$ref": "#/definitions/Admin"
                 }
             },
 
-            "description": "Author列表响应对象"
+            "description": "Admin列表响应对象"
         }
     },
 
-    "operationId": "getAuthors"
+    "operationId": "getAdminList"
 }

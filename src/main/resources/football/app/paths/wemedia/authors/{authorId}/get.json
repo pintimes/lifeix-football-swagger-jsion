@@ -2,9 +2,7 @@
     "summary": "获得单个作者",
     "tags": 
     [
-        "author",
-        "admin",
-        "get"
+        "author"
     ],
 
     "description": "查看单个作者的信息",

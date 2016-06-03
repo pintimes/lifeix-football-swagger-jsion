@@ -2,8 +2,7 @@
     "summary": "从文件授权服务器上获取令牌",
     "tags": 
     [
-        "token",
-        "get"
+        "file-token"
     ],
 
     "description": "从文件授权服务器上获取令牌",

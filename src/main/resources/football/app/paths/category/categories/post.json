@@ -2,9 +2,7 @@
     "summary": "创建一个展示类目",
     "tags": 
     [
-        "categories",
-        "admin",
-        "post"
+       "category"
     ],
 
     "description": "类目用于WEB菜单栏",
