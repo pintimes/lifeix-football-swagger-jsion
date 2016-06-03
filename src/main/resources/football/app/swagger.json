@@ -139,6 +139,24 @@
             "type": "string",
             "required": true,
             "in": "path"
+        },
+        
+        "elearningPagePath": 
+        {
+            "description": "elearning单篇的ID",
+            "name": "pageId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+        
+        "elearningVideoPath": 
+        {
+            "description": "elearning视频的ID",
+            "name": "videoId",
+            "type": "string",
+            "required": true,
+            "in": "path"
         }
     }
 }

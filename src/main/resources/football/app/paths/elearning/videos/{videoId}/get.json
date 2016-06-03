@@ -1,0 +1,32 @@
+{
+    "summary": "获取单个视频详细信息",
+    "tags": 
+    [
+        "video",
+        "detail",
+        "get"
+    ],
+
+    "description": "获取单个视频详细信息",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/elearningVideoPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/ElearningVideo"
+            },
+
+            "description": "视频详细信息"
+        }
+    },
+
+    "operationId": "getElearningVideoById"
+}

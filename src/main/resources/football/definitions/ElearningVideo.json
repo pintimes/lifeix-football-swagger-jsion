@@ -1,0 +1,69 @@
+{
+    "description": "elearning视频",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "name": 
+        {
+            "description": "视频名称",
+            "type": "string"
+        },
+        "match": 
+        {
+            "description": "赛事ID",
+            "type": "string"
+        },
+        "topic": 
+        {
+            "description": "视频主题",
+            "type": "string"
+        },
+        "r1": 
+        {
+            "description": "左边答题选项列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/ElearningOption"
+            }
+        },
+        "r2": 
+        {
+            "description": "右边答题选项列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/ElearningOption"
+            }
+        },
+        "considerations": 
+        {
+            "description": "视频思考点",
+            "type": "string"
+        },
+        "explanation": 
+        {
+            "description": "视频解释",
+            "type": "string"
+        },
+        "rule": 
+        {
+            "description": "视频引用足球规则",
+            "type": "string"
+        },
+        "video": 
+        {
+            "description": "视频地址",
+            "type": "string"
+        },
+        "image": 
+        {
+            "description": "视频图片地址",
+            "type": "string"
+        }
+    }
+}
