@@ -88,6 +88,15 @@
             "required": true,
             "in": "path"
         },
+        "competitionTeamPath": 
+        {
+            "description": "赛事参赛队的Id",
+            "name": "competitionTeamId",
+            "format": "int64",
+            "type": "integer",
+            "required": true,
+            "in": "path"
+        },
         "teamCategoryPath": 
         {
             "description": "球队分类的Id",
@@ -142,6 +151,16 @@
         {
             "description": "队伍Id",
             "name": "teamId",
+            "format": "int64",
+            "type": "integer",
+            "required": true,
+            "in": "path"
+        },
+        
+		"matchTeamPath": 
+        {
+            "description": "比赛球队的Id",
+            "name": "matchTeamId",
             "format": "int64",
             "type": "integer",
             "required": true,

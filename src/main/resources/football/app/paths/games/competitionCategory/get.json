@@ -1,0 +1,30 @@
+{
+                "summary": "获取赛事分类列表",
+                "tags": [
+                    "CompetitionCategory",
+                    "get"
+                ],
+                "description": "获取赛事分类列表",
+                "parameters": [
+			        {
+			            "description": "0：国家队 类别 1：职业俱乐部 类别 2：业余俱乐部 4：校园足球队 5：其他",
+			            "name": "teamType",
+			            "format": "int32",
+			            "type": "integer",
+			            "required": false,
+			            "in": "query"
+			        }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CompetitionCategory"
+                            }
+                        },
+                        "description": "CompetitionCategory列表响应对象"
+                    }
+                },
+                "operationId": "getCompetitionCategories"
+            }

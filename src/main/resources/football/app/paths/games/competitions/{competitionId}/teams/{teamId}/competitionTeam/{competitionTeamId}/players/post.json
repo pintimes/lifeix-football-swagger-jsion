@@ -1,0 +1,67 @@
+{
+    "summary": "新增赛事参赛队球员",
+    "tags": 
+    [
+        "competitionteam"
+    ],
+
+    "description": "新增赛事参赛队球员",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+
+        {
+            "$ref": "#/parameters/teamPath"
+        },
+        
+        {
+            "$ref": "#/parameters/competitionTeamPath"
+        },
+        {
+            "description": "球员id example:1,2,13,14 ",
+            "name": "playerIds",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "球员报名位置 example:前锋,前锋,中场,门将 ",
+            "name": "positions",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "球员球衣号码 example:10,9,8,7 ",
+            "name": "jerseryNums",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "add success"
+        }
+    },
+
+    "operationId": "addCompetitionTeamPlayers"
+}

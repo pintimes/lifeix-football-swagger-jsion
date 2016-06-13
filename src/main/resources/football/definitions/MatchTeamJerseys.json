@@ -1,0 +1,32 @@
+{
+            "description": "比赛信息",
+            "type": "object",
+            "properties": {
+                "matchTeamId": {
+                    "description": "matchTeamId",
+                    "format": "int64",
+            		"type": "integer"
+                },
+		        "jacket": 
+		        {
+		            "description": "上衣",
+		            "type": "string"
+		        },
+		        "shorts": 
+		        {
+		            "description": "球裤",
+		            "type": "string"
+		        },
+		        "socks": 
+		        {
+		            "description": "球袜",
+		            "type": "string"
+		        },
+		        "image": 
+		        {
+		            "description": "球服照片",
+		            "type": "string"
+		        }
+            }
+           
+        }

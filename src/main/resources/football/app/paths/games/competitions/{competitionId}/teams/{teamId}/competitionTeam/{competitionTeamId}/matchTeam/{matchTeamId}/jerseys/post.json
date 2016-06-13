@@ -1,0 +1,61 @@
+{
+    "summary": "添加参加比赛球队的球衣样式",
+    "tags": 
+    [
+        "matchteam"
+    ],
+
+    "description": "添加参加比赛球队的球衣样式",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/competitionPath"
+        },
+
+        {
+            "$ref": "#/parameters/teamPath"
+        },
+        {
+            "$ref": "#/parameters/competitionTeamPath"
+        },
+        {
+            "$ref": "#/parameters/matchTeamPath"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/MatchTeamJerseys"
+            },
+
+            "description": "参加比赛球队的球衣样式",
+            "name": "matchTeamJerseys",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/MatchTeamJerseys"
+            },
+
+            "description": "MatchTeamJerseys响应对象"
+        }
+    },
+
+    "operationId": "addMatchTeamJerseys"
+}

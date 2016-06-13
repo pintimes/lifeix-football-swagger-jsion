@@ -1,0 +1,53 @@
+{
+    "summary": "新增比赛",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "新增比赛",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/FrontMatch"
+                }
+            },
+
+            "description": "对阵列表",
+            "name": "frontMatches",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+       "200": 
+        {
+            "description": "add success"
+        }
+    },
+
+    "operationId": "addMatch"
+}

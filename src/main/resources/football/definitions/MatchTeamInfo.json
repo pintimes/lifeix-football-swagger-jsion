@@ -9,11 +9,6 @@
             "format": "int64",
             "type": "integer"
         },
-        "name": 
-        {
-            "description": "球队名称：参见某场比赛的中国队",
-            "type": "string"
-        },
         "introduce": 
         {
             "description": "介绍",
@@ -24,6 +19,12 @@
             "description": "大名单公布时间",
             "type": "string",
             "format": "date-time"
+        },
+        "teamId": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
         },
          "teamInfo": 
         {

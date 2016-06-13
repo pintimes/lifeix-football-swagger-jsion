@@ -1,0 +1,60 @@
+{
+    "summary": "新增赛事参赛队职员",
+    "tags": 
+    [
+        "competitionteam"
+    ],
+
+    "description": "新增赛事参赛队职员",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+
+        {
+            "$ref": "#/parameters/teamPath"
+        },
+        
+        {
+            "$ref": "#/parameters/competitionTeamPath"
+        },
+        {
+            "description": "职员id example:1,2 ",
+            "name": "staffIds",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "职员位置 example:领队,队医 ",
+            "name": "positions",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "add success"
+        }
+    },
+
+    "operationId": "addCompetitionTeamStaffs"
+}

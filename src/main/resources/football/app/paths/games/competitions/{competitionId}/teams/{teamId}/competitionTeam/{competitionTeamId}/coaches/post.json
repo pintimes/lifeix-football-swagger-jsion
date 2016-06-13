@@ -1,0 +1,60 @@
+{
+    "summary": "新增赛事参赛队教练",
+    "tags": 
+    [
+        "competitionteam"
+    ],
+
+    "description": "新增赛事参赛队教练",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+
+        {
+            "$ref": "#/parameters/teamPath"
+        },
+        
+        {
+            "$ref": "#/parameters/competitionTeamPath"
+        },
+        {
+            "description": "教练id example:1,2 ",
+            "name": "coachIds",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "球员报名位置 example:主教练,助理教练",
+            "name": "positions",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "add success"
+        }
+    },
+
+    "operationId": "addCompetitionTeamCoaches"
+}

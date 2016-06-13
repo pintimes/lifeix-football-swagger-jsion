@@ -9,11 +9,6 @@
             "format": "int64",
             "type": "integer"
         },
-        "name": 
-        {
-            "description": "球队名称：参见某场比赛的中国队",
-            "type": "string"
-        },
         "introduce": 
         {
             "description": "介绍",

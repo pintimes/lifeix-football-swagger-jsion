@@ -1,0 +1,29 @@
+{
+    "summary": "查看球队分类下的所有球员",
+    "tags": 
+    [
+        "players"
+    ],
+    "description": "查看球队分类下的所有球员",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/teamCategoryPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/TeamCategoryPlayer"
+            },
+
+            "description": "map形式，如：中国队：球员1，球员2.国奥队：球员3，球员4"
+        }
+    },
+
+    "operationId": "findPlayerByTeamCategory"
+}

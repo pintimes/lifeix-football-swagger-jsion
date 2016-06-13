@@ -1,0 +1,62 @@
+{
+            "description": "比赛信息",
+            "type": "object",
+            "properties": {
+            	"id": {
+                    "description": "id",
+                    "format": "int64",
+            		"type": "integer"
+                },
+                "matchTeamId": {
+                    "description": "matchTeamId",
+                    "format": "int64",
+            		"type": "integer"
+                },
+                "playerId": {
+                    "description": "球员id",
+                    "format": "int64",
+            		"type": "integer"
+                },
+                "jeserysNum": {
+                    "description": "球衣号码",
+                    "format": "int32",
+            		"type": "integer"
+                },
+		        "position": 
+		        {
+		            "description": "场上位置",
+		            "type": "string"
+		        },
+		        "first": 
+		        {
+		            "description": "是否首发,1:首发 0：替补",
+                    "format": "int32",
+            		"type": "integer"
+		        },
+		        "showTime": 
+		        {
+		            "description": "上场时间",
+                    "format": "int32",
+            		"type": "integer"
+		        },
+		        "goal": 
+		        {
+		            "description": "本场进球数",
+                    "format": "int32",
+            		"type": "integer"
+		        },
+		        "booking": 
+		        {
+		            "description": "黄牌数",
+                    "format": "int32",
+            		"type": "integer"
+		        },
+		        "dismissal": 
+		        {
+		            "description": "红牌数",
+                    "format": "int32",
+            		"type": "integer"
+		        }
+            }
+           
+        }

@@ -1,0 +1,51 @@
+{
+    "summary": "新增赛事分类",
+    "tags": 
+    [
+        "competitionCategory"
+    ],
+
+    "description": "新增赛事分类",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/CompetitionCategory"
+            },
+
+            "description": "赛事分类",
+            "name": "competitionCategory",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/CompetitionCategory"
+            },
+
+            "description": "CompetitionCategory响应对象"
+        }
+    },
+
+    "operationId": "addCompetitionCategory"
+}

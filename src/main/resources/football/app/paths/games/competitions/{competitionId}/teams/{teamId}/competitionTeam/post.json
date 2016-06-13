@@ -1,0 +1,58 @@
+{
+    "summary": "新增赛事参赛队",
+    "tags": 
+    [
+        "competitionteam"
+    ],
+
+    "description": "新增赛事参赛队",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+
+        {
+            "$ref": "#/parameters/teamPath"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/CompetitionTeam"
+            },
+
+            "description": "赛事参赛队",
+            "name": "competitionTeam",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/CompetitionTeam"
+            },
+
+            "description": "CompetitionTeam响应对象"
+        }
+    },
+
+    "operationId": "addCompetitionTeam"
+}

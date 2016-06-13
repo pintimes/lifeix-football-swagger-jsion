@@ -30,5 +30,5 @@
         }
     },
 
-    "operationId": "findMatchTeam"
+    "operationId": "findMatch"
 }
