@@ -745,8 +745,8 @@
                 },
                 {
                     "in": "query",
-                    "name": "file_list",
-                    "description": "要上传的原始文件名称列表",
+                    "name": "file_name",
+                    "description": "要上传的原始文件名称列表，如果要上传多个，则传多个file_name并列， eg. file_name=xxx&file_name=xxx",
                     "type": "array",
                     "items": {"type": "string"},
                     "required": false
@@ -2719,6 +2719,10 @@
                     "description": "右边答题选项列表",
                     "type": "array",
                     "items": {"$ref": "#/definitions/ElearningOption"}
+                },
+                "duration": {
+                    "description": "视频时长",
+                    "type": "int64"
                 },
                 "image": {
                     "description": "视频图片地址",

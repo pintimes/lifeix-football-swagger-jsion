@@ -29,8 +29,8 @@
         },
 
         {
-            "description": "要上传的原始文件名称列表",
-            "name": "file_list",
+            "description": "要上传的原始文件名称列表，如果要上传多个，则传多个file_name并列， eg. file_name=xxx&file_name=xxx",
+            "name": "file_name",
             "type": "array",
             "items": 
             {
