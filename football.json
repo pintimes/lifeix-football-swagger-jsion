@@ -2192,6 +2192,10 @@
                     "type": "array",
                     "items": {"$ref": "#/definitions/ElearningOption"}
                 },
+                "duration": {
+                    "description": "视频时长",
+                    "type": "int64"
+                },
                 "image": {
                     "description": "视频图片地址",
                     "type": "string"

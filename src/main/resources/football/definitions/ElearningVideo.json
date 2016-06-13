@@ -64,6 +64,11 @@
         {
             "description": "视频图片地址",
             "type": "string"
+        },
+        "duration": 
+        {
+            "description": "视频时长",
+            "type": "int64"
         }
     }
 }
