@@ -68,7 +68,8 @@
         "duration": 
         {
             "description": "视频时长",
-            "type": "int64"
+            "type": "integer",
+            "format": "int64"
         }
     }
 }
