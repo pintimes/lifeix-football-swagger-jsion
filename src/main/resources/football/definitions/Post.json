@@ -16,7 +16,6 @@
 
         "author": 
         {
-             "description": "可以理解成作者或者来源",
             "$ref": "#/definitions/Author"
         },
 

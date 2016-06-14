@@ -1,0 +1,41 @@
+{
+    "summary": "查询一只球队对应的赛事球队（1-n）",
+    "tags": 
+    [
+        "team",
+        "competitionteam"
+    ],
+    "description": "查询一只球队对应的赛事球队（1-n）",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/teamPath"
+        },
+        {
+            "description": "大名单公布时间",
+            "name": "setupDate",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/CompetitionTeam"
+                }
+            },
+
+            "description": "CompetitionTeam列表响应对象"
+        }
+    },
+
+    "operationId": "getCompetitionTeams"
+}

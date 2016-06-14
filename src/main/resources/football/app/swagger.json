@@ -186,24 +186,6 @@
             "in": "path"
         },
 
-        "objectPath": 
-        {
-            "description": "喜欢对象的ID",
-            "name": "objectId",
-            "type": "string",
-            "required": true,
-            "in": "path"
-        },
-
-        "userPath": 
-        {
-            "description": "用户的ID",
-            "name": "userId",
-            "type": "string",
-            "required": true,
-            "in": "path"
-        },
-        
         "elearningPagePath": 
         {
             "description": "elearning单篇的ID",

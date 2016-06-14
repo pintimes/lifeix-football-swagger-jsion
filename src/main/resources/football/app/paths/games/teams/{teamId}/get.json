@@ -1,0 +1,29 @@
+{
+    "summary": "查询一只球队",
+    "tags": 
+    [
+        "team"
+    ],
+    "description": "查询一只球队",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/teamPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Team"
+            },
+
+            "description": "查询一只球队"
+        }
+    },
+
+    "operationId": "getTeam"
+}

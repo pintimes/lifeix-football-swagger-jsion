@@ -1,6 +1,578 @@
 {
     "basePath": "/football",
     "paths": {
+        "/games/teams/{teamId}/competitionTeam/setupDates": {"get": {
+            "summary": "查询一只球队对应的赛事球队的公布时间",
+            "description": "查询一只球队对应的赛事球队的公布时间",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "description": "CompetitionTeam列表响应对象"
+            }},
+            "operationId": "getCompetitionTeamSetUpDate",
+            "parameters": [{"$ref": "#/parameters/teamPath"}],
+            "tags": [
+                "team",
+                "competitionteam",
+                "setupDate"
+            ]
+        }},
+        "/wemedia/posts/{postId}": {"get": {
+            "summary": "根据Id获取Post详情",
+            "description": "返回Post详情对象",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Post"},
+                "description": "Post响应对象"
+            }},
+            "operationId": "getPostDetail",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/postPath"}
+            ],
+            "tags": ["posts"]
+        }},
+        "/games/coaches": {"post": {
+            "summary": "新增教练",
+            "produces": ["application/json"],
+            "description": "教练的新增",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Coach"},
+                "description": "Coach响应对象"
+            }},
+            "operationId": "addCoach",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "schema": {"$ref": "#/definitions/Coach"},
+                    "in": "body",
+                    "name": "coach",
+                    "description": "教练",
+                    "required": true
+                }
+            ],
+            "tags": ["coach"],
+            "consumes": ["application/json"]
+        }},
+        "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/staffs": {"post": {
+            "summary": "新增赛事参赛队职员",
+            "produces": ["application/json"],
+            "description": "新增赛事参赛队职员",
+            "responses": {"200": {"description": "add success"}},
+            "operationId": "addCompetitionTeamStaffs",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/competitionPath"},
+                {"$ref": "#/parameters/teamPath"},
+                {"$ref": "#/parameters/competitionTeamPath"},
+                {
+                    "in": "query",
+                    "name": "staffIds",
+                    "description": "职员id example:1,2 ",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "in": "query",
+                    "name": "positions",
+                    "description": "职员位置 example:领队,队医 ",
+                    "type": "string",
+                    "required": true
+                }
+            ],
+            "tags": ["competitionteam"],
+            "consumes": ["application/json"]
+        }},
+        "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/coaches": {"post": {
+            "summary": "新增赛事参赛队教练",
+            "produces": ["application/json"],
+            "description": "新增赛事参赛队教练",
+            "responses": {"200": {"description": "add success"}},
+            "operationId": "addCompetitionTeamCoaches",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/competitionPath"},
+                {"$ref": "#/parameters/teamPath"},
+                {"$ref": "#/parameters/competitionTeamPath"},
+                {
+                    "in": "query",
+                    "name": "coachIds",
+                    "description": "教练id example:1,2 ",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "in": "query",
+                    "name": "positions",
+                    "description": "球员报名位置 example:主教练,助理教练",
+                    "type": "string",
+                    "required": true
+                }
+            ],
+            "tags": ["competitionteam"],
+            "consumes": ["application/json"]
+        }},
+        "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/matchTeam/{matchTeamId}": {"get": {
+            "summary": "获得比赛球队的详细信息,包括教练、球员(首发、替补)、工作人员信息、球衣",
+            "description": "获得比赛球队的详细信息,包括教练、球员(首发、替补)、工作人员信息、球衣",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/MatchTeam"},
+                "description": "MatchTeam响应对象"
+            }},
+            "operationId": "findMatchTeam",
+            "parameters": [
+                {"$ref": "#/parameters/competitionPath"},
+                {"$ref": "#/parameters/teamPath"},
+                {"$ref": "#/parameters/competitionTeamPath"},
+                {"$ref": "#/parameters/matchTeamPath"}
+            ],
+            "tags": ["matchteam"]
+        }},
+        "/like/likes/{target}": {"get": {
+            "summary": "获得某一个Post的点赞信息",
+            "operationId": "getPostLikeds",
+            "description": "比如：立方体育XX like 100 unlike20 like true",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Like"},
+                "description": "Like响应对象"
+            }},
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "path",
+                    "name": "target",
+                    "description": "目标：比如可以nationteam的memberid，也可以是post的id",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "in": "formData",
+                    "name": "type",
+                    "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
+                    "type": "string",
+                    "required": true
+                }
+            ],
+            "tags": ["likes"]
+        }},
+        "/elearning/videos": {"get": {
+            "summary": "按videoIds获取视频详情列表",
+            "produces": ["application/json"],
+            "description": "按videoIds获取视频详情列表",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ElearningVideo"}
+                },
+                "description": "视频详情列表"
+            }},
+            "operationId": "getElearningVideoListByIds",
+            "parameters": [{
+                "in": "query",
+                "name": "videoIds",
+                "description": "多个videoId，参数传多次，videoIds.example:videoIds=xxx&videoIds=xxx",
+                "type": "string",
+                "required": true
+            }],
+            "tags": [
+                "videos",
+                "videoIds",
+                "get"
+            ]
+        }},
+        "/games/competitions/{competitionId}/matches/{matchId}": {"get": {
+            "summary": "获得比赛信息",
+            "description": "获得比赛信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Match"},
+                "description": "Match响应对象"
+            }},
+            "operationId": "findMatch",
+            "parameters": [
+                {"$ref": "#/parameters/competitionPath"},
+                {"$ref": "#/parameters/matchPath"}
+            ],
+            "tags": ["match"]
+        }},
+        "/admin/admins/regist": {"post": {
+            "summary": "Admin注册",
+            "produces": ["application/json"],
+            "description": "Admin注册，必须提供Email,Password,Name",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Admin"},
+                "description": "Admin响应对象"
+            }},
+            "operationId": "registAdmin",
+            "parameters": [{
+                "schema": {"$ref": "#/definitions/Admin"},
+                "in": "body",
+                "name": "admin",
+                "description": "管理员",
+                "required": true
+            }],
+            "tags": ["admin"],
+            "consumes": ["application/json"]
+        }},
+        "/games/players/{playerId}": {"get": {
+            "summary": "获得球员信息",
+            "description": "查看球员信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Player"},
+                "description": "TLPlayer响应对象"
+            }},
+            "operationId": "getPlayer",
+            "parameters": [{"$ref": "#/parameters/playerPath"}],
+            "tags": [
+                "player",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/matchTeam/{matchTeamId}/jerseys": {"post": {
+            "summary": "添加参加比赛球队的球衣样式",
+            "produces": ["application/json"],
+            "description": "添加参加比赛球队的球衣样式",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/MatchTeamJerseys"},
+                "description": "MatchTeamJerseys响应对象"
+            }},
+            "operationId": "addMatchTeamJerseys",
+            "parameters": [
+                {"$ref": "#/parameters/competitionPath"},
+                {"$ref": "#/parameters/teamPath"},
+                {"$ref": "#/parameters/competitionTeamPath"},
+                {"$ref": "#/parameters/matchTeamPath"},
+                {
+                    "schema": {"$ref": "#/definitions/MatchTeamJerseys"},
+                    "in": "body",
+                    "name": "matchTeamJerseys",
+                    "description": "参加比赛球队的球衣样式",
+                    "required": true
+                }
+            ],
+            "tags": ["matchteam"],
+            "consumes": ["application/json"]
+        }},
+        "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/matchTeam/{matchTeamId}/players": {"post": {
+            "summary": "添加参加比赛的球员",
+            "produces": ["application/json"],
+            "description": "添加参加比赛的球员",
+            "responses": {"200": {"description": "add success"}},
+            "operationId": "addMatchTeamPlayers",
+            "parameters": [
+                {"$ref": "#/parameters/competitionPath"},
+                {"$ref": "#/parameters/teamPath"},
+                {"$ref": "#/parameters/competitionTeamPath"},
+                {"$ref": "#/parameters/matchTeamPath"},
+                {
+                    "schema": {
+                        "type": "array",
+                        "items": {"$ref": "#/definitions/MatchTeamPlayer"}
+                    },
+                    "in": "body",
+                    "name": "playerRecords",
+                    "description": "参加比赛的球员列表",
+                    "required": true
+                }
+            ],
+            "tags": ["matchteam"],
+            "consumes": ["application/json"]
+        }},
+        "/games/referees/{refereeId}": {"get": {
+            "summary": "获得裁判详细信息",
+            "description": "查看裁判信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Referee"},
+                "description": "Referee响应对象"
+            }},
+            "operationId": "findReferee",
+            "parameters": [{"$ref": "#/parameters/refereePath"}],
+            "tags": [
+                "referee",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/games/courts": {"post": {
+            "summary": "新增球场",
+            "produces": ["application/json"],
+            "description": "新增球场",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Court"},
+                "description": "Court响应对象"
+            }},
+            "operationId": "addCourt",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "schema": {"$ref": "#/definitions/Court"},
+                    "in": "body",
+                    "name": "court",
+                    "description": "球场",
+                    "required": true
+                }
+            ],
+            "tags": ["court"],
+            "consumes": ["application/json"]
+        }},
+        "/games/staffs/{staffId}": {"get": {
+            "summary": "获得职员信息",
+            "description": "查看职员信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Staff"},
+                "description": "Staff响应对象"
+            }},
+            "operationId": "findStaff",
+            "parameters": [{"$ref": "#/parameters/staffPath"}],
+            "tags": [
+                "staff",
+                "visitor",
+                "get"
+            ]
+        }},
+        "/elearning/categories": {"get": {
+            "summary": "获取elearning类目",
+            "produces": ["application/json"],
+            "description": "按种类返回对应的分类目录树",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ElearningCategory"}
+                },
+                "description": "Category列表"
+            }},
+            "operationId": "getElearningCategoryList",
+            "parameters": [{
+                "in": "query",
+                "name": "type",
+                "description": "类目种类，| 0 培训 | 1 测试 |",
+                "type": "integer",
+                "required": true
+            }],
+            "tags": [
+                "elearning",
+                "categories",
+                "get"
+            ]
+        }},
+        "/admin/admins/login": {"post": {
+            "summary": "Admin登录",
+            "produces": ["application/json"],
+            "description": "Admin登录，传入Email,Password的加密形式·",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Admin"},
+                "description": "Admin响应对象"
+            }},
+            "operationId": "loginAdmin",
+            "parameters": [{
+                "schema": {"$ref": "#/definitions/Admin"},
+                "in": "body",
+                "name": "admin",
+                "description": "管理员",
+                "required": true
+            }],
+            "tags": ["admin"],
+            "consumes": ["application/json"]
+        }},
+        "/wemedia/posts/search": {"get": {
+            "summary": "搜索Post",
+            "description": "根据搜索条件获取Post列表，每次搜索不能超过30条",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Post"}
+                },
+                "description": "Post列表响应对象"
+            }},
+            "operationId": "search",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "query",
+                    "name": "categoryId",
+                    "description": "类目id",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "authorId",
+                    "description": "作者id",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "startDate",
+                    "format": "date-time",
+                    "description": "查询开始日期,单位天",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "endDate",
+                    "format": "date-time",
+                    "description": "查询结束日期,单位天",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "date",
+                    "format": "date-time",
+                    "description": "查询开始时间。example:分页时，传递第一页最后一条记录的createTime(long)",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "limit",
+                    "format": "int32",
+                    "description": "一页显示多少",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "orderBy",
+                    "description": "按照那个字段排序",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "isDesc",
+                    "description": "是否按时间倒序,默认值true",
+                    "type": "boolean",
+                    "required": false
+                }
+            ],
+            "tags": ["posts"]
+        }},
+        "/elearning/videos/{videoId}": {"get": {
+            "summary": "获取单个视频详细信息",
+            "description": "获取单个视频详细信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/ElearningVideo"},
+                "description": "视频详细信息"
+            }},
+            "operationId": "getElearningVideoById",
+            "parameters": [{"$ref": "#/parameters/elearningVideoPath"}],
+            "tags": [
+                "video",
+                "detail",
+                "get"
+            ]
+        }},
+        "/admin/admins": {"get": {
+            "summary": "获得Admin列表",
+            "description": "返回所有的管理员",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Admin"}
+                },
+                "description": "Admin列表响应对象"
+            }},
+            "operationId": "getAdminList",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": ["admin"]
+        }},
+        "/elearning/pages/{pageId}/videos": {"get": {
+            "summary": "单篇下分页获取视频列表",
+            "produces": ["application/json"],
+            "description": "单篇下分页获取视频列表",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/ElearningVideoList"},
+                "description": "视频列表"
+            }},
+            "operationId": "getElearningVideoList",
+            "parameters": [
+                {"$ref": "#/parameters/elearningPagePath"},
+                {
+                    "in": "query",
+                    "name": "loadMoreVideoIndex",
+                    "description": "单篇下存在多个视频时，向下加载视频列表的起始videoIndex，不传默认返回第一页数据",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "limit",
+                    "description": "每个单篇显示的视频数量，默认值30",
+                    "type": "integer",
+                    "required": false
+                }
+            ],
+            "tags": [
+                "page",
+                "videos",
+                "get"
+            ]
+        }},
+        "/elearning/categories/{categoryId}/pages": {"get": {
+            "summary": "分页获取某个分类下的单篇列表",
+            "produces": ["application/json"],
+            "description": "分页获取某个分类下的单篇列表",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/ElearningPageList"},
+                "description": "单篇列表"
+            }},
+            "operationId": "getElearningPageList",
+            "parameters": [
+                {"$ref": "#/parameters/categoryPath"},
+                {
+                    "in": "query",
+                    "name": "loadMorePageIndex",
+                    "description": "分类下存在多个单篇时，向下加载单篇列表的起始pageIndex，不传默认返回第一页数据",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "pageLimit",
+                    "description": "每页显示单篇的数量，默认值20",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "videoLimit",
+                    "description": "每个单篇显示的视频数量，默认值30",
+                    "type": "integer",
+                    "required": false
+                }
+            ],
+            "tags": [
+                "category",
+                "pages",
+                "get"
+            ]
+        }},
+        "/games/competitions": {"post": {
+            "summary": "新增赛事",
+            "produces": ["application/json"],
+            "description": "新增赛事",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Competition"},
+                "description": "Competition响应对象"
+            }},
+            "operationId": "addCompetition",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "schema": {"$ref": "#/definitions/Competition"},
+                    "in": "body",
+                    "name": "competition",
+                    "description": "赛事",
+                    "required": true
+                }
+            ],
+            "tags": ["competition"],
+            "consumes": ["application/json"]
+        }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/players": {"post": {
             "summary": "新增赛事参赛队球员",
             "produces": ["application/json"],
@@ -151,6 +723,17 @@
                 "consumes": ["application/json"]
             }
         },
+        "/games/teams/{teamId}": {"get": {
+            "summary": "查询一只球队",
+            "description": "查询一只球队",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/Team"},
+                "description": "查询一只球队"
+            }},
+            "operationId": "getTeam",
+            "parameters": [{"$ref": "#/parameters/teamPath"}],
+            "tags": ["team"]
+        }},
         "/games/matchStaffs": {"post": {
             "summary": "新增比赛工作人员:比赛监督、赛事监督",
             "produces": ["application/json"],
@@ -171,71 +754,6 @@
                 }
             ],
             "tags": ["matchStaff"],
-            "consumes": ["application/json"]
-        }},
-        "/wemedia/posts/{postId}": {"get": {
-            "summary": "根据Id获取Post详情",
-            "description": "返回Post详情对象",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Post"},
-                "description": "Post响应对象"
-            }},
-            "operationId": "getPostDetail",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/postPath"}
-            ],
-            "tags": ["posts"]
-        }},
-        "/games/coaches": {"post": {
-            "summary": "新增教练",
-            "produces": ["application/json"],
-            "description": "教练的新增",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Coach"},
-                "description": "Coach响应对象"
-            }},
-            "operationId": "addCoach",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {
-                    "schema": {"$ref": "#/definitions/Coach"},
-                    "in": "body",
-                    "name": "coach",
-                    "description": "教练",
-                    "required": true
-                }
-            ],
-            "tags": ["coach"],
-            "consumes": ["application/json"]
-        }},
-        "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/staffs": {"post": {
-            "summary": "新增赛事参赛队职员",
-            "produces": ["application/json"],
-            "description": "新增赛事参赛队职员",
-            "responses": {"200": {"description": "add success"}},
-            "operationId": "addCompetitionTeamStaffs",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/competitionPath"},
-                {"$ref": "#/parameters/teamPath"},
-                {"$ref": "#/parameters/competitionTeamPath"},
-                {
-                    "in": "query",
-                    "name": "staffIds",
-                    "description": "职员id example:1,2 ",
-                    "type": "string",
-                    "required": true
-                },
-                {
-                    "in": "query",
-                    "name": "positions",
-                    "description": "职员位置 example:领队,队医 ",
-                    "type": "string",
-                    "required": true
-                }
-            ],
-            "tags": ["competitionteam"],
             "consumes": ["application/json"]
         }},
         "/category/categories": {
@@ -281,35 +799,6 @@
                 "consumes": ["application/json"]
             }
         },
-        "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/coaches": {"post": {
-            "summary": "新增赛事参赛队教练",
-            "produces": ["application/json"],
-            "description": "新增赛事参赛队教练",
-            "responses": {"200": {"description": "add success"}},
-            "operationId": "addCompetitionTeamCoaches",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/competitionPath"},
-                {"$ref": "#/parameters/teamPath"},
-                {"$ref": "#/parameters/competitionTeamPath"},
-                {
-                    "in": "query",
-                    "name": "coachIds",
-                    "description": "教练id example:1,2 ",
-                    "type": "string",
-                    "required": true
-                },
-                {
-                    "in": "query",
-                    "name": "positions",
-                    "description": "球员报名位置 example:主教练,助理教练",
-                    "type": "string",
-                    "required": true
-                }
-            ],
-            "tags": ["competitionteam"],
-            "consumes": ["application/json"]
-        }},
         "/games/referees": {"get": {
             "summary": "获得裁判列表",
             "description": "获得裁判列表",
@@ -362,21 +851,31 @@
             "parameters": [{"$ref": "#/parameters/coachPath"}],
             "tags": ["coaches"]
         }},
-        "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/matchTeam/{matchTeamId}": {"get": {
-            "summary": "获得比赛球队的详细信息,包括教练、球员(首发、替补)、工作人员信息、球衣",
-            "description": "获得比赛球队的详细信息,包括教练、球员(首发、替补)、工作人员信息、球衣",
+        "/games/teams/{teamId}/competitionTeam": {"get": {
+            "summary": "查询一只球队对应的赛事球队（1-n）",
+            "description": "查询一只球队对应的赛事球队（1-n）",
             "responses": {"200": {
-                "schema": {"$ref": "#/definitions/MatchTeam"},
-                "description": "MatchTeam响应对象"
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/CompetitionTeam"}
+                },
+                "description": "CompetitionTeam列表响应对象"
             }},
-            "operationId": "findMatchTeam",
+            "operationId": "getCompetitionTeams",
             "parameters": [
-                {"$ref": "#/parameters/competitionPath"},
                 {"$ref": "#/parameters/teamPath"},
-                {"$ref": "#/parameters/competitionTeamPath"},
-                {"$ref": "#/parameters/matchTeamPath"}
+                {
+                    "in": "query",
+                    "name": "setupDate",
+                    "description": "大名单公布时间",
+                    "type": "string",
+                    "required": false
+                }
             ],
-            "tags": ["matchteam"]
+            "tags": [
+                "team",
+                "competitionteam"
+            ]
         }},
         "/games/players": {"post": {
             "summary": "新增球员",
@@ -399,58 +898,6 @@
             ],
             "tags": ["player"],
             "consumes": ["application/json"]
-        }},
-        "/like/likes/{target}": {"get": {
-            "summary": "获得某一个Post的点赞信息",
-            "operationId": "getPostLikeds",
-            "description": "比如：立方体育XX like 100 unlike20 like true",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Like"},
-                "description": "Like响应对象"
-            }},
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {
-                    "in": "path",
-                    "name": "target",
-                    "description": "目标：比如可以nationteam的memberid，也可以是post的id",
-                    "type": "string",
-                    "required": true
-                },
-                {
-                    "in": "formData",
-                    "name": "type",
-                    "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
-                    "type": "string",
-                    "required": true
-                }
-            ],
-            "tags": ["likes"]
-        }},
-        "/elearning/videos": {"get": {
-            "summary": "按videoIds获取视频详情列表",
-            "produces": ["application/json"],
-            "description": "按videoIds获取视频详情列表",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/ElearningVideo"}
-                },
-                "description": "视频详情列表"
-            }},
-            "operationId": "getElearningVideoListByIds",
-            "parameters": [{
-                "in": "query",
-                "name": "videoIds",
-                "description": "多个videoId，参数传多次，videoIds.example:videoIds=xxx&videoIds=xxx",
-                "type": "string",
-                "required": true
-            }],
-            "tags": [
-                "videos",
-                "videoIds",
-                "get"
-            ]
         }},
         "/wemedia/authors": {
             "post": {
@@ -494,39 +941,6 @@
                 "tags": ["author"]
             }
         },
-        "/games/competitions/{competitionId}/matches/{matchId}": {"get": {
-            "summary": "获得比赛信息",
-            "description": "获得比赛信息",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Match"},
-                "description": "Match响应对象"
-            }},
-            "operationId": "findMatch",
-            "parameters": [
-                {"$ref": "#/parameters/competitionPath"},
-                {"$ref": "#/parameters/matchPath"}
-            ],
-            "tags": ["match"]
-        }},
-        "/admin/admins/regist": {"post": {
-            "summary": "Admin注册",
-            "produces": ["application/json"],
-            "description": "Admin注册，必须提供Email,Password,Name",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Admin"},
-                "description": "Admin响应对象"
-            }},
-            "operationId": "registAdmin",
-            "parameters": [{
-                "schema": {"$ref": "#/definitions/Admin"},
-                "in": "body",
-                "name": "admin",
-                "description": "管理员",
-                "required": true
-            }],
-            "tags": ["admin"],
-            "consumes": ["application/json"]
-        }},
         "/games/coaches/teamcategory/{teamCategoryId}": {"get": {
             "summary": "查看球队分类下的所有教练",
             "description": "查看球队分类下的所有教练",
@@ -537,21 +951,6 @@
             "operationId": "findCoachByTeamCategory",
             "parameters": [{"$ref": "#/parameters/teamCategoryPath"}],
             "tags": ["coaches"]
-        }},
-        "/games/players/{playerId}": {"get": {
-            "summary": "获得球员信息",
-            "description": "查看球员信息",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Player"},
-                "description": "TLPlayer响应对象"
-            }},
-            "operationId": "getPlayer",
-            "parameters": [{"$ref": "#/parameters/playerPath"}],
-            "tags": [
-                "player",
-                "visitor",
-                "get"
-            ]
         }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam": {
             "post": {
@@ -669,56 +1068,6 @@
                 "tags": ["tops"]
             }
         },
-        "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/matchTeam/{matchTeamId}/jerseys": {"post": {
-            "summary": "添加参加比赛球队的球衣样式",
-            "produces": ["application/json"],
-            "description": "添加参加比赛球队的球衣样式",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/MatchTeamJerseys"},
-                "description": "MatchTeamJerseys响应对象"
-            }},
-            "operationId": "addMatchTeamJerseys",
-            "parameters": [
-                {"$ref": "#/parameters/competitionPath"},
-                {"$ref": "#/parameters/teamPath"},
-                {"$ref": "#/parameters/competitionTeamPath"},
-                {"$ref": "#/parameters/matchTeamPath"},
-                {
-                    "schema": {"$ref": "#/definitions/MatchTeamJerseys"},
-                    "in": "body",
-                    "name": "matchTeamJerseys",
-                    "description": "参加比赛球队的球衣样式",
-                    "required": true
-                }
-            ],
-            "tags": ["matchteam"],
-            "consumes": ["application/json"]
-        }},
-        "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/matchTeam/{matchTeamId}/players": {"post": {
-            "summary": "添加参加比赛的球员",
-            "produces": ["application/json"],
-            "description": "添加参加比赛的球员",
-            "responses": {"200": {"description": "add success"}},
-            "operationId": "addMatchTeamPlayers",
-            "parameters": [
-                {"$ref": "#/parameters/competitionPath"},
-                {"$ref": "#/parameters/teamPath"},
-                {"$ref": "#/parameters/competitionTeamPath"},
-                {"$ref": "#/parameters/matchTeamPath"},
-                {
-                    "schema": {
-                        "type": "array",
-                        "items": {"$ref": "#/definitions/MatchTeamPlayer"}
-                    },
-                    "in": "body",
-                    "name": "playerRecords",
-                    "description": "参加比赛的球员列表",
-                    "required": true
-                }
-            ],
-            "tags": ["matchteam"],
-            "consumes": ["application/json"]
-        }},
         "/file/token": {"get": {
             "summary": "从文件授权服务器上获取令牌",
             "description": "从文件授权服务器上获取令牌",
@@ -753,43 +1102,6 @@
                 }
             ],
             "tags": ["file-token"]
-        }},
-        "/games/referees/{refereeId}": {"get": {
-            "summary": "获得裁判详细信息",
-            "description": "查看裁判信息",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Referee"},
-                "description": "Referee响应对象"
-            }},
-            "operationId": "findReferee",
-            "parameters": [{"$ref": "#/parameters/refereePath"}],
-            "tags": [
-                "referee",
-                "visitor",
-                "get"
-            ]
-        }},
-        "/games/courts": {"post": {
-            "summary": "新增球场",
-            "produces": ["application/json"],
-            "description": "新增球场",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Court"},
-                "description": "Court响应对象"
-            }},
-            "operationId": "addCourt",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {
-                    "schema": {"$ref": "#/definitions/Court"},
-                    "in": "body",
-                    "name": "court",
-                    "description": "球场",
-                    "required": true
-                }
-            ],
-            "tags": ["court"],
-            "consumes": ["application/json"]
         }},
         "/like/likes": {
             "post": {
@@ -848,21 +1160,6 @@
                 "consumes": ["application/json"]
             }
         },
-        "/games/staffs/{staffId}": {"get": {
-            "summary": "获得职员信息",
-            "description": "查看职员信息",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Staff"},
-                "description": "Staff响应对象"
-            }},
-            "operationId": "findStaff",
-            "parameters": [{"$ref": "#/parameters/staffPath"}],
-            "tags": [
-                "staff",
-                "visitor",
-                "get"
-            ]
-        }},
         "/games/players/teamcategory/{teamCategoryId}": {"get": {
             "summary": "查看球队分类下的所有球员",
             "description": "查看球队分类下的所有球员",
@@ -873,141 +1170,6 @@
             "operationId": "findPlayerByTeamCategory",
             "parameters": [{"$ref": "#/parameters/teamCategoryPath"}],
             "tags": ["players"]
-        }},
-        "/elearning/categories": {"get": {
-            "summary": "获取elearning类目",
-            "produces": ["application/json"],
-            "description": "按种类返回对应的分类目录树",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/ElearningCategory"}
-                },
-                "description": "Category列表"
-            }},
-            "operationId": "getElearningCategoryList",
-            "parameters": [{
-                "in": "query",
-                "name": "type",
-                "description": "类目种类，| 0 培训 | 1 测试 |",
-                "type": "integer",
-                "required": true
-            }],
-            "tags": [
-                "elearning",
-                "categories",
-                "get"
-            ]
-        }},
-        "/admin/admins/login": {"post": {
-            "summary": "Admin登录",
-            "produces": ["application/json"],
-            "description": "Admin登录，传入Email,Password的加密形式·",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Admin"},
-                "description": "Admin响应对象"
-            }},
-            "operationId": "loginAdmin",
-            "parameters": [{
-                "schema": {"$ref": "#/definitions/Admin"},
-                "in": "body",
-                "name": "admin",
-                "description": "管理员",
-                "required": true
-            }],
-            "tags": ["admin"],
-            "consumes": ["application/json"]
-        }},
-        "/wemedia/posts/search": {"get": {
-            "summary": "搜索Post",
-            "description": "根据搜索条件获取Post列表，每次搜索不能超过30条",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Post"}
-                },
-                "description": "Post列表响应对象"
-            }},
-            "operationId": "search",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {
-                    "in": "query",
-                    "name": "categoryId",
-                    "description": "类目id",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "authorId",
-                    "description": "作者id",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "startDate",
-                    "format": "date-time",
-                    "description": "查询开始日期,单位天",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "endDate",
-                    "format": "date-time",
-                    "description": "查询结束日期,单位天",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "date",
-                    "format": "date-time",
-                    "description": "查询开始时间。example:分页时，传递第一页最后一条记录的createTime(long)",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "limit",
-                    "format": "int32",
-                    "description": "一页显示多少",
-                    "type": "integer",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "orderBy",
-                    "description": "按照那个字段排序",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "isDesc",
-                    "description": "是否按时间倒序,默认值true",
-                    "type": "boolean",
-                    "required": false
-                }
-            ],
-            "tags": ["posts"]
-        }},
-        "/elearning/videos/{videoId}": {"get": {
-            "summary": "获取单个视频详细信息",
-            "description": "获取单个视频详细信息",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/ElearningVideo"},
-                "description": "视频详细信息"
-            }},
-            "operationId": "getElearningVideoById",
-            "parameters": [{"$ref": "#/parameters/elearningVideoPath"}],
-            "tags": [
-                "video",
-                "detail",
-                "get"
-            ]
         }},
         "/games/competitions/{competitionId}/matches": {
             "post": {
@@ -1072,52 +1234,6 @@
             "parameters": [{"$ref": "#/parameters/competitionPath"}],
             "tags": ["competition"]
         }},
-        "/admin/admins": {"get": {
-            "summary": "获得Admin列表",
-            "description": "返回所有的管理员",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Admin"}
-                },
-                "description": "Admin列表响应对象"
-            }},
-            "operationId": "getAdminList",
-            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-            "tags": ["admin"]
-        }},
-        "/elearning/pages/{pageId}/videos": {"get": {
-            "summary": "单篇下分页获取视频列表",
-            "produces": ["application/json"],
-            "description": "单篇下分页获取视频列表",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/ElearningVideoList"},
-                "description": "视频列表"
-            }},
-            "operationId": "getElearningVideoList",
-            "parameters": [
-                {"$ref": "#/parameters/elearningPagePath"},
-                {
-                    "in": "query",
-                    "name": "loadMoreVideoIndex",
-                    "description": "单篇下存在多个视频时，向下加载视频列表的起始videoIndex，不传默认返回第一页数据",
-                    "type": "integer",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "limit",
-                    "description": "每个单篇显示的视频数量，默认值30",
-                    "type": "integer",
-                    "required": false
-                }
-            ],
-            "tags": [
-                "page",
-                "videos",
-                "get"
-            ]
-        }},
         "/games/competitionCategory": {
             "post": {
                 "summary": "新增赛事分类",
@@ -1166,45 +1282,6 @@
                 ]
             }
         },
-        "/elearning/categories/{categoryId}/pages": {"get": {
-            "summary": "分页获取某个分类下的单篇列表",
-            "produces": ["application/json"],
-            "description": "分页获取某个分类下的单篇列表",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/ElearningPageList"},
-                "description": "单篇列表"
-            }},
-            "operationId": "getElearningPageList",
-            "parameters": [
-                {"$ref": "#/parameters/categoryPath"},
-                {
-                    "in": "query",
-                    "name": "loadMorePageIndex",
-                    "description": "分类下存在多个单篇时，向下加载单篇列表的起始pageIndex，不传默认返回第一页数据",
-                    "type": "integer",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "pageLimit",
-                    "description": "每页显示单篇的数量，默认值20",
-                    "type": "integer",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "videoLimit",
-                    "description": "每个单篇显示的视频数量，默认值30",
-                    "type": "integer",
-                    "required": false
-                }
-            ],
-            "tags": [
-                "category",
-                "pages",
-                "get"
-            ]
-        }},
         "/games/competitions/{competitionId}/matches/{matchId}/matchstaffs": {"post": {
             "summary": "新增比赛工作人员",
             "produces": ["application/json"],
@@ -1231,28 +1308,6 @@
                 }
             ],
             "tags": ["match"],
-            "consumes": ["application/json"]
-        }},
-        "/games/competitions": {"post": {
-            "summary": "新增赛事",
-            "produces": ["application/json"],
-            "description": "新增赛事",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Competition"},
-                "description": "Competition响应对象"
-            }},
-            "operationId": "addCompetition",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {
-                    "schema": {"$ref": "#/definitions/Competition"},
-                    "in": "body",
-                    "name": "competition",
-                    "description": "赛事",
-                    "required": true
-                }
-            ],
-            "tags": ["competition"],
             "consumes": ["application/json"]
         }},
         "/games/staffs": {"post": {
@@ -1423,13 +1478,6 @@
             "type": "integer",
             "required": true
         },
-        "userPath": {
-            "in": "path",
-            "name": "userId",
-            "description": "用户的ID",
-            "type": "string",
-            "required": true
-        },
         "playerPath": {
             "in": "path",
             "name": "playerId",
@@ -1444,13 +1492,6 @@
             "format": "int64",
             "description": "球队分类的Id",
             "type": "integer",
-            "required": true
-        },
-        "objectPath": {
-            "in": "path",
-            "name": "objectId",
-            "description": "喜欢对象的ID",
-            "type": "string",
             "required": true
         },
         "authorPath": {
@@ -1928,28 +1969,6 @@
                 }
             }
         },
-        "PostTop": {
-            "description": "置顶文章",
-            "type": "object",
-            "properties": {
-                "parent": {
-                    "description": "父类目id",
-                    "type": "string"
-                },
-                "postIds": {
-                    "description": "文章id.example:111,222,333 置顶的文章id以,分隔.top新闻的显示顺序即id在字符串中的显示顺序",
-                    "type": "string"
-                },
-                "categoryName": {
-                    "description": "类目名称",
-                    "type": "string"
-                },
-                "categoryId": {
-                    "description": "categoryId",
-                    "type": "string"
-                }
-            }
-        },
         "CompetitionInfo": {
             "description": "赛事概要",
             "type": "object",
@@ -2349,10 +2368,7 @@
                     "description": "post创建日期",
                     "type": "string"
                 },
-                "author": {
-                    "description": "可以理解成作者或者来源",
-                    "$ref": "#/definitions/Author"
-                },
+                "author": {"$ref": "#/definitions/Author"},
                 "videos": {
                     "description": "视频地址",
                     "type": "array",
