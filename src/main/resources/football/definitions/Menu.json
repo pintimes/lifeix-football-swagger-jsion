@@ -1,0 +1,39 @@
+{
+    "description": "菜单",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
+        "name": 
+        {
+            "description": "菜单名称",
+            "type": "string"
+        },
+
+        "iconUrl": 
+        {
+            "description": "菜单图标地址",
+            "type": "string"
+        },
+
+        "page": 
+        {
+            "description": "跳转页面标示，比如：post_detail_page，该标示与页面名称一致",
+            "type": "string"
+        },
+
+        "menus": 
+        {
+            "description": "子菜单",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Menu"
+            }
+        }
+    }
+}

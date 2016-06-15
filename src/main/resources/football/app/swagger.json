@@ -60,7 +60,7 @@
             "in": "header"
         },
 
-		 "authorPath": 
+        "authorPath": 
         {
             "description": "作者的Id",
             "name": "authorId",
@@ -78,7 +78,7 @@
             "required": true,
             "in": "path"
         },
-        
+
         "competitionPath": 
         {
             "description": "赛事的Id",
@@ -88,6 +88,7 @@
             "required": true,
             "in": "path"
         },
+
         "competitionTeamPath": 
         {
             "description": "赛事参赛队的Id",
@@ -97,6 +98,7 @@
             "required": true,
             "in": "path"
         },
+
         "teamCategoryPath": 
         {
             "description": "球队分类的Id",
@@ -117,6 +119,15 @@
             "in": "path"
         },
 
+        "platformPath": 
+        {
+            "description": "平台：wap、web、app",
+            "name": "platform",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+
         "playerPath": 
         {
             "description": "球员Id",
@@ -126,7 +137,7 @@
             "required": true,
             "in": "path"
         },
-        
+
         "coachPath": 
         {
             "description": "教练Id",
@@ -136,7 +147,7 @@
             "required": true,
             "in": "path"
         },
-        
+
         "refereePath": 
         {
             "description": "裁判Id",
@@ -156,8 +167,8 @@
             "required": true,
             "in": "path"
         },
-        
-		"matchTeamPath": 
+
+        "matchTeamPath": 
         {
             "description": "比赛球队的Id",
             "name": "matchTeamId",
@@ -194,7 +205,7 @@
             "required": true,
             "in": "path"
         },
-        
+
         "elearningVideoPath": 
         {
             "description": "elearning视频的ID",

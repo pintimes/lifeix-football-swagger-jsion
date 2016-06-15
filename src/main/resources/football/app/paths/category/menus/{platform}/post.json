@@ -23,18 +23,23 @@
         },
 
         {
-            "description": "类目",
-            "name": "categories",
-            "required": true,
-            "in": "body",
+            "$ref": "#/parameters/platformPath"
+        },
+
+        {
+            "description": "相应平台对应的完整菜单列表",
+            "name": "menus",
             "schema": 
             {
                 "type": "array",
                 "items": 
                 {
-                    "$ref": "#/definitions/Category"
+                    "$ref": "#/definitions/Menu"
                 }
-            }
+            },
+
+            "required": true,
+            "in": "body"
         }
     ],
 
@@ -44,10 +49,10 @@
         {
             "schema": 
             {
-                "$ref": "#/definitions/Category"
+                "$ref": "#/definitions/Menu"
             },
 
-            "description": "Category响应对象"
+            "description": "Menu响应对象"
         },
 
         "400": 
@@ -56,5 +61,5 @@
         }
     },
 
-    "operationId": "addCategory"
+    "operationId": "addMenu"
 }
