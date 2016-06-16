@@ -2,9 +2,7 @@
     "summary": "获取elearning类目",
     "tags": 
     [
-    	"elearning",
-        "categories",
-        "get"
+    	"getElearningCategories"
     ],
 
     "description": "按种类返回对应的分类目录树",
@@ -41,5 +39,5 @@
         }
     },
 
-    "operationId": "getElearningCategoryList"
+    "operationId": "getElearningCategories"
 }

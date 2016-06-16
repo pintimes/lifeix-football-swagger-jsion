@@ -2,9 +2,7 @@
     "summary": "单篇下分页获取视频列表",
     "tags": 
     [
-    	"page",
-        "videos",
-        "get"
+    	"getElearningVideos"
     ],
 
     "description": "单篇下分页获取视频列表",
@@ -20,14 +18,14 @@
             "$ref": "#/parameters/elearningPagePath"
         },
         {
-            "description": "单篇下存在多个视频时，向下加载视频列表的起始videoIndex，不传默认返回第一页数据",
+            "description": "单篇下存在多个视频，分页加载更多时，把上一次请求的视频列表中最后一个video的videoIndex作为起始索引，不传默认返回第一页数据",
             "name": "loadMoreVideoIndex",
             "type": "integer",
             "required": false,
             "in": "query"
         },
 		{
-            "description": "每个单篇显示的视频数量，默认值30",
+            "description": "每个单篇显示的视频数量，默认值20",
             "name": "limit",
             "type": "integer",
             "required": false,
@@ -41,12 +39,16 @@
         {
             "schema": 
             {
-                "$ref": "#/definitions/ElearningVideoList"
+                "type": "array",
+	            "items": 
+	            {
+	                "$ref": "#/definitions/ElearningVideo"
+	            },
             },
 
             "description": "视频列表"
         }
     },
 
-    "operationId": "getElearningVideoList"
+    "operationId": "getElearningVideos"
 }

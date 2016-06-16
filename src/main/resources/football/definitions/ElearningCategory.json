@@ -22,12 +22,6 @@
             "description": "父目录Id",
             "type": "string"
         },
-		"type": 
-        {
-            "description": "分类类型 类别 0：培训  1：测试",
-            "format": "int32",
-            "type": "integer"
-        },
         "cats": 
         {
             "description": "子类目",
@@ -36,6 +30,12 @@
             {
                 "$ref": "#/definitions/ElearningCategory"
             }
+        },
+        "pageCount": 
+        {
+            "description": "类目下的单篇总数量",
+            "format": "int32",
+            "type": "integer"
         }
     }
 }
