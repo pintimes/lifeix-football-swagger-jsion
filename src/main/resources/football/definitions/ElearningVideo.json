@@ -7,24 +7,9 @@
             "description": "id",
             "type": "string"
         },
-        "name": 
-        {
-            "description": "视频名称",
-            "type": "string"
-        },
-        "match": 
-        {
-            "description": "赛事ID",
-            "type": "string"
-        },
-        "topic": 
-        {
-            "description": "视频主题",
-            "type": "string"
-        },
         "r1": 
         {
-            "description": "左边答题选项列表",
+            "description": "答题选项列表1",
             "type": "array",
             "items": 
             {
@@ -33,7 +18,7 @@
         },
         "r2": 
         {
-            "description": "右边答题选项列表",
+            "description": "答题选项列表2",
             "type": "array",
             "items": 
             {
@@ -55,12 +40,12 @@
             "description": "视频引用足球规则",
             "type": "string"
         },
-        "video": 
+        "videoPath": 
         {
             "description": "视频地址",
             "type": "string"
         },
-        "image": 
+        "imagePath": 
         {
             "description": "视频图片地址",
             "type": "string"
@@ -70,12 +55,6 @@
             "description": "视频时长",
             "type": "integer",
             "format": "int64"
-        },
-        "videoIndex": 
-        {
-            "description": "视频在单篇中的顺序索引",
-            "format": "int32",
-            "type": "integer"
-        },
+        }
     }
 }

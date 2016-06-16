@@ -1,0 +1,47 @@
+{
+    "description": "elearning培训类目",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "name": 
+        {
+            "description": "类目名称",
+            "type": "string"
+        },
+        "image": 
+        {
+            "description": "类目图片地址",
+            "type": "string"
+        },
+        "parentId": 
+        {
+            "description": "父目录Id",
+            "type": "string"
+        },
+        "cats": 
+        {
+            "description": "子类目",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/ElearningTrainingCategory"
+            }
+        },
+        "pageCount": 
+        {
+            "description": "类目下的单篇总数量",
+            "format": "int32",
+            "type": "integer"
+        },
+        "type": 
+        {
+            "description": "类目对应的页面类型：1-视频列表  | 2-文章列表 | 3-测试",
+            "format": "int32",
+            "type": "integer"
+        }
+    }
+}

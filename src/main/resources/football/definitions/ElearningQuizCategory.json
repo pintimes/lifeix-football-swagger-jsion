@@ -1,5 +1,5 @@
 {
-    "description": "elearning类目",
+    "description": "elearning测试类目",
     "properties": 
     {
         "id": 
@@ -28,12 +28,12 @@
             "type": "array",
             "items": 
             {
-                "$ref": "#/definitions/ElearningCategory"
+                "$ref": "#/definitions/ElearningQuizCategory"
             }
         },
-        "pageCount": 
+        "type": 
         {
-            "description": "类目下的单篇总数量",
+            "description": "类目对应的页面类型：1-视频列表  | 2-文章列表 | 3-测试",
             "format": "int32",
             "type": "integer"
         }

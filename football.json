@@ -278,6 +278,20 @@
                 "get"
             ]
         }},
+        "/elearning/quiz_categories": {"get": {
+            "summary": "获取elearning测试类目",
+            "produces": ["application/json"],
+            "description": "获取elearning测试类目",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ElearningQuizCategory"}
+                },
+                "description": "测试类目列表"
+            }},
+            "operationId": "getElearningQuizCategories",
+            "tags": ["getElearningQuizCategories"]
+        }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/matchTeam/{matchTeamId}/jerseys": {"post": {
             "summary": "添加参加比赛球队的球衣样式",
             "produces": ["application/json"],
@@ -380,26 +394,36 @@
                 "get"
             ]
         }},
-        "/elearning/categories": {"get": {
-            "summary": "获取elearning类目",
+        "/elearning/training_categories/{categoryId}/pages": {"get": {
+            "summary": "分页获取培训分类下的单篇列表",
             "produces": ["application/json"],
-            "description": "按种类返回对应的分类目录树",
+            "description": "分页获取培训分类下的单篇列表",
             "responses": {"200": {
                 "schema": {
                     "type": "array",
-                    "items": {"$ref": "#/definitions/ElearningCategory"}
+                    "items": {"$ref": "#/definitions/ElearningPage"}
                 },
-                "description": "Category列表"
+                "description": "单篇列表"
             }},
-            "operationId": "getElearningCategories",
-            "parameters": [{
-                "in": "query",
-                "name": "type",
-                "description": "类目种类，| 0 培训 | 1 测试 |",
-                "type": "integer",
-                "required": true
-            }],
-            "tags": ["getElearningCategories"]
+            "operationId": "getElearningTrainingPageList",
+            "parameters": [
+                {"$ref": "#/parameters/elearningTrainingCategoryPath"},
+                {
+                    "in": "query",
+                    "name": "start",
+                    "description": "跳过的单篇数量，不传返回第一页",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "limit",
+                    "description": "每页显示的单篇数量，默认值20",
+                    "type": "integer",
+                    "required": false
+                }
+            ],
+            "tags": ["getElearningTrainingPageList"]
         }},
         "/admin/admins/login": {"post": {
             "summary": "Admin登录",
@@ -520,75 +544,6 @@
             "operationId": "getAdminList",
             "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
             "tags": ["admin"]
-        }},
-        "/elearning/pages/{pageId}/videos": {"get": {
-            "summary": "单篇下分页获取视频列表",
-            "produces": ["application/json"],
-            "description": "单篇下分页获取视频列表",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/ElearningVideo"}
-                },
-                "description": "视频列表"
-            }},
-            "operationId": "getElearningVideos",
-            "parameters": [
-                {"$ref": "#/parameters/elearningPagePath"},
-                {
-                    "in": "query",
-                    "name": "loadMoreVideoIndex",
-                    "description": "单篇下存在多个视频，分页加载更多时，把上一次请求的视频列表中最后一个video的videoIndex作为起始索引，不传默认返回第一页数据",
-                    "type": "integer",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "limit",
-                    "description": "每个单篇显示的视频数量，默认值20",
-                    "type": "integer",
-                    "required": false
-                }
-            ],
-            "tags": ["getElearningVideos"]
-        }},
-        "/elearning/categories/{categoryId}/pages": {"get": {
-            "summary": "分页获取某个分类下的单篇列表",
-            "produces": ["application/json"],
-            "description": "分页获取某个分类下的单篇列表",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/ElearningPage"}
-                },
-                "description": "单篇列表"
-            }},
-            "operationId": "getElearningPageList",
-            "parameters": [
-                {"$ref": "#/parameters/categoryPath"},
-                {
-                    "in": "query",
-                    "name": "loadMorePageIndex",
-                    "description": "分类下存在多个单篇，分页加载更多时，把上一次请求的单篇列表中最后一个page的pageIndex作为起始索引，不传默认返回第一页数据",
-                    "type": "integer",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "pageLimit",
-                    "description": "每页显示单篇的数量，默认值20",
-                    "type": "integer",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "videoLimit",
-                    "description": "每个单篇显示的视频数量，默认值20",
-                    "type": "integer",
-                    "required": false
-                }
-            ],
-            "tags": ["getElearningPageList"]
         }},
         "/games/competitions": {"post": {
             "summary": "新增赛事",
@@ -714,6 +669,20 @@
                 }
             ],
             "tags": ["posts"]
+        }},
+        "/elearning/training_categories": {"get": {
+            "summary": "获取elearning培训类目",
+            "produces": ["application/json"],
+            "description": "获取elearning培训类目",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ElearningTrainingCategory"}
+                },
+                "description": "培训类目列表"
+            }},
+            "operationId": "getElearningTrainingCategories",
+            "tags": ["getElearningTrainingCategories"]
         }},
         "/wemedia/posts/{postId}/categories": {
             "post": {
@@ -1230,6 +1199,21 @@
                 ]
             }
         },
+        "/elearning/quiz_categories/{categoryId}/pages": {"get": {
+            "summary": "随机获取测试分类下的单篇列表",
+            "produces": ["application/json"],
+            "description": "随机获取测试分类下的单篇列表",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ElearningPage"}
+                },
+                "description": "单篇列表"
+            }},
+            "operationId": "getElearningQuizPageList",
+            "parameters": [{"$ref": "#/parameters/elearningQuizCategoryPath"}],
+            "tags": ["getElearningQuizPageList"]
+        }},
         "/file/token/upload": {"get": {
             "summary": "从文件授权服务器上获取上传令牌",
             "description": "从文件授权服务器上获取上传令牌",
@@ -1560,17 +1544,17 @@
             "type": "integer",
             "required": true
         },
+        "elearningQuizCategoryPath": {
+            "in": "path",
+            "name": "categoryId",
+            "description": "elearning测试类目Id",
+            "type": "string",
+            "required": true
+        },
         "postPath": {
             "in": "path",
             "name": "postId",
             "description": "Post的ID",
-            "type": "string",
-            "required": true
-        },
-        "elearningPagePath": {
-            "in": "path",
-            "name": "pageId",
-            "description": "elearning单篇的ID",
             "type": "string",
             "required": true
         },
@@ -1587,6 +1571,13 @@
             "format": "int64",
             "description": "教练Id",
             "type": "integer",
+            "required": true
+        },
+        "elearningTrainingCategoryPath": {
+            "in": "path",
+            "name": "categoryId",
+            "description": "elearning培训类目Id",
+            "type": "string",
             "required": true
         },
         "matchPath": {
@@ -1928,6 +1919,42 @@
                 }
             }
         },
+        "ElearningTrainingCategory": {
+            "description": "elearning培训类目",
+            "properties": {
+                "image": {
+                    "description": "类目图片地址",
+                    "type": "string"
+                },
+                "pageCount": {
+                    "format": "int32",
+                    "description": "类目下的单篇总数量",
+                    "type": "integer"
+                },
+                "cats": {
+                    "description": "子类目",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ElearningTrainingCategory"}
+                },
+                "name": {
+                    "description": "类目名称",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "type": {
+                    "format": "int32",
+                    "description": "类目对应的页面类型：1-视频列表  | 2-文章列表 | 3-测试",
+                    "type": "integer"
+                },
+                "parentId": {
+                    "description": "父目录Id",
+                    "type": "string"
+                }
+            }
+        },
         "CompetitionTeamInfo": {
             "description": "赛事队伍信息",
             "type": "object",
@@ -1964,11 +1991,6 @@
                     "description": "副标题",
                     "type": "string"
                 },
-                "pageIndex": {
-                    "format": "int32",
-                    "description": "单篇在类目中的顺序索引",
-                    "type": "integer"
-                },
                 "videos": {
                     "description": "视频列表",
                     "type": "array",
@@ -1988,17 +2010,12 @@
                 },
                 "type": {
                     "format": "int32",
-                    "description": "页面类型 类别 0：视频列表  1：幻灯片 2: 测试说明页",
+                    "description": "页面类型： 1-视频页  | 2-文章页|",
                     "type": "integer"
                 },
                 "animation": {
                     "description": "动画地址",
                     "type": "string"
-                },
-                "totalVideoCount": {
-                    "format": "int32",
-                    "description": "单篇拥有的视频总数",
-                    "type": "integer"
                 }
             }
         },
@@ -2108,37 +2125,6 @@
                     "description": "子菜单",
                     "type": "array",
                     "items": {"$ref": "#/definitions/Menu"}
-                }
-            }
-        },
-        "ElearningCategory": {
-            "description": "elearning类目",
-            "properties": {
-                "image": {
-                    "description": "类目图片地址",
-                    "type": "string"
-                },
-                "pageCount": {
-                    "format": "int32",
-                    "description": "类目下的单篇总数量",
-                    "type": "integer"
-                },
-                "cats": {
-                    "description": "子类目",
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/ElearningCategory"}
-                },
-                "name": {
-                    "description": "类目名称",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "id",
-                    "type": "string"
-                },
-                "parentId": {
-                    "description": "父目录Id",
-                    "type": "string"
                 }
             }
         },
@@ -2263,6 +2249,37 @@
                 },
                 "teamLeader": {"$ref": "#/definitions/Staff"},
                 "teamInfo": {"$ref": "#/definitions/TeamInfo"}
+            }
+        },
+        "ElearningQuizCategory": {
+            "description": "elearning测试类目",
+            "properties": {
+                "image": {
+                    "description": "类目图片地址",
+                    "type": "string"
+                },
+                "cats": {
+                    "description": "子类目",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ElearningQuizCategory"}
+                },
+                "name": {
+                    "description": "类目名称",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "type": {
+                    "format": "int32",
+                    "description": "类目对应的页面类型：1-视频列表  | 2-文章列表 | 3-测试",
+                    "type": "integer"
+                },
+                "parentId": {
+                    "description": "父目录Id",
+                    "type": "string"
+                }
             }
         },
         "TeamCategoryCoach": {
@@ -2776,60 +2793,43 @@
             "description": "elearning视频",
             "properties": {
                 "r2": {
-                    "description": "右边答题选项列表",
+                    "description": "答题选项列表2",
                     "type": "array",
                     "items": {"$ref": "#/definitions/ElearningOption"}
-                },
-                "image": {
-                    "description": "视频图片地址",
-                    "type": "string"
-                },
-                "match": {
-                    "description": "赛事ID",
-                    "type": "string"
-                },
-                "rule": {
-                    "description": "视频引用足球规则",
-                    "type": "string"
-                },
-                "video": {
-                    "description": "视频地址",
-                    "type": "string"
-                },
-                "explanation": {
-                    "description": "视频解释",
-                    "type": "string"
-                },
-                "considerations": {
-                    "description": "视频思考点",
-                    "type": "string"
-                },
-                "videoIndex": {
-                    "format": "int32",
-                    "description": "视频在单篇中的顺序索引",
-                    "type": "integer"
                 },
                 "duration": {
                     "format": "int64",
                     "description": "视频时长",
                     "type": "integer"
                 },
-                "name": {
-                    "description": "视频名称",
+                "videoPath": {
+                    "description": "视频地址",
                     "type": "string"
                 },
-                "topic": {
-                    "description": "视频主题",
+                "imagePath": {
+                    "description": "视频图片地址",
+                    "type": "string"
+                },
+                "rule": {
+                    "description": "视频引用足球规则",
                     "type": "string"
                 },
                 "id": {
                     "description": "id",
                     "type": "string"
                 },
+                "explanation": {
+                    "description": "视频解释",
+                    "type": "string"
+                },
                 "r1": {
-                    "description": "左边答题选项列表",
+                    "description": "答题选项列表1",
                     "type": "array",
                     "items": {"$ref": "#/definitions/ElearningOption"}
+                },
+                "considerations": {
+                    "description": "视频思考点",
+                    "type": "string"
                 }
             }
         },

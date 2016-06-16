@@ -197,15 +197,24 @@
             "in": "path"
         },
 
-        "elearningPagePath": 
+		"elearningTrainingCategoryPath": 
         {
-            "description": "elearning单篇的ID",
-            "name": "pageId",
+            "description": "elearning培训类目Id",
+            "name": "categoryId",
             "type": "string",
             "required": true,
             "in": "path"
         },
 
+		"elearningQuizCategoryPath": 
+        {
+            "description": "elearning测试类目Id",
+            "name": "categoryId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+        
         "elearningVideoPath": 
         {
             "description": "elearning视频的ID",

@@ -1,0 +1,30 @@
+{
+    "summary": "获取elearning测试类目",
+    "tags": 
+    [
+    	"getElearningQuizCategories"
+    ],
+    "description": "获取elearning测试类目",
+    "produces": 
+    [
+        "application/json"
+    ],
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/ElearningQuizCategory"
+                }
+            },
+
+            "description": "测试类目列表"
+        }
+    },
+
+    "operationId": "getElearningQuizCategories"
+}

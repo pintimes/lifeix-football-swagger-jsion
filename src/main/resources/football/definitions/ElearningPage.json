@@ -46,19 +46,7 @@
         },
         "type": 
         {
-            "description": "页面类型 类别 0：视频列表  1：幻灯片 2: 测试说明页",
-            "format": "int32",
-            "type": "integer"
-        },
-        "pageIndex": 
-        {
-            "description": "单篇在类目中的顺序索引",
-            "format": "int32",
-            "type": "integer"
-        },
-        "totalVideoCount": 
-        {
-            "description": "单篇拥有的视频总数",
+            "description": "页面类型： 1-视频页  | 2-文章页|",
             "format": "int32",
             "type": "integer"
         }
