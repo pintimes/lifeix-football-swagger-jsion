@@ -1,7 +1,7 @@
 {
     "description": "上传文件令牌",
     "properties": {
-        "token": {
+        "uptoken": {
             "description": "令牌值",
             "type": "string"
         },

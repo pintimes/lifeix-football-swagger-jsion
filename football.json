@@ -1235,7 +1235,7 @@
                 {
                     "in": "query",
                     "name": "file_name",
-                    "description": "要上传的原始文件名称列表，如果要上传多个，则传多个file_name并列， eg. file_name=xxx&file_name=xxx",
+                    "description": "原文件名列表，用于生成上传后的文件名列表，如果想保持原名不变，则可以不传，如果要上传多个，则传多个file_name并列， eg. file_name=xxx&file_name=xxx",
                     "type": "array",
                     "items": {"type": "string"},
                     "required": false
@@ -2208,14 +2208,14 @@
             "description": "上传文件令牌",
             "type": "object",
             "properties": {
+                "uptoken": {
+                    "description": "令牌值",
+                    "type": "string"
+                },
                 "keys": {
                     "description": "上传文件名列表",
                     "type": "array",
                     "items": {"type": "string"}
-                },
-                "token": {
-                    "description": "令牌值",
-                    "type": "string"
                 }
             }
         },

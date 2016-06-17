@@ -20,7 +20,7 @@
             "in": "query"
         },
         {
-            "description": "要上传的原始文件名称列表，如果要上传多个，则传多个file_name并列， eg. file_name=xxx&file_name=xxx",
+            "description": "原文件名列表，用于生成上传后的文件名列表，如果想保持原名不变，则可以不传，如果要上传多个，则传多个file_name并列， eg. file_name=xxx&file_name=xxx",
             "name": "file_name",
             "type": "array",
             "items": 
