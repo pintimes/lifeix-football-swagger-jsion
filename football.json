@@ -2081,7 +2081,6 @@
                     "description": "队旗",
                     "type": "string"
                 },
-                "physicalCoach": {"$ref": "#/definitions/Coach"},
                 "players": {
                     "description": "球员",
                     "type": "array",
@@ -2092,9 +2091,12 @@
                     "description": "球队名称：中国队",
                     "type": "string"
                 },
-                "assistantCoach": {"$ref": "#/definitions/Coach"},
+                "assistantCoach": {
+                    "description": "助理教练",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Coach"}
+                },
                 "jerseys": {"$ref": "#/definitions/Jerseys"},
-                "gkCoach": {"$ref": "#/definitions/Coach"},
                 "id": {
                     "description": "id",
                     "type": "string"
@@ -2230,7 +2232,6 @@
                     "type": "string"
                 },
                 "chiefCoach": {"$ref": "#/definitions/Coach"},
-                "physicalCoach": {"$ref": "#/definitions/Coach"},
                 "competitionInfo": {"$ref": "#/definitions/CompetitionInfo"},
                 "players": {
                     "description": "球员",
@@ -2241,8 +2242,11 @@
                     "description": "球队名称：参见xxx赛事的中国队",
                     "type": "string"
                 },
-                "assistantCoach": {"$ref": "#/definitions/Coach"},
-                "gkCoach": {"$ref": "#/definitions/Coach"},
+                "assistantCoach": {
+                    "description": "助理教练",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Coach"}
+                },
                 "id": {
                     "description": "id",
                     "type": "string"
@@ -2458,8 +2462,13 @@
             "description": "比赛队伍信息",
             "type": "object",
             "properties": {
+                "doctor": {"$ref": "#/definitions/Staff"},
+                "setupDate": {
+                    "format": "date-time",
+                    "description": "大名单公布时间",
+                    "type": "string"
+                },
                 "chiefCoach": {"$ref": "#/definitions/Coach"},
-                "physicalCoach": {"$ref": "#/definitions/Coach"},
                 "introduce": {
                     "description": "介绍",
                     "type": "string"
@@ -2470,22 +2479,19 @@
                     "type": "array",
                     "items": {"$ref": "#/definitions/PlayerInfo"}
                 },
-                "assistantCoach": {"$ref": "#/definitions/Coach"},
-                "gkCoach": {"$ref": "#/definitions/Coach"},
-                "teamLeader": {"$ref": "#/definitions/Staff"},
-                "teamInfo": {"$ref": "#/definitions/TeamInfo"},
-                "competitionTeamInfo": {"$ref": "#/definitions/CompetitionTeamInfo"},
-                "doctor": {"$ref": "#/definitions/Staff"},
-                "setupDate": {
-                    "format": "date-time",
-                    "description": "大名单公布时间",
-                    "type": "string"
+                "assistantCoach": {
+                    "description": "助理教练",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Coach"}
                 },
                 "id": {
                     "format": "int64",
                     "description": "id",
                     "type": "integer"
                 },
+                "teamLeader": {"$ref": "#/definitions/Staff"},
+                "teamInfo": {"$ref": "#/definitions/TeamInfo"},
+                "competitionTeamInfo": {"$ref": "#/definitions/CompetitionTeamInfo"},
                 "firstPlayers": {
                     "description": "球员",
                     "type": "array",
@@ -2634,30 +2640,32 @@
             "description": "比赛信息",
             "type": "object",
             "properties": {
-                "hostTeam": {"$ref": "#/definitions/MatchTeamInfo"},
                 "hostScore": {
                     "format": "int32",
                     "description": "主队进球数",
                     "type": "integer"
                 },
-                "stage": {
-                    "format": "int32",
-                    "description": "比赛阶段",
-                    "type": "integer"
-                },
                 "awayTeam": {"$ref": "#/definitions/MatchTeamInfo"},
-                "awayScore": {
-                    "format": "int32",
-                    "description": "客队进球数",
-                    "type": "integer"
-                },
                 "competitionInfo": {"$ref": "#/definitions/CompetitionInfo"},
                 "introduce": {
                     "description": "比赛介绍，如历史战绩等",
                     "type": "string"
                 },
+                "court": {"$ref": "#/definitions/Court"},
+                "hostTeam": {"$ref": "#/definitions/MatchTeamInfo"},
+                "stage": {
+                    "format": "int32",
+                    "description": "比赛阶段",
+                    "type": "integer"
+                },
+                "awayScore": {
+                    "format": "int32",
+                    "description": "客队进球数",
+                    "type": "integer"
+                },
                 "startTime": {
-                    "description": "比赛开始时间",
+                    "format": "date-time",
+                    "description": "比赛时间",
                     "type": "string"
                 },
                 "id": {
@@ -2673,6 +2681,11 @@
                     "format": "int32",
                     "description": "比赛状态",
                     "type": "integer"
+                },
+                "startDate": {
+                    "format": "date-time",
+                    "description": "比赛日期",
+                    "type": "string"
                 },
                 "group": {
                     "description": "赛事分组",

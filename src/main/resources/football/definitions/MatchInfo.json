@@ -27,10 +27,17 @@
 		            "format": "int32",
 		            "type": "integer"
 		        },
+		        "startDate": 
+		        {
+		            "description": "比赛日期",
+		            "type": "string",
+		            "format": "date-time"
+		        },
 		        "startTime": 
 		        {
-		            "description": "比赛开始时间",
-		            "type": "string"
+		            "description": "比赛时间",
+		            "type": "string",
+		            "format": "date-time"
 		        },
 		        "position": 
 		        {
@@ -46,8 +53,7 @@
 		        "stage": 
 		        {
 		            "description": "比赛阶段",
-		            "format": "int32",
-		            "type": "integer"
+		            "type": "string"
 		        },
 		        "group": 
 		        {
@@ -57,6 +63,10 @@
 		        "competitionInfo": 
 		        {
 		            "$ref": "#/definitions/CompetitionInfo"
+		        },
+		        "court": 
+		        {
+		            "$ref": "#/definitions/Court"
 		        },
 		        "introduce": 
 		        {

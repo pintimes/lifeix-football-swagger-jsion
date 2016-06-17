@@ -38,15 +38,12 @@
         },
         "assistantCoach": 
         {
-           "$ref": "#/definitions/Coach"
-        },
-        "gkCoach": 
-        {
-            "$ref": "#/definitions/Coach"
-        },
-        "physicalCoach": 
-        {
-            "$ref": "#/definitions/Coach"
+	    	"description": "助理教练",
+	        "type": "array",
+	        "items": 
+	        {
+	            "$ref": "#/definitions/Coach"
+	        }
         },
         "teamLeader": 
         {
