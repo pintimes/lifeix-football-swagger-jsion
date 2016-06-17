@@ -1,0 +1,53 @@
+{
+    "summary": "分页获取培训分类下的单篇列表",
+    "tags": 
+    [
+    	"getElearningTrainingPageList"
+    ],
+
+    "description": "分页获取培训分类下的单篇列表",
+    
+    "produces": 
+    [
+        "application/json"
+    ],
+    
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/elearningTrainingCategoryPath"
+        },
+        {
+            "description": "跳过的单篇数量，不传返回第一页",
+            "name": "start",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+		{
+            "description": "每页显示的单篇数量，默认值20",
+            "name": "limit",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+			"schema": 
+            {
+                "type": "array",
+	            "items": 
+	            {
+	                "$ref": "#/definitions/ElearningPage"
+	            },
+            },
+            "description": "单篇列表"
+        }
+    },
+
+    "operationId": "getElearningTrainingPageList"
+}

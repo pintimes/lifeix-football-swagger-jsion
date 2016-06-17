@@ -1,0 +1,48 @@
+{
+    "summary": "获取相应平台的整个菜单",
+    "tags": 
+    [
+        "category"
+    ],
+
+    "description": "web,app,wap对应的菜单可能不一致，需要通过不同的参数来获取不同的菜单",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "$ref": "#/parameters/platformPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Menu"
+                }
+            },
+
+            "description": "Menu列表响应对象"
+        }
+    },
+
+    "operationId": "getMenuList"
+}

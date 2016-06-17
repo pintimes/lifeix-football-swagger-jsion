@@ -46,13 +46,7 @@
         },
         "type": 
         {
-            "description": "页面类型 类别 0：视频列表  1：幻灯片 2: 测试说明页",
-            "format": "int32",
-            "type": "integer"
-        },
-        "loadMoreVideoIndex": 
-        {
-            "description": "单篇下有多个视频时，向下加载的videoIndex，如果为空，则表示没有下一页了，如果非空，则作为请求下一页的参数",
+            "description": "页面类型： 1-视频页  | 2-文章页|",
             "format": "int32",
             "type": "integer"
         }

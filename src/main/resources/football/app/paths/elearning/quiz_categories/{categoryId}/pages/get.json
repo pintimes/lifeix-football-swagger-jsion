@@ -1,0 +1,39 @@
+{
+    "summary": "随机获取测试分类下的单篇列表",
+    "tags": 
+    [
+    	"getElearningQuizPageList"
+    ],
+
+    "description": "随机获取测试分类下的单篇列表",
+    
+    "produces": 
+    [
+        "application/json"
+    ],
+    
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/elearningQuizCategoryPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+			"schema": 
+            {
+                "type": "array",
+	            "items": 
+	            {
+	                "$ref": "#/definitions/ElearningPage"
+	            },
+            },
+            "description": "单篇列表"
+        }
+    },
+
+    "operationId": "getElearningQuizPageList"
+}

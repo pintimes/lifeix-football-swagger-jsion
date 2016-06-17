@@ -2,9 +2,7 @@
     "summary": "获取单个视频详细信息",
     "tags": 
     [
-        "video",
-        "detail",
-        "get"
+        "getElearningVideoDetail"
     ],
 
     "description": "获取单个视频详细信息",
@@ -28,5 +26,5 @@
         }
     },
 
-    "operationId": "getElearningVideoById"
+    "operationId": "getElearningVideoDetail"
 }
