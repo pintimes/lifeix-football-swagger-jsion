@@ -5,7 +5,7 @@
         "category"
     ],
 
-    "description": "web,app,wap对应的菜单可能不一致，需要通过不同的参数来获取不同的菜单",
+    "description": "需要通过不同的参数来获取不同的菜单,app、app_wemedia对应APP的媒体资讯菜单，wap,web",
     "produces": 
     [
         "application/json"

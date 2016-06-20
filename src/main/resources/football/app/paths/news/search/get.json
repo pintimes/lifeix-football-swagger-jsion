@@ -1,0 +1,52 @@
+{
+    "summary": "搜索News",
+    "tags": 
+    [
+        "news"
+    ],
+
+    "description": "根据搜索条件获取News列表，只有管理员才能查找",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "description": "页码",
+            "name": "page",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "一页显示多少",
+            "name": "limit",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/News"
+                }
+            },
+
+            "description": "News列表响应对象"
+        }
+    },
+
+    "operationId": "searchNews"
+}

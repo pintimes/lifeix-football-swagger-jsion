@@ -68,6 +68,15 @@
             "required": true,
             "in": "path"
         },
+        
+         "newsPath": 
+        {
+            "description": "新闻的Id",
+            "name": "newsId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
 
         "staffPath": 
         {

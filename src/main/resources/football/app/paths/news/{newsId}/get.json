@@ -1,0 +1,34 @@
+{
+    "summary": "根据Id获取News详情",
+    "tags": 
+    [
+        "news"
+    ],
+
+    "description": "返回News详情对象",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "$ref": "#/parameters/newsPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/News"
+            },
+
+            "description": "News响应对象"
+        }
+    },
+
+    "operationId": "getNewsDetail"
+}
