@@ -187,6 +187,20 @@
                 "consumes": ["application/json"]
             }
         },
+        "/games/players/national": {"get": {
+            "summary": "查看国家队下的所有球员",
+            "description": "查看国家队下的所有球员",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/PlayerCategoryTop"}
+                },
+                "description": "PlayerCategoryTop列表响应对象"
+            }},
+            "operationId": "findNationalPlayer",
+            "parameters": [],
+            "tags": ["players"]
+        }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/matchTeam/{matchTeamId}": {"get": {
             "summary": "获得比赛球队的详细信息,包括教练、球员(首发、替补)、工作人员信息、球衣",
             "description": "获得比赛球队的详细信息,包括教练、球员(首发、替补)、工作人员信息、球衣",
@@ -617,6 +631,20 @@
             "tags": ["competitionteam"],
             "consumes": ["application/json"]
         }},
+        "/games/coaches/national": {"get": {
+            "summary": "查看国家队下的所有教练",
+            "description": "查看国家队下的所有教练",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/CoachCategoryTop"}
+                },
+                "description": "CoachCategoryTop列表响应对象"
+            }},
+            "operationId": "findNationalCoach",
+            "parameters": [],
+            "tags": ["coaches"]
+        }},
         "/news/{newsId}/publish": {"post": {
             "summary": "发布News到Post系统",
             "produces": ["application/json"],
@@ -1017,9 +1045,9 @@
             "responses": {"200": {
                 "schema": {
                     "type": "array",
-                    "items": {"$ref": "#/definitions/CoachCategoryTop"}
+                    "items": {"$ref": "#/definitions/Coach"}
                 },
-                "description": "CoachCategoryTop列表响应对象"
+                "description": "Coach列表响应对象"
             }},
             "operationId": "findCoachByTeamCategory",
             "parameters": [{"$ref": "#/parameters/teamCategoryPath"}],
@@ -1204,9 +1232,9 @@
             "responses": {"200": {
                 "schema": {
                     "type": "array",
-                    "items": {"$ref": "#/definitions/PlayerCategoryTop"}
+                    "items": {"$ref": "#/definitions/Player"}
                 },
-                "description": "PlayerCategoryTop列表响应对象"
+                "description": "Player列表响应对象"
             }},
             "operationId": "findPlayerByTeamCategory",
             "parameters": [{"$ref": "#/parameters/teamCategoryPath"}],
@@ -2526,6 +2554,18 @@
                     "description": "国家： 中国",
                     "type": "string"
                 },
+                "level": {
+                    "description": "级别",
+                    "type": "string"
+                },
+                "sex": {
+                    "description": "性别",
+                    "type": "string"
+                },
+                "avatar": {
+                    "description": "照片",
+                    "type": "string"
+                },
                 "showNum": {
                     "format": "int32",
                     "description": "顶级联赛出场次数",
@@ -2535,28 +2575,28 @@
                     "description": "出生地  中国北京",
                     "type": "string"
                 },
-                "level": {
-                    "description": "级别",
-                    "type": "string"
-                },
-                "sex": {
-                    "description": "性别",
+                "function": {
+                    "description": "主裁判、助理裁判",
                     "type": "string"
                 },
                 "name": {
                     "description": "名字：郎平",
                     "type": "string"
                 },
+                "sinceInternational": {
+                    "description": "成为国际级裁判的时间",
+                    "type": "string"
+                },
                 "id": {
                     "description": "id",
                     "type": "string"
                 },
-                "avatar": {
-                    "description": "照片",
-                    "type": "string"
-                },
                 "position": {
                     "description": "主裁、边裁、第四官员",
+                    "type": "string"
+                },
+                "category": {
+                    "description": "11人制，5人制，沙滩",
                     "type": "string"
                 }
             }

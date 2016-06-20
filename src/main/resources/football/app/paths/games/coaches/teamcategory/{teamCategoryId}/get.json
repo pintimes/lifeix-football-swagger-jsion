@@ -17,10 +17,10 @@
             "schema": {
                 "type": "array",
                 "items": {
-                    "$ref": "#/definitions/CoachCategoryTop"
+                    "$ref": "#/definitions/Coach"
                 }
             },
-            "description": "CoachCategoryTop列表响应对象"
+            "description": "Coach列表响应对象"
         }
     },
     "operationId": "findCoachByTeamCategory"

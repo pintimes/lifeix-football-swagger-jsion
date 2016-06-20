@@ -18,10 +18,10 @@
             "schema": {
                 "type": "array",
                 "items": {
-                    "$ref": "#/definitions/PlayerCategoryTop"
+                    "$ref": "#/definitions/Player"
                 }
             },
-            "description": "PlayerCategoryTop列表响应对象"
+            "description": "Player列表响应对象"
         }
     },
 
