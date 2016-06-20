@@ -2,8 +2,7 @@
     "summary": "获取赛事比赛列表,即时间轴",
     "tags": 
     [
-        "competitions",
-        "matches"
+        "match"
     ],
 
     "description": "获取赛事比赛列表",

@@ -2208,6 +2208,49 @@
                 }
             }
         },
+        "News": {
+            "description": "新闻",
+            "type": "object",
+            "properties": {
+                "images": {
+                    "description": "图片地址",
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "createTime": {
+                    "format": "date-time",
+                    "description": "post创建日期",
+                    "type": "string"
+                },
+                "author": {"$ref": "#/definitions/Author"},
+                "videos": {
+                    "description": "视频地址",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Video"}
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "标题，5-50个字符",
+                    "type": "string"
+                },
+                "content": {
+                    "description": "内容",
+                    "type": "string"
+                },
+                "htmlContent": {
+                    "description": "解析过的Html内容",
+                    "type": "string"
+                },
+                "status": {
+                    "format": "int32",
+                    "description": "状态 ：1可用 ，0不可用",
+                    "type": "integer"
+                }
+            }
+        },
         "Team": {
             "description": "队伍信息",
             "type": "object",

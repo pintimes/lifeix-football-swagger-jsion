@@ -1,0 +1,72 @@
+{
+    "description": "新闻",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
+        "title": 
+        {
+            "description": "标题，5-50个字符",
+            "type": "string"
+        },
+
+        "author": 
+        {
+            "$ref": "#/definitions/Author"
+        },
+
+        "content": 
+        {
+            "description": "内容",
+            "type": "string"
+        },
+        
+         "htmlContent": 
+        {
+            "description": "解析过的Html内容",
+            "type": "string"
+        },
+
+        "images": 
+        {
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            },
+
+            "description": "图片地址"
+        },
+
+        "videos": 
+        {
+            "items": 
+            {
+                "$ref": "#/definitions/Video"
+            },
+
+            "description": "视频地址",
+            "type": "array"
+        },
+
+        "createTime": 
+        {
+            "description": "post创建日期",
+            "format": "date-time",
+            "type": "string"
+        },
+        
+        "status": 
+        {
+            "description": "状态 ：1可用 ，0不可用",
+            "type": "integer",
+            "format": "int32"
+        }
+    },
+
+    "type": "object"
+}
