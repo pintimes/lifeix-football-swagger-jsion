@@ -2,7 +2,7 @@
     "summary": "为Post添加类目",
     "tags": 
     [
-        "posts"
+        "WemediaPost"
     ],
 
     "description": "如果类目有层级需要把多层id都传入，比如<国家队>,<男足>，<M23>",

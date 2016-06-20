@@ -2,7 +2,7 @@
     "summary": "从对应的Category的Top上删除Posts",
     "tags": 
     [
-        "tops"
+        "WemediaTop"
     ],
 
     "description": "传入类目Id以及对应的PostIds",

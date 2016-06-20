@@ -2,7 +2,7 @@
     "summary": "添加Posts到对应的Category的Top",
     "tags": 
     [
-        "tops"
+        "WemediaTop"
     ],
 
     "description": "传入类目Id以及对应的PostIds",

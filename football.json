@@ -23,7 +23,7 @@
                     "required": true
                 }
             ],
-            "tags": ["file-overwrite-token"]
+            "tags": ["file"]
         }},
         "/games/teams/{teamId}/competitionTeam/setupDates": {"get": {
             "summary": "查询一只球队对应的赛事球队的公布时间",
@@ -55,7 +55,7 @@
                 {"$ref": "#/parameters/apiKeyYHeader"},
                 {"$ref": "#/parameters/postPath"}
             ],
-            "tags": ["posts"]
+            "tags": ["WemediaPost"]
         }},
         "/games/coaches": {"post": {
             "summary": "新增教练",
@@ -76,7 +76,7 @@
                     "required": true
                 }
             ],
-            "tags": ["coach"],
+            "tags": ["TeamCategory"],
             "consumes": ["application/json"]
         }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/staffs": {"post": {
@@ -164,7 +164,7 @@
                         "required": true
                     }
                 ],
-                "tags": ["category"],
+                "tags": ["menu"],
                 "consumes": ["application/json"]
             },
             "get": {
@@ -183,7 +183,7 @@
                     {"$ref": "#/parameters/apiKeyYHeader"},
                     {"$ref": "#/parameters/platformPath"}
                 ],
-                "tags": ["category"],
+                "tags": ["menu"],
                 "consumes": ["application/json"]
             }
         },
@@ -290,7 +290,7 @@
                 "description": "测试类目列表"
             }},
             "operationId": "getElearningQuizCategories",
-            "tags": ["getElearningQuizCategories"]
+            "tags": ["QuizCategory"]
         }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/matchTeam/{matchTeamId}/jerseys": {"post": {
             "summary": "添加参加比赛球队的球衣样式",
@@ -423,7 +423,7 @@
                     "required": false
                 }
             ],
-            "tags": ["getElearningTrainingPageList"]
+            "tags": ["TrainningCategory"]
         }},
         "/admin/admins/login": {"post": {
             "summary": "Admin登录",
@@ -518,7 +518,7 @@
                     "required": false
                 }
             ],
-            "tags": ["posts"]
+            "tags": ["WemediaPost"]
         }},
         "/elearning/videos/{videoId}": {"get": {
             "summary": "获取单个视频详细信息",
@@ -529,7 +529,7 @@
             }},
             "operationId": "getElearningVideoDetail",
             "parameters": [{"$ref": "#/parameters/elearningVideoPath"}],
-            "tags": ["getElearningVideoDetail"]
+            "tags": ["TraingVideo"]
         }},
         "/news/{newsId}": {"get": {
             "summary": "根据Id获取News详情",
@@ -727,7 +727,7 @@
                     "required": false
                 }
             ],
-            "tags": ["posts"]
+            "tags": ["WemediaTimeline"]
         }},
         "/elearning/training_categories": {"get": {
             "summary": "获取elearning培训类目",
@@ -741,7 +741,7 @@
                 "description": "培训类目列表"
             }},
             "operationId": "getElearningTrainingCategories",
-            "tags": ["getElearningTrainingCategories"]
+            "tags": ["TrainningCategory"]
         }},
         "/wemedia/posts/{postId}/categories": {
             "post": {
@@ -762,7 +762,7 @@
                         "required": true
                     }
                 ],
-                "tags": ["posts"],
+                "tags": ["WemediaPost"],
                 "consumes": ["application/json"]
             },
             "delete": {
@@ -786,7 +786,7 @@
                         "required": true
                     }
                 ],
-                "tags": ["posts"],
+                "tags": ["WemediaPost"],
                 "consumes": ["application/json"]
             }
         },
@@ -993,7 +993,7 @@
                         "required": true
                     }
                 ],
-                "tags": ["author"],
+                "tags": ["WemediaAuthor"],
                 "consumes": ["application/json"]
             },
             "get": {
@@ -1008,7 +1008,7 @@
                 }},
                 "operationId": "getAuthors",
                 "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-                "tags": ["author"]
+                "tags": ["WemediaAuthor"]
             }
         },
         "/games/coaches/teamcategory/{teamCategoryId}": {"get": {
@@ -1020,7 +1020,7 @@
             }},
             "operationId": "findCoachByTeamCategory",
             "parameters": [{"$ref": "#/parameters/teamCategoryPath"}],
-            "tags": ["coaches"]
+            "tags": ["TeamCategory"]
         }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam": {
             "post": {
@@ -1086,7 +1086,7 @@
                         "required": false
                     }
                 ],
-                "tags": ["tops"]
+                "tags": ["WemediaTop"]
             },
             "get": {
                 "summary": "获得类目下对应的文章列表",
@@ -1110,7 +1110,7 @@
                         "required": false
                     }
                 ],
-                "tags": ["tops"]
+                "tags": ["WemediaTop"]
             },
             "delete": {
                 "summary": "从对应的Category的Top上删除Posts",
@@ -1135,7 +1135,7 @@
                         "required": false
                     }
                 ],
-                "tags": ["tops"]
+                "tags": ["WemediaTop"]
             }
         },
         "/like/likes": {
@@ -1271,7 +1271,7 @@
             }},
             "operationId": "getElearningQuizPageList",
             "parameters": [{"$ref": "#/parameters/elearningQuizCategoryPath"}],
-            "tags": ["getElearningQuizPageList"]
+            "tags": ["QuizCategory"]
         }},
         "/file/token/upload": {"get": {
             "summary": "从文件授权服务器上获取上传令牌",
@@ -1300,7 +1300,7 @@
                     "required": false
                 }
             ],
-            "tags": ["file-upload-token"]
+            "tags": ["file"]
         }},
         "/games/competitions/{competitionId}": {"get": {
             "summary": "赛事所有的参赛球队信息和比赛信息（赛程）",
@@ -1333,7 +1333,7 @@
                         "required": true
                     }
                 ],
-                "tags": ["competitionCategory"],
+                "tags": ["CompetitionCategory"],
                 "consumes": ["application/json"]
             },
             "get": {
@@ -1355,10 +1355,7 @@
                     "type": "integer",
                     "required": false
                 }],
-                "tags": [
-                    "CompetitionCategory",
-                    "get"
-                ]
+                "tags": ["CompetitionCategory"]
             }
         },
         "/games/competitions/{competitionId}/matches/{matchId}/matchstaffs": {"post": {
@@ -1435,7 +1432,7 @@
                         "required": true
                     }
                 ],
-                "tags": ["posts"],
+                "tags": ["WemediaPost"],
                 "consumes": ["application/json"]
             },
             "get": {
@@ -1460,7 +1457,7 @@
                         "required": false
                     }
                 ],
-                "tags": ["posts"]
+                "tags": ["WemediaPost"]
             },
             "delete": {
                 "summary": "删除Post",
@@ -1482,7 +1479,7 @@
                         "required": true
                     }
                 ],
-                "tags": ["posts"],
+                "tags": ["WemediaPost"],
                 "consumes": ["application/json"]
             }
         },
@@ -1498,7 +1495,7 @@
                 {"$ref": "#/parameters/apiKeyYHeader"},
                 {"$ref": "#/parameters/authorPath"}
             ],
-            "tags": ["author"]
+            "tags": ["WemediaAuthor"]
         }}
     },
     "host": "api.c-f.com:8000",

@@ -2,7 +2,7 @@
     "summary": "创建一个Author",
     "tags": 
     [
-        "author"
+        "WemediaAuthor"
     ],
 
     "description": "创建一个Author,其中name必填",

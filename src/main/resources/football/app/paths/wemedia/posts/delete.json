@@ -2,7 +2,7 @@
     "summary": "删除Post",
     "tags": 
     [
-       "posts"
+       "WemediaPost"
     ],
 
     "description": "删除Post：只有管理员才有权限",

@@ -2,7 +2,7 @@
     "summary": "创建一个Post",
     "tags": 
     [
-        "posts"
+        "WemediaPost"
     ],
 
     "description": "创建一个Post,其中title必填。content、images、videos三者至少有一个不为空",

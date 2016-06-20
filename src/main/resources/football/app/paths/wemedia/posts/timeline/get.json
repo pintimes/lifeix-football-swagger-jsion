@@ -2,7 +2,7 @@
     "summary": "获取时间轴形式的Post列表",
     "tags": 
     [
-        "posts"
+        "WemediaTimeline"
     ],
 
     "operationId": "getTimelinePosts",

@@ -2,7 +2,7 @@
     "summary": "获取elearning测试类目",
     "tags": 
     [
-    	"getElearningQuizCategories"
+    	"QuizCategory"
     ],
     "description": "获取elearning测试类目",
     "produces": 

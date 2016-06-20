@@ -1,8 +1,7 @@
 {
                 "summary": "获取赛事分类列表",
                 "tags": [
-                    "CompetitionCategory",
-                    "get"
+                    "CompetitionCategory"
                 ],
                 "description": "获取赛事分类列表",
                 "parameters": [
