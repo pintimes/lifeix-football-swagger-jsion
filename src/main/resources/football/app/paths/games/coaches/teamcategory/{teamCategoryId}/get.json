@@ -12,18 +12,16 @@
         }
     ],
 
-    "responses": 
-    {
-        "200": 
-        {
-            "schema": 
-            {
-                "$ref": "#/definitions/TeamCategoryCoach"
+    "responses": {
+        "200": {
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/CoachCategoryTop"
+                }
             },
-
-            "description": "map形式，如：中国队：教练1，教练2.国奥队：教练3，教练4"
+            "description": "CoachCategoryTop列表响应对象"
         }
     },
-
     "operationId": "findCoachByTeamCategory"
 }

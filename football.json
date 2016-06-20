@@ -816,9 +816,9 @@
             "responses": {"200": {
                 "schema": {
                     "type": "array",
-                    "items": {"$ref": "#/definitions/Referee"}
+                    "items": {"$ref": "#/definitions/RefereeCategoryTop"}
                 },
-                "description": "Referee列表响应对象"
+                "description": "RefereeCategoryTop列表响应对象"
             }},
             "operationId": "getReferees",
             "parameters": [
@@ -956,8 +956,11 @@
             "summary": "查看球队分类下的所有教练",
             "description": "查看球队分类下的所有教练",
             "responses": {"200": {
-                "schema": {"$ref": "#/definitions/TeamCategoryCoach"},
-                "description": "map形式，如：中国队：教练1，教练2.国奥队：教练3，教练4"
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/CoachCategoryTop"}
+                },
+                "description": "CoachCategoryTop列表响应对象"
             }},
             "operationId": "findCoachByTeamCategory",
             "parameters": [{"$ref": "#/parameters/teamCategoryPath"}],
@@ -1140,8 +1143,11 @@
             "summary": "查看球队分类下的所有球员",
             "description": "查看球队分类下的所有球员",
             "responses": {"200": {
-                "schema": {"$ref": "#/definitions/TeamCategoryPlayer"},
-                "description": "map形式，如：中国队：球员1，球员2.国奥队：球员3，球员4"
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/PlayerCategoryTop"}
+                },
+                "description": "PlayerCategoryTop列表响应对象"
             }},
             "operationId": "findPlayerByTeamCategory",
             "parameters": [{"$ref": "#/parameters/teamCategoryPath"}],
@@ -1722,6 +1728,20 @@
                 }
             }
         },
+        "PlayerCategoryTop": {
+            "description": "球员分类",
+            "properties": {
+                "topName": {
+                    "description": "顶级分类名称",
+                    "type": "string"
+                },
+                "category": {
+                    "description": "下级分类",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/PlayerCategory"}
+                }
+            }
+        },
         "FrontMatch": {
             "description": "创建比赛使用的中间对象，",
             "type": "object",
@@ -1858,10 +1878,6 @@
                 "court": {"$ref": "#/definitions/Court"},
                 "hostTeam": {"$ref": "#/definitions/MatchTeam"},
                 "fourthReferee": {"$ref": "#/definitions/Referee"},
-                "stage": {
-                    "description": "比赛阶段",
-                    "type": "string"
-                },
                 "awayScore": {
                     "format": "int32",
                     "description": "客队进球数",
@@ -1873,6 +1889,7 @@
                     "items": {"$ref": "#/definitions/Referee"}
                 },
                 "startTime": {
+                    "format": "date-time",
                     "description": "比赛开始时间",
                     "type": "string"
                 },
@@ -1882,6 +1899,7 @@
                     "type": "integer"
                 },
                 "position": {
+                    "format": "date-time",
                     "description": "比赛开始地点",
                     "type": "string"
                 },
@@ -1951,6 +1969,34 @@
                 },
                 "parentId": {
                     "description": "父目录Id",
+                    "type": "string"
+                }
+            }
+        },
+        "PlayerCategory": {
+            "description": "球员分类",
+            "properties": {
+                "players": {
+                    "description": "球员列表",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/PlayerInfo"}
+                },
+                "categoryName": {
+                    "description": "分类名称",
+                    "type": "string"
+                }
+            }
+        },
+        "CoachCategory": {
+            "description": "教练分类",
+            "properties": {
+                "coaches": {
+                    "description": "教练列表",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Coach"}
+                },
+                "categoryName": {
+                    "description": "分类名称",
                     "type": "string"
                 }
             }
@@ -2130,6 +2176,20 @@
                 }
             }
         },
+        "RefereeCategoryTop": {
+            "description": "裁判分类",
+            "properties": {
+                "topName": {
+                    "description": "顶级分类名称",
+                    "type": "string"
+                },
+                "category": {
+                    "description": "下级分类",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/RefereeCategory"}
+                }
+            }
+        },
         "Coach": {
             "description": "教练",
             "type": "object",
@@ -2221,6 +2281,20 @@
                 }
             }
         },
+        "CoachCategoryTop": {
+            "description": "教练分类",
+            "properties": {
+                "topName": {
+                    "description": "顶级分类名称",
+                    "type": "string"
+                },
+                "category": {
+                    "description": "下级分类",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/CoachCategory"}
+                }
+            }
+        },
         "CompetitionTeam": {
             "description": "赛事队伍信息",
             "type": "object",
@@ -2286,12 +2360,19 @@
                 }
             }
         },
-        "TeamCategoryCoach": {
-            "additionalProperties": {
-                "type": "array",
-                "items": {"$ref": "#/definitions/Coach"}
-            },
-            "type": "object"
+        "RefereeCategory": {
+            "description": "裁判分类",
+            "properties": {
+                "categoryName": {
+                    "description": "分类名称",
+                    "type": "string"
+                },
+                "referees": {
+                    "description": "裁判列表",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Referee"}
+                }
+            }
         },
         "Player": {
             "description": "队员",
@@ -2629,13 +2710,6 @@
                 }
             }
         },
-        "TeamCategoryPlayer": {
-            "additionalProperties": {
-                "type": "array",
-                "items": {"$ref": "#/definitions/Player"}
-            },
-            "type": "object"
-        },
         "MatchInfo": {
             "description": "比赛信息",
             "type": "object",
@@ -2654,9 +2728,8 @@
                 "court": {"$ref": "#/definitions/Court"},
                 "hostTeam": {"$ref": "#/definitions/MatchTeamInfo"},
                 "stage": {
-                    "format": "int32",
                     "description": "比赛阶段",
-                    "type": "integer"
+                    "type": "string"
                 },
                 "awayScore": {
                     "format": "int32",

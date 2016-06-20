@@ -1,0 +1,21 @@
+{
+    "description": "裁判分类",
+    "properties": 
+    {
+        "categoryName": 
+        {
+            "description": "分类名称",
+            "type": "string"
+        },
+
+        "referees": 
+        {
+            "description": "裁判列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Referee"
+            }
+        }
+    }
+}

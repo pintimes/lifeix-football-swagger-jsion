@@ -14,14 +14,14 @@
 
     "responses": 
     {
-        "200": 
-        {
-            "schema": 
-            {
-                "$ref": "#/definitions/TeamCategoryPlayer"
+        "200": {
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/PlayerCategoryTop"
+                }
             },
-
-            "description": "map形式，如：中国队：球员1，球员2.国奥队：球员3，球员4"
+            "description": "PlayerCategoryTop列表响应对象"
         }
     },
 
