@@ -17,11 +17,6 @@
             "description": "类目图片地址",
             "type": "string"
         },
-        "parentId": 
-        {
-            "description": "父目录Id",
-            "type": "string"
-        },
         "cats": 
         {
             "description": "子类目",

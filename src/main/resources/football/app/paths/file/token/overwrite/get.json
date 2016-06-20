@@ -2,7 +2,7 @@
     "summary": "从文件授权服务器上获取覆盖令牌",
     "tags": 
     [
-        "file-overwrite-token"
+        "file"
     ],
     "description": "从文件授权服务器上获取覆盖令牌",
     "parameters": 
@@ -32,7 +32,7 @@
 	            "items": 
 	            {
 	                "type": "string"
-	            },
+	            }
             },
             "description": "令牌信息"
         }

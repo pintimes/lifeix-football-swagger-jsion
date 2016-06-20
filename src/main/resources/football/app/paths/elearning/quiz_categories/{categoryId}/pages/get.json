@@ -2,7 +2,7 @@
     "summary": "随机获取测试分类下的单篇列表",
     "tags": 
     [
-    	"getElearningQuizPageList"
+    	"QuizCategory"
     ],
 
     "description": "随机获取测试分类下的单篇列表",
@@ -29,7 +29,7 @@
 	            "items": 
 	            {
 	                "$ref": "#/definitions/ElearningPage"
-	            },
+	            }
             },
             "description": "单篇列表"
         }

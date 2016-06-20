@@ -2,7 +2,7 @@
     "summary": "获取elearning培训类目",
     "tags": 
     [
-    	"getElearningTrainingCategories"
+    	"TrainningCategory"
     ],
     "description": "获取elearning培训类目",
     "produces": 

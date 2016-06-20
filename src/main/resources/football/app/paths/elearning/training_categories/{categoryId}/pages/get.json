@@ -2,7 +2,7 @@
     "summary": "分页获取培训分类下的单篇列表",
     "tags": 
     [
-    	"getElearningTrainingPageList"
+    	"TrainningCategory"
     ],
 
     "description": "分页获取培训分类下的单篇列表",
@@ -43,7 +43,7 @@
 	            "items": 
 	            {
 	                "$ref": "#/definitions/ElearningPage"
-	            },
+	            }
             },
             "description": "单篇列表"
         }

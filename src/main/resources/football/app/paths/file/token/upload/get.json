@@ -2,7 +2,7 @@
     "summary": "从文件授权服务器上获取上传令牌",
     "tags": 
     [
-        "file-upload-token"
+        "file"
     ],
 
     "description": "从文件授权服务器上获取上传令牌",

@@ -2,7 +2,7 @@
     "summary": "搜索Post",
     "tags": 
     [
-       "posts"
+       "WemediaPost"
     ],
 
     "description": "根据搜索条件获取Post列表，每次搜索不能超过30条",

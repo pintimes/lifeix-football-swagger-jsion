@@ -2,7 +2,7 @@
     "summary": "获得Posts",
     "tags": 
     [
-        "posts"
+        "WemediaPost"
     ],
 
     "description": "根据Id获取Post",

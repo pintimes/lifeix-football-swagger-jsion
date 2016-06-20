@@ -2,7 +2,7 @@
     "summary": "获取相应平台的整个菜单",
     "tags": 
     [
-        "category"
+        "menu"
     ],
 
     "description": "需要通过不同的参数来获取不同的菜单,app、app_wemedia对应APP的媒体资讯菜单，wap,web",

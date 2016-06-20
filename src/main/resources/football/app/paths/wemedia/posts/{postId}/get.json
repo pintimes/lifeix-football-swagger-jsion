@@ -2,7 +2,7 @@
     "summary": "根据Id获取Post详情",
     "tags": 
     [
-        "posts"
+        "WemediaPost"
     ],
 
     "description": "返回Post详情对象",
