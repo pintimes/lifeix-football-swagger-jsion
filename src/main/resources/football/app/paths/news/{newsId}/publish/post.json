@@ -1,0 +1,39 @@
+{
+    "summary": "发布News到Post系统",
+    "tags": 
+    [
+        "news"
+    ],
+
+    "description": "News和Post不是同一系统，Post针对的是用户，News针对的是新闻来源以及管理员",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "$ref": "#/parameters/newsPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "发布成功"
+        }
+    },
+
+    "operationId": "publishNews"
+}

@@ -170,7 +170,7 @@
             "get": {
                 "summary": "获取相应平台的整个菜单",
                 "produces": ["application/json"],
-                "description": "web,app,wap对应的菜单可能不一致，需要通过不同的参数来获取不同的菜单",
+                "description": "需要通过不同的参数来获取不同的菜单,app、app_wemedia对应APP的媒体资讯菜单，wap,web",
                 "responses": {"200": {
                     "schema": {
                         "type": "array",
@@ -531,6 +531,20 @@
             "parameters": [{"$ref": "#/parameters/elearningVideoPath"}],
             "tags": ["getElearningVideoDetail"]
         }},
+        "/news/{newsId}": {"get": {
+            "summary": "根据Id获取News详情",
+            "description": "返回News详情对象",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/News"},
+                "description": "News响应对象"
+            }},
+            "operationId": "getNewsDetail",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/newsPath"}
+            ],
+            "tags": ["news"]
+        }},
         "/admin/admins": {"get": {
             "summary": "获得Admin列表",
             "description": "返回所有的管理员",
@@ -603,6 +617,19 @@
             "tags": ["competitionteam"],
             "consumes": ["application/json"]
         }},
+        "/news/{newsId}/publish": {"post": {
+            "summary": "发布News到Post系统",
+            "produces": ["application/json"],
+            "description": "News和Post不是同一系统，Post针对的是用户，News针对的是新闻来源以及管理员",
+            "responses": {"200": {"description": "发布成功"}},
+            "operationId": "publishNews",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/newsPath"}
+            ],
+            "tags": ["news"],
+            "consumes": ["application/json"]
+        }},
         "/games/competitions/{competitionId}/matches/{matchId}/referees": {"post": {
             "summary": "新增比赛裁判",
             "produces": ["application/json"],
@@ -630,6 +657,38 @@
             ],
             "tags": ["match"],
             "consumes": ["application/json"]
+        }},
+        "/news/search": {"get": {
+            "summary": "搜索News",
+            "description": "根据搜索条件获取News列表，只有管理员才能查找",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/News"}
+                },
+                "description": "News列表响应对象"
+            }},
+            "operationId": "searchNews",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "query",
+                    "name": "page",
+                    "format": "int32",
+                    "description": "页码",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "limit",
+                    "format": "int32",
+                    "description": "一页显示多少",
+                    "type": "integer",
+                    "required": false
+                }
+            ],
+            "tags": ["news"]
         }},
         "/wemedia/posts/timeline": {"get": {
             "summary": "获取时间轴形式的Post列表",
@@ -1241,7 +1300,7 @@
                 {
                     "in": "query",
                     "name": "file_name",
-                    "description": "要上传的原始文件名称列表，如果要上传多个，则传多个file_name并列， eg. file_name=xxx&file_name=xxx",
+                    "description": "原文件名列表，用于生成上传后的文件名列表，如果想保持原名不变，则可以不传，如果要上传多个，则传多个file_name并列， eg. file_name=xxx&file_name=xxx",
                     "type": "array",
                     "items": {"type": "string"},
                     "required": false
@@ -1561,6 +1620,13 @@
             "in": "path",
             "name": "postId",
             "description": "Post的ID",
+            "type": "string",
+            "required": true
+        },
+        "newsPath": {
+            "in": "path",
+            "name": "newsId",
+            "description": "新闻的Id",
             "type": "string",
             "required": true
         },
@@ -2270,14 +2336,14 @@
             "description": "上传文件令牌",
             "type": "object",
             "properties": {
+                "uptoken": {
+                    "description": "令牌值",
+                    "type": "string"
+                },
                 "keys": {
                     "description": "上传文件名列表",
                     "type": "array",
                     "items": {"type": "string"}
-                },
-                "token": {
-                    "description": "令牌值",
-                    "type": "string"
                 }
             }
         },
