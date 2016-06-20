@@ -54,6 +54,21 @@
         {
             "description": "主裁、边裁、第四官员",
             "type": "string"
+        },
+        "sinceInternational": 
+        {
+            "description": "成为国际级裁判的时间",
+            "type": "string"
+        },
+        "function": 
+        {
+            "description": "主裁判、助理裁判",
+            "type": "string"
+        },
+        "category": 
+        {
+            "description": "11人制，5人制，沙滩",
+            "type": "string"
         }
     }
 }

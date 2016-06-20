@@ -35,10 +35,10 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Referee"
+                                "$ref": "#/definitions/RefereeCategoryTop"
                             }
                         },
-                        "description": "Referee列表响应对象"
+                        "description": "RefereeCategoryTop列表响应对象"
                     }
                 },
                 "operationId": "getReferees"

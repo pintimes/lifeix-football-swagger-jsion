@@ -1,0 +1,24 @@
+{
+    "summary": "查看国家队下的所有教练",
+    "tags": 
+    [
+        "coaches"
+    ],
+    "description": "查看国家队下的所有教练",
+    "parameters": 
+    [
+    ],
+
+    "responses": {
+        "200": {
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/CoachCategoryTop"
+                }
+            },
+            "description": "CoachCategoryTop列表响应对象"
+        }
+    },
+    "operationId": "findNationalCoach"
+}
