@@ -37,11 +37,7 @@
             }},
             "operationId": "getCompetitionTeamSetUpDate",
             "parameters": [{"$ref": "#/parameters/teamPath"}],
-            "tags": [
-                "team",
-                "competitionteam",
-                "setupDate"
-            ]
+            "tags": ["setupDate"]
         }},
         "/wemedia/posts/{postId}": {"get": {
             "summary": "根据Id获取Post详情",
@@ -105,7 +101,7 @@
                     "required": true
                 }
             ],
-            "tags": ["competitionteam"],
+            "tags": ["CompetitionTeam"],
             "consumes": ["application/json"]
         }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/coaches": {"post": {
@@ -134,7 +130,7 @@
                     "required": true
                 }
             ],
-            "tags": ["competitionteam"],
+            "tags": ["CompetitionTeam"],
             "consumes": ["application/json"]
         }},
         "/category/menus/{platform}": {
@@ -197,9 +193,9 @@
                 },
                 "description": "PlayerCategoryTop列表响应对象"
             }},
-            "operationId": "findNationalPlayer",
+            "operationId": "getNationalPlayer",
             "parameters": [],
-            "tags": ["players"]
+            "tags": ["player"]
         }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/matchTeam/{matchTeamId}": {"get": {
             "summary": "获得比赛球队的详细信息,包括教练、球员(首发、替补)、工作人员信息、球衣",
@@ -208,14 +204,14 @@
                 "schema": {"$ref": "#/definitions/MatchTeam"},
                 "description": "MatchTeam响应对象"
             }},
-            "operationId": "findMatchTeam",
+            "operationId": "getMatchTeam",
             "parameters": [
                 {"$ref": "#/parameters/competitionPath"},
                 {"$ref": "#/parameters/teamPath"},
                 {"$ref": "#/parameters/competitionTeamPath"},
                 {"$ref": "#/parameters/matchTeamPath"}
             ],
-            "tags": ["matchteam"]
+            "tags": ["matchTeam"]
         }},
         "/like/likes/{target}": {"get": {
             "summary": "获得某一个Post的点赞信息",
@@ -286,11 +282,7 @@
             }},
             "operationId": "getPlayer",
             "parameters": [{"$ref": "#/parameters/playerPath"}],
-            "tags": [
-                "player",
-                "visitor",
-                "get"
-            ]
+            "tags": ["player"]
         }},
         "/elearning/quiz_categories": {"get": {
             "summary": "获取elearning测试类目",
@@ -328,7 +320,7 @@
                     "required": true
                 }
             ],
-            "tags": ["matchteam"],
+            "tags": ["matchTeam"],
             "consumes": ["application/json"]
         }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/matchTeam/{matchTeamId}/players": {"post": {
@@ -353,7 +345,7 @@
                     "required": true
                 }
             ],
-            "tags": ["matchteam"],
+            "tags": ["matchTeam"],
             "consumes": ["application/json"]
         }},
         "/games/referees/{refereeId}": {"get": {
@@ -363,13 +355,9 @@
                 "schema": {"$ref": "#/definitions/Referee"},
                 "description": "Referee响应对象"
             }},
-            "operationId": "findReferee",
+            "operationId": "getReferee",
             "parameters": [{"$ref": "#/parameters/refereePath"}],
-            "tags": [
-                "referee",
-                "visitor",
-                "get"
-            ]
+            "tags": ["referee"]
         }},
         "/games/courts": {"post": {
             "summary": "新增球场",
@@ -400,13 +388,9 @@
                 "schema": {"$ref": "#/definitions/Staff"},
                 "description": "Staff响应对象"
             }},
-            "operationId": "findStaff",
+            "operationId": "getStaff",
             "parameters": [{"$ref": "#/parameters/staffPath"}],
-            "tags": [
-                "staff",
-                "visitor",
-                "get"
-            ]
+            "tags": ["staff"]
         }},
         "/elearning/training_categories/{categoryId}/pages": {"get": {
             "summary": "分页获取培训分类下的单篇列表",
@@ -628,7 +612,7 @@
                     "required": true
                 }
             ],
-            "tags": ["competitionteam"],
+            "tags": ["CompetitionTeam"],
             "consumes": ["application/json"]
         }},
         "/games/coaches/national": {"get": {
@@ -643,7 +627,7 @@
             }},
             "operationId": "findNationalCoach",
             "parameters": [],
-            "tags": ["coaches"]
+            "tags": ["coach"]
         }},
         "/news/{newsId}/publish": {"post": {
             "summary": "发布News到Post系统",
@@ -933,10 +917,7 @@
                     "required": false
                 }
             ],
-            "tags": [
-                "referees",
-                "get"
-            ]
+            "tags": ["referee"]
         }},
         "/games/coaches/{coachId}": {"get": {
             "summary": "查看教练详情",
@@ -947,7 +928,7 @@
             }},
             "operationId": "findOne",
             "parameters": [{"$ref": "#/parameters/coachPath"}],
-            "tags": ["coaches"]
+            "tags": ["coach"]
         }},
         "/games/teams/{teamId}/competitionTeam": {"get": {
             "summary": "查询一只球队对应的赛事球队（1-n）",
@@ -970,10 +951,7 @@
                     "required": false
                 }
             ],
-            "tags": [
-                "team",
-                "competitionteam"
-            ]
+            "tags": ["CompetitionTeam"]
         }},
         "/games/players": {"post": {
             "summary": "新增球员",
@@ -1051,7 +1029,7 @@
             }},
             "operationId": "findCoachByTeamCategory",
             "parameters": [{"$ref": "#/parameters/teamCategoryPath"}],
-            "tags": ["coaches"]
+            "tags": ["coach"]
         }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam": {
             "post": {
@@ -1075,7 +1053,7 @@
                         "required": true
                     }
                 ],
-                "tags": ["competitionteam"],
+                "tags": ["CompetitionTeam"],
                 "consumes": ["application/json"]
             },
             "get": {
@@ -1085,12 +1063,12 @@
                     "schema": {"$ref": "#/definitions/CompetitionTeam"},
                     "description": "CompetitionTeam响应对象"
                 }},
-                "operationId": "findCompetitionTeam",
+                "operationId": "getCompetitionTeam",
                 "parameters": [
                     {"$ref": "#/parameters/competitionPath"},
                     {"$ref": "#/parameters/teamPath"}
                 ],
-                "tags": ["competitionteam"]
+                "tags": ["CompetitionTeam"]
             }
         },
         "/wemedia/tops": {
@@ -1236,9 +1214,9 @@
                 },
                 "description": "Player列表响应对象"
             }},
-            "operationId": "findPlayerByTeamCategory",
+            "operationId": "getPlayerByTeamCategory",
             "parameters": [{"$ref": "#/parameters/teamCategoryPath"}],
-            "tags": ["players"]
+            "tags": ["player"]
         }},
         "/games/competitions/{competitionId}/matches": {
             "post": {
@@ -1274,7 +1252,7 @@
                     },
                     "description": "Match列表响应对象"
                 }},
-                "operationId": "findByCompetitionIdAndTeamId",
+                "operationId": "getByCompetitionIdAndTeamId",
                 "parameters": [
                     {"$ref": "#/parameters/competitionPath"},
                     {
@@ -1286,10 +1264,7 @@
                         "required": true
                     }
                 ],
-                "tags": [
-                    "competitions",
-                    "matches"
-                ]
+                "tags": ["match"]
             }
         },
         "/elearning/quiz_categories/{categoryId}/pages": {"get": {
@@ -1389,10 +1364,7 @@
                     "type": "integer",
                     "required": false
                 }],
-                "tags": [
-                    "CompetitionCategory",
-                    "get"
-                ]
+                "tags": ["CompetitionCategory"]
             }
         },
         "/games/competitions/{competitionId}/matches/{matchId}/matchstaffs": {"post": {

@@ -2,7 +2,7 @@
     "summary": "获得比赛球队的详细信息,包括教练、球员(首发、替补)、工作人员信息、球衣",
     "tags": 
     [
-        "matchteam"
+        "matchTeam"
     ],
 
     "description": "获得比赛球队的详细信息,包括教练、球员(首发、替补)、工作人员信息、球衣",
@@ -37,5 +37,5 @@
         }
     },
 
-    "operationId": "findMatchTeam"
+    "operationId": "getMatchTeam"
 }

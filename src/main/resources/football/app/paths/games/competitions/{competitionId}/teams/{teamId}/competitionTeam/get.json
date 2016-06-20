@@ -2,7 +2,7 @@
     "summary": "获得参赛球队的详细信息,包括教练、球员、工作人员信息",
     "tags": 
     [
-        "competitionteam"
+        "CompetitionTeam"
     ],
 
     "description": "获得球队信息",
@@ -30,5 +30,5 @@
         }
     },
 
-    "operationId": "findCompetitionTeam"
+    "operationId": "getCompetitionTeam"
 }

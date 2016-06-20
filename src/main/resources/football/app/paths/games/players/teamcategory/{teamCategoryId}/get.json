@@ -2,7 +2,7 @@
     "summary": "查看球队分类下的所有球员",
     "tags": 
     [
-        "players"
+        "player"
     ],
     "description": "查看球队分类下的所有球员",
     "parameters": 
@@ -25,5 +25,5 @@
         }
     },
 
-    "operationId": "findPlayerByTeamCategory"
+    "operationId": "getPlayerByTeamCategory"
 }
