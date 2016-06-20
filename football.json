@@ -1286,10 +1286,7 @@
                         "required": true
                     }
                 ],
-                "tags": [
-                    "competitions",
-                    "matches"
-                ]
+                "tags": ["match"]
             }
         },
         "/elearning/quiz_categories/{categoryId}/pages": {"get": {
