@@ -2,9 +2,7 @@
     "summary": "获得球员信息",
     "tags": 
     [
-        "player",
-        "visitor",
-        "get"
+        "player"
     ],
     "description": "查看球员信息",
     "parameters": 

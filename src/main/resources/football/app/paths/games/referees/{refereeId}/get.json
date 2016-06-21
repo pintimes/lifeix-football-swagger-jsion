@@ -2,9 +2,7 @@
     "summary": "获得裁判详细信息",
     "tags": 
     [
-        "referee",
-        "visitor",
-        "get"
+        "referee"
     ],
     "description": "查看裁判信息",
     "parameters": 
@@ -27,5 +25,5 @@
         }
     },
 
-    "operationId": "findReferee"
+    "operationId": "getReferee"
 }

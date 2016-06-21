@@ -1,8 +1,7 @@
 {
                 "summary": "获得裁判列表",
                 "tags": [
-                    "referees",
-                    "get"
+                    "referee"
                 ],
                 "description": "获得裁判列表",
                 "parameters": [

@@ -2,8 +2,7 @@
     "summary": "查询一只球队对应的赛事球队（1-n）",
     "tags": 
     [
-        "team",
-        "competitionteam"
+        "CompetitionTeam"
     ],
     "description": "查询一只球队对应的赛事球队（1-n）",
     "parameters": 

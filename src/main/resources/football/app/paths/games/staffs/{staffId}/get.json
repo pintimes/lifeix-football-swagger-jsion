@@ -2,9 +2,7 @@
     "summary": "获得职员信息",
     "tags": 
     [
-        "staff",
-        "visitor",
-        "get"
+        "staff"
     ],
     "description": "查看职员信息",
     "parameters": 
@@ -27,5 +25,5 @@
         }
     },
 
-    "operationId": "findStaff"
+    "operationId": "getStaff"
 }

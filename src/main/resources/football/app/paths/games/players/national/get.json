@@ -2,7 +2,7 @@
     "summary": "查看国家队下的所有球员",
     "tags": 
     [
-        "players"
+        "player"
     ],
     "description": "查看国家队下的所有球员",
     "parameters": 
@@ -22,5 +22,5 @@
         }
     },
 
-    "operationId": "findNationalPlayer"
+    "operationId": "getNationalPlayer"
 }
