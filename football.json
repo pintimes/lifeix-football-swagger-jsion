@@ -295,8 +295,8 @@
                 },
                 "description": "测试类目列表"
             }},
-            "operationId": "getElearningQuizCategories",
-            "tags": ["QuizCategory"]
+            "operationId": "getElearningQuizCategoriesTree",
+            "tags": ["elearning"]
         }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/matchTeam/{matchTeamId}/jerseys": {"post": {
             "summary": "添加参加比赛球队的球衣样式",
@@ -421,7 +421,7 @@
                     "required": false
                 }
             ],
-            "tags": ["TrainningCategory"]
+            "tags": ["elearning"]
         }},
         "/admin/admins/login": {"post": {
             "summary": "Admin登录",
@@ -527,7 +527,7 @@
             }},
             "operationId": "getElearningVideoDetail",
             "parameters": [{"$ref": "#/parameters/elearningVideoPath"}],
-            "tags": ["TraingVideo"]
+            "tags": ["elearning"]
         }},
         "/news/{newsId}": {"get": {
             "summary": "根据Id获取News详情",
@@ -741,6 +741,21 @@
             ],
             "tags": ["WemediaTimeline"]
         }},
+        "/elearning/quiz_categories/{categoryId}/subCats": {"get": {
+            "summary": "获取elearning测试类目下的单级子分类列表",
+            "produces": ["application/json"],
+            "description": "获取elearning测试类目下的单级子分类列表",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ElearningQuizCategory"}
+                },
+                "description": "测试类目列表"
+            }},
+            "operationId": "getElearningQuizSubCategories",
+            "parameters": [{"$ref": "#/parameters/elearningQuizCategoryPath"}],
+            "tags": ["elearning"]
+        }},
         "/elearning/training_categories": {"get": {
             "summary": "获取elearning培训类目",
             "produces": ["application/json"],
@@ -752,8 +767,8 @@
                 },
                 "description": "培训类目列表"
             }},
-            "operationId": "getElearningTrainingCategories",
-            "tags": ["TrainningCategory"]
+            "operationId": "getElearningTrainingCategoriesTree",
+            "tags": ["elearning"]
         }},
         "/wemedia/posts/{postId}/categories": {
             "post": {
@@ -1280,7 +1295,7 @@
             }},
             "operationId": "getElearningQuizPageList",
             "parameters": [{"$ref": "#/parameters/elearningQuizCategoryPath"}],
-            "tags": ["QuizCategory"]
+            "tags": ["elearning"]
         }},
         "/file/token/upload": {"get": {
             "summary": "从文件授权服务器上获取上传令牌",
@@ -1394,6 +1409,21 @@
             ],
             "tags": ["match"],
             "consumes": ["application/json"]
+        }},
+        "/elearning/training_categories/{categoryId}/subCats": {"get": {
+            "summary": "获取elearning培训类目下的单级子分类列表",
+            "produces": ["application/json"],
+            "description": "获取elearning培训类目下的单级子分类列表",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ElearningTrainingCategory"}
+                },
+                "description": "培训类目列表"
+            }},
+            "operationId": "getElearningTrainingSubCategories",
+            "parameters": [{"$ref": "#/parameters/elearningTrainingCategoryPath"}],
+            "tags": ["elearning"]
         }},
         "/games/staffs": {"post": {
             "summary": "新增职员",
