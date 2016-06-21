@@ -72,7 +72,7 @@
                     "required": true
                 }
             ],
-            "tags": ["TeamCategory"],
+            "tags": ["coach"],
             "consumes": ["application/json"]
         }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/staffs": {"post": {
@@ -247,7 +247,7 @@
                 "schema": {"$ref": "#/definitions/Match"},
                 "description": "Match响应对象"
             }},
-            "operationId": "findMatch",
+            "operationId": "getMatch",
             "parameters": [
                 {"$ref": "#/parameters/competitionPath"},
                 {"$ref": "#/parameters/matchPath"}
@@ -295,8 +295,8 @@
                 },
                 "description": "测试类目列表"
             }},
-            "operationId": "getElearningQuizCategoriesTree",
-            "tags": ["elearning"]
+            "operationId": "getElearningQuizCategories",
+            "tags": ["QuizCategory"]
         }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/matchTeam/{matchTeamId}/jerseys": {"post": {
             "summary": "添加参加比赛球队的球衣样式",
@@ -421,7 +421,7 @@
                     "required": false
                 }
             ],
-            "tags": ["elearning"]
+            "tags": ["TrainningCategory"]
         }},
         "/admin/admins/login": {"post": {
             "summary": "Admin登录",
@@ -527,7 +527,7 @@
             }},
             "operationId": "getElearningVideoDetail",
             "parameters": [{"$ref": "#/parameters/elearningVideoPath"}],
-            "tags": ["elearning"]
+            "tags": ["TraingVideo"]
         }},
         "/news/{newsId}": {"get": {
             "summary": "根据Id获取News详情",
@@ -625,7 +625,7 @@
                 },
                 "description": "CoachCategoryTop列表响应对象"
             }},
-            "operationId": "findNationalCoach",
+            "operationId": "getNationalCoach",
             "parameters": [],
             "tags": ["coach"]
         }},
@@ -741,21 +741,6 @@
             ],
             "tags": ["WemediaTimeline"]
         }},
-        "/elearning/quiz_categories/{categoryId}/subCats": {"get": {
-            "summary": "获取elearning测试类目下的单级子分类列表",
-            "produces": ["application/json"],
-            "description": "获取elearning测试类目下的单级子分类列表",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/ElearningQuizCategory"}
-                },
-                "description": "测试类目列表"
-            }},
-            "operationId": "getElearningQuizSubCategories",
-            "parameters": [{"$ref": "#/parameters/elearningQuizCategoryPath"}],
-            "tags": ["elearning"]
-        }},
         "/elearning/training_categories": {"get": {
             "summary": "获取elearning培训类目",
             "produces": ["application/json"],
@@ -767,8 +752,8 @@
                 },
                 "description": "培训类目列表"
             }},
-            "operationId": "getElearningTrainingCategoriesTree",
-            "tags": ["elearning"]
+            "operationId": "getElearningTrainingCategories",
+            "tags": ["TrainningCategory"]
         }},
         "/wemedia/posts/{postId}/categories": {
             "post": {
@@ -941,7 +926,7 @@
                 "schema": {"$ref": "#/definitions/Coach"},
                 "description": "查询单个教练的信息"
             }},
-            "operationId": "findOne",
+            "operationId": "getCoach",
             "parameters": [{"$ref": "#/parameters/coachPath"}],
             "tags": ["coach"]
         }},
@@ -1042,7 +1027,7 @@
                 },
                 "description": "Coach列表响应对象"
             }},
-            "operationId": "findCoachByTeamCategory",
+            "operationId": "getCoachByTeamCategory",
             "parameters": [{"$ref": "#/parameters/teamCategoryPath"}],
             "tags": ["coach"]
         }},
@@ -1295,7 +1280,7 @@
             }},
             "operationId": "getElearningQuizPageList",
             "parameters": [{"$ref": "#/parameters/elearningQuizCategoryPath"}],
-            "tags": ["elearning"]
+            "tags": ["QuizCategory"]
         }},
         "/file/token/upload": {"get": {
             "summary": "从文件授权服务器上获取上传令牌",
@@ -1333,7 +1318,7 @@
                 "schema": {"$ref": "#/definitions/Competition"},
                 "description": "Competition响应对象"
             }},
-            "operationId": "findCompetition",
+            "operationId": "getCompetition",
             "parameters": [{"$ref": "#/parameters/competitionPath"}],
             "tags": ["competition"]
         }},
@@ -1409,21 +1394,6 @@
             ],
             "tags": ["match"],
             "consumes": ["application/json"]
-        }},
-        "/elearning/training_categories/{categoryId}/subCats": {"get": {
-            "summary": "获取elearning培训类目下的单级子分类列表",
-            "produces": ["application/json"],
-            "description": "获取elearning培训类目下的单级子分类列表",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/ElearningTrainingCategory"}
-                },
-                "description": "培训类目列表"
-            }},
-            "operationId": "getElearningTrainingSubCategories",
-            "parameters": [{"$ref": "#/parameters/elearningTrainingCategoryPath"}],
-            "tags": ["elearning"]
         }},
         "/games/staffs": {"post": {
             "summary": "新增职员",
@@ -2599,13 +2569,22 @@
                     "description": "性别",
                     "type": "string"
                 },
+                "association": {
+                    "description": "属于的协会",
+                    "type": "string"
+                },
                 "avatar": {
                     "description": "照片",
                     "type": "string"
                 },
-                "showNum": {
+                "fifaTopANum": {
                     "format": "int32",
-                    "description": "顶级联赛出场次数",
+                    "description": "国际A级比赛执法场次",
+                    "type": "integer"
+                },
+                "topLeagueNum": {
+                    "format": "int32",
+                    "description": "顶级联赛执法次数",
                     "type": "integer"
                 },
                 "birthplace": {

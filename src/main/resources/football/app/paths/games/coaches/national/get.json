@@ -20,5 +20,5 @@
             "description": "CoachCategoryTop列表响应对象"
         }
     },
-    "operationId": "findNationalCoach"
+    "operationId": "getNationalCoach"
 }

@@ -25,5 +25,5 @@
         }
     },
 
-    "operationId": "findCompetition"
+    "operationId": "getCompetition"
 }

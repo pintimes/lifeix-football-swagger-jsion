@@ -23,5 +23,5 @@
             "description": "Coach列表响应对象"
         }
     },
-    "operationId": "findCoachByTeamCategory"
+    "operationId": "getCoachByTeamCategory"
 }
