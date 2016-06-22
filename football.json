@@ -2129,6 +2129,11 @@
                     "description": "副标题",
                     "type": "string"
                 },
+                "index": {
+                    "format": "int32",
+                    "description": "顺序索引",
+                    "type": "integer"
+                },
                 "videos": {
                     "description": "视频列表",
                     "type": "array",
@@ -2998,6 +3003,11 @@
                 "image": {
                     "description": "答案图片项",
                     "type": "string"
+                },
+                "index": {
+                    "format": "int32",
+                    "description": "顺序索引",
+                    "type": "integer"
                 },
                 "text": {
                     "description": "答案文字项",
