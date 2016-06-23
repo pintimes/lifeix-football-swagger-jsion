@@ -7,6 +7,9 @@
     "description": "查看球队分类下的所有球员",
     "parameters": 
     [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
         {
             "$ref": "#/parameters/teamCategoryPath"
         }

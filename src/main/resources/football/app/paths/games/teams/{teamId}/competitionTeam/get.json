@@ -7,6 +7,9 @@
     "description": "查询一只球队对应的赛事球队（1-n）",
     "parameters": 
     [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
         {
             "$ref": "#/parameters/teamPath"
         },

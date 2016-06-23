@@ -36,7 +36,10 @@
                 "description": "CompetitionTeam列表响应对象"
             }},
             "operationId": "getCompetitionTeamSetUpDate",
-            "parameters": [{"$ref": "#/parameters/teamPath"}],
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/teamPath"}
+            ],
             "tags": ["setupDate"]
         }},
         "/wemedia/posts/{postId}": {"get": {
@@ -194,7 +197,7 @@
                 "description": "PlayerCategoryTop列表响应对象"
             }},
             "operationId": "getNationalPlayer",
-            "parameters": [],
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
             "tags": ["player"]
         }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/matchTeam/{matchTeamId}": {"get": {
@@ -224,7 +227,10 @@
                 "description": "PlayerNationalMatch响应对象"
             }},
             "operationId": "getPlayerNationMatches",
-            "parameters": [{"$ref": "#/parameters/playerPath"}],
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/playerPath"}
+            ],
             "tags": ["player"]
         }},
         "/like/likes/{target}": {"get": {
@@ -263,6 +269,7 @@
             }},
             "operationId": "getMatch",
             "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
                 {"$ref": "#/parameters/competitionPath"},
                 {"$ref": "#/parameters/matchPath"}
             ],
@@ -295,7 +302,10 @@
                 "description": "Player响应对象"
             }},
             "operationId": "getPlayer",
-            "parameters": [{"$ref": "#/parameters/playerPath"}],
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/playerPath"}
+            ],
             "tags": ["player"]
         }},
         "/elearning/quiz_categories": {"get": {
@@ -370,7 +380,10 @@
                 "description": "Referee响应对象"
             }},
             "operationId": "getReferee",
-            "parameters": [{"$ref": "#/parameters/refereePath"}],
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/refereePath"}
+            ],
             "tags": ["referee"]
         }},
         "/games/courts": {"post": {
@@ -403,7 +416,10 @@
                 "description": "Staff响应对象"
             }},
             "operationId": "getStaff",
-            "parameters": [{"$ref": "#/parameters/staffPath"}],
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/staffPath"}
+            ],
             "tags": ["staff"]
         }},
         "/elearning/training_categories/{categoryId}/pages": {"get": {
@@ -640,7 +656,7 @@
                 "description": "CoachCategoryTop列表响应对象"
             }},
             "operationId": "getNationalCoach",
-            "parameters": [],
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
             "tags": ["coach"]
         }},
         "/news/{newsId}/publish": {"post": {
@@ -839,7 +855,10 @@
                 "description": "查询一只球队"
             }},
             "operationId": "getTeam",
-            "parameters": [{"$ref": "#/parameters/teamPath"}],
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/teamPath"}
+            ],
             "tags": ["team"]
         }},
         "/games/matchStaffs": {"post": {
@@ -872,7 +891,10 @@
                 "description": "BasicPlayer响应对象"
             }},
             "operationId": "getBasicPlayer",
-            "parameters": [{"$ref": "#/parameters/playerPath"}],
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/playerPath"}
+            ],
             "tags": ["player"]
         }},
         "/category/categories": {
@@ -933,6 +955,7 @@
             }},
             "operationId": "getReferees",
             "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
                 {
                     "in": "query",
                     "name": "level",
@@ -967,7 +990,10 @@
                 "description": "查询单个教练的信息"
             }},
             "operationId": "getCoach",
-            "parameters": [{"$ref": "#/parameters/coachPath"}],
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/coachPath"}
+            ],
             "tags": ["coach"]
         }},
         "/games/teams/{teamId}/competitionTeam": {"get": {
@@ -982,6 +1008,7 @@
             }},
             "operationId": "getCompetitionTeams",
             "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
                 {"$ref": "#/parameters/teamPath"},
                 {
                     "in": "query",
@@ -1068,7 +1095,10 @@
                 "description": "Coach列表响应对象"
             }},
             "operationId": "getCoachByTeamCategory",
-            "parameters": [{"$ref": "#/parameters/teamCategoryPath"}],
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/teamCategoryPath"}
+            ],
             "tags": ["coach"]
         }},
         "/games/players/{playerId}/nationRecords": {"get": {
@@ -1079,7 +1109,10 @@
                 "description": "PlayerNationalRecord响应对象"
             }},
             "operationId": "getPlayerNationRecords",
-            "parameters": [{"$ref": "#/parameters/playerPath"}],
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/playerPath"}
+            ],
             "tags": ["player"]
         }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam": {
@@ -1266,7 +1299,10 @@
                 "description": "Player列表响应对象"
             }},
             "operationId": "getPlayerByTeamCategory",
-            "parameters": [{"$ref": "#/parameters/teamCategoryPath"}],
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/teamCategoryPath"}
+            ],
             "tags": ["player"]
         }},
         "/games/players/{playerId}/introduce": {"get": {
@@ -1277,7 +1313,10 @@
                 "description": "球员个人介绍"
             }},
             "operationId": "getPlayerIntroduce",
-            "parameters": [{"$ref": "#/parameters/playerPath"}],
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/playerPath"}
+            ],
             "tags": ["player"]
         }},
         "/games/competitions/{competitionId}/matches": {
@@ -1316,6 +1355,7 @@
                 }},
                 "operationId": "getByCompetitionIdAndTeamId",
                 "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
                     {"$ref": "#/parameters/competitionPath"},
                     {
                         "in": "query",
@@ -1381,7 +1421,10 @@
                 "description": "Competition响应对象"
             }},
             "operationId": "getCompetition",
-            "parameters": [{"$ref": "#/parameters/competitionPath"}],
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/competitionPath"}
+            ],
             "tags": ["competition"]
         }},
         "/games/competitionCategory": {
@@ -1418,14 +1461,17 @@
                     "description": "CompetitionCategory列表响应对象"
                 }},
                 "operationId": "getCompetitionCategories",
-                "parameters": [{
-                    "in": "query",
-                    "name": "teamType",
-                    "format": "int32",
-                    "description": "0：国家队 类别 1：职业俱乐部 类别 2：业余俱乐部 4：校园足球队 5：其他",
-                    "type": "integer",
-                    "required": false
-                }],
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "query",
+                        "name": "teamType",
+                        "format": "int32",
+                        "description": "0：国家队 类别 1：职业俱乐部 类别 2：业余俱乐部 4：校园足球队 5：其他",
+                        "type": "integer",
+                        "required": false
+                    }
+                ],
                 "tags": ["CompetitionCategory"]
             }
         },
