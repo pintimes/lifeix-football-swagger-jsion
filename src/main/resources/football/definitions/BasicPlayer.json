@@ -6,8 +6,7 @@
         "id": 
         {
             "description": "id",
-            "format": "int64",
-            "type": "integer"
+            "type": "string"
         },
 		"name": 
         {
@@ -16,7 +15,7 @@
         },
         "englishName": 
         {
-            "description": "名字：李铁",
+            "description": "",
             "type": "string"
         },
         "avatar": 
@@ -45,50 +44,25 @@
             "description": "体重",
             "type": "string"
         },
-        "position": 
-        {
-            "description": "位置：前锋",
-            "type": "string"
-        },
         "country": 
         {
             "description": "国家： 中国",
             "type": "string"
         },
-		 "selectedNum": 
+        "introuceUrl": 
         {
-            "description": "国家队入选次数",
+            "description": "国家： 中国",
             "type": "string"
         },
-        "record": 
+        "matchUrl": 
         {
-            "$ref": "#/definitions/PlayerNationalRecord"
+            "description": "国家： 中国",
+            "type": "string"
         },
-        "nationTeam": 
+        "recordUrl": 
         {
-            "$ref": "#/definitions/TeamInfo"
-        },
-        "club": 
-        {
-            "$ref": "#/definitions/TeamInfo"
-        },
-        "career": 
-        {
-            "description": "职业生涯",
-            "type": "array",
-            "items": 
-            {
-                "$ref": "#/definitions/TeamInfo"
-            }
-        },
-        "matches": 
-        {
-            "description": "参加过的国家队比赛",
-            "type": "array",
-            "items": 
-            {
-                "$ref": "#/definitions/PlayerNationalMatch"
-            }
+            "description": "国家： 中国",
+            "type": "string"
         },
         "playerVideos": {
             "description": "球员视频",

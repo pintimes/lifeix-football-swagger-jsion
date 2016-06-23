@@ -1,0 +1,32 @@
+{
+    "summary": "获得球员比赛信息",
+    "tags": 
+    [
+        "player"
+    ],
+    "description": "获得球员比赛信息",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/playerPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+	            "items": {
+	                "$ref": "#/definitions/PlayerNationalMatch"
+	            }
+            },
+
+            "description": "PlayerNationalMatch响应对象"
+        }
+    },
+
+    "operationId": "getPlayerNationMatches"
+}

@@ -1,0 +1,34 @@
+{
+    "description": "球员视频",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+		"playerId": 
+        {
+            "description": "球员id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "playerName": 
+        {
+            "description": "名字：李铁",
+            "type": "string"
+        },
+        "title": 
+        {
+            "description": "视频标题",
+            "type": "string"
+        },
+		"url": 
+        {
+            "description": "视频地址",
+            "type": "string"
+        }
+    }
+}
