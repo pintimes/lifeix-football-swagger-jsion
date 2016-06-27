@@ -1,10 +1,10 @@
 {
-    "summary": "获得球员信息",
+    "summary": "获得球员比赛统计信息",
     "tags": 
     [
         "player"
     ],
-    "description": "查看球员信息",
+    "description": "获得球员比赛统计信息",
     "parameters": 
     [
     	{
@@ -21,12 +21,12 @@
         {
             "schema": 
             {
-                "$ref": "#/definitions/Player"
+                "$ref": "#/definitions/PlayerNationalRecord"
             },
 
-            "description": "Player响应对象"
+            "description": "PlayerNationalRecord响应对象"
         }
     },
 
-    "operationId": "getPlayer"
+    "operationId": "getPlayerNationRecords"
 }

@@ -1,10 +1,10 @@
 {
-    "summary": "获得球员信息",
+    "summary": "获得球员基础信息",
     "tags": 
     [
         "player"
     ],
-    "description": "查看球员信息",
+    "description": "查看球员基础信息",
     "parameters": 
     [
     	{
@@ -21,12 +21,12 @@
         {
             "schema": 
             {
-                "$ref": "#/definitions/Player"
+                "$ref": "#/definitions/BasicPlayer"
             },
 
-            "description": "Player响应对象"
+            "description": "BasicPlayer响应对象"
         }
     },
 
-    "operationId": "getPlayer"
+    "operationId": "getBasicPlayer"
 }

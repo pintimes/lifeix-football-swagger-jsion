@@ -8,6 +8,9 @@
     "description": "获取赛事比赛列表",
     "parameters": 
     [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
         {
             "$ref": "#/parameters/competitionPath"
         },

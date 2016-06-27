@@ -7,6 +7,9 @@
     "description": "查询一只球队",
     "parameters": 
     [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
         {
             "$ref": "#/parameters/teamPath"
         }

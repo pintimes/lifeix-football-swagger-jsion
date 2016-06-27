@@ -44,9 +44,15 @@
             "description": "国家： 中国",
             "type": "string"
         },
-         "showNum": 
+        "topLeagueNum": 
         {
-            "description": "顶级联赛出场次数",
+            "description": "顶级联赛执法次数",
+            "format": "int32",
+            "type": "integer"
+        },
+        "fifaTopANum": 
+        {
+            "description": "国际A级比赛执法场次",
             "format": "int32",
             "type": "integer"
         },
@@ -68,6 +74,11 @@
         "category": 
         {
             "description": "11人制，5人制，沙滩",
+            "type": "string"
+        },
+        "association": 
+        {
+            "description": "属于的协会",
             "type": "string"
         }
     }

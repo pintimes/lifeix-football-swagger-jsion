@@ -5,6 +5,9 @@
                 ],
                 "description": "获得裁判列表",
                 "parameters": [
+                	{
+			            "$ref": "#/parameters/apiKeyYHeader"
+			        },
 	                {
 			            "description": "裁判级别",
 			            "name": "level",

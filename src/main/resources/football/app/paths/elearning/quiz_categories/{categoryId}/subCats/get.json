@@ -1,13 +1,19 @@
 {
-    "summary": "获取elearning测试类目",
+    "summary": "获取elearning测试类目下的单级子分类列表",
     "tags": 
     [
     	"elearning"
     ],
-    "description": "获取elearning测试类目",
+    "description": "获取elearning测试类目下的单级子分类列表",
     "produces": 
     [
         "application/json"
+    ],
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/elearningQuizCategoryPath"
+        }
     ],
     "responses": 
     {
@@ -26,5 +32,5 @@
         }
     },
 
-    "operationId": "getElearningQuizCategoriesTree"
+    "operationId": "getElearningQuizSubCategories"
 }
