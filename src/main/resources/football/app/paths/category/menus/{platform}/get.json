@@ -1,11 +1,11 @@
 {
-    "summary": "获取相应平台的整个菜单",
+    "summary": "获取菜单栏",
     "tags": 
     [
         "menu"
     ],
 
-    "description": "需要通过不同的参数来获取不同的菜单,app、app_wemedia对应APP的媒体资讯菜单，wap,web",
+    "description": "需要通过不同的参数来获取不同的菜单，app对应移动的菜单 、app_wemedia对应APP媒体资讯菜单，web对应的是网站的菜单",
     "produces": 
     [
         "application/json"

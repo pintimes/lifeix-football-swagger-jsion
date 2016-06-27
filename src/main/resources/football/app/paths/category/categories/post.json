@@ -1,11 +1,11 @@
 {
-    "summary": "创建一个展示类目",
+    "summary": "创建一个类目",
     "tags": 
     [
         "category"
     ],
 
-    "description": "类目用于WEB菜单栏",
+    "description": "类目只能有管理员创建",
     "produces": 
     [
         "application/json"

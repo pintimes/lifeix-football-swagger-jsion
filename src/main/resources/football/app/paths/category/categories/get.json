@@ -1,11 +1,11 @@
 {
-    "summary": "获取整个类目",
+    "summary": "获取类目列表",
     "tags": 
     [
         "category"
     ],
 
-    "description": "将数据库（缓存）中所有类目都返回",
+    "description": "类目仅用于管理后台，用于查看整个系统的业务结构以及对媒体的标记",
     "produces": 
     [
         "application/json"

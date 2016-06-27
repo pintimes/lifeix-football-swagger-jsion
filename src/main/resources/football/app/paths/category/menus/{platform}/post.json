@@ -1,11 +1,11 @@
 {
-    "summary": "创建一个展示类目",
+    "summary": "创建一个菜单栏",
     "tags": 
     [
         "menu"
     ],
 
-    "description": "类目用于WEB菜单栏",
+    "description": "创建APP或者Web的菜单栏",
     "produces": 
     [
         "application/json"

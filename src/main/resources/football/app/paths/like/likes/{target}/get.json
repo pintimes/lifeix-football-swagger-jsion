@@ -1,11 +1,11 @@
 {
-    "summary": "获得某一个Post的点赞信息",
+    "summary": "获得某一个Target的点赞信息",
     "tags": 
     [
         "likes"
     ],
 
-    "operationId": "getPostLikeds",
+    "operationId": "getTargetLikeds",
     "description": "比如：立方体育XX like 100 unlike20 like true",
     "parameters": 
     [
