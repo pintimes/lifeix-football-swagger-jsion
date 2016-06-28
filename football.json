@@ -503,7 +503,7 @@
                     "in": "query",
                     "name": "startDate",
                     "format": "date-time",
-                    "description": "查询开始日期,单位天",
+                    "description": "查询开始时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
                     "type": "string",
                     "required": false
                 },
@@ -511,7 +511,7 @@
                     "in": "query",
                     "name": "endDate",
                     "format": "date-time",
-                    "description": "查询结束日期,单位天",
+                    "description": "查询结束时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
                     "type": "string",
                     "required": false
                 },
@@ -519,7 +519,7 @@
                     "in": "query",
                     "name": "date",
                     "format": "date-time",
-                    "description": "查询开始时间。example:分页时，传递第一页最后一条记录的createTime(long)",
+                    "description": "查询开始时间，传递当前页最后一条记录的createTime(long)时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
                     "type": "string",
                     "required": false
                 },
@@ -527,11 +527,12 @@
                     "in": "query",
                     "name": "limit",
                     "format": "int32",
-                    "description": "一页显示多少",
+                    "description": "一页显示多少数据",
                     "type": "integer",
                     "required": false
                 },
                 {
+                    "default": "createTime",
                     "in": "query",
                     "name": "orderBy",
                     "description": "按照那个字段排序",
@@ -670,7 +671,7 @@
                 {"$ref": "#/parameters/newsPath"}
             ],
             "tags": ["news"],
-            "consumes": ["multipart/form-data"]
+            "consumes": ["application/x-www-form-urlencoded"]
         }},
         "/games/competitions/{competitionId}/matches/{matchId}/referees": {"post": {
             "summary": "新增比赛裁判",
@@ -781,7 +782,7 @@
                     }
                 ],
                 "tags": ["WemediaPost"],
-                "consumes": ["multipart/form-data"]
+                "consumes": ["application/x-www-form-urlencoded"]
             },
             "delete": {
                 "summary": "删除Post的分类",
@@ -805,7 +806,7 @@
                     }
                 ],
                 "tags": ["WemediaPost"],
-                "consumes": ["multipart/form-data"]
+                "consumes": ["application/x-www-form-urlencoded"]
             }
         },
         "/games/teams/{teamId}": {"get": {
@@ -1028,7 +1029,7 @@
                     }
                 ],
                 "tags": ["WemediaAuthor"],
-                "consumes": ["multipart/form-data"]
+                "consumes": ["application/x-www-form-urlencoded"]
             },
             "get": {
                 "summary": "获得Authors列表",
@@ -1142,7 +1143,7 @@
                     }
                 ],
                 "tags": ["WemediaTop"],
-                "consumes": ["multipart/form-data"]
+                "consumes": ["application/x-www-form-urlencoded"]
             },
             "get": {
                 "summary": "获得类目下对应的文章列表",
@@ -1193,7 +1194,7 @@
                     }
                 ],
                 "tags": ["WemediaTop"],
-                "consumes": ["multipart/form-data"]
+                "consumes": ["application/x-www-form-urlencoded"]
             }
         },
         "/like/likes": {
@@ -1227,7 +1228,7 @@
                     }
                 ],
                 "tags": ["likes"],
-                "consumes": ["multipart/form-data"]
+                "consumes": ["application/x-www-form-urlencoded"]
             },
             "get": {
                 "summary": "获取喜欢列表",
@@ -1532,7 +1533,7 @@
                     }
                 ],
                 "tags": ["WemediaPost"],
-                "consumes": ["multipart/form-data"]
+                "consumes": ["application/x-www-form-urlencoded"]
             },
             "get": {
                 "summary": "获得Posts",
@@ -1579,7 +1580,7 @@
                     }
                 ],
                 "tags": ["WemediaPost"],
-                "consumes": ["multipart/form-data"]
+                "consumes": ["application/x-www-form-urlencoded"]
             }
         },
         "/wemedia/authors/{authorId}": {"get": {

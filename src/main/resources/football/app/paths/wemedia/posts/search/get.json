@@ -29,7 +29,7 @@
         },
 
         {
-            "description": "查询开始日期,单位天",
+            "description": "查询开始时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
             "name": "startDate",
             "type": "string",
             "format":"date-time",
@@ -38,7 +38,7 @@
         },
 
         {
-            "description": "查询结束日期,单位天",
+            "description": "查询结束时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
             "name": "endDate",
             "type": "string",
             "format":"date-time",
@@ -47,7 +47,7 @@
         },
 
         {
-            "description": "查询开始时间。example:分页时，传递第一页最后一条记录的createTime(long)",
+            "description": "查询开始时间，传递当前页最后一条记录的createTime(long)时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
             "name": "date",
             "type": "string",
             "format":"date-time",
@@ -56,7 +56,7 @@
         },
 
         {
-            "description": "一页显示多少",
+            "description": "一页显示多少数据",
             "name": "limit",
             "format": "int32",
             "type": "integer",
@@ -69,7 +69,8 @@
             "name": "orderBy",
             "type": "string",
             "required": false,
-            "in": "query"
+            "in": "query",
+            "default":"createTime"
         },
 
         {
