@@ -588,6 +588,21 @@
             "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
             "tags": ["admin"]
         }},
+        "/elearning/training_categories/{categoryId}/pages/{index}": {"get": {
+            "summary": "按顺序索引获取培训单篇",
+            "produces": ["application/json"],
+            "description": "按顺序索引获取培训单篇",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/ElearningPage"},
+                "description": "单篇"
+            }},
+            "operationId": "getElearningTrainingPageByIndex",
+            "parameters": [
+                {"$ref": "#/parameters/elearningTrainingCategoryPath"},
+                {"$ref": "#/parameters/elearningTrainingPageIndexPath"}
+            ],
+            "tags": ["elearning"]
+        }},
         "/games/competitions": {"post": {
             "summary": "新增赛事",
             "produces": ["application/json"],
@@ -1750,6 +1765,14 @@
             "description": "比赛Id",
             "type": "integer",
             "required": true
+        },
+        "elearningTrainingPageIndexPath": {
+            "in": "path",
+            "name": "index",
+            "format": "int32",
+            "description": "elearning培训单篇顺序索引",
+            "type": "integer",
+            "required": true
         }
     },
     "definitions": {
@@ -2613,6 +2636,11 @@
                 "type": {
                     "format": "int32",
                     "description": "类目对应的页面类型：1-视频列表  | 2-文章列表 | 3-测试",
+                    "type": "integer"
+                },
+                "rightCount": {
+                    "format": "int32",
+                    "description": "测试通过需答对的题目数",
                     "type": "integer"
                 }
             }
