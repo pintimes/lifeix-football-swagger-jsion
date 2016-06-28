@@ -2,7 +2,7 @@
     "summary": "删除Post",
     "tags": 
     [
-       "WemediaPost"
+        "WemediaPost"
     ],
 
     "description": "删除Post：只有管理员才有权限",
@@ -13,7 +13,7 @@
 
     "consumes": 
     [
-        "application/json"
+        "multipart/form-data"
     ],
 
     "parameters": 
@@ -30,6 +30,7 @@
             {
                 "type": "string"
             },
+
             "required": true,
             "in": "formData"
         }

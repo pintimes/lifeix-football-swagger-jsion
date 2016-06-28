@@ -251,7 +251,7 @@
                     "required": true
                 },
                 {
-                    "in": "formData",
+                    "in": "query",
                     "name": "type",
                     "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
                     "type": "string",
@@ -670,7 +670,7 @@
                 {"$ref": "#/parameters/newsPath"}
             ],
             "tags": ["news"],
-            "consumes": ["application/json"]
+            "consumes": ["multipart/form-data"]
         }},
         "/games/competitions/{competitionId}/matches/{matchId}/referees": {"post": {
             "summary": "新增比赛裁判",
@@ -732,45 +732,6 @@
             ],
             "tags": ["news"]
         }},
-        "/wemedia/posts/timeline": {"get": {
-            "summary": "获取时间轴形式的Post列表",
-            "operationId": "getTimelinePosts",
-            "description": "返回TimeLineNews对象，默认按时间倒叙",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/TimeLineNews"}
-                },
-                "description": "TimeLineNews列表响应对象"
-            }},
-            "parameters": [
-                {
-                    "in": "query",
-                    "name": "categoryId",
-                    "description": "类目Id",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "startDate",
-                    "format": "date-time",
-                    "description": "查询开始日期,单位天.默认为当天",
-                    "type": "string",
-                    "required": false
-                },
-                {
-                    "default": 5,
-                    "in": "query",
-                    "name": "limit",
-                    "format": "int32",
-                    "description": "一页显示数目，如果不传默认=5",
-                    "type": "integer",
-                    "required": false
-                }
-            ],
-            "tags": ["WemediaTimeline"]
-        }},
         "/elearning/quiz_categories/{categoryId}/subCats": {"get": {
             "summary": "获取elearning测试类目下的单级子分类列表",
             "produces": ["application/json"],
@@ -820,7 +781,7 @@
                     }
                 ],
                 "tags": ["WemediaPost"],
-                "consumes": ["application/json"]
+                "consumes": ["multipart/form-data"]
             },
             "delete": {
                 "summary": "删除Post的分类",
@@ -844,7 +805,7 @@
                     }
                 ],
                 "tags": ["WemediaPost"],
-                "consumes": ["application/json"]
+                "consumes": ["multipart/form-data"]
             }
         },
         "/games/teams/{teamId}": {"get": {
@@ -938,7 +899,7 @@
                     "description": "Category列表响应对象"
                 }},
                 "operationId": "getCategoryList",
-                "parameters": [],
+                "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
                 "tags": ["category"],
                 "consumes": ["application/json"]
             }
@@ -1067,7 +1028,7 @@
                     }
                 ],
                 "tags": ["WemediaAuthor"],
-                "consumes": ["application/json"]
+                "consumes": ["multipart/form-data"]
             },
             "get": {
                 "summary": "获得Authors列表",
@@ -1158,6 +1119,7 @@
         "/wemedia/tops": {
             "post": {
                 "summary": "添加Posts到对应的Category的Top",
+                "produces": ["application/json"],
                 "description": "传入类目Id以及对应的PostIds",
                 "responses": {"200": {"description": "Succ"}},
                 "operationId": "addTopPosts",
@@ -1179,7 +1141,8 @@
                         "required": false
                     }
                 ],
-                "tags": ["WemediaTop"]
+                "tags": ["WemediaTop"],
+                "consumes": ["multipart/form-data"]
             },
             "get": {
                 "summary": "获得类目下对应的文章列表",
@@ -1207,6 +1170,7 @@
             },
             "delete": {
                 "summary": "从对应的Category的Top上删除Posts",
+                "produces": ["application/json"],
                 "description": "传入类目Id以及对应的PostIds",
                 "responses": {"200": {"description": "Succ"}},
                 "operationId": "deleteTopPosts",
@@ -1228,12 +1192,14 @@
                         "required": false
                     }
                 ],
-                "tags": ["WemediaTop"]
+                "tags": ["WemediaTop"],
+                "consumes": ["multipart/form-data"]
             }
         },
         "/like/likes": {
             "post": {
                 "summary": "对某一个目标点赞",
+                "produces": ["application/json"],
                 "operationId": "addLike",
                 "description": "一个Ip地址只能对一个目标点赞/踩一次，第二次仍会返回正确，但是数目不会变化",
                 "responses": {"200": {"description": "不管什么操作都会返回200"}},
@@ -1260,7 +1226,8 @@
                         "type": "boolean"
                     }
                 ],
-                "tags": ["likes"]
+                "tags": ["likes"],
+                "consumes": ["multipart/form-data"]
             },
             "get": {
                 "summary": "获取喜欢列表",
@@ -1277,7 +1244,7 @@
                 "parameters": [
                     {"$ref": "#/parameters/apiKeyYHeader"},
                     {
-                        "in": "formData",
+                        "in": "query",
                         "name": "type",
                         "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
                         "type": "string",
@@ -1565,7 +1532,7 @@
                     }
                 ],
                 "tags": ["WemediaPost"],
-                "consumes": ["application/json"]
+                "consumes": ["multipart/form-data"]
             },
             "get": {
                 "summary": "获得Posts",
@@ -1612,7 +1579,7 @@
                     }
                 ],
                 "tags": ["WemediaPost"],
-                "consumes": ["application/json"]
+                "consumes": ["multipart/form-data"]
             }
         },
         "/wemedia/authors/{authorId}": {"get": {
@@ -2834,6 +2801,10 @@
             "description": "帖子：展示在中国足球网上的所有资讯",
             "type": "object",
             "properties": {
+                "image": {
+                    "description": "用于显示的图片，可裁切，具体详情参见七牛图片处理API",
+                    "type": "string"
+                },
                 "images": {
                     "description": "图片地址",
                     "type": "array",

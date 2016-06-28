@@ -24,10 +24,17 @@
             "description": "Html地址，通过这个地址可以打开一个H5界面，该页面展示了该Post的数据",
             "type": "string"
         },
+        
 
         "content": 
         {
             "description": "内容,仅仅是Html的Content",
+            "type": "string"
+        },
+        
+        "image": 
+        {
+            "description": "用于显示的图片，可裁切，具体详情参见七牛图片处理API",
             "type": "string"
         },
 

@@ -23,7 +23,7 @@
 
         {
             "name": "type",
-            "in": "formData",
+            "in": "query",
             "type": "string",
             "required": true,
             "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post"

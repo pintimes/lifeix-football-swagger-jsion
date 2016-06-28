@@ -7,6 +7,16 @@
 
     "operationId": "addLike",
     "description": "一个Ip地址只能对一个目标点赞/踩一次，第二次仍会返回正确，但是数目不会变化",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "multipart/form-data"
+    ],
+
     "parameters": 
     [
         {

@@ -13,7 +13,7 @@
 
     "consumes": 
     [
-        "application/json"
+        "multipart/form-data"
     ],
 
     "parameters": 

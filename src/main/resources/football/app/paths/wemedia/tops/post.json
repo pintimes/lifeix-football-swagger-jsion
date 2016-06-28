@@ -6,12 +6,22 @@
     ],
 
     "description": "传入类目Id以及对应的PostIds",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "multipart/form-data"
+    ],
+
     "parameters": 
     [
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
-        
+
         {
             "description": "类目Id",
             "name": "categoryId",
