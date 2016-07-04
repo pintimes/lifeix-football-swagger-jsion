@@ -215,6 +215,16 @@
             "in": "path"
         },
 
+		"elearningTrainingPageIndexPath":
+		{
+            "description": "elearning培训单篇顺序索引",
+            "name": "index",
+            "type": "integer",
+            "format": "int32",
+            "required": true,
+            "in": "path"
+        },
+        
 		"elearningQuizCategoryPath": 
         {
             "description": "elearning测试类目Id",
