@@ -28,7 +28,7 @@
             "in": "formData",
             "type": "string",
             "required": true,
-            "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post"
+            "description": "target的类型，文章：post;教练：coach;裁判：refree;球员：player;领队：leader"
         },
 
         {

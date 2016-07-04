@@ -1,0 +1,44 @@
+{
+    "summary": "获得国家队成员的喜欢列表",
+    "tags": 
+    [
+        "likes"
+    ],
+
+    "description": "获得国家队成员的喜欢列表，包含教练coach，领队leader，球员player",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Like"
+                }
+            },
+
+            "description": "Like列表响应对象"
+        }
+    },
+
+    "operationId": "getNationalTeamLikes"
+}

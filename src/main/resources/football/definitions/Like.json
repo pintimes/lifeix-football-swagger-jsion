@@ -10,7 +10,7 @@
 
         "type": 
         {
-            "description": "类型或者说业务系统:比如：nationalteam,post",
+            "description": "Like类型，只能从其中选择-> 帖子：post, 教练：coach,裁判：refree,球员：player",
             "type": "string"
         },
 
@@ -30,7 +30,7 @@
         
         "like": 
         {
-            "description": "当前用户/设备/ip 是否喜欢过该target",
+            "description": "当前Ip是否喜欢过该target->true 是喜欢;false是不喜欢;不返回值则表示未处理过",
             "type": "boolean"
         }
     },

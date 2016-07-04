@@ -518,7 +518,7 @@
                 {
                     "in": "query",
                     "name": "date",
-                    "format": "date-time",
+                    "format": "date",
                     "description": "查询开始时间，传递当前页最后一条记录的createTime(long)时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
                     "type": "string",
                     "required": false
