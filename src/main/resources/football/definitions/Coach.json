@@ -63,6 +63,16 @@
             {
                 "$ref": "#/definitions/TeamInfo"
             }
+        },
+         "company": 
+        {
+            "description": "所在组织",
+            "type": "string"
+        },
+         "url": 
+        {
+            "description": "个人介绍html5访问路径",
+            "type": "string"
         }
     }
 }

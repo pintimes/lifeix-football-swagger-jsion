@@ -1,12 +1,13 @@
 {
-    "description": "队员",
+    "description": "球员基础信息",
     "type": "object",
     "properties": 
     {
         "id": 
         {
             "description": "id",
-            "type": "string"
+            "format": "int64",
+            "type": "integer"
         },
 		"name": 
         {
@@ -51,18 +52,35 @@
         },
         "introuceUrl": 
         {
-            "description": "国家： 中国",
+            "description": "个人介绍",
             "type": "string"
         },
         "matchUrl": 
         {
-            "description": "国家： 中国",
+            "description": "比赛信息",
             "type": "string"
         },
         "recordUrl": 
         {
-            "description": "国家： 中国",
+            "description": "比赛记录",
             "type": "string"
+        },
+        "nationTeam": 
+        {
+            "$ref": "#/definitions/TeamInfo"
+        },
+        "club": 
+        {
+            "$ref": "#/definitions/TeamInfo"
+        },
+        "career": 
+        {
+            "description": "职业生涯",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/TeamInfo"
+            }
         },
         "playerVideos": {
             "description": "球员视频",
