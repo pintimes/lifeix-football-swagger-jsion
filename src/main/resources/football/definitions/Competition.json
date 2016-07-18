@@ -6,7 +6,8 @@
         "id": 
         {
             "description": "id",
-            "type": "string"
+            "format": "int64",
+            "type": "integer"
         },
         "name": 
         {
