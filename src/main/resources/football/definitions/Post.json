@@ -84,17 +84,6 @@
             "type": "array"
         },
         
-        "categories": 
-        {
-            "items": 
-            {
-                "type": "Category"
-            },
-
-            "description": "文章类别",
-            "type": "array"
-        },
-        
         "status": 
         {
             "description": "状态 ：1可用 ，0不可用",

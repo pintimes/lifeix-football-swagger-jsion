@@ -78,6 +78,33 @@
             "tags": ["coach"],
             "consumes": ["application/json"]
         }},
+        "/news/news/{newsId}": {"get": {
+            "summary": "根据Id获取News详情",
+            "description": "返回News详情对象",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/News"},
+                "description": "News响应对象"
+            }},
+            "operationId": "getNewsDetail",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/newsPath"}
+            ],
+            "tags": ["news"]
+        }},
+        "/news/news/{newsId}/publish": {"post": {
+            "summary": "发布News到Post系统",
+            "produces": ["application/json"],
+            "description": "News和Post不是同一系统，Post针对的是用户，News针对的是新闻来源以及管理员",
+            "responses": {"200": {"description": "发布成功"}},
+            "operationId": "publishNews",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/newsPath"}
+            ],
+            "tags": ["news"],
+            "consumes": ["application/x-www-form-urlencoded"]
+        }},
         "/games/competitions/{competitionId}/teams/{teamId}/competitionTeam/{competitionTeamId}/staffs": {"post": {
             "summary": "新增赛事参赛队职员",
             "produces": ["application/json"],
@@ -372,6 +399,38 @@
             "tags": ["matchTeam"],
             "consumes": ["application/json"]
         }},
+        "/news/news/search": {"get": {
+            "summary": "搜索News",
+            "description": "根据搜索条件获取News列表，只有管理员才能查找",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/News"}
+                },
+                "description": "News列表响应对象"
+            }},
+            "operationId": "searchNews",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "query",
+                    "name": "page",
+                    "format": "int32",
+                    "description": "页码",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "limit",
+                    "format": "int32",
+                    "description": "一页显示多少",
+                    "type": "integer",
+                    "required": false
+                }
+            ],
+            "tags": ["news"]
+        }},
         "/games/referees/{refereeId}": {"get": {
             "summary": "获得裁判详细信息",
             "description": "查看裁判信息",
@@ -583,20 +642,6 @@
             "parameters": [{"$ref": "#/parameters/elearningVideoPath"}],
             "tags": ["elearning"]
         }},
-        "/news/{newsId}": {"get": {
-            "summary": "根据Id获取News详情",
-            "description": "返回News详情对象",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/News"},
-                "description": "News响应对象"
-            }},
-            "operationId": "getNewsDetail",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/newsPath"}
-            ],
-            "tags": ["news"]
-        }},
         "/admin/admins": {"get": {
             "summary": "获得Admin列表",
             "description": "返回管理员列表,该接口只能被管理员访问",
@@ -698,19 +743,6 @@
             "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
             "tags": ["coach"]
         }},
-        "/news/{newsId}/publish": {"post": {
-            "summary": "发布News到Post系统",
-            "produces": ["application/json"],
-            "description": "News和Post不是同一系统，Post针对的是用户，News针对的是新闻来源以及管理员",
-            "responses": {"200": {"description": "发布成功"}},
-            "operationId": "publishNews",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/newsPath"}
-            ],
-            "tags": ["news"],
-            "consumes": ["application/x-www-form-urlencoded"]
-        }},
         "/games/competitions/{competitionId}/matches/{matchId}/referees": {"post": {
             "summary": "新增比赛裁判",
             "produces": ["application/json"],
@@ -738,38 +770,6 @@
             ],
             "tags": ["match"],
             "consumes": ["application/json"]
-        }},
-        "/news/search": {"get": {
-            "summary": "搜索News",
-            "description": "根据搜索条件获取News列表，只有管理员才能查找",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/News"}
-                },
-                "description": "News列表响应对象"
-            }},
-            "operationId": "searchNews",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {
-                    "in": "query",
-                    "name": "page",
-                    "format": "int32",
-                    "description": "页码",
-                    "type": "integer",
-                    "required": false
-                },
-                {
-                    "in": "query",
-                    "name": "limit",
-                    "format": "int32",
-                    "description": "一页显示多少",
-                    "type": "integer",
-                    "required": false
-                }
-            ],
-            "tags": ["news"]
         }},
         "/elearning/quiz_categories/{categoryId}/subCats": {"get": {
             "summary": "获取elearning测试类目下的单级子分类列表",
@@ -2920,6 +2920,10 @@
                     "type": "string"
                 },
                 "author": {"$ref": "#/definitions/Author"},
+                "shareUrl": {
+                    "description": "分享用的Html地址",
+                    "type": "string"
+                },
                 "videos": {
                     "description": "视频地址",
                     "type": "array",
