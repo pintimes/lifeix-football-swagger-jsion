@@ -518,7 +518,7 @@
                 {
                     "in": "query",
                     "name": "date",
-                    "format": "date",
+                    "format": "date-time",
                     "description": "查询开始时间，传递当前页最后一条记录的createTime(long)时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
                     "type": "string",
                     "required": false
@@ -837,6 +837,22 @@
                 {"$ref": "#/parameters/teamPath"}
             ],
             "tags": ["team"]
+        }},
+        "/like/likes/nationalteam": {"get": {
+            "summary": "获得国家队成员的喜欢列表",
+            "produces": ["application/json"],
+            "description": "获得国家队成员的喜欢列表，包含教练coach，领队leader，球员player",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Like"}
+                },
+                "description": "Like列表响应对象"
+            }},
+            "operationId": "getNationalTeamLikes",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": ["likes"],
+            "consumes": ["application/json"]
         }},
         "/games/matchStaffs": {"post": {
             "summary": "新增比赛工作人员:比赛监督、赛事监督",
@@ -1224,7 +1240,7 @@
                     {
                         "in": "formData",
                         "name": "type",
-                        "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
+                        "description": "target的类型，文章：post;教练：coach;裁判：refree;球员：player;领队：leader",
                         "type": "string",
                         "required": true
                     },
@@ -2335,11 +2351,11 @@
             "type": "object",
             "properties": {
                 "like": {
-                    "description": "当前用户/设备/ip 是否喜欢过该target",
+                    "description": "当前Ip是否喜欢过该target->true 是喜欢;false是不喜欢;不返回值则表示未处理过",
                     "type": "boolean"
                 },
                 "type": {
-                    "description": "类型或者说业务系统:比如：nationalteam,post",
+                    "description": "Like类型，只能从其中选择-> 帖子：post, 教练：coach,裁判：refree,球员：player",
                     "type": "string"
                 },
                 "unlikeNum": {

@@ -25,6 +25,12 @@
             "type": "string"
         },
         
+          "shareUrl": 
+        {
+            "description": "分享用的Html地址",
+            "type": "string"
+        },
+        
 
         "content": 
         {
@@ -75,6 +81,17 @@
             },
 
             "description": "文章类别ID",
+            "type": "array"
+        },
+        
+        "categories": 
+        {
+            "items": 
+            {
+                "type": "Category"
+            },
+
+            "description": "文章类别",
             "type": "array"
         },
         
