@@ -215,9 +215,9 @@
             "in": "path"
         },
 
-		"elearningTrainingPageIndexPath":
+		"elearningTrainingVideoPageIndexPath":
 		{
-            "description": "elearning培训单篇顺序索引",
+            "description": "elearning培训视频单篇顺序索引",
             "name": "index",
             "type": "integer",
             "format": "int32",
@@ -229,6 +229,15 @@
         {
             "description": "elearning测试类目Id",
             "name": "categoryId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+        
+        "elearningExercisePath": 
+        {
+            "description": "elearning练习的ID",
+            "name": "exerciseId",
             "type": "string",
             "required": true,
             "in": "path"

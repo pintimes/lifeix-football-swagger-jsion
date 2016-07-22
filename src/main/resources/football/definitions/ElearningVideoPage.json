@@ -1,0 +1,27 @@
+{
+    "description": "elearning视频单篇",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "title": 
+        {
+            "description": "主标题",
+            "type": "string"
+        },
+        "video": 
+        {
+            "description": "视频信息",
+            "$ref": "#/definitions/ElearningVideo"
+        },
+        "index": 
+        {
+            "description": "顺序索引",
+            "format": "int32",
+            "type": "integer"
+        }
+    }
+}

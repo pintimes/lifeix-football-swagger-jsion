@@ -1,11 +1,11 @@
 {
-    "summary": "按顺序索引获取培训单篇",
+    "summary": "按顺序索引获取培训视频单篇",
     "tags": 
     [
     	"elearning"
     ],
 
-    "description": "按顺序索引获取培训单篇",
+    "description": "按顺序索引获取培训视频单篇",
     
     "produces": 
     [
@@ -18,7 +18,7 @@
             "$ref": "#/parameters/elearningTrainingCategoryPath"
         },
         {
-            "$ref": "#/parameters/elearningTrainingPageIndexPath"
+            "$ref": "#/parameters/elearningTrainingVideoPageIndexPath"
         }
     ],
 
@@ -28,11 +28,11 @@
         {
 			"schema": 
             {
-	        	"$ref": "#/definitions/ElearningPage"
+	        	"$ref": "#/definitions/ElearningVideoPage"
             },
-            "description": "单篇"
+            "description": "视频单篇"
         }
     },
 
-    "operationId": "getElearningTrainingPageByIndex"
+    "operationId": "getElearningTrainingVideoPageByIndex"
 }

@@ -1,0 +1,30 @@
+{
+    "summary": "获取单个练习详细信息",
+    "tags": 
+    [
+        "elearning"
+    ],
+
+    "description": "获取单个练习详细信息",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/elearningExercisePath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/ElearningExercise"
+            },
+
+            "description": "练习详细信息"
+        }
+    },
+
+    "operationId": "getElearningExerciseDetail"
+}
