@@ -15,7 +15,7 @@
     "parameters": 
     [
     	{
-            "$ref": "#/parameters/elearningQuizCategoryPath"
+            "$ref": "#/parameters/elearningCategoryPath"
         }
     ],
 

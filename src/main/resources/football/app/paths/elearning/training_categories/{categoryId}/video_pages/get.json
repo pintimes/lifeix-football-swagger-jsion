@@ -15,7 +15,7 @@
     "parameters": 
     [
     	{
-            "$ref": "#/parameters/elearningTrainingCategoryPath"
+            "$ref": "#/parameters/elearningCategoryPath"
         },
         {
             "description": "跳过的单篇数量，不传返回第一页",

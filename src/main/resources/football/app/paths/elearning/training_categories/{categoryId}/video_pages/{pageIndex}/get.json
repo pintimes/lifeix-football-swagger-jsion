@@ -15,10 +15,10 @@
     "parameters": 
     [
     	{
-            "$ref": "#/parameters/elearningTrainingCategoryPath"
+            "$ref": "#/parameters/elearningCategoryPath"
         },
         {
-            "$ref": "#/parameters/elearningTrainingVideoPageIndexPath"
+            "$ref": "#/parameters/elearningPageIndexPath"
         }
     ],
 
