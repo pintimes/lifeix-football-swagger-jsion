@@ -12,7 +12,7 @@
     "parameters": 
     [
     	{
-            "$ref": "#/parameters/elearningTrainingCategoryPath"
+            "$ref": "#/parameters/elearningCategoryPath"
         }
     ],
     "responses": 

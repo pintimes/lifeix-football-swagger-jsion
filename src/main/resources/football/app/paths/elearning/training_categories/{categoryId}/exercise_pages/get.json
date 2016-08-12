@@ -1,11 +1,11 @@
 {
-    "summary": "分页获取培训分类下的单篇列表",
+    "summary": "分页获取培训分类下的练习单篇列表",
     "tags": 
     [
     	"elearning"
     ],
 
-    "description": "分页获取培训分类下的单篇列表",
+    "description": "分页获取培训分类下的练习单篇列表",
     
     "produces": 
     [
@@ -15,7 +15,7 @@
     "parameters": 
     [
     	{
-            "$ref": "#/parameters/elearningTrainingCategoryPath"
+            "$ref": "#/parameters/elearningCategoryPath"
         },
         {
             "description": "跳过的单篇数量，不传返回第一页",
@@ -42,12 +42,12 @@
                 "type": "array",
 	            "items": 
 	            {
-	                "$ref": "#/definitions/ElearningPage"
+	                "$ref": "#/definitions/ElearningExercisePage"
 	            }
             },
-            "description": "单篇列表"
+            "description": "练习单篇列表"
         }
     },
 
-    "operationId": "getElearningTrainingPageList"
+    "operationId": "getElearningTrainingExercisePages"
 }

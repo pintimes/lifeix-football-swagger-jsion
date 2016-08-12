@@ -1,30 +1,37 @@
 {
-    "summary": "发布News",
+    "summary": "修改资讯banner",
     "tags": 
     [
-        "news"
+        "WemediaTop"
     ],
 
-    "description": "发布News到中国足球网wemedia系统的post中，需要注意的是，News和Post不是同一系统，Post针对的是用户，而News针对的是新闻源和管理员",
+    "description": "根据资讯id修改banner",
 
     "consumes": 
     [
         "application/x-www-form-urlencoded"
     ],
-
-	"produces": 
+    
+    "produces": 
     [
         "text/plain; charset=UTF-8"
     ],
-    
+
     "parameters": 
     [
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
+        {
+            "$ref": "#/parameters/topPath"
+        },
 
         {
-            "$ref": "#/parameters/newsPath"
+            "description": "banner",
+            "name": "banner",
+            "type": "string",
+            "required": true,
+            "in": "formData"
         }
     ],
 
@@ -32,7 +39,7 @@
     {
         "200": 
         {
-            "description": "发布成功"
+            "description": "修改成功"
         },
         
         "401": 
@@ -41,5 +48,5 @@
         }
     },
 
-    "operationId": "publishNews"
+    "operationId": "updateTopPostBanner"
 }

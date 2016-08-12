@@ -1,5 +1,5 @@
 {
-    "description": "elearning单篇",
+    "description": "elearning文章单篇",
     "properties": 
     {
         "id": 
@@ -43,18 +43,6 @@
             {
                 "$ref": "#/definitions/ElearningVideo"
             }
-        },
-        "type": 
-        {
-            "description": "页面类型： 1-视频页  | 2-文章页|",
-            "format": "int32",
-            "type": "integer"
-        },
-        "index": 
-        {
-            "description": "顺序索引",
-            "format": "int32",
-            "type": "integer"
         }
     }
 }

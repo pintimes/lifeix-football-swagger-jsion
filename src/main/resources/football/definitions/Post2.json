@@ -1,0 +1,94 @@
+{
+    "description": "news系统下的资讯，作为中国足球网资讯的数据源",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
+        "title": 
+        {
+            "description": "标题",
+            "type": "string"
+        },
+        
+        "image": 
+        {
+            "description": "链接图片",
+            "type": "string"
+        },
+
+        "images": 
+        {
+            "description": "正文图片",
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            }
+        },
+		
+		"categoryIds": 
+        {
+            "description": "文章类目id",
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            }
+        },
+        
+        "videos": 
+        {
+            "description": "视频地址",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Video"
+            }
+        },
+
+        "content": 
+        {
+            "description": "资讯内容，包含html标签",
+            "type": "string"
+        },
+        
+        "source": 
+        {
+            "description": "来源，如'中国足球协会官网方网站'",
+            "type": "string"
+        },
+        
+        "createTime": 
+        {
+            "description": "资讯创建时间（资讯页面显示的时间）",
+            "type": "string",
+            "format": "date-time"
+        },
+        
+        "status": 
+        {
+            "description": "状态 ：1可用 ，0不可用",
+            "type": "integer",
+            "format": "int32"
+        },
+        
+        "postId": 
+        {
+            "description": "上传到中国足球网后的资讯id",
+            "type": "string"
+        },
+        
+        "uploadTime": 
+        {
+            "description": "资讯上传到中国足球网的时间",
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+
+    "type": "object"
+}

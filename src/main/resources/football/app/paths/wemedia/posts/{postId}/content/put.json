@@ -1,18 +1,18 @@
 {
-    "summary": "发布News",
+    "summary": "更新内容",
     "tags": 
     [
-        "news"
+        "WemediaPost"
     ],
 
-    "description": "发布News到中国足球网wemedia系统的post中，需要注意的是，News和Post不是同一系统，Post针对的是用户，而News针对的是新闻源和管理员",
+    "description": "更新内容",
 
     "consumes": 
     [
         "application/x-www-form-urlencoded"
     ],
-
-	"produces": 
+    
+    "produces": 
     [
         "text/plain; charset=UTF-8"
     ],
@@ -24,15 +24,19 @@
         },
 
         {
-            "$ref": "#/parameters/newsPath"
+            "description": "内容",
+            "name": "content",
+            "type":"string",
+            "required": true,
+            "in": "formData"
         }
     ],
-
+    
     "responses": 
     {
         "200": 
         {
-            "description": "发布成功"
+            "description": "修改成功"
         },
         
         "401": 
@@ -40,6 +44,6 @@
             "description": "没有权限"
         }
     },
-
-    "operationId": "publishNews"
+    
+    "operationId": "updateContent"
 }

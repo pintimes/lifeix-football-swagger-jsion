@@ -205,30 +205,48 @@
             "required": true,
             "in": "path"
         },
-
-		"elearningTrainingCategoryPath": 
+        
+        "topPath": 
         {
-            "description": "elearning培训类目Id",
+            "description": "Top的ID",
+            "name": "topId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+
+		"elearningCategoryPath": 
+        {
+            "description": "elearning类目Id",
             "name": "categoryId",
             "type": "string",
             "required": true,
             "in": "path"
         },
 
-		"elearningTrainingPageIndexPath":
+		"elearningPagePath":
 		{
-            "description": "elearning培训单篇顺序索引",
-            "name": "index",
+            "description": "elearning单篇ID",
+            "name": "pageId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+
+		"elearningPageIndexPath":
+		{
+            "description": "elearning单篇顺序索引",
+            "name": "pageIndex",
             "type": "integer",
             "format": "int32",
             "required": true,
             "in": "path"
         },
         
-		"elearningQuizCategoryPath": 
+        "elearningExercisePath": 
         {
-            "description": "elearning测试类目Id",
-            "name": "categoryId",
+            "description": "elearning练习ID",
+            "name": "exerciseId",
             "type": "string",
             "required": true,
             "in": "path"
@@ -236,7 +254,7 @@
         
         "elearningVideoPath": 
         {
-            "description": "elearning视频的ID",
+            "description": "elearning视频ID",
             "name": "videoId",
             "type": "string",
             "required": true,

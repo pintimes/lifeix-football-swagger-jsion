@@ -1,0 +1,30 @@
+{
+    "summary": "获取培训单篇文章",
+    "tags": 
+    [
+        "elearning"
+    ],
+
+    "description": "获取培训单篇文章",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/elearningPagePath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/ElearningArticlePage"
+            },
+
+            "description": "培训单篇文章"
+        }
+    },
+
+    "operationId": "getElearningTrainingArticlePageById"
+}

@@ -1,0 +1,47 @@
+{
+    "summary": "获取elearning资料下载列表",
+    "tags": 
+    [
+    	"elearning"
+    ],
+    "description": "获取elearning资料下载列表",
+    "produces": 
+    [
+        "application/json"
+    ],
+    "parameters": 
+    [
+        {
+            "description": "跳过的资料数量，不传返回第一页",
+            "name": "start",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+		{
+            "description": "每页显示的资料数量，默认值20",
+            "name": "limit",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+			"schema": 
+            {
+                "type": "array",
+	            "items": 
+	            {
+	                "$ref": "#/definitions/ElearningMaterial"
+	            }
+            },
+            "description": "资料列表"
+        }
+    },
+
+    "operationId": "getElearningMaterials"
+}

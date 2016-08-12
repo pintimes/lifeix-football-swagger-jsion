@@ -1,21 +1,22 @@
 {
-    "summary": "添加Posts到对应的Category的Top",
+    "summary": "新增置顶资讯",
     "tags": 
     [
         "WemediaTop"
     ],
 
-    "description": "传入类目Id以及对应的PostIds",
-    "produces": 
-    [
-        "application/json"
-    ],
+    "description": "根据类目id和资讯id新增置顶资讯",
 
     "consumes": 
     [
         "application/x-www-form-urlencoded"
     ],
 
+	"produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+    
     "parameters": 
     [
         {
@@ -26,7 +27,7 @@
             "description": "类目Id",
             "name": "categoryId",
             "type": "string",
-            "required": false,
+            "required": true,
             "in": "formData"
         },
 
@@ -38,8 +39,7 @@
             {
                 "type": "string"
             },
-
-            "required": false,
+            "required": true,
             "in": "formData"
         }
     ],
@@ -48,7 +48,12 @@
     {
         "200": 
         {
-            "description": "Succ"
+            "description": "置顶成功"
+        },
+        
+        "401": 
+        {
+            "description": "没有权限"
         }
     },
 

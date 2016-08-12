@@ -1,0 +1,21 @@
+{
+    "description": "elearning资料下载",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "name": 
+        {
+            "description": "资料名称",
+            "type": "string"
+        },
+        "url": 
+        {
+            "description": "资料地址",
+            "type": "string"
+        }
+    }
+}

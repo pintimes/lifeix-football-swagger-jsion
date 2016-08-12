@@ -1,17 +1,17 @@
 {
-    "summary": "创建Post",
+    "summary": "更新Post",
     "tags": 
     [
         "WemediaPost"
     ],
 
-    "description": "创建Post,其中title必填。content、images、videos三者至少有一个不为空",
-    
+    "description": "更新Post",
+
     "consumes": 
     [
         "application/json"
     ],
-
+    
     "produces": 
     [
         "application/json"
@@ -28,8 +28,7 @@
             {
                 "$ref": "#/definitions/Post"
             },
-
-            "description": "帖子",
+            "description": "资讯对象",
             "name": "post",
             "required": true,
             "in": "body"
@@ -48,16 +47,11 @@
             "description": "Post对象"
         },
 
-        "400": 
-        {
-            "description": "post/id/author/authorName/title为空，或者content,image同时为空"
-        },
-
         "401": 
         {
             "description": "没有权限"
         }
     },
 
-    "operationId": "insertPost"
+    "operationId": "updatePost"
 }

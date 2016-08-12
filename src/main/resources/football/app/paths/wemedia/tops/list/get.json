@@ -5,7 +5,7 @@
         "WemediaTop"
     ],
 
-	"consumes": 
+    "consumes": 
     [
         "application/x-www-form-urlencoded"
     ],
@@ -20,22 +20,6 @@
     [
         {
             "$ref": "#/parameters/apiKeyYHeader"
-        },
-        {
-            "$ref": "#/parameters/topPath"
-        },
-
-        {
-            "description": "类目列表",
-            "name": "categoryIds",
-            "type": "array",
-            "items": 
-            {
-                "type": "string"
-            },
-
-            "required": true,
-            "in": "query"
         }
     ],
 
@@ -48,7 +32,7 @@
                 "type": "array",
                 "items": 
                 {
-                    "$ref": "#/definitions/Post"
+                    "$ref": "#/definitions/PostTop"
                 }
             },
 
@@ -56,5 +40,5 @@
         }
     },
 
-    "operationId": "getTopPosts"
+    "operationId": "getTopPostList"
 }

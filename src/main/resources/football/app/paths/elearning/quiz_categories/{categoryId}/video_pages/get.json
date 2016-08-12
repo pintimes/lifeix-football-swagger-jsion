@@ -1,11 +1,11 @@
 {
-    "summary": "随机获取测试分类下的单篇列表",
+    "summary": "随机获取测试分类下的视频测试列表",
     "tags": 
     [
     	"elearning"
     ],
 
-    "description": "随机获取测试分类下的单篇列表",
+    "description": "随机获取测试分类下的视频测试列表",
     
     "produces": 
     [
@@ -15,7 +15,7 @@
     "parameters": 
     [
     	{
-            "$ref": "#/parameters/elearningQuizCategoryPath"
+            "$ref": "#/parameters/elearningCategoryPath"
         }
     ],
 
@@ -28,12 +28,12 @@
                 "type": "array",
 	            "items": 
 	            {
-	                "$ref": "#/definitions/ElearningPage"
+	                "$ref": "#/definitions/ElearningVideoPage"
 	            }
             },
-            "description": "单篇列表"
+            "description": "视频测试列表"
         }
     },
 
-    "operationId": "getElearningQuizPageList"
+    "operationId": "getElearningQuizVideoPages"
 }
