@@ -1,21 +1,22 @@
 {
-    "summary": "发布News到Post系统",
+    "summary": "发布News",
     "tags": 
     [
         "news"
     ],
 
-    "description": "News和Post不是同一系统，Post针对的是用户，News针对的是新闻来源以及管理员",
-    "produces": 
-    [
-        "application/json"
-    ],
+    "description": "发布News到中国足球网wemedia系统的post中，需要注意的是，News和Post不是同一系统，Post针对的是用户，而News针对的是新闻源和管理员",
 
     "consumes": 
     [
         "application/x-www-form-urlencoded"
     ],
 
+	"produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+    
     "parameters": 
     [
         {
@@ -32,6 +33,11 @@
         "200": 
         {
             "description": "发布成功"
+        },
+        
+        "401": 
+        {
+            "description": "没有权限"
         }
     },
 

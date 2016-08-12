@@ -6,16 +6,17 @@
     ],
 
     "description": "删除Post：只有管理员才有权限",
-    "produces": 
-    [
-        "application/json"
-    ],
 
-    "consumes": 
+	"consumes": 
     [
         "application/x-www-form-urlencoded"
     ],
-
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+    
     "parameters": 
     [
         {
@@ -23,15 +24,7 @@
         },
 
         {
-            "description": "资讯Id列表，多个id使用','分隔",
-            "name": "postIds",
-            "type": "array",
-            "items": 
-            {
-                "type": "string"
-            },
-            "required": true,
-            "in": "query"
+            "$ref": "#/parameters/postPath"
         }
     ],
 
@@ -48,5 +41,5 @@
         }
     },
 
-    "operationId": "deletePosts"
+    "operationId": "deletePost"
 }

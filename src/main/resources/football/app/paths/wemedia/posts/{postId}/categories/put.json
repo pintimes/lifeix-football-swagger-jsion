@@ -1,21 +1,22 @@
 {
-    "summary": "删除Post的分类",
+    "summary": "更新类目",
     "tags": 
     [
         "WemediaPost"
     ],
 
-    "description": "删除Post Category",
-    "produces": 
+    "description": "更新类目",
+    
+    "consumes": 
     [
         "application/json"
     ],
-
-    "consumes": 
+    
+    "produces": 
     [
-        "application/x-www-form-urlencoded"
+        "text/plain; charset=UTF-8"
     ],
-
+    
     "parameters": 
     [
         {
@@ -23,11 +24,7 @@
         },
 
         {
-            "$ref": "#/parameters/postPath"
-        },
-
-        {
-            "description": "类目Id",
+        	"description": "资讯类目的id",
             "name": "categoryIds",
             "type": "array",
             "items": 
@@ -38,19 +35,19 @@
             "in": "formData"
         }
     ],
-
+    
     "responses": 
     {
         "200": 
         {
-            "description": "delete success"
+            "description": "修改成功"
         },
-
+        
         "401": 
         {
-            "description": "don't have the right"
+            "description": "没有权限"
         }
     },
-
-    "operationId": "deletePostCategories"
+    
+    "operationId": "updateCategories"
 }

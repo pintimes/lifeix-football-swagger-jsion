@@ -42,20 +42,62 @@
             ],
             "tags": ["setupDate"]
         }},
-        "/wemedia/posts/{postId}": {"get": {
-            "summary": "根据Id获取Post详情",
-            "description": "返回Post详情对象",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/Post"},
-                "description": "Post响应对象"
-            }},
-            "operationId": "getPostDetail",
+        "/wemedia/posts/{postId}/banner": {"put": {
+            "summary": "更新banner",
+            "produces": ["text/plain; charset=UTF-8"],
+            "description": "更新banner",
+            "responses": {
+                "200": {"description": "修改成功"},
+                "401": {"description": "没有权限"}
+            },
+            "operationId": "updateBanner",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/postPath"}
+                {
+                    "in": "formData",
+                    "name": "banner",
+                    "description": "banner",
+                    "type": "string",
+                    "required": true
+                }
             ],
-            "tags": ["WemediaPost"]
+            "tags": ["WemediaPost"],
+            "consumes": ["application/x-www-form-urlencoded"]
         }},
+        "/wemedia/posts/{postId}": {
+            "get": {
+                "summary": "获取单个Post",
+                "produces": ["application/json; charset=UTF-8"],
+                "description": "根据Id获取单个Post对象",
+                "responses": {"200": {
+                    "schema": {"$ref": "#/definitions/Post"},
+                    "description": "Post对象"
+                }},
+                "operationId": "getPost",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {"$ref": "#/parameters/postPath"}
+                ],
+                "tags": ["WemediaPost"],
+                "consumes": ["application/x-www-form-urlencoded"]
+            },
+            "delete": {
+                "summary": "删除Post",
+                "produces": ["text/plain; charset=UTF-8"],
+                "description": "删除Post：只有管理员才有权限",
+                "responses": {
+                    "200": {"description": "删除成功"},
+                    "401": {"description": "没有权限"}
+                },
+                "operationId": "deletePost",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {"$ref": "#/parameters/postPath"}
+                ],
+                "tags": ["WemediaPost"],
+                "consumes": ["application/x-www-form-urlencoded"]
+            }
+        },
         "/games/coaches": {"post": {
             "summary": "新增教练",
             "produces": ["application/json"],
@@ -92,6 +134,38 @@
                 {"$ref": "#/parameters/elearningPageIndexPath"}
             ],
             "tags": ["elearning"]
+        }},
+        "/news/news/{newsId}": {"get": {
+            "summary": "获得单个news",
+            "produces": ["application/json; charset=UTF-8"],
+            "description": "根据id获取单个News详情",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/News"},
+                "description": "News对象"
+            }},
+            "operationId": "getNewsDetail",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/newsPath"}
+            ],
+            "tags": ["news"],
+            "consumes": ["application/x-www-form-urlencoded"]
+        }},
+        "/news/news/{newsId}/publish": {"post": {
+            "summary": "发布News",
+            "produces": ["text/plain; charset=UTF-8"],
+            "description": "发布News到中国足球网wemedia系统的post中，需要注意的是，News和Post不是同一系统，Post针对的是用户，而News针对的是新闻源和管理员",
+            "responses": {
+                "200": {"description": "发布成功"},
+                "401": {"description": "没有权限"}
+            },
+            "operationId": "publishNews",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/newsPath"}
+            ],
+            "tags": ["news"],
+            "consumes": ["application/x-www-form-urlencoded"]
         }},
         "/elearning/quiz_categories/{categoryId}/video_pages": {"get": {
             "summary": "随机获取测试分类下的视频测试列表",
@@ -369,6 +443,29 @@
             ],
             "tags": ["player"]
         }},
+        "/wemedia/tops/{postId}/banner": {"put": {
+            "summary": "修改资讯banner",
+            "produces": ["text/plain; charset=UTF-8"],
+            "description": "根据资讯id修改banner",
+            "responses": {
+                "200": {"description": "修改成功"},
+                "401": {"description": "没有权限"}
+            },
+            "operationId": "updateTopPostBanner",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/topPath"},
+                {
+                    "in": "formData",
+                    "name": "banner",
+                    "description": "banner",
+                    "type": "string",
+                    "required": true
+                }
+            ],
+            "tags": ["WemediaTop"],
+            "consumes": ["application/x-www-form-urlencoded"]
+        }},
         "/elearning/quiz_categories": {"get": {
             "summary": "获取elearning测试类目",
             "produces": ["application/json"],
@@ -432,6 +529,42 @@
             ],
             "tags": ["matchTeam"],
             "consumes": ["application/json"]
+        }},
+        "/news/news/search": {"get": {
+            "summary": "搜索News",
+            "produces": ["application/json; charset=UTF-8"],
+            "description": "根据搜索条件获取News列表，只有管理员才能查找",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/News"}
+                },
+                "description": "News列表"
+            }},
+            "operationId": "search",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "default": "1",
+                    "in": "query",
+                    "name": "page",
+                    "format": "int32",
+                    "description": "页码",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "default": "20",
+                    "in": "query",
+                    "name": "limit",
+                    "format": "int32",
+                    "description": "每页显示的记录条数",
+                    "type": "integer",
+                    "required": false
+                }
+            ],
+            "tags": ["news"],
+            "consumes": ["application/x-www-form-urlencoded"]
         }},
         "/games/referees/{refereeId}": {"get": {
             "summary": "获得裁判详细信息",
@@ -527,13 +660,14 @@
         }},
         "/wemedia/posts/search": {"get": {
             "summary": "搜索Post",
+            "produces": ["application/json; charset=UTF-8"],
             "description": "根据搜索条件获取Post列表，每次搜索不能超过30条",
             "responses": {"200": {
                 "schema": {
                     "type": "array",
                     "items": {"$ref": "#/definitions/Post"}
                 },
-                "description": "Post列表响应对象"
+                "description": "Post列表"
             }},
             "operationId": "search",
             "parameters": [
@@ -577,10 +711,11 @@
                     "required": false
                 },
                 {
+                    "default": "10",
                     "in": "query",
                     "name": "limit",
                     "format": "int32",
-                    "description": "一页显示多少数据",
+                    "description": "每页显示的数据条数",
                     "type": "integer",
                     "required": false
                 },
@@ -588,19 +723,21 @@
                     "default": "createTime",
                     "in": "query",
                     "name": "orderBy",
-                    "description": "按照那个字段排序",
+                    "description": "按照某个字段排序",
                     "type": "string",
                     "required": false
                 },
                 {
+                    "default": "true",
                     "in": "query",
                     "name": "isDesc",
-                    "description": "是否按时间倒序,默认值true",
+                    "description": "是否倒序排列",
                     "type": "boolean",
                     "required": false
                 }
             ],
-            "tags": ["WemediaPost"]
+            "tags": ["WemediaPost"],
+            "consumes": ["application/x-www-form-urlencoded"]
         }},
         "/elearning/videos/{videoId}": {"get": {
             "summary": "获取单个视频详细信息",
@@ -613,19 +750,34 @@
             "parameters": [{"$ref": "#/parameters/elearningVideoPath"}],
             "tags": ["elearning"]
         }},
-        "/news/{newsId}": {"get": {
-            "summary": "根据Id获取News详情",
-            "description": "返回News详情对象",
+        "/wemedia/tops/page": {"get": {
+            "summary": "获得置顶资讯列表",
+            "produces": ["application/json; charset=UTF-8"],
+            "description": "根据类目id列表获得类目下的置顶资讯列表",
             "responses": {"200": {
-                "schema": {"$ref": "#/definitions/News"},
-                "description": "News响应对象"
+                "schema": {
+                    "type": "array",
+                    "items": {"key-value": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "array",
+                                "items": {"$ref": "#/definitions/PostTop"}
+                            },
+                            "key": {"type": "string"}
+                        },
+                        "required": [
+                            "key",
+                            "value"
+                        ]
+                    }}
+                },
+                "description": "置顶资讯列表"
             }},
-            "operationId": "getNewsDetail",
-            "parameters": [
-                {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/newsPath"}
-            ],
-            "tags": ["news"]
+            "operationId": "getTopPosts",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": ["WemediaTop"],
+            "consumes": ["application/x-www-form-urlencoded"]
         }},
         "/admin/admins": {"get": {
             "summary": "获得Admin列表",
@@ -713,17 +865,26 @@
             "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
             "tags": ["coach"]
         }},
-        "/news/{newsId}/publish": {"post": {
-            "summary": "发布News到Post系统",
-            "produces": ["application/json"],
-            "description": "News和Post不是同一系统，Post针对的是用户，News针对的是新闻来源以及管理员",
-            "responses": {"200": {"description": "发布成功"}},
-            "operationId": "publishNews",
+        "/wemedia/posts/{postId}/content": {"put": {
+            "summary": "更新内容",
+            "produces": ["text/plain; charset=UTF-8"],
+            "description": "更新内容",
+            "responses": {
+                "200": {"description": "修改成功"},
+                "401": {"description": "没有权限"}
+            },
+            "operationId": "updateContent",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/newsPath"}
+                {
+                    "in": "formData",
+                    "name": "content",
+                    "description": "内容",
+                    "type": "string",
+                    "required": true
+                }
             ],
-            "tags": ["news"],
+            "tags": ["WemediaPost"],
             "consumes": ["application/x-www-form-urlencoded"]
         }},
         "/games/competitions/{competitionId}/matches/{matchId}/referees": {"post": {
@@ -754,37 +915,47 @@
             "tags": ["match"],
             "consumes": ["application/json"]
         }},
-        "/news/search": {"get": {
-            "summary": "搜索News",
-            "description": "根据搜索条件获取News列表，只有管理员才能查找",
+        "/wemedia/posts/timeline": {"get": {
+            "summary": "获得Post列表",
+            "produces": ["application/json; charset=UTF-8"],
+            "description": "获取时间轴形式的资讯列表",
             "responses": {"200": {
                 "schema": {
                     "type": "array",
-                    "items": {"$ref": "#/definitions/News"}
+                    "items": {"$ref": "#/definitions/Post"}
                 },
-                "description": "News列表响应对象"
+                "description": "Post列表对象"
             }},
-            "operationId": "searchNews",
+            "operationId": "getTimeLineNews",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
                 {
                     "in": "query",
-                    "name": "page",
-                    "format": "int32",
-                    "description": "页码",
-                    "type": "integer",
+                    "name": "categoryId",
+                    "description": "类目id",
+                    "type": "string",
                     "required": false
                 },
                 {
                     "in": "query",
+                    "name": "startDate",
+                    "format": "date-time",
+                    "description": "开始时间",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "default": "5",
+                    "in": "query",
                     "name": "limit",
                     "format": "int32",
-                    "description": "一页显示多少",
+                    "description": "查询记录条数限制",
                     "type": "integer",
                     "required": false
                 }
             ],
-            "tags": ["news"]
+            "tags": ["WemediaPost"],
+            "consumes": ["application/x-www-form-urlencoded"]
         }},
         "/elearning/quiz_categories/{categoryId}/subCats": {"get": {
             "summary": "获取elearning测试类目下的单级子分类列表",
@@ -815,53 +986,29 @@
             "operationId": "getElearningTrainingCategoriesTree",
             "tags": ["elearning"]
         }},
-        "/wemedia/posts/{postId}/categories": {
-            "post": {
-                "summary": "为Post添加类目",
-                "produces": ["application/json"],
-                "description": "如果类目有层级需要把多层id都传入，比如<国家队>,<男足>，<M23>",
-                "responses": {"200": {"description": "添加成功"}},
-                "operationId": "addPostCategories",
-                "parameters": [
-                    {"$ref": "#/parameters/apiKeyYHeader"},
-                    {"$ref": "#/parameters/postPath"},
-                    {
-                        "in": "formData",
-                        "name": "categoryIds",
-                        "description": "类目Id",
-                        "type": "array",
-                        "items": {"type": "string"},
-                        "required": true
-                    }
-                ],
-                "tags": ["WemediaPost"],
-                "consumes": ["application/x-www-form-urlencoded"]
+        "/wemedia/posts/{postId}/categories": {"put": {
+            "summary": "更新类目",
+            "produces": ["text/plain; charset=UTF-8"],
+            "description": "更新类目",
+            "responses": {
+                "200": {"description": "修改成功"},
+                "401": {"description": "没有权限"}
             },
-            "delete": {
-                "summary": "删除Post的分类",
-                "produces": ["application/json"],
-                "description": "删除Post Category",
-                "responses": {
-                    "200": {"description": "delete success"},
-                    "401": {"description": "don't have the right"}
-                },
-                "operationId": "deletePostCategories",
-                "parameters": [
-                    {"$ref": "#/parameters/apiKeyYHeader"},
-                    {"$ref": "#/parameters/postPath"},
-                    {
-                        "in": "formData",
-                        "name": "categoryIds",
-                        "description": "类目Id",
-                        "type": "array",
-                        "items": {"type": "string"},
-                        "required": true
-                    }
-                ],
-                "tags": ["WemediaPost"],
-                "consumes": ["application/x-www-form-urlencoded"]
-            }
-        },
+            "operationId": "updateCategories",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "formData",
+                    "name": "categoryIds",
+                    "description": "资讯类目的id",
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "required": true
+                }
+            ],
+            "tags": ["WemediaPost"],
+            "consumes": ["application/json"]
+        }},
         "/games/teams/{teamId}": {"get": {
             "summary": "查询一只球队",
             "description": "查询一只球队",
@@ -875,6 +1022,28 @@
                 {"$ref": "#/parameters/teamPath"}
             ],
             "tags": ["team"]
+        }},
+        "/wemedia/posts/{postId}/title": {"put": {
+            "summary": "更新标题",
+            "produces": ["text/plain; charset=UTF-8"],
+            "description": "更新标题",
+            "responses": {
+                "200": {"description": "修改成功"},
+                "401": {"description": "没有权限"}
+            },
+            "operationId": "updateTitle",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "formData",
+                    "name": "title",
+                    "description": "标题",
+                    "type": "string",
+                    "required": true
+                }
+            ],
+            "tags": ["WemediaPost"],
+            "consumes": ["application/x-www-form-urlencoded"]
         }},
         "/elearning/exercises/{exerciseId}": {"get": {
             "summary": "获取单个练习详细信息",
@@ -938,6 +1107,47 @@
                 {"$ref": "#/parameters/playerPath"}
             ],
             "tags": ["player"]
+        }},
+        "/wemedia/tops/list": {"get": {
+            "summary": "获得置顶资讯列表",
+            "produces": ["application/json; charset=UTF-8"],
+            "description": "根据类目id列表获得类目下的置顶资讯列表",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/PostTop"}
+                },
+                "description": "置顶资讯列表"
+            }},
+            "operationId": "getTopPostList",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": ["WemediaTop"],
+            "consumes": ["application/x-www-form-urlencoded"]
+        }},
+        "/news/posts/parse": {"post": {
+            "summary": "解析资讯页面",
+            "produces": ["text/plain; charset=UTF-8"],
+            "description": "根据页面链接解析资讯页面，获得post对象，并插入news系统下的post数据库以及wemedia系统下的post数据库中",
+            "responses": {
+                "200": {
+                    "schema": {"type": "string"},
+                    "description": "错误信息"
+                },
+                "401": {"description": "没有权限"}
+            },
+            "operationId": "parsePost",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "schema": {"type": "string"},
+                    "in": "body",
+                    "name": "jsonString",
+                    "description": "url、category json字符串",
+                    "required": true
+                }
+            ],
+            "tags": ["NewsPost"],
+            "consumes": ["application/json; charset=UTF-8"]
         }},
         "/elearning/training_categories/{categoryId}/video_pages/{pageIndex}": {"get": {
             "summary": "按顺序索引获取培训视频单篇",
@@ -1076,6 +1286,163 @@
                 }
             ],
             "tags": ["CompetitionTeam"]
+        }},
+        "/news/news/search/page": {"get": {
+            "summary": "搜索News",
+            "produces": ["application/json; charset=UTF-8"],
+            "description": "根据搜索条件获取News列表，只有管理员才能查找",
+            "responses": {"200": {
+                "schema": {
+                    "$ref": "#/definitions/Page",
+                    "items": {"$ref": "#/definitions/News"}
+                },
+                "description": "News分页"
+            }},
+            "operationId": "searchPage",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "default": "1",
+                    "in": "query",
+                    "name": "page",
+                    "format": "int32",
+                    "description": "页码",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "default": "20",
+                    "in": "query",
+                    "name": "rows",
+                    "format": "int32",
+                    "description": "每页显示的记录条数",
+                    "type": "integer",
+                    "required": false
+                }
+            ],
+            "tags": ["news"],
+            "consumes": ["application/x-www-form-urlencoded"]
+        }},
+        "/wemedia/posts/page": {"get": {
+            "summary": "获得Post分页列表",
+            "produces": ["application/json; charset=UTF-8"],
+            "description": "根据搜索条件获取Post分页列表",
+            "responses": {"200": {
+                "schema": {
+                    "$ref": "#/definitions/Page",
+                    "items": {"$ref": "#/definitions/Post"}
+                },
+                "description": "Post页面"
+            }},
+            "operationId": "searchPage",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "query",
+                    "name": "status",
+                    "format": "int32",
+                    "description": "资讯状态",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "categoryId",
+                    "description": "类目id",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "authorId",
+                    "description": "作者id",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "startDate",
+                    "format": "date-time",
+                    "description": "查询开始时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "endDate",
+                    "format": "date-time",
+                    "description": "查询结束时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "default": "1",
+                    "in": "query",
+                    "name": "page",
+                    "format": "int32",
+                    "description": "页号",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "default": "20",
+                    "in": "query",
+                    "name": "rows",
+                    "format": "int32",
+                    "description": "每页记录数",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "default": "createTime",
+                    "in": "query",
+                    "name": "orderBy",
+                    "description": "按照某个字段排序",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "title",
+                    "description": "标题（支持模糊查询）",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "default": "desc",
+                    "in": "query",
+                    "name": "order",
+                    "description": "排序方式（正序或倒序）",
+                    "type": "string",
+                    "required": false
+                }
+            ],
+            "tags": ["WemediaPost"],
+            "consumes": ["application/x-www-form-urlencoded"]
+        }},
+        "/wemedia/tops/{topId}/order": {"put": {
+            "summary": "修改置顶资讯order",
+            "produces": ["text/plain; charset=UTF-8"],
+            "description": "根据置顶资讯id修改order",
+            "responses": {
+                "200": {"description": "修改成功"},
+                "401": {"description": "没有权限"}
+            },
+            "operationId": "updateTopPostOrder",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/topPath"},
+                {
+                    "in": "formData",
+                    "name": "order",
+                    "format": "int32",
+                    "description": "优先级",
+                    "type": "integer",
+                    "required": true
+                }
+            ],
+            "tags": ["WemediaTop"],
+            "consumes": ["application/x-www-form-urlencoded"]
         }},
         "/games/players": {"post": {
             "summary": "新增球员",
@@ -1245,10 +1612,13 @@
         },
         "/wemedia/tops": {
             "post": {
-                "summary": "添加Posts到对应的Category的Top",
-                "produces": ["application/json"],
-                "description": "传入类目Id以及对应的PostIds",
-                "responses": {"200": {"description": "Succ"}},
+                "summary": "新增置顶资讯",
+                "produces": ["text/plain; charset=UTF-8"],
+                "description": "根据类目id和资讯id新增置顶资讯",
+                "responses": {
+                    "200": {"description": "置顶成功"},
+                    "401": {"description": "没有权限"}
+                },
                 "operationId": "addTopPosts",
                 "parameters": [
                     {"$ref": "#/parameters/apiKeyYHeader"},
@@ -1257,7 +1627,7 @@
                         "name": "categoryId",
                         "description": "类目Id",
                         "type": "string",
-                        "required": false
+                        "required": true
                     },
                     {
                         "in": "formData",
@@ -1265,41 +1635,47 @@
                         "description": "postIds",
                         "type": "array",
                         "items": {"type": "string"},
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": ["WemediaTop"],
                 "consumes": ["application/x-www-form-urlencoded"]
             },
             "get": {
-                "summary": "获得类目下对应的文章列表",
-                "description": "传入类目Ids能够获得对应的posts:之所以用列表是因为console需要获知某一组类目下所有posts",
+                "summary": "获得置顶资讯列表",
+                "produces": ["application/json; charset=UTF-8"],
+                "description": "根据类目id列表获得类目下的置顶资讯列表",
                 "responses": {"200": {
                     "schema": {
                         "type": "array",
                         "items": {"$ref": "#/definitions/Post"}
                     },
-                    "description": "Post列表"
+                    "description": "置顶资讯列表"
                 }},
                 "operationId": "getTopPosts",
                 "parameters": [
                     {"$ref": "#/parameters/apiKeyYHeader"},
+                    {"$ref": "#/parameters/topPath"},
                     {
                         "in": "query",
                         "name": "categoryIds",
                         "description": "类目列表",
                         "type": "array",
                         "items": {"type": "string"},
-                        "required": false
+                        "required": true
                     }
                 ],
-                "tags": ["WemediaTop"]
+                "tags": ["WemediaTop"],
+                "consumes": ["application/x-www-form-urlencoded"]
             },
             "delete": {
-                "summary": "从对应的Category的Top上删除Posts",
-                "produces": ["application/json"],
-                "description": "传入类目Id以及对应的PostIds",
-                "responses": {"200": {"description": "Succ"}},
+                "summary": "删除置顶资讯",
+                "produces": ["text/plain; charset=UTF-8"],
+                "description": "根据类目id和置顶资讯id删除某类目下的某条置顶资讯",
+                "responses": {
+                    "200": {"description": "删除成功"},
+                    "401": {"description": "没有权限"}
+                },
                 "operationId": "deleteTopPosts",
                 "parameters": [
                     {"$ref": "#/parameters/apiKeyYHeader"},
@@ -1308,15 +1684,15 @@
                         "name": "categoryId",
                         "description": "类目Id",
                         "type": "string",
-                        "required": false
+                        "required": true
                     },
                     {
                         "in": "formData",
                         "name": "postIds",
-                        "description": "postIds",
+                        "description": "置顶资讯对应的资讯id列表",
                         "type": "array",
                         "items": {"type": "string"},
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": ["WemediaTop"],
@@ -1488,6 +1864,28 @@
             ],
             "tags": ["player"]
         }},
+        "/wemedia/posts/{postId}/image": {"put": {
+            "summary": "更新链接图片",
+            "produces": ["text/plain; charset=UTF-8"],
+            "description": "更新链接图片",
+            "responses": {
+                "200": {"description": "修改成功"},
+                "401": {"description": "没有权限"}
+            },
+            "operationId": "updateImage",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "formData",
+                    "name": "image",
+                    "description": "链接图片",
+                    "type": "string",
+                    "required": true
+                }
+            ],
+            "tags": ["WemediaPost"],
+            "consumes": ["application/x-www-form-urlencoded"]
+        }},
         "/games/competitions/{competitionId}/matches": {
             "post": {
                 "summary": "新增比赛",
@@ -1591,6 +1989,29 @@
             "operationId": "getElearningTrainingArticlePageById",
             "parameters": [{"$ref": "#/parameters/elearningPagePath"}],
             "tags": ["elearning"]
+        }},
+        "/wemedia/posts/{postId}/status": {"put": {
+            "summary": "更新状态",
+            "produces": ["text/plain; charset=UTF-8"],
+            "description": "更新状态",
+            "responses": {
+                "200": {"description": "修改成功"},
+                "401": {"description": "没有权限"}
+            },
+            "operationId": "updateStatus",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "formData",
+                    "name": "status",
+                    "format": "int32",
+                    "description": "状态",
+                    "type": "integer",
+                    "required": true
+                }
+            ],
+            "tags": ["WemediaPost"],
+            "consumes": ["application/x-www-form-urlencoded"]
         }},
         "/games/competitionCategory": {
             "post": {
@@ -1707,18 +2128,18 @@
         }},
         "/wemedia/posts": {
             "post": {
-                "summary": "创建一个Post",
+                "summary": "创建Post",
                 "produces": ["application/json"],
-                "description": "创建一个Post,其中title必填。content、images、videos三者至少有一个不为空",
+                "description": "创建Post,其中title必填。content、images、videos三者至少有一个不为空",
                 "responses": {
                     "200": {
                         "schema": {"$ref": "#/definitions/Post"},
-                        "description": "Post响应对象"
+                        "description": "Post对象"
                     },
-                    "400": {"description": "post's content images videos can not be empty at the same time or post's title must have values"},
-                    "401": {"description": "don't have the right"}
+                    "400": {"description": "post/id/author/authorName/title为空，或者content,image同时为空"},
+                    "401": {"description": "没有权限"}
                 },
-                "operationId": "addPost",
+                "operationId": "insertPost",
                 "parameters": [
                     {"$ref": "#/parameters/apiKeyYHeader"},
                     {
@@ -1730,17 +2151,18 @@
                     }
                 ],
                 "tags": ["WemediaPost"],
-                "consumes": ["application/x-www-form-urlencoded"]
+                "consumes": ["application/json"]
             },
             "get": {
-                "summary": "获得Posts",
-                "description": "根据Id获取Post",
+                "summary": "获得Post列表",
+                "produces": ["application/json; charset=UTF-8"],
+                "description": "根据一个或多个Id获取一个或多个Post列表",
                 "responses": {"200": {
                     "schema": {
                         "type": "array",
                         "items": {"$ref": "#/definitions/Post"}
                     },
-                    "description": "Post列表响应对象"
+                    "description": "Post列表"
                 }},
                 "operationId": "list",
                 "parameters": [
@@ -1748,29 +2170,7 @@
                     {
                         "in": "query",
                         "name": "postIds",
-                        "description": "文章的id,多个时以,分隔",
-                        "type": "array",
-                        "items": {"type": "string"},
-                        "required": false
-                    }
-                ],
-                "tags": ["WemediaPost"]
-            },
-            "delete": {
-                "summary": "删除Post",
-                "produces": ["application/json"],
-                "description": "删除Post：只有管理员才有权限",
-                "responses": {
-                    "200": {"description": "delete success"},
-                    "401": {"description": "don't have the right"}
-                },
-                "operationId": "deletePosts",
-                "parameters": [
-                    {"$ref": "#/parameters/apiKeyYHeader"},
-                    {
-                        "in": "formData",
-                        "name": "postIds",
-                        "description": "帖子Id列表,删除多个时，传多次postIds.example:xxx?postIds=111&postIds=222",
+                        "description": "资讯id,多个id以','分隔",
                         "type": "array",
                         "items": {"type": "string"},
                         "required": true
@@ -1778,6 +2178,54 @@
                 ],
                 "tags": ["WemediaPost"],
                 "consumes": ["application/x-www-form-urlencoded"]
+            },
+            "delete": {
+                "summary": "删除Post",
+                "produces": ["application/json"],
+                "description": "删除Post：只有管理员才有权限",
+                "responses": {
+                    "200": {"description": "删除成功"},
+                    "401": {"description": "没有权限"}
+                },
+                "operationId": "deletePosts",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "query",
+                        "name": "postIds",
+                        "description": "资讯Id列表，多个id使用','分隔",
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "required": true
+                    }
+                ],
+                "tags": ["WemediaPost"],
+                "consumes": ["application/x-www-form-urlencoded"]
+            },
+            "put": {
+                "summary": "更新Post",
+                "produces": ["application/json"],
+                "description": "更新Post",
+                "responses": {
+                    "200": {
+                        "schema": {"$ref": "#/definitions/Post"},
+                        "description": "Post对象"
+                    },
+                    "401": {"description": "没有权限"}
+                },
+                "operationId": "updatePost",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "schema": {"$ref": "#/definitions/Post"},
+                        "in": "body",
+                        "name": "post",
+                        "description": "资讯对象",
+                        "required": true
+                    }
+                ],
+                "tags": ["WemediaPost"],
+                "consumes": ["application/json"]
             }
         },
         "/wemedia/authors/{authorId}": {"get": {
@@ -1917,6 +2365,13 @@
             "format": "int64",
             "description": "比赛球队的Id",
             "type": "integer",
+            "required": true
+        },
+        "topPath": {
+            "in": "path",
+            "name": "topId",
+            "description": "Top的ID",
+            "type": "string",
             "required": true
         },
         "postPath": {
@@ -2194,6 +2649,21 @@
                 }
             }
         },
+        "Page": {
+            "description": "easyui datagrid页面对象",
+            "type": "object",
+            "properties": {
+                "total": {
+                    "description": "当前页记录条数",
+                    "type": "string"
+                },
+                "rows": {
+                    "description": "记录列表",
+                    "type": "array",
+                    "items": {"type": "object"}
+                }
+            }
+        },
         "Court": {
             "description": "球场",
             "type": "object",
@@ -2292,6 +2762,37 @@
                 "categoryName": {
                     "description": "分类名称",
                     "type": "string"
+                }
+            }
+        },
+        "PostTop": {
+            "description": "置顶资讯",
+            "properties": {
+                "post": {
+                    "description": "对应资讯",
+                    "$ref": "#/definitions/Post"
+                },
+                "createTime": {
+                    "format": "date-time",
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "postId": {
+                    "description": "对应资讯id",
+                    "type": "string"
+                },
+                "categoryId": {
+                    "description": "置顶资讯类目",
+                    "type": "string"
+                },
+                "order": {
+                    "format": "int32",
+                    "description": "优先级",
+                    "type": "integer"
                 }
             }
         },
@@ -3409,6 +3910,66 @@
                 },
                 "content": {
                     "description": "内容,仅仅是Html的Content",
+                    "type": "string"
+                },
+                "status": {
+                    "format": "int32",
+                    "description": "状态 ：1可用 ，0不可用",
+                    "type": "integer"
+                }
+            }
+        },
+        "Post2": {
+            "description": "news系统下的资讯，作为中国足球网资讯的数据源",
+            "type": "object",
+            "properties": {
+                "image": {
+                    "description": "链接图片",
+                    "type": "string"
+                },
+                "images": {
+                    "description": "正文图片",
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "categoryIds": {
+                    "description": "文章类目id",
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "createTime": {
+                    "format": "date-time",
+                    "description": "资讯创建时间（资讯页面显示的时间）",
+                    "type": "string"
+                },
+                "videos": {
+                    "description": "视频地址",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Video"}
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "source": {
+                    "description": "来源，如'中国足球协会官网方网站'",
+                    "type": "string"
+                },
+                "postId": {
+                    "description": "上传到中国足球网后的资讯id",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "标题",
+                    "type": "string"
+                },
+                "uploadTime": {
+                    "format": "date-time",
+                    "description": "资讯上传到中国足球网的时间",
+                    "type": "string"
+                },
+                "content": {
+                    "description": "资讯内容，包含html标签",
                     "type": "string"
                 },
                 "status": {

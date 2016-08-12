@@ -1,11 +1,21 @@
 {
-    "summary": "获得Posts",
+    "summary": "获得Post列表",
     "tags": 
     [
         "WemediaPost"
     ],
 
-    "description": "根据Id获取Post",
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "根据一个或多个Id获取一个或多个Post列表",
     "parameters": 
     [
         {
@@ -13,14 +23,14 @@
         },
 
         {
-            "description": "文章的id,多个时以,分隔",
+            "description": "资讯id,多个id以','分隔",
             "name": "postIds",
             "type": "array",
             "items": 
             {
                 "type": "string"
             },
-            "required": false,
+            "required": true,
             "in": "query"
         }
     ],
@@ -38,7 +48,7 @@
                 }
             },
 
-            "description": "Post列表响应对象"
+            "description": "Post列表"
         }
     },
 

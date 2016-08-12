@@ -1,11 +1,21 @@
 {
-    "summary": "根据Id获取Post详情",
+    "summary": "获取单个Post",
     "tags": 
     [
         "WemediaPost"
     ],
-
-    "description": "返回Post详情对象",
+    
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "根据Id获取单个Post对象",
     "parameters": 
     [
         {
@@ -26,9 +36,9 @@
                 "$ref": "#/definitions/Post"
             },
 
-            "description": "Post响应对象"
+            "description": "Post对象"
         }
     },
 
-    "operationId": "getPostDetail"
+    "operationId": "getPost"
 }

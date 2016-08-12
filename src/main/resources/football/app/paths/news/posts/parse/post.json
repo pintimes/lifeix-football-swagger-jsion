@@ -1,0 +1,54 @@
+{
+    "summary": "解析资讯页面",
+    "tags": 
+    [
+        "NewsPost"
+    ],
+
+    "description": "根据页面链接解析资讯页面，获得post对象，并插入news系统下的post数据库以及wemedia系统下的post数据库中",
+
+    "consumes": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "description": "url、category json字符串",
+            "schema":{
+            	"type":"string"
+            },
+            "name": "jsonString",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema":{
+            	"type":"string"
+        	},
+            "description": "错误信息"
+        },
+        
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+
+    "operationId": "parsePost"
+}

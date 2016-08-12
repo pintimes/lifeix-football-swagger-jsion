@@ -1,0 +1,50 @@
+{
+    "summary": "更新状态",
+    "tags": 
+    [
+        "WemediaPost"
+    ],
+
+    "description": "更新状态",
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+    
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "description": "状态",
+            "name": "status",
+            "type":"integer",
+            "format":"int32",
+            "required": true,
+            "in": "formData"
+        }
+    ],
+    
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "修改成功"
+        },
+        
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+    
+    "operationId": "updateStatus"
+}

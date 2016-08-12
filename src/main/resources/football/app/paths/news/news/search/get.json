@@ -1,0 +1,64 @@
+{
+    "summary": "搜索News",
+    "tags": 
+    [
+        "news"
+    ],
+	
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+	
+    "description": "根据搜索条件获取News列表，只有管理员才能查找",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "description": "页码",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "required": false,
+            "default":"1",
+            "in": "query"
+        },
+
+        {
+            "description": "每页显示的记录条数",
+            "name": "limit",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "default":"20",
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/News"
+                }
+            },
+
+            "description": "News列表"
+        }
+    },
+
+    "operationId": "search"
+}
