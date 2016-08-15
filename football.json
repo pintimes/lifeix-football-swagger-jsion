@@ -53,6 +53,7 @@
             "operationId": "updateBanner",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/postPath"},
                 {
                     "in": "formData",
                     "name": "banner",
@@ -240,56 +241,6 @@
             "tags": ["CompetitionTeam"],
             "consumes": ["application/json"]
         }},
-        "/category/menus/{platform}": {
-            "post": {
-                "summary": "创建一个菜单栏",
-                "produces": ["application/json"],
-                "description": "创建APP或者Web的菜单栏",
-                "responses": {
-                    "200": {
-                        "schema": {"$ref": "#/definitions/Menu"},
-                        "description": "Menu响应对象"
-                    },
-                    "400": {"description": ""}
-                },
-                "operationId": "addMenu",
-                "parameters": [
-                    {"$ref": "#/parameters/apiKeyYHeader"},
-                    {"$ref": "#/parameters/platformPath"},
-                    {
-                        "schema": {
-                            "type": "array",
-                            "items": {"$ref": "#/definitions/Menu"}
-                        },
-                        "in": "body",
-                        "name": "menus",
-                        "description": "相应平台对应的完整菜单列表",
-                        "required": true
-                    }
-                ],
-                "tags": ["menu"],
-                "consumes": ["application/json"]
-            },
-            "get": {
-                "summary": "获取菜单栏",
-                "produces": ["application/json"],
-                "description": "需要通过不同的参数来获取不同的菜单，app对应移动的菜单 、app_wemedia对应APP媒体资讯菜单，web对应的是网站的菜单",
-                "responses": {"200": {
-                    "schema": {
-                        "type": "array",
-                        "items": {"$ref": "#/definitions/Menu"}
-                    },
-                    "description": "Menu列表响应对象"
-                }},
-                "operationId": "getMenuList",
-                "parameters": [
-                    {"$ref": "#/parameters/apiKeyYHeader"},
-                    {"$ref": "#/parameters/platformPath"}
-                ],
-                "tags": ["menu"],
-                "consumes": ["application/json"]
-            }
-        },
         "/games/players/national": {"get": {
             "summary": "查看国家队下的所有球员",
             "description": "查看国家队下的所有球员",
@@ -454,7 +405,7 @@
             "operationId": "updateTopPostBanner",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
-                {"$ref": "#/parameters/topPath"},
+                {"$ref": "#/parameters/postPath"},
                 {
                     "in": "formData",
                     "name": "banner",
@@ -541,11 +492,11 @@
                 },
                 "description": "News列表"
             }},
-            "operationId": "search",
+            "operationId": "searchWemediaPosts",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
                 {
-                    "default": "1",
+                    "default": 1,
                     "in": "query",
                     "name": "page",
                     "format": "int32",
@@ -554,7 +505,7 @@
                     "required": false
                 },
                 {
-                    "default": "20",
+                    "default": 20,
                     "in": "query",
                     "name": "limit",
                     "format": "int32",
@@ -711,7 +662,7 @@
                     "required": false
                 },
                 {
-                    "default": "10",
+                    "default": 10,
                     "in": "query",
                     "name": "limit",
                     "format": "int32",
@@ -728,7 +679,7 @@
                     "required": false
                 },
                 {
-                    "default": "true",
+                    "default": true,
                     "in": "query",
                     "name": "isDesc",
                     "description": "是否倒序排列",
@@ -754,27 +705,8 @@
             "summary": "获得置顶资讯列表",
             "produces": ["application/json; charset=UTF-8"],
             "description": "根据类目id列表获得类目下的置顶资讯列表",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"key-value": {
-                        "type": "object",
-                        "properties": {
-                            "value": {
-                                "type": "array",
-                                "items": {"$ref": "#/definitions/PostTop"}
-                            },
-                            "key": {"type": "string"}
-                        },
-                        "required": [
-                            "key",
-                            "value"
-                        ]
-                    }}
-                },
-                "description": "置顶资讯列表"
-            }},
-            "operationId": "getTopPosts",
+            "responses": {"200": {"description": "置顶资讯列表"}},
+            "operationId": "getTopPostsPage",
             "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
             "tags": ["WemediaTop"],
             "consumes": ["application/x-www-form-urlencoded"]
@@ -876,6 +808,7 @@
             "operationId": "updateContent",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/postPath"},
                 {
                     "in": "formData",
                     "name": "content",
@@ -945,7 +878,7 @@
                     "required": false
                 },
                 {
-                    "default": "5",
+                    "default": 5,
                     "in": "query",
                     "name": "limit",
                     "format": "int32",
@@ -997,6 +930,7 @@
             "operationId": "updateCategories",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/postPath"},
                 {
                     "in": "formData",
                     "name": "categoryIds",
@@ -1034,6 +968,7 @@
             "operationId": "updateTitle",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/postPath"},
                 {
                     "in": "formData",
                     "name": "title",
@@ -1181,52 +1116,6 @@
             ],
             "tags": ["elearning"]
         }},
-        "/category/categories": {
-            "post": {
-                "summary": "创建一个类目",
-                "produces": ["application/json"],
-                "description": "类目只能有管理员创建",
-                "responses": {
-                    "200": {
-                        "schema": {"$ref": "#/definitions/Category"},
-                        "description": "Category响应对象"
-                    },
-                    "400": {"description": ""}
-                },
-                "operationId": "addCategory",
-                "parameters": [
-                    {"$ref": "#/parameters/apiKeyYHeader"},
-                    {
-                        "schema": {
-                            "type": "array",
-                            "items": {"$ref": "#/definitions/Category"}
-                        },
-                        "in": "body",
-                        "name": "categories",
-                        "description": "类目",
-                        "required": true
-                    }
-                ],
-                "tags": ["category"],
-                "consumes": ["application/json"]
-            },
-            "get": {
-                "summary": "获取类目列表",
-                "produces": ["application/json"],
-                "description": "类目仅用于管理后台，用于查看整个系统的业务结构以及对媒体的标记",
-                "responses": {"200": {
-                    "schema": {
-                        "type": "array",
-                        "items": {"$ref": "#/definitions/Category"}
-                    },
-                    "description": "Category列表响应对象"
-                }},
-                "operationId": "getCategoryList",
-                "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-                "tags": ["category"],
-                "consumes": ["application/json"]
-            }
-        },
         "/games/referees": {"get": {
             "summary": "获得裁判列表",
             "description": "获得裁判列表",
@@ -1315,11 +1204,11 @@
                 },
                 "description": "News分页"
             }},
-            "operationId": "searchPage",
+            "operationId": "searchWemediaPostPage",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
                 {
-                    "default": "1",
+                    "default": 1,
                     "in": "query",
                     "name": "page",
                     "format": "int32",
@@ -1328,7 +1217,7 @@
                     "required": false
                 },
                 {
-                    "default": "20",
+                    "default": 20,
                     "in": "query",
                     "name": "rows",
                     "format": "int32",
@@ -1393,7 +1282,7 @@
                     "required": false
                 },
                 {
-                    "default": "1",
+                    "default": 1,
                     "in": "query",
                     "name": "page",
                     "format": "int32",
@@ -1402,7 +1291,7 @@
                     "required": false
                 },
                 {
-                    "default": "20",
+                    "default": 20,
                     "in": "query",
                     "name": "rows",
                     "format": "int32",
@@ -1672,7 +1561,6 @@
                 "operationId": "getTopPosts",
                 "parameters": [
                     {"$ref": "#/parameters/apiKeyYHeader"},
-                    {"$ref": "#/parameters/topPath"},
                     {
                         "in": "query",
                         "name": "categoryIds",
@@ -1716,6 +1604,22 @@
                 "consumes": ["application/x-www-form-urlencoded"]
             }
         },
+        "/app/init/{platform}": {"get": {
+            "summary": "获得启动参数",
+            "produces": ["application/json"],
+            "description": "需要通过不同的平台来获取不同的菜单",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/App"},
+                "description": "App对象"
+            }},
+            "operationId": "getApp",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/platformPath"}
+            ],
+            "tags": ["app"],
+            "consumes": ["application/json"]
+        }},
         "/games/referees/leagueCategory": {"get": {
             "summary": "获得裁判联赛级别",
             "description": "获得裁判联赛级别",
@@ -1892,6 +1796,7 @@
             "operationId": "updateImage",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/postPath"},
                 {
                     "in": "formData",
                     "name": "image",
@@ -2018,6 +1923,7 @@
             "operationId": "updateStatus",
             "parameters": [
                 {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/postPath"},
                 {
                     "in": "formData",
                     "name": "status",
@@ -2437,6 +2343,26 @@
         }
     },
     "definitions": {
+        "App": {
+            "description": "APP",
+            "type": "object",
+            "properties": {
+                "resourceHost": {
+                    "description": "资源主机地址",
+                    "type": "string"
+                },
+                "menus": {
+                    "description": "菜单地址",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Menu"}
+                },
+                "version": {
+                    "description": "版本号",
+                    "type": "string"
+                },
+                "mediaLib": {"$ref": "#/definitions/MediaLib"}
+            }
+        },
         "BasicPlayer": {
             "description": "球员基础信息",
             "type": "object",
@@ -2637,6 +2563,24 @@
                 },
                 "position": {
                     "description": "职位：领队,队医....",
+                    "type": "string"
+                }
+            }
+        },
+        "MediaLib": {
+            "description": "资源库",
+            "type": "object",
+            "properties": {
+                "image": {
+                    "description": "图片地址",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名称",
+                    "type": "string"
+                },
+                "link": {
+                    "description": "链接地址",
                     "type": "string"
                 }
             }
@@ -3943,6 +3887,10 @@
                     "type": "string"
                 },
                 "author": {"$ref": "#/definitions/Author"},
+                "shareUrl": {
+                    "description": "分享用的Html地址",
+                    "type": "string"
+                },
                 "videos": {
                     "description": "视频地址",
                     "type": "array",

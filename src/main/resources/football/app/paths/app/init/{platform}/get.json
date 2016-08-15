@@ -1,0 +1,44 @@
+{
+    "summary": "获得启动参数",
+    "tags": 
+    [
+        "app"
+    ],
+
+    "description": "需要通过不同的平台来获取不同的菜单",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "$ref": "#/parameters/platformPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/App"
+            },
+
+            "description": "App对象"
+        }
+    },
+
+    "operationId": "getApp"
+}

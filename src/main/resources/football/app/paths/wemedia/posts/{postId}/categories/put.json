@@ -22,7 +22,9 @@
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
-
+        {
+            "$ref": "#/parameters/postPath"
+        },
         {
         	"description": "资讯类目的id",
             "name": "categoryIds",

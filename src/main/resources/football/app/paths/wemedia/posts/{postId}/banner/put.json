@@ -24,6 +24,10 @@
         },
 
         {
+            "$ref": "#/parameters/postPath"
+        },
+        
+        {
             "description": "banner",
             "name": "banner",
             "type":"string",

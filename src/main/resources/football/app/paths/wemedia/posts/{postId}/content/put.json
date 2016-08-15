@@ -22,7 +22,9 @@
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
-
+        {
+            "$ref": "#/parameters/postPath"
+        },
         {
             "description": "内容",
             "name": "content",

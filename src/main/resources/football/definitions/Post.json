@@ -25,6 +25,12 @@
             "type": "string"
         },
         
+          "shareUrl": 
+        {
+            "description": "分享用的Html地址",
+            "type": "string"
+        },
+        
 
         "content": 
         {
