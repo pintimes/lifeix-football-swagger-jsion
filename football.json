@@ -836,7 +836,7 @@
                 {
                     "in": "query",
                     "name": "positions",
-                    "description": "球员报名位置 example:前锋,前锋,中场,门将 ",
+                    "description": "球员报名位置 example:前锋,前锋,中场,守门员 ",
                     "type": "string",
                     "required": true
                 },
@@ -1107,6 +1107,23 @@
                 {"$ref": "#/parameters/playerPath"}
             ],
             "tags": ["player"]
+        }},
+        "/games/competitions/{competitionId}/group": {"get": {
+            "summary": "查看赛事积分榜",
+            "description": "查看赛事积分榜",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/CompetitionGroup"}
+                },
+                "description": "CompetitionGroup列表响应对象"
+            }},
+            "operationId": "getCompetitionGroup",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/competitionPath"}
+            ],
+            "tags": ["competition"]
         }},
         "/wemedia/tops/list": {"get": {
             "summary": "获得置顶资讯列表",
@@ -3389,6 +3406,41 @@
                 }
             }
         },
+        "CompetitionGroup": {
+            "description": "赛事分组",
+            "type": "object",
+            "properties": {
+                "competitionId": {
+                    "format": "int64",
+                    "description": "赛事id",
+                    "type": "integer"
+                },
+                "groupName": {
+                    "description": "分组名称",
+                    "type": "string"
+                },
+                "bottomRank": {
+                    "format": "int32",
+                    "description": "降级个数",
+                    "type": "integer"
+                },
+                "teams": {
+                    "description": "小组球队",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/CompetitionTeamPts"}
+                },
+                "id": {
+                    "format": "int64",
+                    "description": "id",
+                    "type": "integer"
+                },
+                "topRank": {
+                    "format": "int32",
+                    "description": "晋级个数",
+                    "type": "integer"
+                }
+            }
+        },
         "Match": {
             "description": "比赛",
             "type": "object",
@@ -4189,6 +4241,77 @@
                     "description": "文章",
                     "type": "array",
                     "items": {"$ref": "#/definitions/Post"}
+                }
+            }
+        },
+        "CompetitionTeamPts": {
+            "description": "赛事分组",
+            "type": "object",
+            "properties": {
+                "winNum": {
+                    "format": "int32",
+                    "description": "获胜场次",
+                    "type": "integer"
+                },
+                "competitionId": {
+                    "format": "int64",
+                    "description": "赛事id",
+                    "type": "integer"
+                },
+                "groupId": {
+                    "format": "int64",
+                    "description": "赛事小组id",
+                    "type": "integer"
+                },
+                "drawNum": {
+                    "format": "int32",
+                    "description": "平局场次",
+                    "type": "integer"
+                },
+                "competitionTeamId": {
+                    "format": "int64",
+                    "description": "赛事球队id",
+                    "type": "integer"
+                },
+                "teamInfo": {"$ref": "#/definitions/TeamInfo"},
+                "pts": {
+                    "format": "int32",
+                    "description": "积分",
+                    "type": "integer"
+                },
+                "groupName": {
+                    "description": "分组名称",
+                    "type": "string"
+                },
+                "matchNum": {
+                    "format": "int32",
+                    "description": "比赛场次",
+                    "type": "integer"
+                },
+                "teamId": {
+                    "format": "int64",
+                    "description": "球队id",
+                    "type": "integer"
+                },
+                "lostNum": {
+                    "format": "int32",
+                    "description": "失败场次",
+                    "type": "integer"
+                },
+                "ga": {
+                    "format": "int32",
+                    "description": "失球数",
+                    "type": "integer"
+                },
+                "id": {
+                    "format": "int64",
+                    "description": "id",
+                    "type": "integer"
+                },
+                "gf": {
+                    "format": "int32",
+                    "description": "进球数",
+                    "type": "integer"
                 }
             }
         },

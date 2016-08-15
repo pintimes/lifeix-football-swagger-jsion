@@ -1,0 +1,30 @@
+{
+    "summary": "查看赛事积分榜",
+    "tags": 
+    [
+        "competition"
+    ],
+    "description": "查看赛事积分榜",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        }
+    ],
+
+    "responses": {
+        "200": {
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/CompetitionGroup"
+                }
+            },
+            "description": "CompetitionGroup列表响应对象"
+        }
+    },
+    "operationId": "getCompetitionGroup"
+}

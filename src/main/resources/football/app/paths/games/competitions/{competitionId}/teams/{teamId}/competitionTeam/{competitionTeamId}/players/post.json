@@ -35,7 +35,7 @@
             "in": "query"
         },
         {
-            "description": "球员报名位置 example:前锋,前锋,中场,门将 ",
+            "description": "球员报名位置 example:前锋,前锋,中场,守门员 ",
             "name": "positions",
             "type": "string",
             "required": true,
