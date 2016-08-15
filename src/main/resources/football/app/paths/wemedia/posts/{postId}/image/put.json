@@ -22,7 +22,9 @@
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
-
+        {
+            "$ref": "#/parameters/postPath"
+        },
         {
             "description": "链接图片",
             "name": "image",

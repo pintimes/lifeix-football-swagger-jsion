@@ -27,44 +27,9 @@
 	{
 		"200": 
 		{
-			"schema": 
-			{
-				"type": "array",
-				"items": 
-				{
-					"key-value": 
-					{
-						"type": "object",
-						"properties": 
-						{
-							"key": 
-							{
-								"type": "string"
-							},
-
-							"value": 
-							{
-								"type": "array",
-								"items": 
-								{
-									"$ref": "#/definitions/PostTop"
-								}
-							}
-						},
-
-						"required": 
-						[
-							"key",
-							"value"
-						]
-
-					}
-				}
-			},
-
 			"description": "置顶资讯列表"
 		}
 	},
 
-	"operationId": "getTopPosts"
+	"operationId": "getTopPostsPage"
 }

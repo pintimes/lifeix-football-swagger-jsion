@@ -22,8 +22,8 @@
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
-        {
-            "$ref": "#/parameters/topPath"
+           {
+            "$ref": "#/parameters/postPath"
         },
 
         {

@@ -28,7 +28,7 @@
             "type": "integer",
             "format": "int32",
             "required": false,
-            "default":"1",
+            "default":1,
             "in": "query"
         },
 
@@ -38,7 +38,7 @@
             "type": "integer",
             "format": "int32",
             "required": false,
-            "default":"20",
+            "default":20,
             "in": "query"
         }
     ],
@@ -60,5 +60,5 @@
         }
     },
 
-    "operationId": "searchPage"
+    "operationId": "searchWemediaPostPage"
 }

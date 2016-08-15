@@ -1,0 +1,35 @@
+{
+    "description": "APP",
+    "properties": 
+    {
+        "version": 
+        {
+            "description": "版本号",
+            "type": "string"
+        },
+
+        "resourceHost": 
+        {
+            "description": "资源主机地址",
+            "type": "string"
+        },
+
+        "mediaLib": 
+        {
+            "$ref": "#/definitions/MediaLib"
+        },
+        
+        "menus": 
+        {
+            "items": 
+            {
+                "$ref": "#/definitions/Menu"
+            },
+
+            "description": "菜单地址",
+            "type": "array"
+        }
+    },
+
+    "type": "object"
+}

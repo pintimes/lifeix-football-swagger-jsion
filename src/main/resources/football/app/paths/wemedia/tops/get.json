@@ -21,9 +21,6 @@
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
-        {
-            "$ref": "#/parameters/topPath"
-        },
 
         {
             "description": "类目列表",
