@@ -1649,8 +1649,8 @@
             "parameters": [
                 {
                     "in": "query",
-                    "name": "start",
-                    "description": "跳过的资料数量，不传返回第一页",
+                    "name": "startId",
+                    "description": "上一页列表最末的元素的uid，默认值为空，表示请求第一页",
                     "type": "integer",
                     "required": false
                 },
@@ -2514,6 +2514,11 @@
         "ElearningMaterial": {
             "description": "elearning资料下载",
             "properties": {
+                "uid": {
+                    "format": "int64",
+                    "description": "自增主键，用于分页",
+                    "type": "integer"
+                },
                 "name": {
                     "description": "资料名称",
                     "type": "string"
