@@ -1,0 +1,44 @@
+{
+    "summary": "获取单个User",
+    "tags": 
+    [
+        "users"
+    ],
+    
+	"consumes": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "根据Id获取单个User对象",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "$ref": "#/parameters/userPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/User"
+            },
+
+            "description": "User对象"
+        }
+    },
+
+    "operationId": "getUser"
+}

@@ -1,0 +1,95 @@
+{
+    "description": "用户",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
+        "avatar": 
+        {
+            "description": "头像地址",
+            "type": "string"
+        },
+
+        "nickname": 
+        {
+            "description": "昵称",
+            "type": "string"
+        },
+
+        "gender": 
+        {
+            "description": "性别",
+            "type": "string"
+        },
+
+        "birthday": 
+        {
+            "description": "生日",
+            "type": "string",
+            "format": "date-time"
+        },
+
+        "name": 
+        {
+            "description": "名称",
+            "type": "string"
+        },
+
+        "email": 
+        {
+            "description": "邮件",
+            "type": "string"
+        },
+
+        "mobile": 
+        {
+            "description": "手机",
+            "type": "string"
+        },
+
+        "idCard": 
+        {
+            "description": "身份证",
+            "type": "string"
+        },
+
+        "label": 
+        {
+            "description": "标签",
+            "type": "string"
+        },
+
+        "createTime": 
+        {
+            "description": "注册时间",
+            "type": "string",
+            "format": "date-time"
+        },
+
+        "channel": 
+        {
+            "description": "来源渠道",
+            "type": "object",
+            "properties": 
+            {
+                "name": 
+                {
+                    "description": "来源名称：微信，微博",
+                    "type": "string"
+                },
+
+                "id": 
+                {
+                    "description": "来源Id，在微信中的Id",
+                    "type": "string"
+                }
+            }
+        }
+    },
+
+    "type": "object"
+}

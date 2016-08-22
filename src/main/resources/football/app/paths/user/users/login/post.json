@@ -1,0 +1,48 @@
+{
+    "summary": "User登录",
+    "tags": 
+    [
+        "users"
+    ],
+
+    "description": "User登录",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/User"
+            },
+
+            "description": "普通用户",
+            "name": "user",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/User"
+            },
+
+            "description": "User对象"
+        }
+    },
+
+    "operationId": "loginUser"
+}

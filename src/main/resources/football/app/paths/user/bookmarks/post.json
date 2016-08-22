@@ -1,0 +1,52 @@
+{
+    "summary": "用户收藏",
+    "tags": 
+    [
+        "bookmarks"
+    ],
+
+    "description": "用户收藏：可以收藏文章，培训材料等等",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "name": "type",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "实体类型：[post,ElearningVideo,ElearningTrainingArticlePage,ElearningExercise]"
+        },
+
+        {
+            "name": "id",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "id"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Bookmark"
+            },
+
+            "description": "Bookmark对象"
+        }
+    },
+
+    "operationId": "addBookmark"
+}
