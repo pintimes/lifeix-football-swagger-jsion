@@ -12,8 +12,8 @@
     "parameters": 
     [
         {
-            "description": "跳过的资料数量，不传返回第一页",
-            "name": "start",
+            "description": "上一页列表最末的元素的uid，默认值为空，表示请求第一页",
+            "name": "startId",
             "type": "integer",
             "required": false,
             "in": "query"
