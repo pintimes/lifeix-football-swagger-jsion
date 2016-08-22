@@ -69,6 +69,15 @@
             "in": "path"
         },
         
+        "userPath": 
+        {
+            "description": "用户的Id",
+            "name": "userId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+        
          "newsPath": 
         {
             "description": "新闻的Id",

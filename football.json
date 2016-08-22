@@ -42,6 +42,22 @@
             ],
             "tags": ["setupDate"]
         }},
+        "/user/users/{userId}": {"get": {
+            "summary": "获取单个User",
+            "produces": ["application/json; charset=UTF-8"],
+            "description": "根据Id获取单个User对象",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/User"},
+                "description": "User对象"
+            }},
+            "operationId": "getUser",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/userPath"}
+            ],
+            "tags": ["users"],
+            "consumes": ["application/json; charset=UTF-8"]
+        }},
         "/wemedia/posts/{postId}/banner": {"put": {
             "summary": "更新banner",
             "produces": ["text/plain; charset=UTF-8"],
@@ -320,9 +336,9 @@
             "tags": ["elearning"]
         }},
         "/like/likes/{target}": {"get": {
-            "summary": "获得某一个Target的点赞信息",
-            "operationId": "getTargetLikeds",
-            "description": "比如：立方体育XX like 100 unlike20 like true",
+            "summary": "获得一个目标角色的喜欢数据",
+            "operationId": "getTargetLiked",
+            "description": "返回他的喜欢数",
             "responses": {"200": {
                 "schema": {"$ref": "#/definitions/Like"},
                 "description": "Like响应对象"
@@ -332,14 +348,7 @@
                 {
                     "in": "path",
                     "name": "target",
-                    "description": "目标：比如可以nationteam的memberid，也可以是post的id",
-                    "type": "string",
-                    "required": true
-                },
-                {
-                    "in": "query",
-                    "name": "type",
-                    "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
+                    "description": "喜欢目标的Id",
                     "type": "string",
                     "required": true
                 }
@@ -701,6 +710,20 @@
             "parameters": [{"$ref": "#/parameters/elearningVideoPath"}],
             "tags": ["elearning"]
         }},
+        "/user/users": {"get": {
+            "summary": "获得User列表",
+            "description": "返回管理员列表,该接口只能被管理员访问",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/User"}
+                },
+                "description": "User列表响应对象"
+            }},
+            "operationId": "getUsers",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": ["users"]
+        }},
         "/wemedia/tops/page": {"get": {
             "summary": "获得置顶资讯列表",
             "produces": ["application/json; charset=UTF-8"],
@@ -724,6 +747,25 @@
             "operationId": "getAdminList",
             "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
             "tags": ["admin"]
+        }},
+        "/user/users/regist": {"post": {
+            "summary": "User注册",
+            "produces": ["application/json"],
+            "description": "User注册",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/User"},
+                "description": "User对象"
+            }},
+            "operationId": "registUser",
+            "parameters": [{
+                "schema": {"$ref": "#/definitions/User"},
+                "in": "body",
+                "name": "user",
+                "description": "普通用户",
+                "required": true
+            }],
+            "tags": ["users"],
+            "consumes": ["application/json"]
         }},
         "/games/competitions": {"post": {
             "summary": "新增赛事",
@@ -990,22 +1032,6 @@
             "operationId": "getElearningExerciseDetail",
             "parameters": [{"$ref": "#/parameters/elearningExercisePath"}],
             "tags": ["elearning"]
-        }},
-        "/like/likes/nationalteam": {"get": {
-            "summary": "获得国家队成员的喜欢列表",
-            "produces": ["application/json"],
-            "description": "获得国家队成员的喜欢列表，包含教练coach，领队leader，球员player",
-            "responses": {"200": {
-                "schema": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/Like"}
-                },
-                "description": "Like列表响应对象"
-            }},
-            "operationId": "getNationalTeamLikes",
-            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
-            "tags": ["likes"],
-            "consumes": ["application/json"]
         }},
         "/games/matchStaffs": {"post": {
             "summary": "新增比赛工作人员:比赛监督、赛事监督",
@@ -1729,29 +1755,24 @@
                 "consumes": ["application/x-www-form-urlencoded"]
             },
             "get": {
-                "summary": "获取喜欢列表",
-                "produces": ["application/json"],
-                "description": "将type=${type}的所有目标的喜欢情况返回，同时加入当前喜欢与否情况",
+                "summary": "获得一组角色的喜欢列表",
+                "operationId": "getGroupLikes",
+                "description": "等我们把角色归为一组，通过组id可以获得当前组所有角色的喜欢数据，如果该组的成员没有被喜欢过，则不会返回给客户端",
                 "responses": {"200": {
-                    "schema": {
-                        "type": "array",
-                        "items": {"$ref": "#/definitions/Like"}
-                    },
-                    "description": "Like列表响应对象"
+                    "schema": {"$ref": "#/definitions/Like"},
+                    "description": "Like响应对象"
                 }},
-                "operationId": "getLikes",
                 "parameters": [
                     {"$ref": "#/parameters/apiKeyYHeader"},
                     {
                         "in": "query",
-                        "name": "type",
-                        "description": "target的类型，如果是国家队成员则写nationalteam，如果是文章则填入post",
+                        "name": "group",
+                        "description": "组Id：[nationalteam, coachnational, player中国女足女足国家队, player中国男足国奥队, player中国女足女足国青队, player中国女足沙滩足球,  player中国男足国家队, player中国女足五人制,  player中国男足国青队, player中国女足女足国少队,  player中国男足五人制,  player中国男足沙滩足球, player中国女足国少队,  player中国女足国青队,  player中国女足国家队, refereeFIFA, referee中超联赛, referee五甲联赛,  referee女超联赛, referee中乙联赛, referee中甲联赛,referee沙滩足球]",
                         "type": "string",
                         "required": true
                     }
                 ],
-                "tags": ["likes"],
-                "consumes": ["application/json"]
+                "tags": ["likes"]
             }
         },
         "/games/players/teamcategory/{teamCategoryId}": {"get": {
@@ -1808,6 +1829,85 @@
             "tags": ["WemediaPost"],
             "consumes": ["application/x-www-form-urlencoded"]
         }},
+        "/user/bookmarks": {
+            "post": {
+                "summary": "用户收藏",
+                "produces": ["application/json"],
+                "description": "用户收藏：可以收藏文章，培训材料等等",
+                "responses": {"200": {
+                    "schema": {"$ref": "#/definitions/Bookmark"},
+                    "description": "Bookmark对象"
+                }},
+                "operationId": "addBookmark",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "type",
+                        "description": "实体类型：[post,ElearningVideo,ElearningTrainingArticlePage,ElearningExercise]",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "formData",
+                        "name": "id",
+                        "description": "id",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "tags": ["bookmarks"],
+                "consumes": ["application/json"]
+            },
+            "get": {
+                "summary": "获取用户的收藏夹",
+                "produces": ["application/json; charset=UTF-8"],
+                "description": "根据用户的收藏夹",
+                "responses": {"200": {
+                    "schema": {"$ref": "#/definitions/Bookmark"},
+                    "description": "Bookmarks对象"
+                }},
+                "operationId": "getBookmark",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "formData",
+                        "name": "userId",
+                        "description": "",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "tags": ["bookmarks"],
+                "consumes": ["application/json; charset=UTF-8"]
+            },
+            "delete": {
+                "summary": "用户删除收藏夹",
+                "produces": ["application/json; charset=UTF-8"],
+                "description": "根据Id删除用户的收藏夹",
+                "responses": {"200": {"description": "删除成功"}},
+                "operationId": "deleteBookmarks",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "formData",
+                        "name": "userId",
+                        "description": "",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "formData",
+                        "name": "ids",
+                        "description": "收藏夹的Id列表，多个id使用','分隔",
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "required": true
+                    }
+                ],
+                "tags": ["bookmarks"],
+                "consumes": ["application/x-www-form-urlencoded"]
+            }
+        },
         "/games/competitions/{competitionId}/matches": {
             "post": {
                 "summary": "新增比赛",
@@ -2012,6 +2112,25 @@
             "tags": ["match"],
             "consumes": ["application/json"]
         }},
+        "/user/users/login": {"post": {
+            "summary": "User登录",
+            "produces": ["application/json"],
+            "description": "User登录",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/User"},
+                "description": "User对象"
+            }},
+            "operationId": "loginUser",
+            "parameters": [{
+                "schema": {"$ref": "#/definitions/User"},
+                "in": "body",
+                "name": "user",
+                "description": "普通用户",
+                "required": true
+            }],
+            "tags": ["users"],
+            "consumes": ["application/json"]
+        }},
         "/elearning/training_categories/{categoryId}/subCats": {"get": {
             "summary": "获取elearning培训类目下的单级子分类列表",
             "produces": ["application/json"],
@@ -2114,7 +2233,7 @@
                 "parameters": [
                     {"$ref": "#/parameters/apiKeyYHeader"},
                     {
-                        "in": "query",
+                        "in": "formData",
                         "name": "postIds",
                         "description": "资讯Id列表，多个id使用','分隔",
                         "type": "array",
@@ -2227,6 +2346,13 @@
             "format": "int64",
             "description": "赛事的Id",
             "type": "integer",
+            "required": true
+        },
+        "userPath": {
+            "in": "path",
+            "name": "userId",
+            "description": "用户的Id",
+            "type": "string",
             "required": true
         },
         "teamPath": {
@@ -3102,6 +3228,37 @@
                 }
             }
         },
+        "Bookmark": {
+            "description": "收藏夹/书签",
+            "type": "object",
+            "properties": {
+                "createTime": {
+                    "format": "date-time",
+                    "description": "收藏时间",
+                    "type": "string"
+                },
+                "link": {
+                    "description": "内容链接",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "标签：裁判员，教练员，球员，资讯",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "标题",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "内容类型：[pdf：直接打开,image图片地址,直接打开,video:音频地址,直接播放,audio:音频地址,直接播放,html:外链地址,直接跳转,txt:文字直接查看]",
+                    "type": "string"
+                },
+                "picture": {
+                    "description": "预览图片",
+                    "type": "string"
+                }
+            }
+        },
         "Video": {
             "description": "视频",
             "type": "object",
@@ -3302,6 +3459,72 @@
                     "description": "下级分类",
                     "type": "array",
                     "items": {"$ref": "#/definitions/PlayerCategory"}
+                }
+            }
+        },
+        "User": {
+            "description": "用户",
+            "type": "object",
+            "properties": {
+                "birthday": {
+                    "format": "date-time",
+                    "description": "生日",
+                    "type": "string"
+                },
+                "gender": {
+                    "description": "性别",
+                    "type": "string"
+                },
+                "createTime": {
+                    "format": "date-time",
+                    "description": "注册时间",
+                    "type": "string"
+                },
+                "idCard": {
+                    "description": "身份证",
+                    "type": "string"
+                },
+                "nickname": {
+                    "description": "昵称",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名称",
+                    "type": "string"
+                },
+                "mobile": {
+                    "description": "手机",
+                    "type": "string"
+                },
+                "channel": {
+                    "description": "来源渠道",
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "description": "来源名称：微信，微博",
+                            "type": "string"
+                        },
+                        "id": {
+                            "description": "来源Id，在微信中的Id",
+                            "type": "string"
+                        }
+                    }
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "avatar": {
+                    "description": "头像地址",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "标签",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "邮件",
+                    "type": "string"
                 }
             }
         },
