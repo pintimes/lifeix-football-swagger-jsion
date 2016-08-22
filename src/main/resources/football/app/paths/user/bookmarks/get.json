@@ -44,5 +44,5 @@
         }
     },
 
-    "operationId": "getBookmark"
+    "operationId": "getUserBookmarks"
 }

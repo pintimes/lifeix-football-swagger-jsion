@@ -23,7 +23,7 @@
             "in": "formData",
             "type": "string",
             "required": true,
-            "description": "实体类型：[post,ElearningVideo,ElearningTrainingArticlePage,ElearningExercise]"
+            "description": "实体类型，只能是如下几种类型：[post,ElearningVideo,ElearningTrainingArticlePage,ElearningExercise]"
         },
 
         {
