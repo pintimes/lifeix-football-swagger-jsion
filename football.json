@@ -168,6 +168,25 @@
             "tags": ["news"],
             "consumes": ["application/x-www-form-urlencoded"]
         }},
+        "/user/users/register": {"post": {
+            "summary": "User注册",
+            "produces": ["application/json"],
+            "description": "User注册",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/User"},
+                "description": "User对象"
+            }},
+            "operationId": "registerUser",
+            "parameters": [{
+                "schema": {"$ref": "#/definitions/User"},
+                "in": "body",
+                "name": "user",
+                "description": "普通用户",
+                "required": true
+            }],
+            "tags": ["users"],
+            "consumes": ["application/json"]
+        }},
         "/news/news/{newsId}/publish": {"post": {
             "summary": "发布News",
             "produces": ["text/plain; charset=UTF-8"],
@@ -712,7 +731,7 @@
         }},
         "/user/users": {"get": {
             "summary": "获得User列表",
-            "description": "返回管理员列表,该接口只能被管理员访问",
+            "description": "返回用户列表,该接口只能被管理员访问",
             "responses": {"200": {
                 "schema": {
                     "type": "array",
@@ -721,7 +740,57 @@
                 "description": "User列表响应对象"
             }},
             "operationId": "getUsers",
-            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "query",
+                    "name": "startTime",
+                    "format": "date-time",
+                    "description": "查询开始时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "endTime",
+                    "format": "date-time",
+                    "description": "查询结束时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "default": 1,
+                    "in": "query",
+                    "name": "page",
+                    "format": "int32",
+                    "description": "页号",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "default": 20,
+                    "in": "query",
+                    "name": "limit",
+                    "format": "int32",
+                    "description": "每页记录数",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "gender",
+                    "description": "性别",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "label",
+                    "description": "角色标签",
+                    "type": "string",
+                    "required": false
+                }
+            ],
             "tags": ["users"]
         }},
         "/wemedia/tops/page": {"get": {
@@ -747,25 +816,6 @@
             "operationId": "getAdminList",
             "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
             "tags": ["admin"]
-        }},
-        "/user/users/regist": {"post": {
-            "summary": "User注册",
-            "produces": ["application/json"],
-            "description": "User注册",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/User"},
-                "description": "User对象"
-            }},
-            "operationId": "registUser",
-            "parameters": [{
-                "schema": {"$ref": "#/definitions/User"},
-                "in": "body",
-                "name": "user",
-                "description": "普通用户",
-                "required": true
-            }],
-            "tags": ["users"],
-            "consumes": ["application/json"]
         }},
         "/games/competitions": {"post": {
             "summary": "新增赛事",
@@ -1109,7 +1159,7 @@
             "responses": {
                 "200": {
                     "schema": {"type": "string"},
-                    "description": "错误信息"
+                    "description": "解析成功"
                 },
                 "401": {"description": "没有权限"}
             },
@@ -1792,6 +1842,88 @@
             ],
             "tags": ["player"]
         }},
+        "/news/posts/page": {"get": {
+            "summary": "获得Post历史记录分页列表",
+            "produces": ["application/json; charset=UTF-8"],
+            "description": "根据搜索条件获取Post历史记录分页列表",
+            "responses": {"200": {
+                "schema": {
+                    "$ref": "#/definitions/Page",
+                    "items": {"$ref": "#/definitions/Post"}
+                },
+                "description": "Post历史页面"
+            }},
+            "operationId": "searchPage2",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "query",
+                    "name": "startDate",
+                    "format": "date-time",
+                    "description": "查询开始时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "endDate",
+                    "format": "date-time",
+                    "description": "查询结束时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "default": 1,
+                    "in": "query",
+                    "name": "page",
+                    "format": "int32",
+                    "description": "页号",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "default": 20,
+                    "in": "query",
+                    "name": "limit",
+                    "format": "int32",
+                    "description": "每页记录数",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "title",
+                    "description": "标题（支持模糊查询）",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "source",
+                    "description": "来源（支持模糊查询）",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "default": "createTime",
+                    "in": "query",
+                    "name": "orderBy",
+                    "description": "按照某个字段排序",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "default": "desc",
+                    "in": "query",
+                    "name": "order",
+                    "description": "排序方式（正序或倒序）",
+                    "type": "string",
+                    "required": false
+                }
+            ],
+            "tags": ["WemediaPost"],
+            "consumes": ["application/x-www-form-urlencoded"]
+        }},
         "/games/players/{playerId}/introduce": {"get": {
             "summary": "获得球员个人介绍",
             "description": "获得球员个人介绍",
@@ -1843,7 +1975,7 @@
                     {
                         "in": "formData",
                         "name": "type",
-                        "description": "实体类型：[post,ElearningVideo,ElearningTrainingArticlePage,ElearningExercise]",
+                        "description": "实体类型，只能是如下几种类型：[post,ElearningVideo,ElearningTrainingArticlePage,ElearningExercise]",
                         "type": "string",
                         "required": true
                     },
@@ -1866,7 +1998,7 @@
                     "schema": {"$ref": "#/definitions/Bookmark"},
                     "description": "Bookmarks对象"
                 }},
-                "operationId": "getBookmark",
+                "operationId": "getUserBookmarks",
                 "parameters": [
                     {"$ref": "#/parameters/apiKeyYHeader"},
                     {
@@ -1987,6 +2119,22 @@
             ],
             "tags": ["file"]
         }},
+        "/news/posts/{postId}/publish": {"post": {
+            "summary": "发布单个新闻到中国足球网",
+            "produces": ["text/plain; charset=UTF-8"],
+            "description": "发布单个新闻到中国足球网",
+            "responses": {
+                "200": {"description": "错误信息"},
+                "401": {"description": "没有权限"}
+            },
+            "operationId": "publishPost",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/postPath2"}
+            ],
+            "tags": ["NewsPost"],
+            "consumes": ["application/json; charset=UTF-8"]
+        }},
         "/games/competitions/{competitionId}": {"get": {
             "summary": "赛事所有的参赛球队信息和比赛信息（赛程）",
             "description": "赛事所有的参赛球队信息和比赛信息（赛程）",
@@ -2084,6 +2232,19 @@
                 "tags": ["CompetitionCategory"]
             }
         },
+        "/news/posts/publish": {"post": {
+            "summary": "发布所有新闻到中国足球网",
+            "produces": ["text/plain; charset=UTF-8"],
+            "description": "发布所有新闻到中国足球网，已经发布过的新闻将会进行更新操作，未发布的新闻将发布到中国足球网，该操作会同步news系统和wemedia系统下的post表数据",
+            "responses": {
+                "200": {"description": "错误信息"},
+                "401": {"description": "没有权限"}
+            },
+            "operationId": "publishAll",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": ["NewsPost"],
+            "consumes": ["application/json; charset=UTF-8"]
+        }},
         "/games/competitions/{competitionId}/matches/{matchId}/matchstaffs": {"post": {
             "summary": "新增比赛工作人员",
             "produces": ["application/json"],
@@ -2363,6 +2524,13 @@
             "type": "integer",
             "required": true
         },
+        "postPath2": {
+            "in": "path",
+            "name": "postId",
+            "description": "news系统下Post的ID",
+            "type": "string",
+            "required": true
+        },
         "playerPath": {
             "in": "path",
             "name": "playerId",
@@ -2426,7 +2594,7 @@
         "postPath": {
             "in": "path",
             "name": "postId",
-            "description": "Post的ID",
+            "description": "wemedia系统下Post的ID",
             "type": "string",
             "required": true
         },

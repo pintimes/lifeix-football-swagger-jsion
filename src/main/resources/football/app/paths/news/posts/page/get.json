@@ -1,20 +1,30 @@
 {
-    "summary": "获得User列表",
+	"summary": "获得Post历史记录分页列表",
     "tags": 
     [
-        "users"
+       "WemediaPost"
     ],
 
-    "description": "返回用户列表,该接口只能被管理员访问",
-    "parameters": 
+	"consumes": 
     [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "根据搜索条件获取Post历史记录分页列表",
+    "parameters": 
+	[
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
-        
+
         {
             "description": "查询开始时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
-            "name": "startTime",
+            "name": "startDate",
             "type": "string",
             "format":"date-time",
             "required": false,
@@ -23,7 +33,7 @@
 
         {
             "description": "查询结束时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
-            "name": "endTime",
+            "name": "endDate",
             "type": "string",
             "format":"date-time",
             "required": false,
@@ -51,18 +61,36 @@
         },
         
         {
-            "description": "性别",
-            "name": "gender",
+            "description": "标题（支持模糊查询）",
+            "name": "title",
             "type": "string",
             "required": false,
             "in": "query"
         },
         
         {
-            "description": "角色标签",
-            "name": "label",
+            "description": "来源（支持模糊查询）",
+            "name": "source",
             "type": "string",
             "required": false,
+            "in": "query"
+        },
+        
+        {
+            "description": "按照某个字段排序",
+            "name": "orderBy",
+            "type": "string",
+            "required": false,
+            "default":"createTime",
+            "in": "query"
+        },
+
+        {
+            "description": "排序方式（正序或倒序）",
+            "name": "order",
+            "type": "string",
+            "required": false,
+            "default":"desc",
             "in": "query"
         }
     ],
@@ -73,16 +101,16 @@
         {
             "schema": 
             {
-                "type": "array",
+                "$ref": "#/definitions/Page",
                 "items": 
                 {
-                    "$ref": "#/definitions/User"
+                    "$ref": "#/definitions/Post"
                 }
             },
 
-            "description": "User列表响应对象"
+            "description": "Post历史页面"
         }
     },
 
-    "operationId": "getUsers"
+    "operationId": "searchPage2"
 }
