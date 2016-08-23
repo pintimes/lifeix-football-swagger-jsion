@@ -2,6 +2,12 @@
     "description": "收藏夹/书签",
     "properties": 
     {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
         "picture": 
         {
             "description": "预览图片",
