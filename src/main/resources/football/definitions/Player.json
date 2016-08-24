@@ -26,7 +26,7 @@
         },
 		"birthday": 
         {
-            "description": "出生地  中国北京",
+            "description": "出生日期",
             "type": "string",
             "format": "date-time"
         },

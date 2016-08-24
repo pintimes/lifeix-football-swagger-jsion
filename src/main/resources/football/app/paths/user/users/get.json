@@ -1,0 +1,88 @@
+{
+    "summary": "获得User列表",
+    "tags": 
+    [
+        "users"
+    ],
+
+    "description": "返回用户列表,该接口只能被管理员访问",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        
+        {
+            "description": "查询开始时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+            "name": "startTime",
+            "type": "string",
+            "format":"date-time",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "查询结束时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+            "name": "endTime",
+            "type": "string",
+            "format":"date-time",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "页号",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "required": false,
+            "default":1,
+            "in": "query"
+        },
+        
+        {
+            "description": "每页记录数",
+            "name": "limit",
+            "type": "integer",
+            "format": "int32",
+            "required": false,
+            "default":20,
+            "in": "query"
+        },
+        
+        {
+            "description": "性别",
+            "name": "gender",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+        
+        {
+            "description": "角色标签",
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/User"
+                }
+            },
+
+            "description": "User列表响应对象"
+        }
+    },
+
+    "operationId": "getUsers"
+}

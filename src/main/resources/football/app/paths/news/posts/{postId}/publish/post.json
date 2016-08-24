@@ -1,0 +1,44 @@
+{
+    "summary": "发布单个新闻到中国足球网",
+    "tags": 
+    [
+        "NewsPost"
+    ],
+
+    "description": "发布单个新闻到中国足球网",
+
+    "consumes": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/postPath2"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "错误信息"
+        },
+        
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+
+    "operationId": "publishPost"
+}
