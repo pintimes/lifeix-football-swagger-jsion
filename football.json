@@ -323,6 +323,21 @@
             ],
             "tags": ["player"]
         }},
+        "/games/competitions/{competitionId}/matches/{matchId}/zhibo": {"get": {
+            "summary": "获得比赛信息直播信息",
+            "description": "获得比赛直播信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/MatchZhiBo"},
+                "description": "MatchZhiBo响应对象"
+            }},
+            "operationId": "getMatchZhiBo",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/competitionPath"},
+                {"$ref": "#/parameters/matchPath"}
+            ],
+            "tags": ["match"]
+        }},
         "/elearning/training_categories/{categoryId}/article_pages": {"get": {
             "summary": "分页获取培训分类下的文章单篇列表",
             "produces": ["application/json"],
@@ -3189,7 +3204,7 @@
             "properties": {
                 "birthday": {
                     "format": "date-time",
-                    "description": "出生地  中国北京",
+                    "description": "出生日期",
                     "type": "string"
                 },
                 "englishName": {
@@ -3364,6 +3379,31 @@
                 }
             }
         },
+        "MatchZhiBo": {
+            "description": "比赛直播信息",
+            "type": "object",
+            "properties": {
+                "contestId": {
+                    "format": "int64",
+                    "description": "大赢家比赛id",
+                    "type": "integer"
+                },
+                "videoStartTime": {
+                    "format": "date-time",
+                    "description": "直播开始时间",
+                    "type": "string"
+                },
+                "videoUrl": {
+                    "description": "视频访问地址",
+                    "type": "string"
+                },
+                "matchId": {
+                    "format": "int64",
+                    "description": "比赛id",
+                    "type": "integer"
+                }
+            }
+        },
         "ElearningExercise": {
             "description": "elearning练习",
             "properties": {
@@ -3412,6 +3452,10 @@
                 },
                 "link": {
                     "description": "内容链接",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
                     "type": "string"
                 },
                 "label": {
@@ -4731,6 +4775,4 @@
     },
     "consumes": ["application/json"],
     "tags": []
-    
-    
 }
