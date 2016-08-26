@@ -168,25 +168,6 @@
             "tags": ["news"],
             "consumes": ["application/x-www-form-urlencoded"]
         }},
-        "/user/users/register": {"post": {
-            "summary": "User注册",
-            "produces": ["application/json"],
-            "description": "User注册",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/User"},
-                "description": "User对象"
-            }},
-            "operationId": "registerUser",
-            "parameters": [{
-                "schema": {"$ref": "#/definitions/User"},
-                "in": "body",
-                "name": "user",
-                "description": "普通用户",
-                "required": true
-            }],
-            "tags": ["users"],
-            "consumes": ["application/json"]
-        }},
         "/news/news/{newsId}/publish": {"post": {
             "summary": "发布News",
             "produces": ["text/plain; charset=UTF-8"],
@@ -445,6 +426,61 @@
             "tags": ["WemediaTop"],
             "consumes": ["application/x-www-form-urlencoded"]
         }},
+        "/wemedia/tops/{topId}/link": {
+            "delete": {
+                "summary": "删除top的link",
+                "produces": ["text/plain; charset=UTF-8"],
+                "description": "删除top的link，点击跳转到资讯",
+                "responses": {
+                    "200": {"description": "删除成功"},
+                    "401": {"description": "没有权限"}
+                },
+                "operationId": "deleteLink",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {"$ref": "#/parameters/topPath"}
+                ],
+                "tags": ["WemediaTop"],
+                "consumes": ["application/x-www-form-urlencoded"]
+            },
+            "put": {
+                "summary": "更新top的Link",
+                "produces": ["text/plain; charset=UTF-8"],
+                "description": "更新top的Link，使其能够通过点击跳转到不同页面",
+                "responses": {
+                    "200": {"description": "修改成功"},
+                    "401": {"description": "没有权限"}
+                },
+                "operationId": "updateLink",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {"$ref": "#/parameters/topPath"},
+                    {
+                        "in": "formData",
+                        "name": "linkType",
+                        "description": "链接类型",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "formData",
+                        "name": "competitionId",
+                        "description": "赛事id",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "formData",
+                        "name": "matchId",
+                        "description": "比赛id",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "tags": ["WemediaTop"],
+                "consumes": ["application/x-www-form-urlencoded"]
+            }
+        },
         "/elearning/quiz_categories": {"get": {
             "summary": "获取elearning测试类目",
             "produces": ["application/json"],
@@ -1632,9 +1668,9 @@
                         "type": "array",
                         "items": {"$ref": "#/definitions/Post"}
                     },
-                    "description": "置顶资讯列表"
+                    "description": "置顶资讯(包含链接对象linkMap)列表"
                 }},
-                "operationId": "getTopPosts",
+                "operationId": "getTops",
                 "parameters": [
                     {"$ref": "#/parameters/apiKeyYHeader"},
                     {
@@ -1644,6 +1680,15 @@
                         "type": "array",
                         "items": {"type": "string"},
                         "required": true
+                    },
+                    {
+                        "default": 9,
+                        "in": "query",
+                        "name": "limit",
+                        "format": "int32",
+                        "description": "返回记录数限制",
+                        "type": "integer",
+                        "required": false
                     }
                 ],
                 "tags": ["WemediaTop"],
@@ -3189,7 +3234,7 @@
             "properties": {
                 "birthday": {
                     "format": "date-time",
-                    "description": "出生地  中国北京",
+                    "description": "出生日期",
                     "type": "string"
                 },
                 "englishName": {
@@ -3412,6 +3457,10 @@
                 },
                 "link": {
                     "description": "内容链接",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
                     "type": "string"
                 },
                 "label": {
@@ -4272,29 +4321,11 @@
                     "type": "array",
                     "items": {"type": "string"}
                 },
-                "categoryIds": {
-                    "description": "文章类别ID",
-                    "type": "array",
-                    "items": {"type": "string"}
-                },
-                "createTime": {
-                    "format": "date-time",
-                    "description": "post创建日期",
-                    "type": "string"
-                },
                 "author": {"$ref": "#/definitions/Author"},
-                "shareUrl": {
-                    "description": "分享用的Html地址",
-                    "type": "string"
-                },
                 "videos": {
                     "description": "视频地址",
                     "type": "array",
                     "items": {"$ref": "#/definitions/Video"}
-                },
-                "id": {
-                    "description": "id",
-                    "type": "string"
                 },
                 "title": {
                     "description": "标题，5-50个字符",
@@ -4306,6 +4337,28 @@
                 },
                 "content": {
                     "description": "内容,仅仅是Html的Content",
+                    "type": "string"
+                },
+                "linkMap": {
+                    "description": "链接map对象，包含linkType、urlApp、title、competitionId、matchId",
+                    "type": "object"
+                },
+                "categoryIds": {
+                    "description": "文章类别ID",
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "createTime": {
+                    "format": "date-time",
+                    "description": "post创建日期",
+                    "type": "string"
+                },
+                "shareUrl": {
+                    "description": "分享用的Html地址",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
                     "type": "string"
                 },
                 "status": {
