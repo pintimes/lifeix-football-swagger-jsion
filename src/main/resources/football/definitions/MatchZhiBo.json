@@ -1,0 +1,31 @@
+{
+    "description": "比赛直播信息",
+    "type": "object",
+    "properties": 
+    {
+        "matchId": 
+        {
+            "description": "比赛id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "contestId": 
+        {
+            "description": "大赢家比赛id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "videoStartTime": 
+        {
+            "description": "直播开始时间",
+            "type": "string",
+		    "format": "date-time"
+        },
+        "videoUrl": 
+        {
+            "description": "视频访问地址",
+            "type": "string"
+        }
+        
+    }
+}
