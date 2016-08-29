@@ -30,6 +30,15 @@
             "required": true,
             "in": "formData"
         },
+        {
+            "description": "顺序order",
+            "name": "order",
+            "type": "integer",
+            "format": "int32",
+            "default": 0,
+            "required": false,
+            "in": "formData"
+        },
 
         {
             "description": "postIds",

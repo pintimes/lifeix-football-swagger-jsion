@@ -1663,6 +1663,15 @@
                         "required": true
                     },
                     {
+                        "default": 0,
+                        "in": "formData",
+                        "name": "order",
+                        "format": "int32",
+                        "description": "顺序order",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
                         "in": "formData",
                         "name": "postIds",
                         "description": "postIds",
