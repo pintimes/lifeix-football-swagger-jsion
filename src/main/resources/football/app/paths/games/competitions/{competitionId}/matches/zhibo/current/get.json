@@ -1,0 +1,45 @@
+{
+    "summary": "获取赛事直播信息",
+    "tags": 
+    [
+        "zhibo"
+    ],
+
+    "description": "获取赛事直播信息",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "object",
+                "properties": 
+	            {
+	                "match": 
+	                {
+	                    "$ref": "#/definitions/MatchInfo"
+	                },
+	
+	                "zhibo": 
+	                {
+	                    "$ref": "#/definitions/MatchZhiBo"
+	                }
+	            }
+            },
+
+            "description": "当前直播响应对象"
+        }
+    },
+
+    "operationId": "findCurrentMatchZhibo"
+}

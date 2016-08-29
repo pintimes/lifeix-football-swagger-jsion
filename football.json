@@ -1228,6 +1228,26 @@
             "tags": ["NewsPost"],
             "consumes": ["application/json; charset=UTF-8"]
         }},
+        "/games/competitions/{competitionId}/matches/zhibo/current": {"get": {
+            "summary": "获取赛事直播信息",
+            "description": "获取赛事直播信息",
+            "responses": {"200": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "zhibo": {"$ref": "#/definitions/MatchZhiBo"},
+                        "match": {"$ref": "#/definitions/MatchInfo"}
+                    }
+                },
+                "description": "当前直播响应对象"
+            }},
+            "operationId": "findCurrentMatchZhibo",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/competitionPath"}
+            ],
+            "tags": ["zhibo"]
+        }},
         "/elearning/training_categories/{categoryId}/video_pages/{pageIndex}": {"get": {
             "summary": "按顺序索引获取培训视频单篇",
             "produces": ["application/json"],
