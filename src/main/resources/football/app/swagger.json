@@ -2,25 +2,19 @@
     "swagger": "2.0",
     "info": 
     {
-        "title": "Lifeix Designer API",
-        "description": "此API用于Lifeix Football Wemedia",
+        "title": "Lifeix Football API",
+        "description": "仅用于中国足球网",
         "termsOfService": "",
         "contact": 
         {
-            "email": "chaochaog@l99.com",
-            "name": "曾光伟  苗慧杰  谷超超"
-        },
-
-        "license": 
-        {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+            "email": "guangweiz@l99.com",
+            "name": "曾光伟 苗慧杰 谷超超 徐乐"
         },
 
         "version": "1.0.0"
     },
 
-    "host": "api.c-f.com:8000",
+    "host": "api.c-f.com",
     "schemes": 
     [
         "http",
