@@ -202,7 +202,16 @@
 
         "postPath": 
         {
-            "description": "Post的ID",
+            "description": "wemedia系统下Post的ID",
+            "name": "postId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+
+        "postPath2": 
+        {
+            "description": "news系统下Post的ID",
             "name": "postId",
             "type": "string",
             "required": true,

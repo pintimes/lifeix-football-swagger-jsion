@@ -64,12 +64,6 @@
                     "type": "string"
                 },
 
-                "url": 
-                {
-                    "description": "链接地址",
-                    "type": "string"
-                },
-
                 "wemedia": 
                 {
                     "description": "资源库",
@@ -78,6 +72,24 @@
                         "id": 
                         {
                             "description": "资讯Id",
+                            "type": "string"
+                        },
+
+                        "title": 
+                        {
+                            "description": "标题",
+                            "type": "string"
+                        },
+
+                        "url": 
+                        {
+                            "description": "链接地址",
+                            "type": "string"
+                        },
+
+                        "shareUrl": 
+                        {
+                            "description": "分享链接地址",
                             "type": "string"
                         }
                     },
@@ -95,9 +107,49 @@
                             "description": "比赛Id",
                             "type": "string"
                         },
+
+                        "title": 
+                        {
+                            "description": "标题",
+                            "type": "string"
+                        },
+
                         "competitionId": 
                         {
                             "description": "赛事Id",
+                            "type": "string"
+                        },
+
+                        "url": 
+                        {
+                            "description": "链接地址",
+                            "type": "string"
+                        },
+
+                        "shareUrl": 
+                        {
+                            "description": "分享链接地址",
+                            "type": "string"
+                        }
+                    },
+
+                    "type": "object"
+                },
+
+                "h5": 
+                {
+                    "description": "H5地址",
+                    "properties": 
+                    {
+                        "title": 
+                        {
+                            "description": "标题",
+                            "type": "string"
+                        },
+
+                        "url": 
+                        {
+                            "description": "链接地址",
                             "type": "string"
                         }
                     },
