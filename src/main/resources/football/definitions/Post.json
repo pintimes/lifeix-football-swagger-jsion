@@ -89,6 +89,12 @@
             "description": "状态 ：1可用 ，0不可用",
             "type": "integer",
             "format": "int32"
+        },
+        
+        "linkMap": 
+        {
+            "description": "链接map对象，包含linkType、urlApp、title、competitionId、matchId",
+            "type": "object"
         }
     },
 

@@ -1,54 +1,51 @@
 {
-    "summary": "新增置顶资讯",
+    "summary": "更新top的Link",
     "tags": 
     [
         "WemediaTop"
     ],
 
-    "description": "根据类目id和资讯id新增置顶资讯",
-
+    "description": "更新top的Link，使其能够通过点击跳转到不同页面",
+    
     "consumes": 
     [
         "application/x-www-form-urlencoded"
     ],
-
-	"produces": 
+    
+    "produces": 
     [
         "text/plain; charset=UTF-8"
     ],
-    
+
     "parameters": 
     [
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
+        {
+            "$ref": "#/parameters/topPath"
+        },
 
         {
-            "description": "类目Id",
-            "name": "categoryId",
+            "description": "链接类型",
+            "name": "linkType",
             "type": "string",
             "required": true,
             "in": "formData"
         },
+        
         {
-            "description": "顺序order",
-            "name": "order",
-            "type": "integer",
-            "format": "int32",
-            "default": 0,
+            "description": "赛事id",
+            "name": "competitionId",
+            "type": "string",
             "required": false,
             "in": "formData"
         },
-
         {
-            "description": "postIds",
-            "name": "postIds",
-            "type": "array",
-            "items": 
-            {
-                "type": "string"
-            },
-            "required": true,
+            "description": "比赛id",
+            "name": "matchId",
+            "type": "string",
+            "required": false,
             "in": "formData"
         }
     ],
@@ -57,7 +54,7 @@
     {
         "200": 
         {
-            "description": "置顶成功"
+            "description": "修改成功"
         },
         
         "401": 
@@ -66,5 +63,5 @@
         }
     },
 
-    "operationId": "addTopPosts"
+    "operationId": "updateLink"
 }

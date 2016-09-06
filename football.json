@@ -304,6 +304,21 @@
             ],
             "tags": ["player"]
         }},
+        "/games/competitions/{competitionId}/matches/{matchId}/zhibo": {"get": {
+            "summary": "获得比赛信息直播信息",
+            "description": "获得比赛直播信息",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/MatchZhiBo"},
+                "description": "MatchZhiBo响应对象"
+            }},
+            "operationId": "getMatchZhiBo",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/competitionPath"},
+                {"$ref": "#/parameters/matchPath"}
+            ],
+            "tags": ["match"]
+        }},
         "/elearning/training_categories/{categoryId}/article_pages": {"get": {
             "summary": "分页获取培训分类下的文章单篇列表",
             "produces": ["application/json"],
@@ -426,6 +441,61 @@
             "tags": ["WemediaTop"],
             "consumes": ["application/x-www-form-urlencoded"]
         }},
+        "/wemedia/tops/{topId}/link": {
+            "delete": {
+                "summary": "删除top的link",
+                "produces": ["text/plain; charset=UTF-8"],
+                "description": "删除top的link，点击跳转到资讯",
+                "responses": {
+                    "200": {"description": "删除成功"},
+                    "401": {"description": "没有权限"}
+                },
+                "operationId": "deleteLink",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {"$ref": "#/parameters/topPath"}
+                ],
+                "tags": ["WemediaTop"],
+                "consumes": ["application/x-www-form-urlencoded"]
+            },
+            "put": {
+                "summary": "更新top的Link",
+                "produces": ["text/plain; charset=UTF-8"],
+                "description": "更新top的Link，使其能够通过点击跳转到不同页面",
+                "responses": {
+                    "200": {"description": "修改成功"},
+                    "401": {"description": "没有权限"}
+                },
+                "operationId": "updateLink",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {"$ref": "#/parameters/topPath"},
+                    {
+                        "in": "formData",
+                        "name": "linkType",
+                        "description": "链接类型",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "formData",
+                        "name": "competitionId",
+                        "description": "赛事id",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "formData",
+                        "name": "matchId",
+                        "description": "比赛id",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "tags": ["WemediaTop"],
+                "consumes": ["application/x-www-form-urlencoded"]
+            }
+        },
         "/elearning/quiz_categories": {"get": {
             "summary": "获取elearning测试类目",
             "produces": ["application/json"],
@@ -712,7 +782,7 @@
         }},
         "/user/users": {"get": {
             "summary": "获得User列表",
-            "description": "返回管理员列表,该接口只能被管理员访问",
+            "description": "返回用户列表,该接口只能被管理员访问",
             "responses": {"200": {
                 "schema": {
                     "type": "array",
@@ -721,7 +791,57 @@
                 "description": "User列表响应对象"
             }},
             "operationId": "getUsers",
-            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "query",
+                    "name": "startTime",
+                    "format": "date-time",
+                    "description": "查询开始时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "endTime",
+                    "format": "date-time",
+                    "description": "查询结束时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "default": 1,
+                    "in": "query",
+                    "name": "page",
+                    "format": "int32",
+                    "description": "页号",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "default": 20,
+                    "in": "query",
+                    "name": "limit",
+                    "format": "int32",
+                    "description": "每页记录数",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "gender",
+                    "description": "性别",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "label",
+                    "description": "角色标签",
+                    "type": "string",
+                    "required": false
+                }
+            ],
             "tags": ["users"]
         }},
         "/wemedia/tops/page": {"get": {
@@ -747,25 +867,6 @@
             "operationId": "getAdminList",
             "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
             "tags": ["admin"]
-        }},
-        "/user/users/regist": {"post": {
-            "summary": "User注册",
-            "produces": ["application/json"],
-            "description": "User注册",
-            "responses": {"200": {
-                "schema": {"$ref": "#/definitions/User"},
-                "description": "User对象"
-            }},
-            "operationId": "registUser",
-            "parameters": [{
-                "schema": {"$ref": "#/definitions/User"},
-                "in": "body",
-                "name": "user",
-                "description": "普通用户",
-                "required": true
-            }],
-            "tags": ["users"],
-            "consumes": ["application/json"]
         }},
         "/games/competitions": {"post": {
             "summary": "新增赛事",
@@ -1109,7 +1210,7 @@
             "responses": {
                 "200": {
                     "schema": {"type": "string"},
-                    "description": "错误信息"
+                    "description": "解析成功"
                 },
                 "401": {"description": "没有权限"}
             },
@@ -1126,6 +1227,26 @@
             ],
             "tags": ["NewsPost"],
             "consumes": ["application/json; charset=UTF-8"]
+        }},
+        "/games/competitions/{competitionId}/matches/zhibo/current": {"get": {
+            "summary": "获取赛事直播信息",
+            "description": "获取赛事直播信息",
+            "responses": {"200": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "zhibo": {"$ref": "#/definitions/MatchZhiBo"},
+                        "match": {"$ref": "#/definitions/MatchInfo"}
+                    }
+                },
+                "description": "当前直播响应对象"
+            }},
+            "operationId": "findCurrentMatchZhibo",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/competitionPath"}
+            ],
+            "tags": ["zhibo"]
         }},
         "/elearning/training_categories/{categoryId}/video_pages/{pageIndex}": {"get": {
             "summary": "按顺序索引获取培训视频单篇",
@@ -1562,6 +1683,15 @@
                         "required": true
                     },
                     {
+                        "default": 0,
+                        "in": "formData",
+                        "name": "order",
+                        "format": "int32",
+                        "description": "顺序order",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
                         "in": "formData",
                         "name": "postIds",
                         "description": "postIds",
@@ -1582,9 +1712,9 @@
                         "type": "array",
                         "items": {"$ref": "#/definitions/Post"}
                     },
-                    "description": "置顶资讯列表"
+                    "description": "置顶资讯(包含链接对象linkMap)列表"
                 }},
-                "operationId": "getTopPosts",
+                "operationId": "getTops",
                 "parameters": [
                     {"$ref": "#/parameters/apiKeyYHeader"},
                     {
@@ -1594,6 +1724,15 @@
                         "type": "array",
                         "items": {"type": "string"},
                         "required": true
+                    },
+                    {
+                        "default": 9,
+                        "in": "query",
+                        "name": "limit",
+                        "format": "int32",
+                        "description": "返回记录数限制",
+                        "type": "integer",
+                        "required": false
                     }
                 ],
                 "tags": ["WemediaTop"],
@@ -1792,6 +1931,88 @@
             ],
             "tags": ["player"]
         }},
+        "/news/posts/page": {"get": {
+            "summary": "获得Post历史记录分页列表",
+            "produces": ["application/json; charset=UTF-8"],
+            "description": "根据搜索条件获取Post历史记录分页列表",
+            "responses": {"200": {
+                "schema": {
+                    "$ref": "#/definitions/Page",
+                    "items": {"$ref": "#/definitions/Post"}
+                },
+                "description": "Post历史页面"
+            }},
+            "operationId": "searchPage2",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "query",
+                    "name": "startDate",
+                    "format": "date-time",
+                    "description": "查询开始时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "endDate",
+                    "format": "date-time",
+                    "description": "查询结束时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "default": 1,
+                    "in": "query",
+                    "name": "page",
+                    "format": "int32",
+                    "description": "页号",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "default": 20,
+                    "in": "query",
+                    "name": "limit",
+                    "format": "int32",
+                    "description": "每页记录数",
+                    "type": "integer",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "title",
+                    "description": "标题（支持模糊查询）",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "source",
+                    "description": "来源（支持模糊查询）",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "default": "createTime",
+                    "in": "query",
+                    "name": "orderBy",
+                    "description": "按照某个字段排序",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "default": "desc",
+                    "in": "query",
+                    "name": "order",
+                    "description": "排序方式（正序或倒序）",
+                    "type": "string",
+                    "required": false
+                }
+            ],
+            "tags": ["WemediaPost"],
+            "consumes": ["application/x-www-form-urlencoded"]
+        }},
         "/games/players/{playerId}/introduce": {"get": {
             "summary": "获得球员个人介绍",
             "description": "获得球员个人介绍",
@@ -1843,7 +2064,7 @@
                     {
                         "in": "formData",
                         "name": "type",
-                        "description": "实体类型：[post,ElearningVideo,ElearningTrainingArticlePage,ElearningExercise]",
+                        "description": "实体类型，只能是如下几种类型：[post,ElearningVideo,ElearningTrainingArticlePage,ElearningExercise]",
                         "type": "string",
                         "required": true
                     },
@@ -1866,7 +2087,7 @@
                     "schema": {"$ref": "#/definitions/Bookmark"},
                     "description": "Bookmarks对象"
                 }},
-                "operationId": "getBookmark",
+                "operationId": "getUserBookmarks",
                 "parameters": [
                     {"$ref": "#/parameters/apiKeyYHeader"},
                     {
@@ -1987,6 +2208,22 @@
             ],
             "tags": ["file"]
         }},
+        "/news/posts/{postId}/publish": {"post": {
+            "summary": "发布单个新闻到中国足球网",
+            "produces": ["text/plain; charset=UTF-8"],
+            "description": "发布单个新闻到中国足球网",
+            "responses": {
+                "200": {"description": "错误信息"},
+                "401": {"description": "没有权限"}
+            },
+            "operationId": "publishPost",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {"$ref": "#/parameters/postPath2"}
+            ],
+            "tags": ["NewsPost"],
+            "consumes": ["application/json; charset=UTF-8"]
+        }},
         "/games/competitions/{competitionId}": {"get": {
             "summary": "赛事所有的参赛球队信息和比赛信息（赛程）",
             "description": "赛事所有的参赛球队信息和比赛信息（赛程）",
@@ -2084,6 +2321,19 @@
                 "tags": ["CompetitionCategory"]
             }
         },
+        "/news/posts/publish": {"post": {
+            "summary": "发布所有新闻到中国足球网",
+            "produces": ["text/plain; charset=UTF-8"],
+            "description": "发布所有新闻到中国足球网，已经发布过的新闻将会进行更新操作，未发布的新闻将发布到中国足球网，该操作会同步news系统和wemedia系统下的post表数据",
+            "responses": {
+                "200": {"description": "错误信息"},
+                "401": {"description": "没有权限"}
+            },
+            "operationId": "publishAll",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": ["NewsPost"],
+            "consumes": ["application/json; charset=UTF-8"]
+        }},
         "/games/competitions/{competitionId}/matches/{matchId}/matchstaffs": {"post": {
             "summary": "新增比赛工作人员",
             "produces": ["application/json"],
@@ -2363,6 +2613,13 @@
             "type": "integer",
             "required": true
         },
+        "postPath2": {
+            "in": "path",
+            "name": "postId",
+            "description": "news系统下Post的ID",
+            "type": "string",
+            "required": true
+        },
         "playerPath": {
             "in": "path",
             "name": "playerId",
@@ -2426,7 +2683,7 @@
         "postPath": {
             "in": "path",
             "name": "postId",
-            "description": "Post的ID",
+            "description": "wemedia系统下Post的ID",
             "type": "string",
             "required": true
         },
@@ -3021,7 +3278,7 @@
             "properties": {
                 "birthday": {
                     "format": "date-time",
-                    "description": "出生地  中国北京",
+                    "description": "出生日期",
                     "type": "string"
                 },
                 "englishName": {
@@ -3196,6 +3453,31 @@
                 }
             }
         },
+        "MatchZhiBo": {
+            "description": "比赛直播信息",
+            "type": "object",
+            "properties": {
+                "contestId": {
+                    "format": "int64",
+                    "description": "大赢家比赛id",
+                    "type": "integer"
+                },
+                "videoStartTime": {
+                    "format": "date-time",
+                    "description": "直播开始时间",
+                    "type": "string"
+                },
+                "videoUrl": {
+                    "description": "视频访问地址",
+                    "type": "string"
+                },
+                "matchId": {
+                    "format": "int64",
+                    "description": "比赛id",
+                    "type": "integer"
+                }
+            }
+        },
         "ElearningExercise": {
             "description": "elearning练习",
             "properties": {
@@ -3244,6 +3526,10 @@
                 },
                 "link": {
                     "description": "内容链接",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
                     "type": "string"
                 },
                 "label": {
@@ -4104,29 +4390,11 @@
                     "type": "array",
                     "items": {"type": "string"}
                 },
-                "categoryIds": {
-                    "description": "文章类别ID",
-                    "type": "array",
-                    "items": {"type": "string"}
-                },
-                "createTime": {
-                    "format": "date-time",
-                    "description": "post创建日期",
-                    "type": "string"
-                },
                 "author": {"$ref": "#/definitions/Author"},
-                "shareUrl": {
-                    "description": "分享用的Html地址",
-                    "type": "string"
-                },
                 "videos": {
                     "description": "视频地址",
                     "type": "array",
                     "items": {"$ref": "#/definitions/Video"}
-                },
-                "id": {
-                    "description": "id",
-                    "type": "string"
                 },
                 "title": {
                     "description": "标题，5-50个字符",
@@ -4138,6 +4406,28 @@
                 },
                 "content": {
                     "description": "内容,仅仅是Html的Content",
+                    "type": "string"
+                },
+                "linkMap": {
+                    "description": "链接map对象，包含linkType、urlApp、title、competitionId、matchId",
+                    "type": "object"
+                },
+                "categoryIds": {
+                    "description": "文章类别ID",
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "createTime": {
+                    "format": "date-time",
+                    "description": "post创建日期",
+                    "type": "string"
+                },
+                "shareUrl": {
+                    "description": "分享用的Html地址",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
                     "type": "string"
                 },
                 "status": {
