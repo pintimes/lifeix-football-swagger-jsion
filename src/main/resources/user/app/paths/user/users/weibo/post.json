@@ -1,11 +1,11 @@
 {
-    "summary": "User登录",
+    "summary": "微博用户注册/登录",
     "tags": 
     [
         "users"
     ],
 
-    "description": "User登录",
+    "description": "微博用户注册/登录",
     
     "produces": 
     [
@@ -19,17 +19,6 @@
 
     "parameters": 
     [
-        {
-            "schema": 
-            {
-                "$ref": "#/definitions/User"
-            },
-
-            "description": "普通用户",
-            "name": "user",
-            "required": true,
-            "in": "body"
-        }
     ],
 
     "responses": 
@@ -45,5 +34,5 @@
         }
     },
 
-    "operationId": "loginUser"
+    "operationId": "weiboRegistLoginUser"
 }

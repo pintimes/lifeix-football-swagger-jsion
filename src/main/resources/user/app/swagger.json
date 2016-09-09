@@ -1,0 +1,96 @@
+{
+    "swagger": "2.0",
+    "info": 
+    {
+        "title": "中国足球网API - User系统",
+        "description": "中国足球网API - User系统",
+        "termsOfService": "",
+        "contact": 
+        {
+            "email": "guangweiz@l99.com",
+            "name": "曾光伟"
+        },
+
+        "version": "1.0.0"
+    },
+
+    "host": "api.c-f.com",
+    "schemes": 
+    [
+        "http",
+        "https"
+    ],
+
+    "basePath": "/football",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "tags": 
+    [
+        
+    ],
+
+    "responses": 
+    {
+        
+    },
+
+    "parameters": 
+    {
+        "apiKeyYHeader": 
+        {
+            "description": "key",
+            "name": "key",
+            "type": "string",
+            "required": true,
+            "default": "visitor",
+            "in": "header"
+        },
+        
+        "groupHeader": 
+        {
+            "description": "当前调用者所在groups",
+            "name": "X-Consumer-Groups",
+            "type": "string",
+            "required": true,
+            "default": "visitor",
+            "in": "header"
+        },
+        
+        "userIdHeader": 
+        {
+            "description": "用户id",
+            "name": "X-Consumer-Custom-ID",
+            "type": "string",
+            "required": true,
+            "default": "visitor",
+            "in": "header"
+        },
+        
+          "userNameHeader": 
+        {
+            "description": "用户名",
+            "name": "X-Consumer-Username",
+            "type": "string",
+            "required": true,
+            "default": "visitor",
+            "in": "header"
+        },
+
+        "userPath": 
+        {
+            "description": "用户的Id",
+            "name": "userId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        }
+    }
+}

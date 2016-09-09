@@ -1,11 +1,12 @@
 {
-    "summary": "用户收藏",
+    "summary": "User登录",
     "tags": 
     [
-        "bookmarks"
+        "users"
     ],
 
-    "description": "用户收藏：可以收藏文章，培训材料等等",
+    "description": "User登录",
+    
     "produces": 
     [
         "application/json"
@@ -19,19 +20,19 @@
     "parameters": 
     [
         {
-            "name": "type",
+            "name": "username",
             "in": "formData",
             "type": "string",
             "required": true,
-            "description": "实体类型，只能是如下几种类型：[post,ElearningVideo,ElearningTrainingArticlePage,ElearningExercise]"
+            "description": "用户名"
         },
 
         {
-            "name": "id",
+            "name": "password",
             "in": "formData",
             "type": "string",
             "required": true,
-            "description": "id"
+            "description": "密码密文，MD5加密"
         }
     ],
 
@@ -41,12 +42,12 @@
         {
             "schema": 
             {
-                "$ref": "#/definitions/Bookmark"
+                "$ref": "#/definitions/User"
             },
 
-            "description": "Bookmark对象"
+            "description": "User对象"
         }
     },
 
-    "operationId": "addBookmark"
+    "operationId": "loginUser"
 }

@@ -1,5 +1,5 @@
 {
-    "summary": "获得User列表",
+    "summary": "获得EasyUI形式的User列表",
     "tags": 
     [
         "users"
@@ -11,12 +11,12 @@
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
-        
+
         {
             "description": "查询开始时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
             "name": "startTime",
             "type": "string",
-            "format":"date-time",
+            "format": "date-time",
             "required": false,
             "in": "query"
         },
@@ -25,7 +25,7 @@
             "description": "查询结束时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
             "name": "endTime",
             "type": "string",
-            "format":"date-time",
+            "format": "date-time",
             "required": false,
             "in": "query"
         },
@@ -36,20 +36,52 @@
             "type": "integer",
             "format": "int32",
             "required": false,
-            "default":1,
+            "default": 1,
             "in": "query"
         },
-        
+
         {
             "description": "每页记录数",
-            "name": "limit",
+            "name": "rows",
             "type": "integer",
             "format": "int32",
             "required": false,
-            "default":20,
+            "default": 20,
             "in": "query"
         },
-        
+
+        {
+            "description": "Id",
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "用户名",
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "email",
+            "name": "email",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "手机号码",
+            "name": "mobile",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+
         {
             "description": "性别",
             "name": "gender",
@@ -57,7 +89,7 @@
             "required": false,
             "in": "query"
         },
-        
+
         {
             "description": "角色标签",
             "name": "label",
@@ -84,5 +116,5 @@
         }
     },
 
-    "operationId": "getUsers"
+    "operationId": "getEasyUIUsers"
 }

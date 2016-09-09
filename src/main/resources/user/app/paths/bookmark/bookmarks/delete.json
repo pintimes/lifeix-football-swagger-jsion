@@ -21,7 +21,7 @@
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
-
+        
         {
             "name": "userId",
             "in": "formData",

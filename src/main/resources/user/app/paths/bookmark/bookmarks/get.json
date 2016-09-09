@@ -15,13 +15,13 @@
         "application/json; charset=UTF-8"
     ],
     
-    "description": "根据用户的收藏夹",
+    "description": "获取用户的收藏夹,只能由管理员或者用户自己获取",
     "parameters": 
     [
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
-
+        
        {
             "name": "userId",
             "in": "formData",

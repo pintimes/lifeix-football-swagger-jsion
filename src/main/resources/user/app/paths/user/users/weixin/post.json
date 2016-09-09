@@ -1,0 +1,38 @@
+{
+    "summary": "微信用户注册/登录",
+    "tags": 
+    [
+        "users"
+    ],
+
+    "description": "微信用户注册/登录",
+    
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/User"
+            },
+
+            "description": "User对象"
+        }
+    },
+
+    "operationId": "weixinRegistLoginUser"
+}

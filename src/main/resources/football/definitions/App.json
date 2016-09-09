@@ -81,6 +81,12 @@
                             "type": "string"
                         },
 
+                        "image": 
+                        {
+                            "description": "图片地址",
+                            "type": "string"
+                        },
+
                         "url": 
                         {
                             "description": "链接地址",
@@ -104,7 +110,13 @@
                     {
                         "id": 
                         {
-                            "description": "比赛Id",
+                            "description": "资讯Id",
+                            "type": "string"
+                        },
+
+                        "competitionId": 
+                        {
+                            "description": "赛事Id",
                             "type": "string"
                         },
 
@@ -114,9 +126,9 @@
                             "type": "string"
                         },
 
-                        "competitionId": 
+                        "image": 
                         {
-                            "description": "赛事Id",
+                            "description": "图片地址",
                             "type": "string"
                         },
 
@@ -147,9 +159,21 @@
                             "type": "string"
                         },
 
+                        "image": 
+                        {
+                            "description": "图片地址",
+                            "type": "string"
+                        },
+
                         "url": 
                         {
                             "description": "链接地址",
+                            "type": "string"
+                        },
+
+                        "shareUrl": 
+                        {
+                            "description": "分享链接地址",
                             "type": "string"
                         }
                     },
