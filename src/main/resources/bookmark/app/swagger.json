@@ -2,8 +2,8 @@
     "swagger": "2.0",
     "info": 
     {
-        "title": "中国足球网API - User系统",
-        "description": "中国足球网API - User系统",
+        "title": "中国足球网API - 收藏夹系统",
+        "description": "中国足球网API - 收藏夹系统",
         "termsOfService": "",
         "contact": 
         {
@@ -52,15 +52,6 @@
             "required": true,
             "default": "visitor",
             "in": "header"
-        },
-
-        "userPath": 
-        {
-            "description": "用户的Id",
-            "name": "userId",
-            "type": "string",
-            "required": true,
-            "in": "path"
         }
     }
 }
