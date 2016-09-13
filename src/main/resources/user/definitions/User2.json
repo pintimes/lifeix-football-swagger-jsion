@@ -59,7 +59,7 @@
 
         "label": 
         {
-            "description": "角色标签",
+            "description": "标签",
             "type": "string"
         },
 
@@ -70,31 +70,12 @@
             "format": "date-time"
         },
 
-        "channel": 
-        {
-            "description": "来源渠道",
-            "type": "object",
-            "properties": 
-            {
-                "source": 
-                {
-                    "description": "来源名称：微信，微博",
-                    "type": "string"
-                },
-
-                "openid": 
-                {
-                    "description": "来源Id，在微信/微博中的用户唯一标识Id",
-                    "type": "string"
-                }
-		   	}
-		},
-		
-		"key": 
+        "key": 
         {
             "description": "用户接口调用凭证，30天有效期",
             "type": "string"
         }
+
     },
 
     "type": "object"

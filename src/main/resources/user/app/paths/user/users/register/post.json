@@ -45,5 +45,5 @@
         }
     },
 
-    "operationId": "registUser"
+    "operationId": "registerUser"
 }

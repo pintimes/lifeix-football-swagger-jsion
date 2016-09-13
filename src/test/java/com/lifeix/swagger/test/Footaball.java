@@ -16,14 +16,15 @@ public class Footaball {
         String json = new CombineJsons().toSwaggerJson(swaggerFile, definationRoot, pathRoot);
         String path = Thread.currentThread().getContextClassLoader().getResource("").getPath();
         path = path.substring(0, path.indexOf("target"));
-        File dir = new File(path + "/swagger");
+        File dir = new File(path + "/src/main/resources");
         if (!dir.exists()) {
         	dir.mkdirs();
 		}
-        File file = new File(dir.getAbsolutePath() + "/footballSwagger.json");
+        File file = new File(dir.getAbsolutePath() + "\\footballSwagger.json");
         PrintWriter out = new PrintWriter(new FileOutputStream(file));
         out.println(json);
         out.close();
+        System.out.println(dir.getAbsolutePath() + "\\footballSwagger.json");
     }
 
 }

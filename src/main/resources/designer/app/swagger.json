@@ -17,7 +17,7 @@
     },
     "host":"127.0.0.1:8080",
     "schemes":[
-        "http",
+        "http"
     ],
     "basePath":"/",
     "produces":[
@@ -48,14 +48,14 @@
             "description":"apiKey",
             "name":"apiKey",
             "type":"string",
-            "in":"header",
+            "in":"header"
         },
         "apiKeyYHeader":{
             "description":"apiKey",
             "name":"apiKey",
             "type":"string",
             "default":"1221",
-            "in":"header",
+            "in":"header"
         },
         "limitParam":{
             "name":"limit",
@@ -79,49 +79,49 @@
             "name": "commentId",
             "description": "评论Id",
             "required": true,
-            "type": "string",
+            "type": "string"
         },
 		"postPath":{
             "in":"path",
             "name":"postId",
             "description":"Post的ID",
             "required":true,
-            "type":"string",
+            "type":"string"
         },
         "userPath":{
             "in":"path",
             "name":"userId",
             "description":"User的ID",
             "required":true,
-            "type":"string",
+            "type":"string"
         },
         "commentParam":{
             "in": "query",
             "name": "commentId",
             "description": "评论Id",
             "required": true,
-            "type": "string",
+            "type": "string"
         },
 		"postParam":{
             "in":"query",
             "name":"postId",
             "description":"Post的ID",
             "required":true,
-            "type":"string",
+            "type":"string"
         },
         "userParam":{
             "in":"query",
             "name":"userId",
             "description":"User的ID",
             "required":true,
-            "type":"string",
+            "type":"string"
         },
         "usernameParam":{
             "in":"query",
             "name":"name",
             "description":"User的name",
             "required":false,
-            "type":"string",
+            "type":"string"
         },
         "statusParam":{
             "in": "query",
@@ -134,7 +134,7 @@
             "enum":[
                 0,
                 1
-            ],
+            ]
         },
         "orderbyParam":{
             "in": "query",
@@ -150,14 +150,14 @@
             "description": "定位的date",
             "required": false,
             "type": "integer",
-           "format": "int64",
+           "format": "int64"
         },
         "authorIdParam":{
             "in": "query",
             "name": "authorId",
             "description": "作者Id",
             "required": false,
-            "type": "string",
-        },
+            "type": "string"
+        }
     }
 }

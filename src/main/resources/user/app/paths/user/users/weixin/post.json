@@ -1,38 +1,76 @@
 {
-    "summary": "微信用户注册/登录",
-    "tags": 
-    [
-        "users"
-    ],
+	"summary": "微信用户注册/登录",
+	"tags": 
+	[
+		"users"
+	],
 
-    "description": "微信用户注册/登录",
-    
-    "produces": 
-    [
-        "application/json"
-    ],
+	"description": "微信用户注册/登录，通过前台传来的access_token和openId获得用户信息，然后存入数据库并返回给前台",
+	"produces": 
+	[
+		"application/json"
+	],
 
-    "consumes": 
-    [
-        "application/json"
-    ],
+	"consumes": 
+	[
+		"application/json"
+	],
 
-    "parameters": 
-    [
-    ],
+	"parameters": 
+	[
+		{
+			"description": "设备:app/web",
+			"name": "device",
+			"type": "string",
+			"required": true,
+			"in": "formData"
+		},
+		
+		{
+			"description": "设备id",
+			"name": "deviceId",
+			"type": "string",
+			"required": true,
+			"in": "formData"
+		},
 
-    "responses": 
-    {
-        "200": 
-        {
-            "schema": 
-            {
-                "$ref": "#/definitions/User"
-            },
+		{
+			"description": "微信登录网站用户接口调用凭证，2小时有效期",
+			"name": "access_token",
+			"type": "string",
+			"required": true,
+			"in": "formData"
+		},
+		
+		{
+			"description": "微信登录网站用户接口给调用凭证刷新凭证，30天有效期",
+			"name": "refresh_token",
+			"type": "string",
+			"required": true,
+			"in": "formData"
+		},
 
-            "description": "User对象"
-        }
-    },
+		{
+			"description": "用户在微信中的用户id",
+			"name": "openid",
+			"type": "string",
+			"required": true,
+			"in": "formData"
+		}
+	],
 
-    "operationId": "weixinRegistLoginUser"
+	"responses": 
+	{
+		"200": 
+		{
+			"schema": 
+			{
+				"$ref": "#/definitions/User"
+			},
+
+			"description": "User对象"
+		}
+	},
+
+	"operationId": "weixinRegisterLoginUser"
 }

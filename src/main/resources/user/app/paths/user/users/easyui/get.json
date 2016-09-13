@@ -42,7 +42,7 @@
 
         {
             "description": "每页记录数",
-            "name": "rows",
+            "name": "limit",
             "type": "integer",
             "format": "int32",
             "required": false,
@@ -76,7 +76,7 @@
 
         {
             "description": "手机号码",
-            "name": "mobile",
+            "name": "tel",
             "type": "string",
             "required": false,
             "in": "query"
