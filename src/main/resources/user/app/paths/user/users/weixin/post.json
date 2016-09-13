@@ -35,7 +35,7 @@
 		},
 
 		{
-			"description": "微信登录网站用户接口调用凭证，2小时有效期",
+			"description": "调用授权关系接口的调用凭证，2小时有效期",
 			"name": "access_token",
 			"type": "string",
 			"required": true,
@@ -43,7 +43,7 @@
 		},
 		
 		{
-			"description": "微信登录网站用户接口给调用凭证刷新凭证，30天有效期",
+			"description": "调用授权关系接口的调用凭证刷新凭证，30天有效期",
 			"name": "refresh_token",
 			"type": "string",
 			"required": true,
@@ -65,10 +65,10 @@
 		{
 			"schema": 
 			{
-				"$ref": "#/definitions/User"
+				"$ref": "#/definitions/User2"
 			},
 
-			"description": "User对象"
+			"description": "User2对象"
 		}
 	},
 
