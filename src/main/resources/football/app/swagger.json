@@ -53,6 +53,15 @@
             "default": "visitor",
             "in": "header"
         },
+        
+        "comsumerIdHeader": 
+        {
+            "description": "用户id",
+            "name": "X-Consumer-Custom-ID",
+            "type": "string",
+            "required": true,
+            "in": "header"
+        },
 
         "authorPath": 
         {
@@ -222,6 +231,33 @@
         {
             "description": "Top的ID",
             "name": "topId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+
+		"decisionCategoryPath": 
+        {
+            "description": "你来判类目Id",
+            "name": "categoryId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+        
+        "decisionRoundPath": 
+        {
+            "description": "你来判轮次Id",
+            "name": "roundId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+        
+        "decisionItemPath": 
+        {
+            "description": "你来判题目Id",
+            "name": "itemId",
             "type": "string",
             "required": true,
             "in": "path"

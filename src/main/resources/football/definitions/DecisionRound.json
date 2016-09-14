@@ -1,0 +1,17 @@
+{
+    "description": "你来判轮次",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "name": 
+        {
+            "description": "名称",
+            "type": "string"
+        }
+    }
+}

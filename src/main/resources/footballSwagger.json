@@ -953,6 +953,24 @@
             "tags": ["WemediaPost"],
             "consumes": ["application/x-www-form-urlencoded"]
         }},
+        "/decision/categories/{categoryId}/{roundId}/items": {"get": {
+            "summary": "Decision按类目和轮次获取题目",
+            "produces": ["application/json"],
+            "description": "Decision按类目和轮次获取题目",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/DecisionItem"}
+                },
+                "description": "题目列表"
+            }},
+            "operationId": "getDecisionItems",
+            "parameters": [
+                {"$ref": "#/parameters/decisionCategoryPath"},
+                {"$ref": "#/parameters/decisionRoundPath"}
+            ],
+            "tags": ["decision"]
+        }},
         "/elearning/quiz_categories/{categoryId}/subCats": {"get": {
             "summary": "获取elearning测试类目下的单级子分类列表",
             "produces": ["application/json"],
@@ -1780,6 +1798,30 @@
             ],
             "tags": ["elearning"]
         }},
+        "/decision/item/{itemId}/vote": {"post": {
+            "summary": "Decision投票",
+            "produces": ["application/json"],
+            "description": "Decision投票",
+            "responses": {
+                "200": {"description": "投票成功"},
+                "400": {"description": "itemId/userId/optionId/为空"},
+                "500": {"description": "用户对某题重复投票"}
+            },
+            "operationId": "decisionItemVote",
+            "parameters": [
+                {"$ref": "#/parameters/comsumerIdHeader"},
+                {"$ref": "#/parameters/decisionItemPath"},
+                {
+                    "in": "query",
+                    "name": "optionId",
+                    "description": "选项ID",
+                    "type": "String",
+                    "required": true
+                }
+            ],
+            "tags": ["decision"],
+            "consumes": ["application/json"]
+        }},
         "/like/likes": {
             "post": {
                 "summary": "对某一个目标点赞",
@@ -1834,6 +1876,20 @@
                 "tags": ["likes"]
             }
         },
+        "/decision/categories": {"get": {
+            "summary": "Decision获取类目",
+            "produces": ["application/json"],
+            "description": "Decision获取类目",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/DecisionCategory"}
+                },
+                "description": "类目列表"
+            }},
+            "operationId": "getDecisionCategories",
+            "tags": ["decision"]
+        }},
         "/games/players/teamcategory/{teamCategoryId}": {"get": {
             "summary": "查看球队分类下的所有球员",
             "description": "查看球队分类下的所有球员",
@@ -2380,27 +2436,11 @@
             "type": "string",
             "required": true
         },
-        "refereePath": {
-            "in": "path",
-            "name": "refereeId",
-            "format": "int64",
-            "description": "裁判Id",
-            "type": "integer",
-            "required": true
-        },
         "competitionTeamPath": {
             "in": "path",
             "name": "competitionTeamId",
             "format": "int64",
             "description": "赛事参赛队的Id",
-            "type": "integer",
-            "required": true
-        },
-        "categoryPath": {
-            "in": "path",
-            "name": "categoryId",
-            "format": "int64",
-            "description": "类目Id",
             "type": "integer",
             "required": true
         },
@@ -2412,19 +2452,101 @@
             "type": "integer",
             "required": true
         },
+        "userPath": {
+            "in": "path",
+            "name": "userId",
+            "description": "用户的Id",
+            "type": "string",
+            "required": true
+        },
+        "decisionCategoryPath": {
+            "in": "path",
+            "name": "categoryId",
+            "description": "你来判类目Id",
+            "type": "string",
+            "required": true
+        },
+        "playerPath": {
+            "in": "path",
+            "name": "playerId",
+            "format": "int64",
+            "description": "球员Id",
+            "type": "integer",
+            "required": true
+        },
+        "authorPath": {
+            "in": "path",
+            "name": "authorId",
+            "description": "作者的Id",
+            "type": "string",
+            "required": true
+        },
+        "matchTeamPath": {
+            "in": "path",
+            "name": "matchTeamId",
+            "format": "int64",
+            "description": "比赛球队的Id",
+            "type": "integer",
+            "required": true
+        },
+        "topPath": {
+            "in": "path",
+            "name": "topId",
+            "description": "Top的ID",
+            "type": "string",
+            "required": true
+        },
+        "decisionRoundPath": {
+            "in": "path",
+            "name": "roundId",
+            "description": "你来判轮次Id",
+            "type": "string",
+            "required": true
+        },
+        "matchPath": {
+            "in": "path",
+            "name": "matchId",
+            "format": "int64",
+            "description": "比赛Id",
+            "type": "integer",
+            "required": true
+        },
+        "refereePath": {
+            "in": "path",
+            "name": "refereeId",
+            "format": "int64",
+            "description": "裁判Id",
+            "type": "integer",
+            "required": true
+        },
+        "decisionItemPath": {
+            "in": "path",
+            "name": "itemId",
+            "description": "你来判题目Id",
+            "type": "string",
+            "required": true
+        },
+        "comsumerIdHeader": {
+            "in": "header",
+            "name": "X-Consumer-Custom-ID",
+            "description": "用户id",
+            "type": "string",
+            "required": true
+        },
+        "categoryPath": {
+            "in": "path",
+            "name": "categoryId",
+            "format": "int64",
+            "description": "类目Id",
+            "type": "integer",
+            "required": true
+        },
         "competitionPath": {
             "in": "path",
             "name": "competitionId",
             "format": "int64",
             "description": "赛事的Id",
             "type": "integer",
-            "required": true
-        },
-        "userPath": {
-            "in": "path",
-            "name": "userId",
-            "description": "用户的Id",
-            "type": "string",
             "required": true
         },
         "teamPath": {
@@ -2442,27 +2564,12 @@
             "type": "string",
             "required": true
         },
-        "playerPath": {
-            "in": "path",
-            "name": "playerId",
-            "format": "int64",
-            "description": "球员Id",
-            "type": "integer",
-            "required": true
-        },
         "teamCategoryPath": {
             "in": "path",
             "name": "teamCategoryId",
             "format": "int64",
             "description": "球队分类的Id",
             "type": "integer",
-            "required": true
-        },
-        "authorPath": {
-            "in": "path",
-            "name": "authorId",
-            "description": "作者的Id",
-            "type": "string",
             "required": true
         },
         "staffPath": {
@@ -2484,21 +2591,6 @@
             "in": "path",
             "name": "videoId",
             "description": "elearning视频ID",
-            "type": "string",
-            "required": true
-        },
-        "matchTeamPath": {
-            "in": "path",
-            "name": "matchTeamId",
-            "format": "int64",
-            "description": "比赛球队的Id",
-            "type": "integer",
-            "required": true
-        },
-        "topPath": {
-            "in": "path",
-            "name": "topId",
-            "description": "Top的ID",
             "type": "string",
             "required": true
         },
@@ -2535,14 +2627,6 @@
             "name": "coachId",
             "format": "int64",
             "description": "教练Id",
-            "type": "integer",
-            "required": true
-        },
-        "matchPath": {
-            "in": "path",
-            "name": "matchId",
-            "format": "int64",
-            "description": "比赛Id",
             "type": "integer",
             "required": true
         }
@@ -3062,6 +3146,24 @@
                 }
             }
         },
+        "DecisionCategory": {
+            "description": "你来判类目",
+            "properties": {
+                "year": {
+                    "format": "int32",
+                    "description": "年份",
+                    "type": "integer"
+                },
+                "competition": {
+                    "description": "赛事",
+                    "$ref": "#/definitions/DecisionUniqueCompetition"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                }
+            }
+        },
         "Like": {
             "description": "Like",
             "type": "object",
@@ -3186,6 +3288,25 @@
                     "description": "上传文件名列表",
                     "type": "array",
                     "items": {"type": "string"}
+                }
+            }
+        },
+        "DecisionUniqueCompetition": {
+            "description": "你来判赛事",
+            "properties": {
+                "name": {
+                    "description": "名称",
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "description": "id",
+                    "type": "integer"
+                },
+                "rounds": {
+                    "description": "轮次集合",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/DecisionRound"}
                 }
             }
         },
@@ -3564,6 +3685,46 @@
                 "playerId": {
                     "format": "int64",
                     "description": "球员id",
+                    "type": "integer"
+                }
+            }
+        },
+        "DecisionItem": {
+            "description": "你来判题目",
+            "properties": {
+                "videoPath": {
+                    "description": "视频地址，相对路径，前缀需要加七牛资源访问域名，后缀，低清加/LD, 高清加/HD",
+                    "type": "string"
+                },
+                "imagePath": {
+                    "description": "图片地址，相对路径，前缀需要加七牛资源访问域名",
+                    "type": "string"
+                },
+                "options": {
+                    "description": "选项集合",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/DecisionOption"}
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "标题",
+                    "type": "string"
+                }
+            }
+        },
+        "DecisionRound": {
+            "description": "你来判轮次",
+            "properties": {
+                "name": {
+                    "description": "名称",
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "description": "id",
                     "type": "integer"
                 }
             }
@@ -4594,6 +4755,24 @@
                     "format": "int32",
                     "description": "进球数",
                     "type": "integer"
+                }
+            }
+        },
+        "DecisionOption": {
+            "description": "你来判选项",
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "voteCount": {
+                    "format": "int32",
+                    "description": "投票数量",
+                    "type": "integer"
+                },
+                "desc": {
+                    "description": "描述",
+                    "type": "string"
                 }
             }
         },
