@@ -23,14 +23,6 @@
         },
         
         {
-            "name": "userId",
-            "in": "formData",
-            "type": "string",
-            "required": true,
-            "description": ""
-        },
-
-        {
             "description": "收藏夹的Id列表，多个id使用','分隔",
             "name": "ids",
             "type": "array",
@@ -49,6 +41,16 @@
         "200": 
         {
             "description": "删除成功"
+        },
+        
+        "400": 
+        {
+            "description": "错误处理"
+        },
+        
+        "401": 
+        {
+            "description": "未授权"
         }
     },
 

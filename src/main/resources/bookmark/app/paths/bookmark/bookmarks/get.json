@@ -21,13 +21,13 @@
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
-        
-       {
-            "name": "userId",
-            "in": "formData",
+        {
+            "name": "time",
+            "in": "query",
             "type": "string",
+            "format":"date-time",
             "required": true,
-            "description": ""
+            "description": "用于定位的时间，如果不传则默认是最新的数据"
         }
     ],
 
@@ -41,8 +41,13 @@
             },
 
             "description": "Bookmarks对象"
+        },
+        
+        "401": 
+        {
+            "description": "未授权"
         }
     },
 
-    "operationId": "getUserBookmarks"
+    "operationId": "getBookmarks"
 }

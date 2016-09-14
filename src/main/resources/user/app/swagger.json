@@ -50,7 +50,6 @@
             "name": "key",
             "type": "string",
             "required": true,
-            "default": "visitor",
             "in": "header"
         },
 
