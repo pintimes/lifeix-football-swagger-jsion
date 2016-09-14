@@ -1,0 +1,185 @@
+{
+    "basePath": "/football",
+    "paths": {
+        "/bookmark/bookmarks": {
+            "post": {
+                "summary": "用户收藏",
+                "produces": ["application/json"],
+                "description": "用户收藏：可以收藏文章，培训材料等等",
+                "responses": {
+                    "200": {
+                        "schema": {"$ref": "#/definitions/Bookmark"},
+                        "description": "Bookmark对象"
+                    },
+                    "400": {"description": "错误处理"},
+                    "401": {"description": "未授权"}
+                },
+                "operationId": "addBookmark",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "formData",
+                        "name": "type",
+                        "description": "书签类型：post,elearning_quiz",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "formData",
+                        "name": "id",
+                        "description": "Id",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "tags": ["bookmarks"],
+                "consumes": ["application/json"]
+            },
+            "get": {
+                "summary": "获取用户的收藏夹",
+                "produces": ["application/json; charset=UTF-8"],
+                "description": "获取用户的收藏夹,只能由管理员或者用户自己获取",
+                "responses": {
+                    "200": {
+                        "schema": {"$ref": "#/definitions/Bookmark"},
+                        "description": "Bookmarks对象"
+                    },
+                    "401": {"description": "未授权"}
+                },
+                "operationId": "getBookmarks",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "query",
+                        "name": "time",
+                        "format": "date-time",
+                        "description": "用于定位的时间，如果不传则默认是最新的数据",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "tags": ["bookmarks"],
+                "consumes": ["application/json; charset=UTF-8"]
+            },
+            "delete": {
+                "summary": "用户删除收藏夹",
+                "produces": ["application/json; charset=UTF-8"],
+                "description": "根据Id删除用户的收藏夹",
+                "responses": {
+                    "200": {"description": "删除成功"},
+                    "400": {"description": "错误处理"},
+                    "401": {"description": "未授权"}
+                },
+                "operationId": "deleteBookmarks",
+                "parameters": [
+                    {"$ref": "#/parameters/apiKeyYHeader"},
+                    {
+                        "in": "formData",
+                        "name": "ids",
+                        "description": "收藏夹的Id列表，多个id使用','分隔",
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "required": true
+                    }
+                ],
+                "tags": ["bookmarks"],
+                "consumes": ["application/x-www-form-urlencoded"]
+            }
+        },
+        "/bookmark/bookmarks/type/{type}/id/{id}": {"get": {
+            "summary": "获取用户的是否收藏过该Target",
+            "produces": ["application/json; charset=UTF-8"],
+            "description": "通过传入Target的Id获得当前用户是否收藏过这个Target",
+            "responses": {
+                "200": {"description": "返回是否喜欢过该Target"},
+                "401": {"description": "未授权"}
+            },
+            "operationId": "getTargetBookmark",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "path",
+                    "name": "type",
+                    "description": "书签类型：post,elearning_quiz",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Id",
+                    "type": "string",
+                    "required": true
+                }
+            ],
+            "tags": ["bookmarks"],
+            "consumes": ["application/json; charset=UTF-8"]
+        }}
+    },
+    "host": "api.c-f.com",
+    "produces": ["application/json"],
+    "responses": {},
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "parameters": {"apiKeyYHeader": {
+        "in": "header",
+        "name": "key",
+        "description": "key",
+        "type": "string",
+        "required": true
+    }},
+    "definitions": {"Bookmark": {
+        "description": "收藏夹/书签",
+        "type": "object",
+        "properties": {
+            "image": {
+                "description": "预览图片",
+                "type": "string"
+            },
+            "createTime": {
+                "format": "date-time",
+                "description": "收藏时间",
+                "type": "string"
+            },
+            "link": {
+                "description": "内容链接",
+                "type": "string"
+            },
+            "id": {
+                "description": "id",
+                "type": "string"
+            },
+            "label": {
+                "description": "标签：裁判员，教练员，球员，资讯等",
+                "type": "string"
+            },
+            "title": {
+                "description": "标题",
+                "type": "string"
+            },
+            "type": {
+                "description": "标签：post，elearning_video,elearning_article,elearning_excrcise,materials",
+                "type": "string"
+            },
+            "operType": {
+                "description": "操作类型：[pdf：直接打开,image图片地址,直接打开,video:音频地址,直接播放,audio:音频地址,直接播放,html:外链地址,直接跳转,txt:文字直接查看]",
+                "type": "string"
+            }
+        }
+    }},
+    "swagger": "2.0",
+    "info": {
+        "contact": {
+            "name": "曾光伟",
+            "email": "guangweiz@l99.com"
+        },
+        "description": "中国足球网API - 收藏夹系统",
+        "termsOfService": "",
+        "title": "中国足球网API - 收藏夹系统",
+        "version": "1.0.0"
+    },
+    "consumes": ["application/json"],
+    "tags": []
+}

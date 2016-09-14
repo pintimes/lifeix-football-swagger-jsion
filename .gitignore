@@ -7,7 +7,6 @@
 *.iml
 .project
 **/logs
-**/swagger
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
