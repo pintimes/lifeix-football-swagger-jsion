@@ -20,7 +20,7 @@
     "parameters": 
     [
         {
-            "$ref": "#/parameters/comsumerIdHeader"
+            "$ref": "#/parameters/apiKeyYHeader"
         },
 		{
             "$ref": "#/parameters/decisionItemPath"

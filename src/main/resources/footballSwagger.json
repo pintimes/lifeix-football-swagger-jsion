@@ -1,6 +1,32 @@
 {
     "basePath": "/football",
     "paths": {
+        "/elearning/video_reports": {"post": {
+            "summary": "用户完成某次视频测试后提交测试报告",
+            "produces": ["application/json"],
+            "description": "用户完成某次视频测试后提交测试报告",
+            "responses": {
+                "200": {
+                    "schema": {"$ref": "#/definitions/ElearningVideoReport"},
+                    "description": "提交成功，返回VideoReport对象"
+                },
+                "400": {"description": "videoReport/userId为空"},
+                "404": {"description": "对应的测试类目不存在"}
+            },
+            "operationId": "elearningVideoReportSubmmit",
+            "parameters": [
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "schema": {"$ref": "#/definitions/ElearningVideoReport"},
+                    "in": "body",
+                    "name": "videoReport",
+                    "description": "测试报告",
+                    "required": true
+                }
+            ],
+            "tags": ["elearning"],
+            "consumes": ["application/json"]
+        }},
         "/file/token/overwrite": {"get": {
             "summary": "从文件授权服务器上获取覆盖令牌",
             "description": "从文件授权服务器上获取覆盖令牌",
@@ -24,6 +50,39 @@
                 }
             ],
             "tags": ["file"]
+        }},
+        "/elearning/quiz_categories/{categoryId}/video_reports": {"get": {
+            "summary": "查用户某一测试类目下的视频测试报告列表",
+            "produces": ["application/json"],
+            "description": "查用户某一测试类目下的视频测试报告列表",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ElearningVideoReport"}
+                },
+                "description": "视频测试报告列表"
+            }},
+            "operationId": "getElearningVideoReports",
+            "parameters": [
+                {"$ref": "#/parameters/elearningCategoryPath"},
+                {"$ref": "#/parameters/apiKeyYHeader"},
+                {
+                    "in": "query",
+                    "name": "startTime",
+                    "format": "date-time",
+                    "description": "查询开始时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX，不传默认返回第一页数据",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "limit",
+                    "description": "每页显示的报告数量，默认值20",
+                    "type": "integer",
+                    "required": false
+                }
+            ],
+            "tags": ["elearning"]
         }},
         "/games/teams/{teamId}/competitionTeam/setupDates": {"get": {
             "summary": "查询一只球队对应的赛事球队的公布时间",
@@ -671,6 +730,17 @@
             }],
             "tags": ["admin"],
             "consumes": ["application/json"]
+        }},
+        "/elearning/video_reports/{reportId}": {"get": {
+            "summary": "获取视频测试报告详情",
+            "description": "获取视频测试报告详情",
+            "responses": {"200": {
+                "schema": {"$ref": "#/definitions/ElearningVideoReport"},
+                "description": "视频测试报告详情"
+            }},
+            "operationId": "getElearningVideoReportDetail",
+            "parameters": [{"$ref": "#/parameters/elearningReportPath"}],
+            "tags": ["elearning"]
         }},
         "/wemedia/posts/search": {"get": {
             "summary": "搜索Post",
@@ -1499,6 +1569,21 @@
                 "tags": ["WemediaAuthor"]
             }
         },
+        "/elearning/report_briefs": {"get": {
+            "summary": "获取用户参与测试报告概要列表",
+            "produces": ["application/json"],
+            "description": "获取用户参与测试报告概要列表",
+            "responses": {"200": {
+                "schema": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ElearningReportBrief"}
+                },
+                "description": "测试报告概要列表"
+            }},
+            "operationId": "getElearningReportBriefs",
+            "parameters": [{"$ref": "#/parameters/apiKeyYHeader"}],
+            "tags": ["elearning"]
+        }},
         "/elearning/training_categories/{categoryId}/video_pages": {"get": {
             "summary": "分页获取培训分类下的视频单篇列表",
             "produces": ["application/json"],
@@ -1809,13 +1894,13 @@
             },
             "operationId": "decisionItemVote",
             "parameters": [
-                {"$ref": "#/parameters/comsumerIdHeader"},
+                {"$ref": "#/parameters/apiKeyYHeader"},
                 {"$ref": "#/parameters/decisionItemPath"},
                 {
                     "in": "query",
                     "name": "optionId",
                     "description": "选项ID",
-                    "type": "String",
+                    "type": "string",
                     "required": true
                 }
             ],
@@ -2444,6 +2529,13 @@
             "type": "integer",
             "required": true
         },
+        "elearningReportPath": {
+            "in": "path",
+            "name": "reportId",
+            "description": "elearning测试报告ID",
+            "type": "string",
+            "required": true
+        },
         "elearningPageIndexPath": {
             "in": "path",
             "name": "pageIndex",
@@ -2523,13 +2615,6 @@
             "in": "path",
             "name": "itemId",
             "description": "你来判题目Id",
-            "type": "string",
-            "required": true
-        },
-        "comsumerIdHeader": {
-            "in": "header",
-            "name": "X-Consumer-Custom-ID",
-            "description": "用户id",
             "type": "string",
             "required": true
         },
@@ -3729,6 +3814,38 @@
                 }
             }
         },
+        "ElearningReportBrief": {
+            "description": "elearning测试报告概要",
+            "properties": {
+                "participateCount": {
+                    "format": "int32",
+                    "description": "参与次数",
+                    "type": "integer"
+                },
+                "quizCategory": {
+                    "description": "测试类目",
+                    "$ref": "#/definitions/ElearningQuizCategory"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "right": {
+                    "format": "int32",
+                    "description": "最佳成绩答对数量",
+                    "type": "integer"
+                },
+                "userId": {
+                    "description": "用户ID",
+                    "type": "string"
+                },
+                "wrong": {
+                    "format": "int32",
+                    "description": "最佳成绩答错数量",
+                    "type": "integer"
+                }
+            }
+        },
         "TeamCategory": {
             "description": "球队分类",
             "properties": {
@@ -4160,6 +4277,51 @@
                     "description": "下级分类",
                     "type": "array",
                     "items": {"$ref": "#/definitions/RefereeCategory"}
+                }
+            }
+        },
+        "ElearningVideoReport": {
+            "description": "elearning视频测试报告",
+            "properties": {
+                "createTime": {
+                    "format": "date-time",
+                    "description": "报告生成时间",
+                    "type": "string"
+                },
+                "details": {
+                    "description": "报告详情",
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ElearningVideoPage"}
+                },
+                "shareUrl": {
+                    "description": "分享链接",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "right": {
+                    "format": "int32",
+                    "description": "答对数量",
+                    "type": "integer"
+                },
+                "userId": {
+                    "description": "用户ID",
+                    "type": "string"
+                },
+                "categoryName": {
+                    "description": "测试类目名称",
+                    "type": "string"
+                },
+                "categoryId": {
+                    "description": "测试类目ID(父类目)",
+                    "type": "string"
+                },
+                "wrong": {
+                    "format": "int32",
+                    "description": "答错数量",
+                    "type": "integer"
                 }
             }
         },
@@ -4668,6 +4830,10 @@
                 },
                 "right": {
                     "description": "是否是正确答案，true正确，null或false错误",
+                    "type": "boolean"
+                },
+                "selected": {
+                    "description": "是否被用户选中",
                     "type": "boolean"
                 }
             }
