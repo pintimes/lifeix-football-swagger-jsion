@@ -1,5 +1,5 @@
 {
-	"summary": "微信用户注册/登录",
+	"summary": "app端微信用户注册/登录",
 	"tags": 
 	[
 		"users"
@@ -19,9 +19,10 @@
 	"parameters": 
 	[
 		{
-			"description": "设备:ios/android/web",
+			"description": "设备编号:1:web;2:ios;3:android",
 			"name": "device",
-			"type": "string",
+			"type": "integer",
+			"format":"int32",
 			"required": true,
 			"in": "formData"
 		},
@@ -59,7 +60,7 @@
 		},
 		
 		{
-			"description": "跨平台的用户唯一id",
+			"description": "跨平台的微信用户唯一id",
 			"name": "unionid",
 			"type": "string",
 			"required": true,
@@ -80,5 +81,5 @@
 		}
 	},
 
-	"operationId": "weixinRegisterLoginUser"
+	"operationId": "appWeixinRegisterLoginUser"
 }

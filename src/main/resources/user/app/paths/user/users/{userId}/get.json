@@ -1,5 +1,5 @@
 {
-    "summary": "获取单个User",
+    "summary": "获取单个用户信息",
     "tags": 
     [
         "users"
@@ -10,7 +10,7 @@
         "application/json; charset=UTF-8"
     ],
     
-    "description": "根据Id获取单个User对象",
+    "description": "根据id和key获取单个User对象",
     "parameters": 
     [
         {

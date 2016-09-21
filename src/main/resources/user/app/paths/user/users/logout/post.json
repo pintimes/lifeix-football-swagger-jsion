@@ -17,7 +17,8 @@
     	{
 			"description": "设备:ios/android/web",
 			"name": "device",
-			"type": "string",
+			"type": "integer",
+			"format":"int32",
 			"required": true,
 			"in": "formData"
 		},
