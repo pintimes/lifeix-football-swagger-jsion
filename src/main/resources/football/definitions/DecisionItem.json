@@ -30,6 +30,11 @@
             {
             	"$ref": "#/definitions/DecisionOption"
             }
+        },
+        "voteFlag": 
+        {
+            "description": "用户是否投过票",
+            "type": "boolean"
         }
     }
 }
