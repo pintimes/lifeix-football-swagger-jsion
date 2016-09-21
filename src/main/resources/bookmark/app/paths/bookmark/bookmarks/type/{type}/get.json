@@ -1,5 +1,5 @@
 {
-    "summary": "获取用户的是否收藏过该Target",
+    "summary": "获取用户的是否收藏过某targets",
     "tags": 
     [
         "bookmarks"
@@ -15,7 +15,7 @@
         "application/json; charset=UTF-8"
     ],
 
-    "description": "通过传入Target的Id获得当前用户是否收藏过这个Target",
+    "description": "通过传入类型以及ids获得当前用户是否收藏过这些Targets，一般用于需要获得某实体列表的收藏情况",
     "parameters": 
     [
         {
@@ -27,12 +27,12 @@
             "in": "path",
             "type": "string",
             "required": true,
-            "description": "书签类型，参看Bookmark"
+            "description": "参见Bookmark"
         },
 
         {
-            "name": "id",
-            "in": "path",
+            "name": "ids",
+            "in": "query",
             "type": "string",
             "required": true,
              "description": "收藏的对象Id，比如postId，videoId，……Id"
@@ -43,10 +43,14 @@
     {
         "200": 
         {
-            "description": "返回一个收藏夹对象，返回空表示未收藏过",
-             "schema": 
+            "description": "Bookmarks对象",
+            "schema": 
             {
-                "$ref": "#/definitions/Bookmark"
+                "type": "array",
+                "items": 
+                {
+                   "$ref": "#/definitions/Bookmark"
+                }
             }
         },
         
@@ -56,5 +60,5 @@
         }
     },
 
-    "operationId": "getTargetBookmark"
+    "operationId": "getTargetBookmarks"
 }

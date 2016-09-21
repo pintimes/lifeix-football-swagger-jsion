@@ -4,30 +4,38 @@
     [
         "bookmarks"
     ],
-    
-	"consumes": 
+
+    "consumes": 
     [
-         "application/json; charset=UTF-8"
+        "application/json; charset=UTF-8"
     ],
-    
+
     "produces": 
     [
         "application/json; charset=UTF-8"
     ],
-    
+
     "description": "获取用户的收藏夹,只能由管理员或者用户自己获取",
     "parameters": 
     [
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
+
         {
             "name": "time",
             "in": "query",
             "type": "string",
-            "format":"date-time",
-            "required": true,
+            "format": "date-time",
             "description": "用于定位的时间，如果不传则默认是最新的数据"
+        },
+
+        {
+            "name": "limit",
+            "in": "query",
+            "format": "int32",
+            "type": "integer",
+            "description": "每页数目，默认是每页20条"
         }
     ],
 
@@ -35,14 +43,17 @@
     {
         "200": 
         {
+            "description": "Bookmarks对象",
             "schema": 
             {
-                "$ref": "#/definitions/Bookmark"
-            },
-
-            "description": "Bookmarks对象"
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Bookmark"
+                }
+            }
         },
-        
+
         "401": 
         {
             "description": "未授权"

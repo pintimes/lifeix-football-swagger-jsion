@@ -11,9 +11,9 @@
         "application/json"
     ],
 
-    "consumes": 
+     "consumes": 
     [
-        "application/json"
+        "application/x-www-form-urlencoded"
     ],
 
     "parameters": 
@@ -27,7 +27,7 @@
             "in": "formData",
             "type": "string",
             "required": true,
-            "description": "书签类型：post,elearning_quiz"
+            "description": "参看Bookmark对象"
         },
 
         {
@@ -35,7 +35,7 @@
             "in": "formData",
             "type": "string",
             "required": true,
-            "description": "Id"
+            "description": "收藏的对象Id，比如postId，videoId，……Id"
         }
     ],
 
