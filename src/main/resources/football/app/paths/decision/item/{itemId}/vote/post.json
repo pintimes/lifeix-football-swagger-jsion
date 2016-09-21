@@ -1,0 +1,54 @@
+{
+    "summary": "Decision投票",
+    "tags": 
+    [
+        "decision"
+    ],
+
+    "description": "Decision投票",
+    
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+		{
+            "$ref": "#/parameters/decisionItemPath"
+        },
+        {
+            "description": "选项ID",
+            "name": "optionId",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "投票成功"
+        },
+        "400": 
+        {
+            "description": "itemId/userId/optionId/为空"
+        },
+        "500": 
+        {
+            "description": "用户对某题重复投票"
+        }
+    },
+
+    "operationId": "decisionItemVote"
+}

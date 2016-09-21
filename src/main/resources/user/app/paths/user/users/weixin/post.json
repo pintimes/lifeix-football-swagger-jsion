@@ -19,7 +19,7 @@
 	"parameters": 
 	[
 		{
-			"description": "设备:app/web",
+			"description": "设备:ios/android/web",
 			"name": "device",
 			"type": "string",
 			"required": true,
@@ -46,13 +46,21 @@
 			"description": "调用授权关系接口的调用凭证刷新凭证，30天有效期",
 			"name": "refresh_token",
 			"type": "string",
-			"required": true,
+			"required": false,
 			"in": "formData"
 		},
 
 		{
 			"description": "用户在微信中的用户id",
 			"name": "openid",
+			"type": "string",
+			"required": true,
+			"in": "formData"
+		},
+		
+		{
+			"description": "跨平台的用户唯一id",
+			"name": "unionid",
 			"type": "string",
 			"required": true,
 			"in": "formData"
@@ -65,10 +73,10 @@
 		{
 			"schema": 
 			{
-				"$ref": "#/definitions/User2"
+				"$ref": "#/definitions/User"
 			},
 
-			"description": "User2对象"
+			"description": "User对象"
 		}
 	},
 

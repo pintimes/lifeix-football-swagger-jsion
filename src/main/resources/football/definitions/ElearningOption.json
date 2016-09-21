@@ -22,6 +22,11 @@
             "description": "顺序索引",
             "format": "int32",
             "type": "integer"
+        },
+        "selected": 
+        {
+            "description": "是否被用户选中",
+            "type": "boolean"
         }
     }
 }
