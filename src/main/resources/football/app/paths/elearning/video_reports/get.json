@@ -14,9 +14,6 @@
     
     "parameters": 
     [
-    	{
-            "$ref": "#/parameters/elearningCategoryPath"
-        },
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
@@ -26,6 +23,13 @@
             "type": "string",
             "format":"date-time",
             "required": false,
+            "in": "query"
+        },
+        {
+            "description": "测试类目ID",
+            "name": "categoryId",
+            "type": "string",
+            "required": true,
             "in": "query"
         },
 		{
