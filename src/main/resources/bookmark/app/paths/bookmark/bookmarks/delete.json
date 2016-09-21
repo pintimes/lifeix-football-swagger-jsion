@@ -23,7 +23,7 @@
         },
         
         {
-            "description": "收藏夹的Id列表，多个id使用','分隔",
+            "description": "收藏夹的Id列表",
             "name": "ids",
             "type": "array",
             "items": 

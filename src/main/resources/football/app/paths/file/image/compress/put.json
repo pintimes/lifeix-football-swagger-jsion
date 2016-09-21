@@ -1,0 +1,60 @@
+{
+	"summary": "图片压缩",
+	"tags": 
+	[
+		"users"
+	],
+
+	"description": "图片压缩，根据传入的条件进行图片缩放和质量压缩",
+
+	"consumes": 
+	[
+		"application/x-www-form-urlencoded"
+	],
+	
+	"parameters": 
+	[
+		{
+			"description": "图片上传到七牛中的唯一文件名",
+			"name": "file_key",
+			"type": "string",
+			"required": true,
+			"in": "formData"
+		},
+		
+		{
+			"description": "图片大小限制，如150k",
+			"name": "limit",
+			"type": "string",
+			"required": false,
+			"default": "150k",
+			"in": "formData"
+		},
+
+		{
+			"description": "图片缩放的宽度",
+			"name": "width",
+			"type": "string",
+			"required": false,
+			"in": "formData"
+		},
+		
+		{
+			"description": "图片裁剪高度，如果不传，则不进行裁剪",
+			"name": "height",
+			"type": "string",
+			"required": false,
+			"in": "formData"
+		}
+	],
+
+	"responses": 
+	{
+		"200": 
+		{
+			"description": "图片压缩成功"
+		}
+	},
+
+	"operationId": "imageCompress"
+}
