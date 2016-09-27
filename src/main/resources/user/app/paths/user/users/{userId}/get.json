@@ -10,7 +10,7 @@
         "application/json; charset=UTF-8"
     ],
     
-    "description": "根据id和key获取单个User对象",
+    "description": "根据用户id和用户接口调用凭证key获取单个用户信息，该接口可以被用户本人和管理员调用",
     "parameters": 
     [
         {
@@ -32,6 +32,11 @@
             },
 
             "description": "User对象"
+        },
+        
+        "401": 
+        {
+            "description": "没有调用权限"
         }
     },
 

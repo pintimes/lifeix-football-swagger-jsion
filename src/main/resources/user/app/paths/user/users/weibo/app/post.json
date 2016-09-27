@@ -1,11 +1,11 @@
 {
-	"summary": "app端微信用户注册/登录",
+	"summary": "app端微博用户注册/登录",
 	"tags": 
 	[
 		"users"
 	],
 
-	"description": "app端微信用户注册/登录，通过客户端传来的access_token和openid等参数获得用户信息，然后存入数据库并返回给客户端",
+	"description": "微博用户注册/登录，通过前台传来的access_token和openId获得用户信息，然后存入数据库并返回给前台",
 	"produces": 
 	[
 		"application/json"
@@ -50,18 +50,10 @@
 			"required": false,
 			"in": "formData"
 		},
-
-		{
-			"description": "用户在微信中的用户id",
-			"name": "openid",
-			"type": "string",
-			"required": true,
-			"in": "formData"
-		},
 		
 		{
-			"description": "跨平台的微信用户唯一id，唯一性高于openid",
-			"name": "unionid",
+			"description": "微博用户唯一id",
+			"name": "uid",
 			"type": "string",
 			"required": true,
 			"in": "formData"
@@ -81,5 +73,5 @@
 		}
 	},
 
-	"operationId": "appWeixinRegisterLoginUser"
+	"operationId": "appWeiboRegisterLoginUser"
 }
