@@ -1,0 +1,212 @@
+{
+    "description": "APP",
+    "properties": 
+    {
+        "version": 
+        {
+            "description": "版本号",
+            "type": "string"
+        },
+
+        "resourceHost": 
+        {
+            "description": "资源主机地址",
+            "type": "string"
+        },
+        
+        "coachLevelIntroduceUrl": 
+        {
+            "description": "裁判等级介绍H5地址",
+            "type": "string"
+        },
+        "coachIntroduceUrl": 
+        {
+            "description": "裁判介绍H5地址",
+            "type": "string"
+        },
+
+        "mediaLib": 
+        {
+            "description": "资源库",
+            "properties": 
+            {
+                "name": 
+                {
+                    "description": "名称",
+                    "type": "string"
+                },
+
+                "image": 
+                {
+                    "description": "图片地址",
+                    "type": "string"
+                },
+
+                "link": 
+                {
+                    "description": "链接地址",
+                    "type": "string"
+                }
+            },
+
+            "type": "object"
+        },
+
+        "launch": 
+        {
+            "description": "开机参数",
+            "properties": 
+            {
+                "type": 
+                {
+                    "description": "类型：0 默认启动页; 1 比赛; 2 资讯; 3 H5",
+                    "type": "string"
+                },
+
+                "title": 
+                {
+                    "description": "标题",
+                    "type": "string"
+                },
+
+                "image": 
+                {
+                    "description": "图片地址",
+                    "type": "string"
+                },
+
+                "wemedia": 
+                {
+                    "description": "资源库",
+                    "properties": 
+                    {
+                        "id": 
+                        {
+                            "description": "资讯Id",
+                            "type": "string"
+                        },
+
+                        "title": 
+                        {
+                            "description": "标题",
+                            "type": "string"
+                        },
+
+                        "image": 
+                        {
+                            "description": "图片地址",
+                            "type": "string"
+                        },
+
+                        "url": 
+                        {
+                            "description": "链接地址",
+                            "type": "string"
+                        },
+
+                        "shareUrl": 
+                        {
+                            "description": "分享链接地址",
+                            "type": "string"
+                        }
+                    },
+
+                    "type": "object"
+                },
+
+                "match": 
+                {
+                    "description": "比赛",
+                    "properties": 
+                    {
+                        "id": 
+                        {
+                            "description": "资讯Id",
+                            "type": "string"
+                        },
+
+                        "competitionId": 
+                        {
+                            "description": "赛事Id",
+                            "type": "string"
+                        },
+
+                        "title": 
+                        {
+                            "description": "标题",
+                            "type": "string"
+                        },
+
+                        "image": 
+                        {
+                            "description": "图片地址",
+                            "type": "string"
+                        },
+
+                        "url": 
+                        {
+                            "description": "链接地址",
+                            "type": "string"
+                        },
+
+                        "shareUrl": 
+                        {
+                            "description": "分享链接地址",
+                            "type": "string"
+                        }
+                    },
+
+                    "type": "object"
+                },
+
+                "h5": 
+                {
+                    "description": "H5地址",
+                    "properties": 
+                    {
+                        "title": 
+                        {
+                            "description": "标题",
+                            "type": "string"
+                        },
+
+                        "image": 
+                        {
+                            "description": "图片地址",
+                            "type": "string"
+                        },
+
+                        "url": 
+                        {
+                            "description": "链接地址",
+                            "type": "string"
+                        },
+
+                        "shareUrl": 
+                        {
+                            "description": "分享链接地址",
+                            "type": "string"
+                        }
+                    },
+
+                    "type": "object"
+                }
+            },
+
+            "type": "object"
+        },
+
+        "menus": 
+        {
+            "items": 
+            {
+                "$ref": "#/definitions/Menu"
+            },
+
+            "description": "菜单栏地址",
+            "type": "array"
+        }
+    },
+
+    "type": "object"
+}

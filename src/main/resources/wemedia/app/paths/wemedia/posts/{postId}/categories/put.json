@@ -1,0 +1,55 @@
+{
+    "summary": "更新类目",
+    "tags": 
+    [
+        "WemediaPost"
+    ],
+
+    "description": "更新类目",
+    
+    "consumes": 
+    [
+        "application/json"
+    ],
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+    
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/postPath"
+        },
+        {
+        	"description": "资讯类目的id",
+            "name": "categoryIds",
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            },
+            "required": true,
+            "in": "formData"
+        }
+    ],
+    
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "修改成功"
+        },
+        
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+    
+    "operationId": "updateCategories"
+}

@@ -1,0 +1,57 @@
+{
+    "summary": "更新Post",
+    "tags": 
+    [
+        "WemediaPost"
+    ],
+
+    "description": "更新Post",
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+    
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Post"
+            },
+            "description": "资讯对象",
+            "name": "post",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Post"
+            },
+
+            "description": "Post对象"
+        },
+
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+
+    "operationId": "updatePost"
+}

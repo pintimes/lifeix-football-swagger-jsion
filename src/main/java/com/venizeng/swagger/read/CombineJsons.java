@@ -84,7 +84,6 @@ public class CombineJsons {
     }
 
     private JSONObject fromFile(File file) {
-        System.out.println(file.getAbsolutePath());
         String json = FileUtil.readFileContent(file.getAbsolutePath());
         JSONObject jsonObj = new JSONObject(json);
         return jsonObj;

@@ -1,0 +1,71 @@
+{
+    "summary": "获得Post列表",
+    "tags": 
+    [
+        "WemediaPost"
+    ],
+
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "获取时间轴形式的资讯列表",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "description": "类目id",
+            "name": "categoryId",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "开始时间",
+            "name": "startDate",
+            "type": "string",
+            "format": "date-time",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "查询记录条数限制",
+            "name": "limit",
+            "type": "integer",
+            "format": "int32",
+            "required": false,
+            "default": 5,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Post"
+                }
+            },
+
+            "description": "Post列表对象"
+        }
+    },
+
+    "operationId": "getTimeLineNews"
+}

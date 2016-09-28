@@ -36,6 +36,13 @@
             "format": "int32",
             "type": "integer",
             "description": "每页数目，默认是每页20条"
+        },
+
+        {
+            "name": "type",
+            "in": "query",
+            "type": "string",
+            "description": "类型"
         }
     ],
 

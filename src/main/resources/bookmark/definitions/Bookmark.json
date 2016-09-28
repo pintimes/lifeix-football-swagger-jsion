@@ -28,7 +28,7 @@
         
         "type": 
         {
-            "description": "标签：资讯 post，视频培训 elearning_video,教材培训 elearning_article,练习elearning_excrcise, 资料文档materials",
+            "description": "标签：资讯 post，视频培训 elearning_video,教材培训 elearning_article,练习elearning_exercise, 资料文档materials",
             "type": "string"
         },
         
