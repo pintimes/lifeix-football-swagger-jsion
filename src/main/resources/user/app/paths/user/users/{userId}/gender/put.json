@@ -1,11 +1,11 @@
 {
-    "summary": "更新用户头像",
+    "summary": "更新用户性别",
     "tags": 
     [
        	"users"
     ],
 
-    "description": "更新用户头像",
+    "description": "更新用户性别",
 
     "consumes": 
     [
@@ -26,8 +26,8 @@
             "$ref": "#/parameters/userPath"
         },
         {
-            "description": "头像",
-            "name": "avatar",
+            "description": "性别",
+            "name": "gender",
             "type":"string",
             "required": true,
             "in": "formData"
@@ -47,5 +47,5 @@
         }
     },
     
-    "operationId": "updateUserAvatar"
+    "operationId": "updateUserGender"
 }

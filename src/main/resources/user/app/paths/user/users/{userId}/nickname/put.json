@@ -27,7 +27,7 @@
         },
         {
             "description": "昵称",
-            "name": "label",
+            "name": "nickname",
             "type":"string",
             "required": true,
             "in": "formData"
