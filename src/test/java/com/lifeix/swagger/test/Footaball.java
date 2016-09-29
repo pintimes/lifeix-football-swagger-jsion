@@ -20,6 +20,7 @@ public class Footaball {
 				e.printStackTrace();
 			}
 		}
+<<<<<<< 983d80576f474e3615702a33673f406e4b02f78c
 	}
 	
 	private static void doSomething(String root,String name) throws FileNotFoundException{
@@ -38,5 +39,12 @@ public class Footaball {
 		out.println(json);
 		out.close();
 	}
+=======
+        File file = new File(dir.getAbsolutePath() + "\\footballSwagger.json");
+        PrintWriter out = new PrintWriter(new FileOutputStream(file));
+        out.println(json);
+        out.close();
+    }
+>>>>>>> 更新用户系统api文档
 
 }

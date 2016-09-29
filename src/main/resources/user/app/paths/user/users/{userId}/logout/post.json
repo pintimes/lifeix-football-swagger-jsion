@@ -8,14 +8,22 @@
     "description": "User退出登录",
 
     "consumes": 
-    [
-        "application/json"
-    ],
+	[
+		"application/x-www-form-urlencoded"
+	],
 
     "parameters": 
     [
     	{
-			"description": "设备:ios/android/web",
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        
+        {
+            "$ref": "#/parameters/userPath"
+        },
+        
+    	{
+			"description": "设备编号:1：web；2：ios；3：android",
 			"name": "device",
 			"type": "integer",
 			"format":"int32",
@@ -29,15 +37,7 @@
 			"type": "string",
 			"required": true,
 			"in": "formData"
-		},
-		
-        {
-            "description": "用户接口调用凭证",
-            "name": "key",
-            "type": "string",
-            "required": true,
-            "in": "formData"
-        }
+		}
     ],
 
     "responses": 
@@ -53,5 +53,5 @@
         }
     },
 
-    "operationId": "loginUser"
+    "operationId": "logoutUser"
 }

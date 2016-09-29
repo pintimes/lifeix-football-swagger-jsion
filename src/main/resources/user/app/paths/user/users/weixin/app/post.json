@@ -6,12 +6,13 @@
 	],
 
 	"description": "app端微信用户注册/登录，通过客户端传来的access_token和openid等参数获得用户信息，然后存入数据库并返回给客户端",
-	"produces": 
-	[
-		"application/json"
-	],
 
 	"consumes": 
+	[
+		"application/x-www-form-urlencoded"
+	],
+	
+	"produces": 
 	[
 		"application/json"
 	],
@@ -47,7 +48,7 @@
 			"description": "调用授权关系接口的调用凭证刷新凭证，30天有效期",
 			"name": "refresh_token",
 			"type": "string",
-			"required": false,
+			"required": true,
 			"in": "formData"
 		},
 
