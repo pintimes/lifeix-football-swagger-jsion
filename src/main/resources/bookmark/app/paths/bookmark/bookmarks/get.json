@@ -43,6 +43,13 @@
             "in": "query",
             "type": "string",
             "description": "类型"
+        },
+
+        {
+            "name": "label",
+            "in": "query",
+            "type": "string",
+            "description": "标签，参见Definition"
         }
     ],
 

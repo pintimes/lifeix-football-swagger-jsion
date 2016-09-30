@@ -13,16 +13,80 @@
             "description": "资源主机地址",
             "type": "string"
         },
-        
+
         "coachLevelIntroduceUrl": 
         {
             "description": "裁判等级介绍H5地址",
             "type": "string"
         },
+
         "coachIntroduceUrl": 
         {
             "description": "裁判介绍H5地址",
             "type": "string"
+        },
+
+        "upgrade": 
+        {
+            "description": "升级信息",
+            "properties": 
+            {
+                "actionType": 
+                {
+                    "description": "0：不做处理；1：强制升级；2：可取消升级",
+                    "type": "string"
+                },
+
+                "alertInfo": 
+                {
+                    "description": "提示文案",
+                    "type": "string"
+                },
+
+                "ios": 
+                {
+                    "description": "IOS升级信息",
+                    "properties": 
+                    {
+                        "version": 
+                        {
+                            "description": "版本",
+                            "type": "string"
+                        },
+
+                        "url": 
+                        {
+                            "description": "应用地址",
+                            "type": "string"
+                        }
+                    },
+
+                    "type": "object"
+                },
+
+                "android": 
+                {
+                    "description": "android升级信息",
+                    "properties": 
+                    {
+                        "version": 
+                        {
+                            "description": "版本",
+                            "type": "string"
+                        },
+
+                        "url": 
+                        {
+                            "description": "应用地址",
+                            "type": "string"
+                        }
+                    },
+
+                    "type": "object"
+                }
+            },
+
+            "type": "object"
         },
 
         "mediaLib": 

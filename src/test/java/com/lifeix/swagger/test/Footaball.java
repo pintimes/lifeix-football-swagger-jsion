@@ -20,6 +20,7 @@ public class Footaball {
 				e.printStackTrace();
 			}
 		}
+		System.out.println("done");
 	}
 	
 	private static void doSomething(String root,String name) throws FileNotFoundException{

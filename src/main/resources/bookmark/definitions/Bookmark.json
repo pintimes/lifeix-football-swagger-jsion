@@ -43,6 +43,12 @@
             "description": "链接地址",
             "type": "string"
         },
+        
+          "shareUrl": 
+        {
+            "description": "分享的链接地址",
+            "type": "string"
+        },
 
         "createTime": 
         {

@@ -51,6 +51,15 @@
             "type": "string",
             "required": true,
             "in": "header"
+        },
+        
+         "platformPath": 
+        {
+            "description": "",
+            "name": "platform",
+            "type": "string",
+            "required": true,
+            "in": "path"
         }
     }
 }

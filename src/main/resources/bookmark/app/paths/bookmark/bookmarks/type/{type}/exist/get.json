@@ -31,11 +31,16 @@
         },
 
         {
-            "name": "ids",
-            "in": "query",
-            "type": "string",
+            "description": "收藏夹的targetId列表",
+            "name": "targetIds",
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            },
+
             "required": true,
-             "description": "收藏的对象Id，比如postId，videoId，……Id"
+            "in": "query"
         }
     ],
 
@@ -43,22 +48,22 @@
     {
         "200": 
         {
-            "description": "Bookmarks对象",
+            "description": "Bookmarks是否存在的键值对",
             "schema": 
             {
                 "type": "array",
                 "items": 
                 {
-                   "$ref": "#/definitions/Bookmark"
+                     "$ref": "#/definitions/Exist"
                 }
             }
         },
-        
+
         "401": 
         {
             "description": "未授权"
         }
     },
 
-    "operationId": "getTargetBookmarks"
+    "operationId": "existBookmarks"
 }
