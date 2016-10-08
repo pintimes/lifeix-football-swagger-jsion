@@ -1,0 +1,22 @@
+{
+    "description": "elearning视频测试报告参数",
+    "properties": 
+    {
+        "categoryId": 
+        {
+            "description": "测试类目ID(父类目),必填",
+            "type": "string"
+        },
+        "categoryType": 
+        {
+            "description": "测试类目类型(当前类目),必填",
+            "type": "integer",
+            "format": "int32"
+        },
+        "details": 
+        {
+            "description": "报告详情,必填,协议为[{'id':'1','r1':1,'r2':1}...]的json数组字符串,id为pageId,r1和r2为用户选择的option的index字段值,如果用户跳过则r1和r2可以为空",
+            "type": "string"
+        }
+    }
+}
