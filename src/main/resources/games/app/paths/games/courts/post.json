@@ -1,0 +1,51 @@
+{
+    "summary": "新增球场",
+    "tags": 
+    [
+        "court"
+    ],
+
+    "description": "新增球场",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Court"
+            },
+
+            "description": "球场",
+            "name": "court",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Court"
+            },
+
+            "description": "Court响应对象"
+        }
+    },
+
+    "operationId": "addCourt"
+}

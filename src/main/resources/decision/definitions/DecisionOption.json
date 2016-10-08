@@ -1,0 +1,22 @@
+{
+    "description": "你来判选项",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "desc": 
+        {
+            "description": "描述",
+            "type": "string"
+        },
+        "voteCount": 
+        {
+            "description": "投票数量",
+            "format": "int32",
+            "type": "integer"
+        }
+    }
+}

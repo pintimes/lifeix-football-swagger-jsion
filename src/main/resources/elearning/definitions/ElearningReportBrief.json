@@ -1,0 +1,39 @@
+{
+    "description": "elearning测试报告概要",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "userId": 
+        {
+            "description": "用户ID",
+            "type": "string"
+        },
+        "quizCategory": 
+        {
+            "description": "测试类目",
+            "$ref": "#/definitions/ElearningQuizCategory"
+        },
+        "participateCount": 
+        {
+            "description": "参与次数",
+            "format": "int32",
+            "type": "integer"
+        },
+        "right": 
+        {
+            "description": "最佳成绩答对数量",
+            "type": "integer",
+            "format": "int32"
+        },
+        "wrong": 
+        {
+            "description": "最佳成绩答错数量",
+            "type": "integer",
+            "format": "int32"
+        }
+    }
+}

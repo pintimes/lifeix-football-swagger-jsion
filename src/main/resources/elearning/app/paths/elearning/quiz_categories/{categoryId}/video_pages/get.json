@@ -1,0 +1,39 @@
+{
+    "summary": "随机获取测试分类下的视频测试列表",
+    "tags": 
+    [
+    	"elearning"
+    ],
+
+    "description": "随机获取测试分类下的视频测试列表",
+    
+    "produces": 
+    [
+        "application/json"
+    ],
+    
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/elearningCategoryPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+			"schema": 
+            {
+                "type": "array",
+	            "items": 
+	            {
+	                "$ref": "#/definitions/ElearningVideoPage"
+	            }
+            },
+            "description": "视频测试列表"
+        }
+    },
+
+    "operationId": "getElearningQuizVideoPages"
+}

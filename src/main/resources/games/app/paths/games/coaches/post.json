@@ -1,0 +1,51 @@
+{
+    "summary": "新增教练",
+    "tags": 
+    [
+        "coach"
+    ],
+
+    "description": "教练的新增",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Coach"
+            },
+
+            "description": "教练",
+            "name": "coach",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Coach"
+            },
+
+            "description": "Coach响应对象"
+        }
+    },
+
+    "operationId": "addCoach"
+}

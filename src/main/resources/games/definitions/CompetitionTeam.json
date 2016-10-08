@@ -1,0 +1,62 @@
+{
+    "description": "赛事队伍信息",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "name": 
+        {
+            "description": "球队名称：参见xxx赛事的中国队",
+            "type": "string"
+        },
+        "setupDate": 
+        {
+            "description": "大名单公布时间",
+            "type": "string",
+            "format": "date-time"
+        },
+         "competitionInfo": 
+        {
+            "$ref": "#/definitions/CompetitionInfo"
+        },
+         "teamInfo": 
+        {
+            "$ref": "#/definitions/TeamInfo"
+        },
+        "chiefCoach": 
+        {
+            "$ref": "#/definitions/Coach"
+        },
+        "assistantCoach": 
+        {
+	    	"description": "助理教练",
+	        "type": "array",
+	        "items": 
+	        {
+	            "$ref": "#/definitions/Coach"
+	        }
+        },
+        "teamLeader": 
+        {
+            "$ref": "#/definitions/Staff"
+        },
+        "doctor": 
+        {
+            "$ref": "#/definitions/Staff"
+        },
+        "players": 
+        {
+            "description": "球员",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/PlayerInfo"
+            }
+        }
+        
+    }
+}

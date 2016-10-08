@@ -1,0 +1,24 @@
+{
+        "summary": "获得裁判联赛级别",
+        "tags": [
+            "referee"
+        ],
+        "description": "获得裁判联赛级别",
+        "parameters": [
+        	{
+	            "$ref": "#/parameters/apiKeyYHeader"
+	        }
+        ],
+        "responses": {
+            "200": {
+                "schema": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "description": "裁判联赛级别列表"
+            }
+        },
+        "operationId": "getRefereeLeagueCategory"
+    }

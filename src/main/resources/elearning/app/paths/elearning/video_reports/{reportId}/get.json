@@ -1,0 +1,30 @@
+{
+    "summary": "获取视频测试报告详情",
+    "tags": 
+    [
+        "elearning"
+    ],
+
+    "description": "获取视频测试报告详情",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/elearningReportPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/ElearningVideoReport"
+            },
+
+            "description": "视频测试报告详情"
+        }
+    },
+
+    "operationId": "getElearningVideoReportDetail"
+}

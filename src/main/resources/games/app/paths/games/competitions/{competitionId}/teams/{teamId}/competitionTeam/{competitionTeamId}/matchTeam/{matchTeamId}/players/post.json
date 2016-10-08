@@ -1,0 +1,60 @@
+{
+    "summary": "添加参加比赛的球员",
+    "tags": 
+    [
+        "matchTeam"
+    ],
+
+    "description": "添加参加比赛的球员",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/competitionPath"
+        },
+
+        {
+            "$ref": "#/parameters/teamPath"
+        },
+        {
+            "$ref": "#/parameters/competitionTeamPath"
+        },
+        {
+            "$ref": "#/parameters/matchTeamPath"
+        },
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/MatchTeamPlayer"
+                }
+            },
+
+            "description": "参加比赛的球员列表",
+            "name": "playerRecords",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "add success"
+        }
+    },
+
+    "operationId": "addMatchTeamPlayers"
+}

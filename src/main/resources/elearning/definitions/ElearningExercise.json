@@ -1,0 +1,46 @@
+{
+    "description": "elearning练习",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+		"title": 
+        {
+            "description": "主标题",
+            "type": "string"
+        },
+        "animation": 
+        {
+            "description": "动画地址",
+            "type": "string"
+        },
+        "video1": 
+        {
+            "description": "训练视频地址",
+            "type": "string"
+        },
+        "video2": 
+        {
+            "description": "比赛视频地址",
+            "type": "string"
+        },
+        "description": 
+        {
+            "description": "练习描述",
+            "type": "string"
+        },
+        "material": 
+        {
+            "description": "练习参与者",
+            "type": "string"
+        },
+        "objectives": 
+        {
+            "description": "练习预期目标",
+            "type": "string"
+        }
+    }
+}

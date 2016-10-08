@@ -1,0 +1,51 @@
+{
+    "summary": "新增球员",
+    "tags": 
+    [
+        "player"
+    ],
+
+    "description": "球员的新增",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Player"
+            },
+
+            "description": "球员",
+            "name": "player",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Player"
+            },
+
+            "description": "Player响应对象"
+        }
+    },
+
+    "operationId": "addPlayer"
+}

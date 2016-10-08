@@ -1,0 +1,51 @@
+{
+    "summary": "新增职员",
+    "tags": 
+    [
+        "staff"
+    ],
+
+    "description": "新增职员",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Staff"
+            },
+
+            "description": "职员",
+            "name": "staff",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+   "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Staff"
+            },
+
+            "description": "Staff响应对象"
+        }
+    },
+
+    "operationId": "addStaff"
+}

@@ -1,0 +1,74 @@
+{
+    "description": "队员国家队比赛记录",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "playerId": 
+        {
+            "description": "playerId",
+            "format": "int64",
+            "type": "integer"
+        },
+        "competition": 
+        {
+            "$ref": "#/definitions/CompetitionInfo"
+        },
+        "hostTeam": 
+        {
+            "$ref": "#/definitions/TeamInfo"
+        },
+        "awayTeam": 
+        {
+            "$ref": "#/definitions/TeamInfo"
+        },
+        "hostScore": 
+        {
+            "description": "主队进球",
+            "format": "int32",
+            "type": "integer"
+        },
+        "awayScore": 
+        {
+            "description": "客队进球",
+            "format": "int32",
+            "type": "integer"
+        },
+         "first": 
+        {
+            "description": "是否首发 0：为首发 1：首发",
+            "format": "int32",
+            "type": "integer"
+        },
+         "showTime": 
+        {
+            "description": "上场时间",
+            "format": "int32",
+            "type": "integer"
+        },
+         "goal": 
+        {
+            "description": "进球数",
+            "format": "int32",
+            "type": "integer"
+        },
+         "booking": 
+        {
+            "description": "黄牌数",
+            "format": "int32",
+            "type": "integer"
+        },
+        
+         "dismissal": 
+        {
+            "description": "红牌数",
+            "format": "int32",
+            "type": "integer"
+        }
+    }
+}

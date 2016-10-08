@@ -1,0 +1,31 @@
+{
+        "summary": "根据联赛级别获得裁判列表",
+        "tags": [
+            "referee"
+        ],
+        "description": "根据联赛级别获得裁判列表",
+        "parameters": [
+        	{
+	            "$ref": "#/parameters/apiKeyYHeader"
+	        },
+	        {
+	            "description": "裁判联赛级别",
+	            "name": "league",
+	            "type": "string",
+	            "required": true,
+	            "in": "query"
+	        }
+        ],
+        "responses": {
+            "200": {
+                "schema": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RefereeCategory"
+                    }
+                },
+                "description": "RefereeCategory列表响应对象"
+            }
+        },
+        "operationId": "getRefereesByLeague"
+    }

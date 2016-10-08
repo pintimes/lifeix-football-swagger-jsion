@@ -1,0 +1,58 @@
+{
+    "description": "elearning视频测试报告",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "userId": 
+        {
+            "description": "用户ID",
+            "type": "string"
+        },
+        "categoryId": 
+        {
+            "description": "测试类目ID(父类目)",
+            "type": "string"
+        },
+        "categoryName": 
+        {
+            "description": "测试类目名称",
+            "type": "string"
+        },
+        "createTime": 
+        {
+            "description": "报告生成时间",
+            "format": "date-time",
+            "type": "string"
+        },
+        "details": 
+        {
+            "description": "报告详情",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/ElearningVideoPage"
+            }
+        },
+        "right": 
+        {
+            "description": "答对数量",
+            "type": "integer",
+            "format": "int32"
+        },
+        "wrong": 
+        {
+            "description": "答错数量",
+            "type": "integer",
+            "format": "int32"
+        },
+        "shareUrl": 
+        {
+            "description": "分享链接",
+            "type": "string"
+        }
+    }
+}

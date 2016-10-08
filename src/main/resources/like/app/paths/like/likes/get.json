@@ -1,0 +1,37 @@
+{
+    "summary": "获得一组角色的喜欢列表",
+    "tags": 
+    [
+        "likes"
+    ],
+
+    "operationId": "getGroupLikes",
+    "description": "等我们把角色归为一组，通过组id可以获得当前组所有角色的喜欢数据，如果该组的成员没有被喜欢过，则不会返回给客户端",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "name": "group",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "组Id：[nationalteam, coachnational, player中国女足女足国家队, player中国男足国奥队, player中国女足女足国青队, player中国女足沙滩足球,  player中国男足国家队, player中国女足五人制,  player中国男足国青队, player中国女足女足国少队,  player中国男足五人制,  player中国男足沙滩足球, player中国女足国少队,  player中国女足国青队,  player中国女足国家队, refereeFIFA, referee中超联赛, referee五甲联赛,  referee女超联赛, referee中乙联赛, referee中甲联赛,referee沙滩足球]"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Like"
+            },
+
+            "description": "Like响应对象"
+        }
+    }
+}

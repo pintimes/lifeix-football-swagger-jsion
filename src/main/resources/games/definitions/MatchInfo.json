@@ -1,0 +1,78 @@
+{
+            "description": "比赛信息",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "format": "int64",
+            		"type": "integer"
+                },
+                "hostTeam": 
+		        {
+		            "$ref": "#/definitions/MatchTeamInfo"
+		        },
+		         "hostScore": 
+		        {
+		            "description": "主队进球数",
+		            "format": "int32",
+		            "type": "integer"
+		        },
+		        "awayTeam": 
+		        {
+		            "$ref": "#/definitions/MatchTeamInfo"
+		        },
+		  		"awayScore": 
+		        {
+		            "description": "客队进球数",
+		            "format": "int32",
+		            "type": "integer"
+		        },
+		        "startDate": 
+		        {
+		            "description": "比赛日期",
+		            "type": "string",
+		            "format": "date-time"
+		        },
+		        "startTime": 
+		        {
+		            "description": "比赛时间",
+		            "type": "string",
+		            "format": "date-time"
+		        },
+		        "position": 
+		        {
+		            "description": "比赛开始地点",
+		            "type": "string"
+		        },
+		        "state": 
+		        {
+		            "description": "比赛状态",
+		            "format": "int32",
+		            "type": "integer"
+		        },
+		        "stage": 
+		        {
+		            "description": "比赛阶段",
+		            "type": "string"
+		        },
+		        "group": 
+		        {
+		            "description": "赛事分组",
+		            "type": "string"
+		        },
+		        "competitionInfo": 
+		        {
+		            "$ref": "#/definitions/CompetitionInfo"
+		        },
+		        "court": 
+		        {
+		            "$ref": "#/definitions/Court"
+		        },
+		        "introduce": 
+		        {
+		            "description": "比赛介绍，如历史战绩等",
+		            "type": "string"
+		        }
+            }
+           
+        }

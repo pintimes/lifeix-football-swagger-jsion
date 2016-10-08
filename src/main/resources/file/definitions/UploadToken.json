@@ -1,0 +1,17 @@
+{
+    "description": "上传文件令牌",
+    "properties": {
+        "uptoken": {
+            "description": "令牌值",
+            "type": "string"
+        },
+        "keys": {
+            "description": "上传文件名列表",
+            "type": "array",
+            "items": {
+            	"type": "string"
+            }
+        }
+    },
+    "type": "object"
+}

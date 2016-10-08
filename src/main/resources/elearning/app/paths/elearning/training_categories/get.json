@@ -1,0 +1,30 @@
+{
+    "summary": "获取elearning培训类目",
+    "tags": 
+    [
+    	"elearning"
+    ],
+    "description": "获取elearning培训类目",
+    "produces": 
+    [
+        "application/json"
+    ],
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/ElearningTrainingCategory"
+                }
+            },
+
+            "description": "培训类目列表"
+        }
+    },
+
+    "operationId": "getElearningTrainingCategoriesTree"
+}

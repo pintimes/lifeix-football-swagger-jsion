@@ -1,0 +1,32 @@
+{
+    "summary": "查看球队分类下的所有球员",
+    "tags": 
+    [
+        "player"
+    ],
+    "description": "查看球队分类下的所有球员",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/teamCategoryPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": {
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/Player"
+                }
+            },
+            "description": "Player列表响应对象"
+        }
+    },
+
+    "operationId": "getPlayerByTeamCategory"
+}

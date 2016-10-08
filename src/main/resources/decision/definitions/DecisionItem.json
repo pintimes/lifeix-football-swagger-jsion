@@ -1,0 +1,40 @@
+{
+    "description": "你来判题目",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "videoPath": 
+        {
+            "description": "视频地址，相对路径，前缀需要加七牛资源访问域名，后缀，低清加/LD, 高清加/HD",
+            "type": "string"
+        },
+        "imagePath": 
+        {
+            "description": "图片地址，相对路径，前缀需要加七牛资源访问域名",
+            "type": "string"
+        },
+        "title": 
+        {
+            "description": "标题",
+            "type": "string"
+        },
+        "options": 
+        {
+            "description": "选项集合",
+            "type": "array",
+            "items": 
+            {
+            	"$ref": "#/definitions/DecisionOption"
+            }
+        },
+        "voteFlag": 
+        {
+            "description": "用户是否投过票",
+            "type": "boolean"
+        }
+    }
+}

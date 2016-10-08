@@ -1,0 +1,32 @@
+{
+    "description": "elearning视频答案选项",
+    "properties": 
+    {
+        "text": 
+        {
+            "description": "答案文字项",
+            "type": "string"
+        },
+        "image": 
+        {
+            "description": "答案图片项",
+            "type": "string"
+        },
+        "right": 
+        {
+            "description": "是否是正确答案，true正确，null或false错误",
+            "type": "boolean"
+        },
+        "index": 
+        {
+            "description": "顺序索引",
+            "format": "int32",
+            "type": "integer"
+        },
+        "selected": 
+        {
+            "description": "是否被用户选中",
+            "type": "boolean"
+        }
+    }
+}

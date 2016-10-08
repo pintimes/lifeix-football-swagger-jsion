@@ -1,0 +1,22 @@
+{
+    "description": "你来判类目",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "year": 
+        {
+            "description": "年份",
+            "format": "int32",
+            "type": "integer"
+        },
+        "competition": 
+        {
+            "description": "赛事",
+            "$ref": "#/definitions/DecisionUniqueCompetition"
+        }
+    }
+}

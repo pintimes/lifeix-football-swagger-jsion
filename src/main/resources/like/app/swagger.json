@@ -2,13 +2,13 @@
     "swagger": "2.0",
     "info": 
     {
-        "title": "中国足球网API - User系统",
-        "description": "中国足球网API - User系统",
+        "title": "中国足球网API - Like系统",
+        "description": "用于点赞",
         "termsOfService": "",
         "contact": 
         {
-            "email": "lex@l99.com",
-            "name": "徐乐"
+            "email": "guangweiz@l99.com",
+            "name": "曾光伟"
         },
 
         "version": "1.0.0"
@@ -17,6 +17,7 @@
     "host": "api.c-f.com",
     "schemes": 
     [
+        "http",
         "https"
     ],
 
@@ -50,15 +51,6 @@
             "type": "string",
             "required": true,
             "in": "header"
-        },
-
-        "userPath": 
-        {
-            "description": "用户的Id",
-            "name": "userId",
-            "type": "string",
-            "required": true,
-            "in": "path"
         }
     }
 }

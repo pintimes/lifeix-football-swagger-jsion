@@ -1,0 +1,41 @@
+{
+    "summary": "获得比赛球队的详细信息,包括教练、球员(首发、替补)、工作人员信息、球衣",
+    "tags": 
+    [
+        "matchTeam"
+    ],
+
+    "description": "获得比赛球队的详细信息,包括教练、球员(首发、替补)、工作人员信息、球衣",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+
+        {
+            "$ref": "#/parameters/teamPath"
+        },
+        {
+            "$ref": "#/parameters/competitionTeamPath"
+        },
+        {
+            "$ref": "#/parameters/matchTeamPath"
+        }
+        
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/MatchTeam"
+            },
+
+            "description": "MatchTeam响应对象"
+        }
+    },
+
+    "operationId": "getMatchTeam"
+}

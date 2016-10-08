@@ -1,0 +1,33 @@
+{
+    "description": "创建比赛使用的中间对象，",
+    "type": "object",
+    "properties": 
+    {
+        "hostTeam": 
+        {
+            "$ref": "#/definitions/CompetitionTeamInfo"
+        },
+        "awayTeam": 
+        {
+            "$ref": "#/definitions/CompetitionTeamInfo"
+        },
+        "startDate": 
+        {
+            "description": "2016-07-05",
+            "type": "string",
+            "format": "date-time"
+        },
+         "startTime": 
+        {
+            "description": "2016-07-04T19:30:00.000+0800",
+            "type": "string",
+            "format": "date-time"
+        },
+        "courtId": 
+        {
+            "description": "球场id",
+            "format": "int64",
+            "type": "integer"
+        }
+    }
+}

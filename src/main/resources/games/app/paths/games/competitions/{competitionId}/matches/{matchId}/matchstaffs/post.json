@@ -1,0 +1,55 @@
+{
+    "summary": "新增比赛工作人员",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "新增比赛工作人员",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "$ref": "#/parameters/matchPath"
+        },
+        {
+            "description": "比赛工作人员id example:1,2 ",
+            "name": "matchStaffIds",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "比赛工作人员位置 example:bsjd,cpjd",
+            "name": "positions",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "add success"
+        }
+    },
+
+    "operationId": "addRelationMatchAndMatchStaff"
+}

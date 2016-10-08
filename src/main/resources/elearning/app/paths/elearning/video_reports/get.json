@@ -1,0 +1,61 @@
+{
+    "summary": "查用户某一测试类目下的视频测试报告列表",
+    "tags": 
+    [
+    	"elearning"
+    ],
+
+    "description": "查用户某一测试类目下的视频测试报告列表",
+    
+    "produces": 
+    [
+        "application/json"
+    ],
+    
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "description": "查询开始时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX，不传默认返回第一页数据",
+            "name": "startTime",
+            "type": "string",
+            "format":"date-time",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "测试类目ID",
+            "name": "categoryId",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+		{
+            "description": "每页显示的报告数量，默认值20",
+            "name": "limit",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+			"schema": 
+            {
+                "type": "array",
+	            "items": 
+	            {
+	                "$ref": "#/definitions/ElearningVideoReport"
+	            }
+            },
+            "description": "视频测试报告列表"
+        }
+    },
+
+    "operationId": "getElearningVideoReports"
+}

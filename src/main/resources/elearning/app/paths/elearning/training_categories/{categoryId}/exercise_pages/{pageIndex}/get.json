@@ -1,0 +1,38 @@
+{
+    "summary": "按顺序索引获取培训练习单篇",
+    "tags": 
+    [
+    	"elearning"
+    ],
+
+    "description": "按顺序索引获取培训练习单篇",
+    
+    "produces": 
+    [
+        "application/json"
+    ],
+    
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/elearningCategoryPath"
+        },
+        {
+            "$ref": "#/parameters/elearningPageIndexPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+			"schema": 
+            {
+	        	"$ref": "#/definitions/ElearningExercisePage"
+            },
+            "description": "练习单篇"
+        }
+    },
+
+    "operationId": "getElearningTrainingExercisePageByIndex"
+}

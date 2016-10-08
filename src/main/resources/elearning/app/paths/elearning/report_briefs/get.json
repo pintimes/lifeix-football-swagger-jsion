@@ -1,0 +1,36 @@
+{
+    "summary": "获取用户参与测试报告概要列表",
+    "tags": 
+    [
+    	"elearning"
+    ],
+    "description": "获取用户参与测试报告概要列表",
+    "produces": 
+    [
+        "application/json"
+    ],
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        }
+    ],
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/ElearningReportBrief"
+                }
+            },
+
+            "description": "测试报告概要列表"
+        }
+    },
+
+    "operationId": "getElearningReportBriefs"
+}

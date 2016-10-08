@@ -1,0 +1,26 @@
+{
+    "description": "elearning练习单篇",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "title": 
+        {
+            "description": "主标题",
+            "type": "string"
+        },
+        "image": 
+        {
+            "description": "图片地址",
+            "type": "string"
+        },
+        "exercise": 
+        {
+            "description": "练习信息",
+            "$ref": "#/definitions/ElearningExercise"
+        }
+    }
+}
