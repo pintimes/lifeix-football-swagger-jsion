@@ -17,8 +17,7 @@
     "host": "api.c-f.com",
     "schemes": 
     [
-        "http",
-        "https"
+        "http"
     ],
 
     "basePath": "/football",
