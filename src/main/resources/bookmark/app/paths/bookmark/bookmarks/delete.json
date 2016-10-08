@@ -23,14 +23,9 @@
         },
         
         {
-            "description": "收藏夹的Id列表",
             "name": "ids",
-            "type": "array",
-            "items": 
-            {
-                "type": "string"
-            },
-
+            "type": "string",
+            "description": "收藏夹的Id列表,以','分割",
             "required": true,
             "in": "formData"
         }

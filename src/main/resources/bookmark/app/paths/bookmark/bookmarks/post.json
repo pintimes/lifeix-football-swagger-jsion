@@ -8,12 +8,13 @@
     "description": "用户收藏：可以收藏文章，培训材料等等",
     "produces": 
     [
-        "application/json"
+         "application/json; charset=UTF-8"
     ],
 
      "consumes": 
     [
-        "application/x-www-form-urlencoded"
+       
+         "application/x-www-form-urlencoded"
     ],
 
     "parameters": 
