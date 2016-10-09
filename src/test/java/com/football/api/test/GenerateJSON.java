@@ -1,4 +1,5 @@
-package com.lifeix.swagger.test;
+package com.football.api.test;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
