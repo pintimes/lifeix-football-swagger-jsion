@@ -33,12 +33,7 @@
         {
             "description": "收藏夹的targetId列表，以','分割",
             "name": "targetIds",
-            "type": "array",
-            "items": 
-            {
-                "type": "string"
-            },
-
+            "type": "string",
             "required": true,
             "in": "query"
         }
