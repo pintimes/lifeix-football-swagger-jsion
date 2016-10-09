@@ -25,11 +25,11 @@
 		{
             "schema": 
             {
-                "$ref": "#/definitions/ElearningVideoReport"
+                "$ref": "#/definitions/ElearningVideoReportParam"
             },
 
-            "description": "测试报告",
-            "name": "videoReport",
+            "description": "测试报告参数",
+            "name": "videoReportParam",
             "required": true,
             "in": "body"
         }

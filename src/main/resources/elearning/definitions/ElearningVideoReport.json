@@ -17,6 +17,12 @@
             "description": "测试类目ID(父类目)",
             "type": "string"
         },
+        "categoryType": 
+        {
+            "description": "测试类目类型(当前类目)",
+            "type": "integer",
+            "format": "int32"
+        },
         "categoryName": 
         {
             "description": "测试类目名称",
