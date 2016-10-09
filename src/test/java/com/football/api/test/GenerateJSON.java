@@ -21,6 +21,7 @@ public class GenerateJSON {
 				e.printStackTrace();
 			}
 		}
+		System.out.println("Done,可以在http://192.168.1.18:8101校验json");
 	}
 
 	private static void doSomething(String root, String name) throws FileNotFoundException {
