@@ -23,7 +23,9 @@ public class GenerateRemotes {
 	
 	private static String SMBDIR = "smb://lifeix:lifeix@192.168.50.199/立方网/cfootball/football-api/";
 	public static void main(String[] args) {
-		generateRemote(new File("swagger/app.json"));
+		generateRemote(new File("swagger/bookmark.json"));
+		
+//		generateAll();
 	}
 	
 	private static void generateAll(){
@@ -40,7 +42,7 @@ public class GenerateRemotes {
 		 * 生成html
 		 */
 		String htmlRoot = "d:/out/" + fileName;
-		SwaggerCodegen.main(new String[] { "generate", "-i", swaggerFile.getAbsolutePath(), "-l", "html2", "-o", "d:/out/" + fileName });
+		SwaggerCodegen.main(new String[] { "generate", "-i", swaggerFile.getAbsolutePath(), "-l", "html", "-o", "d:/out/" + fileName });
 		/**
 		 * 删除remote文件夹
 		 */

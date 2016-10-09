@@ -32,11 +32,11 @@
         },
 
         {
-            "name": "id",
+            "name": "targetId",
             "in": "formData",
             "type": "string",
             "required": true,
-            "description": "收藏的对象Id，比如postId，videoId，……Id"
+            "description": "targetId：比如postId，videoId，……Id"
         }
     ],
 
