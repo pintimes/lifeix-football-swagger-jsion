@@ -13,17 +13,6 @@
             "description": "名字：马宁",
             "type": "string"
         },
-        "assId": 
-        {
-            "description": "协会id",
-            "format": "int64",
-            "type": "integer"
-        },
-        "assName": 
-        {
-            "description": "协会名称",
-            "type": "string"
-        },
         "photo": 
         {
             "description": "照片",
@@ -84,11 +73,6 @@
         {
             "description": "成为3级裁判的时间",
             "type": "string"
-        },
-        "assId": {
-            "description": "协会id",
-            "format": "int64",
-            "type": "integer"
         },
         "assName": {
             "description": "协会名称",
