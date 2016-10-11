@@ -1,0 +1,68 @@
+{
+    "description": "教练",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+
+        "name": 
+        {
+            "description": "名字：高洪波",
+            "type": "string"
+        },
+        "photo": 
+        {
+            "description": "照片",
+            "type": "string"
+        },
+        "country": 
+        {
+            "description": "国家： 中国",
+            "type": "string"
+        },
+        "birthday": 
+        {
+            "description": "出生地  中国北京",
+            "type": "string",
+            "format": "date-time"
+        },
+        "birthplace": 
+        {
+            "description": "出生地  中国北京",
+            "type": "string"
+        },
+         "level": 
+        {
+            "description": "裁判级别",
+            "type": "string"
+        },
+		 "position": 
+        {
+            "description": "职位：主教练,助理教练",
+            "type": "string"
+        },
+        "introduceHtmlId": {
+            "description": "html 对象 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "introduceHtml": 
+        {
+            "$ref": "#/definitions/Html"
+        },
+        "shareHtmlId": {
+            "description": "html 对象 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "shareHtml": 
+        {
+            "$ref": "#/definitions/Html"
+        }
+    }
+}

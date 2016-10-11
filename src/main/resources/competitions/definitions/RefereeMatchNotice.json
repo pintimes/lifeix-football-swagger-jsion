@@ -1,0 +1,62 @@
+{
+    "description": "裁判比赛通知",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+		"refereeId": 
+        {
+            "description": "裁判id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "refereeName": 
+        {
+            "description": "裁判名字",
+            "type": "string"
+        },
+        "competitionId": 
+        {
+            "description": "裁判id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "competitionName": 
+        {
+            "description": "裁判名字",
+            "type": "string"
+        },
+        "stageId": {
+            "description": "阶段id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "stageName": {
+            "description": "阶段名称",
+            "type": "string"
+        },
+        "matchId": {
+            "description": "比赛id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "hostName": {
+            "description": "主队名",
+            "type": "string"
+        },
+        "awayName": {
+            "description": "客队名",
+            "type": "string"
+        },
+        "status": 
+        {
+            "description": "0:申请中  1:已通过",
+            "type": "string"
+        }
+    }
+}

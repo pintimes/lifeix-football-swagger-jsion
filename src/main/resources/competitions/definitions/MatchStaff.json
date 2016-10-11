@@ -1,0 +1,23 @@
+{
+    "description": "比赛工作人员",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
+        "name": 
+        {
+            "description": "名字",
+            "type": "string"
+        },
+        "country": 
+        {
+            "description": "国家： 中国",
+            "type": "string"
+        }
+    }
+}

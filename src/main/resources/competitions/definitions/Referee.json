@@ -1,0 +1,131 @@
+{
+    "description": "裁判员",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "name": 
+        {
+            "description": "名字：马宁",
+            "type": "string"
+        },
+        "assId": 
+        {
+            "description": "协会id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "assName": 
+        {
+            "description": "协会名称",
+            "type": "string"
+        },
+        "photo": 
+        {
+            "description": "照片",
+            "type": "string"
+        },
+         "sex": 
+        {
+            "description": "性别",
+            "type": "string"
+        },
+        "level": 
+        {
+            "description": "级别",
+            "type": "string"
+        },
+        "birthday": 
+        {
+            "description": "出生地  中国北京",
+            "type": "string",
+            "format": "date-time"
+        },
+        "birthplace": 
+        {
+            "description": "出生地  中国北京",
+            "type": "string"
+        },
+        "country": 
+        {
+            "description": "国家： 中国",
+            "type": "string"
+        },
+        "position": 
+        {
+            "description": "主裁、边裁、第四官员",
+            "type": "string"
+        },
+        "fifaStartYear": 
+        {
+            "description": "成为国际级裁判的时间",
+            "type": "string"
+        },
+        "nationalStartYear": 
+        {
+            "description": "成为国际级裁判的时间",
+            "type": "string"
+        },
+         "oneStartYear": 
+        {
+            "description": "成为1级裁判的时间",
+            "type": "string"
+        },
+        "twoStartYear": 
+        {
+            "description": "成为2级裁判的时间",
+            "type": "string"
+        },
+        "threeStartYear": 
+        {
+            "description": "成为3级裁判的时间",
+            "type": "string"
+        },
+        "assId": {
+            "description": "协会id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "assName": {
+            "description": "协会名称",
+            "type": "string"
+        },
+        "workType": 
+        {
+            "description": "主裁判、助理裁判",
+            "type": "string"
+        },
+        "category": 
+        {
+            "description": "11人制，5人制，沙滩",
+            "type": "string"
+        },
+        "isElite": 
+        {
+            "description": "是否是精英裁判",
+            "type": "string"
+        },
+        "introduceHtmlId": {
+            "description": "html 对象 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "introduceHtml": 
+        {
+            "$ref": "#/definitions/Html"
+        },
+        "shareHtmlId": {
+            "description": "html 对象 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "shareHtml": 
+        {
+            "$ref": "#/definitions/Html"
+        }
+    }
+}

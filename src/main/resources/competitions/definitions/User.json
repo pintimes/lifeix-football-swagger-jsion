@@ -1,0 +1,28 @@
+{
+    "description": "用户",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+		"name": 
+        {
+            "description": "名字：李铁",
+            "type": "string"
+        },
+        "sex": {
+            "description": "0:女 1:男 ",
+            "format": "int32",
+            "type": "integer"
+        },
+        "photo": 
+        {
+            "description": "头像地址",
+            "type": "string"
+        }
+    }
+}

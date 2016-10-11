@@ -1,0 +1,41 @@
+{
+    "description": "html5",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+
+        "category": 
+        {
+            "description": "分类 :introduce share...",
+            "type": "string"
+        },
+        "htmlUrl": 
+        {
+            "description": "....?version=xxx",
+            "type": "string"
+        },
+        "desc": 
+        {
+            "description": "描述",
+            "type": "string"
+        },
+        "createTime": 
+        {
+            "description": "创建时间",
+            "type": "string",
+            "format": "date-time"
+        },
+        "updateTime": 
+        {
+            "description": "修改时间",
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}

@@ -38,7 +38,11 @@
     {
         "200": 
         {
-            "description": "修改成功"
+        	"schema": 
+			{
+				"$ref": "#/definitions/Success"
+			},
+            "description": "修改昵称成功"
         },
         
         "401": 

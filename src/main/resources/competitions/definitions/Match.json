@@ -1,0 +1,170 @@
+{
+	"type": "object",
+	"description":"比赛",
+    "properties": {
+        "id": {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "ucId": {
+            "description": "唯一赛事id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "competitionId": {
+            "description": "赛事id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "competitionName": {
+            "description": "赛事名称",
+            "type": "string"
+        },
+        "stageId": {
+            "description": "阶段id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "stageName": {
+            "description": "阶段名称",
+            "type": "string"
+        },
+        "sequence": {
+            "description": "场序",
+            "format": "int32",
+            "type": "integer"
+        },
+        "hostTeamId": {
+            "description": "主队球队id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "hostCompetitionTeamId": {
+            "description": "主队赛事球队id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "hostName": {
+            "description": "主队名称",
+            "type": "string"
+        },
+        "hostFlag": {
+            "description": "主队旗帜",
+            "type": "string"
+        },
+        "hostScore": {
+            "description": "主队得分",
+            "format": "int32",
+            "type": "integer"
+        },
+        "awayTeamId": {
+            "description": "客场球队id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "awayCompetitionTeamId": {
+            "description": "客场赛事球队id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "awayName": {
+            "description": "客场名称",
+            "type": "string"
+        },
+        "awayFlag": {
+            "description": "客场旗帜",
+            "type": "string"
+        },
+        "awayScore": {
+            "description": "客场得分",
+            "format": "int32",
+            "type": "integer"
+        },
+        "matchTime": 
+        {
+            "description": "比赛时间 精确到时分秒",
+            "type": "string",
+            "format": "date-time"
+        },
+        "status": {
+            "description": "0:未开始 1:进行中 2:已结束",
+            "format": "int32",
+            "type": "integer"
+        },
+        "round": {
+            "description": "轮次",
+            "type": "string"
+        },
+        "group": {
+            "description": "小组",
+            "type": "string"
+        },
+        "refereeList": {
+            "description": "裁判列表",
+            "type": "string"
+        },
+        "matchStaffList": {
+            "description": "比赛工作人员列表",
+            "type": "string"
+        },
+        "venueName": {
+            "description": "球场名称",
+            "type": "string"
+        },
+        "venueId": {
+            "description": "球场 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "lineup": {
+            "description": "比赛阵容",
+            "type": "string"
+        },
+        "hostStaffList": {
+            "description": "主队职员列表",
+            "type": "string"
+        },
+        "hostCoachList": {
+            "description": "主队教练列表",
+            "type": "string"
+        },
+        "hostJerseysId": {
+            "description": "主队球衣id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "awayStaffList": {
+            "description": "客队职员列表",
+            "type": "string"
+        },
+        "awayCoachList": {
+            "description": "客队教练列表",
+            "type": "string"
+        },
+        "awayJerseysId": {
+            "description": "客队球衣id",
+            "format": "int64",
+            "type": "integer"
+        },
+         "introduceHtmlId": {
+            "description": "html 对象 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "introduceHtml": 
+        {
+            "$ref": "#/definitions/Html"
+        },
+        "shareHtmlId": {
+            "description": "html 对象 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "shareHtml": 
+        {
+            "$ref": "#/definitions/Html"
+        }
+        
+    }
+}

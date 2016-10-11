@@ -1,0 +1,64 @@
+{
+	"type": "object",
+	"description":"赛事",
+    "properties": {
+        "id": {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "ucId": {
+            "description": "唯一赛事id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "competitionName": {
+            "description": "赛事名称",
+            "type": "string"
+        },
+        "logo": {
+            "description": "创办协会id",
+            "type": "string"
+        },
+        "cupLogo": {
+            "description": "奖杯照片",
+            "type": "string"
+        },
+        "startDate": 
+        {
+            "description": "赛事开始时间 精确到日",
+            "type": "string",
+            "format": "date-time"
+        },
+         "endDate": 
+        {
+            "description": "赛事结束时间 精确到日",
+            "type": "string",
+            "format": "date-time"
+        },
+        "status": {
+            "description": "0:未开始 1:进行中 2:已结束",
+            "format": "int32",
+            "type": "integer"
+        },
+        "RuleHtmlId": {
+            "description": "html 对象 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "RuleHtml": 
+        {
+            "$ref": "#/definitions/Html"
+        },
+        "shareHtmlId": {
+            "description": "html 对象 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "shareHtml": 
+        {
+            "$ref": "#/definitions/Html"
+        }
+        
+    }
+}
