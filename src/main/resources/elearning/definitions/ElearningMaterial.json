@@ -22,6 +22,12 @@
         {
             "description": "资料地址",
             "type": "string"
+        },
+        "type": 
+        {
+            "description": "资料类型ssss",
+            "format": "int32",
+            "type": "integer"
         }
     }
 }

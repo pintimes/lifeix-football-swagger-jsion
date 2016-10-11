@@ -31,10 +31,10 @@
             	"$ref": "#/definitions/DecisionOption"
             }
         },
-        "voteFlag": 
+        "voteOptionId": 
         {
-            "description": "用户是否投过票",
-            "type": "boolean"
+            "description": "用户投票的选项ID，为空则表示未投票",
+            "type": "string"
         }
     }
 }
