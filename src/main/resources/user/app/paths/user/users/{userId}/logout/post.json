@@ -35,7 +35,7 @@
 			"description": "设备id",
 			"name": "deviceId",
 			"type": "string",
-			"required": true,
+			"required": false,
 			"in": "formData"
 		}
     ],
@@ -44,12 +44,11 @@
     {
         "200": 
         {
-            "schema": 
-            {
-                "$ref": "#/definitions/User"
-            },
-
-            "description": "User对象"
+        	"schema": 
+			{
+				"$ref": "#/definitions/Success"
+			},
+            "description": "退出成功"
         }
     },
 
