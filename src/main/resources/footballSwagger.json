@@ -1815,7 +1815,7 @@
                     "in": "query",
                     "name": "optionId",
                     "description": "选项ID",
-                    "type": "String",
+                    "type": "string",
                     "required": true
                 }
             ],

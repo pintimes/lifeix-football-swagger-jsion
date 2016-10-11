@@ -1,0 +1,39 @@
+{
+    "description": "协会",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+
+        "assName": 
+        {
+            "description": "协会名称",
+            "type": "string"
+        },
+        "logo": 
+        {
+            "description": "照片",
+            "type": "string"
+        },
+        "fAssId": 
+        {
+            "description": "父级协会id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "introduceHtmlId": {
+            "description": "html 对象 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "introduceHtml": 
+        {
+            "$ref": "#/definitions/Html"
+        }
+    }
+}

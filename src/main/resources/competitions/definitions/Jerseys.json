@@ -1,0 +1,49 @@
+{
+            "description": "球衣",
+            "properties": {
+                "id": {
+                    "description": "id",
+		            "format": "int64",
+		            "type": "integer"
+                },
+                "teamId": {
+                    "description": "球队id",
+                    "type": "string"
+                },
+                "teamName": {
+                    "description": "球队名称",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "球衣名称:2016中国国家队主场球衣",
+                    "type": "string"
+                },
+                "jacket": {
+                    "description": "上衣",
+                    "type": "string"
+                },
+                "shorts": {
+                    "description": "球裤",
+                    "type": "string"
+                },
+                "socks": {
+                    "description": "袜子",
+                    "type": "string"
+                },
+                "photo": {
+                    "description": "球衣图片",
+                    "type": "string"
+                },
+                "Invalid": {
+                    "description": "0:默认 1:球衣不再使用",
+		            "format": "int32",
+		            "type": "integer"
+                },
+                "companyName": {
+                    "description": "球衣赞助商",
+                    "type": "string"
+                }
+                
+            },
+            "type": "object"
+        }

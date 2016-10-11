@@ -1,0 +1,98 @@
+{
+	"type": "object",
+	"description":"赛事球队",
+    "properties": {
+        "id": {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "teamId": {
+            "description": "球队id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "competitionId": {
+            "description": "赛事id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "competitionName": {
+            "description": "赛事名称",
+            "type": "string"
+        },
+        "stageId": {
+            "description": "赛事阶段id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "stageName": {
+            "description": "赛事阶段名称",
+            "type": "string"
+        },
+        "name": {
+            "description": "赛事球队名称",
+            "type": "string"
+        },
+        "flag": {
+            "description": "球队旗帜",
+            "type": "string"
+        },
+        "familyPhoto": {
+            "description": "球队合照",
+            "type": "string"
+        },
+        "isNational": {
+            "description": "0:非国字号球队 1:国字号球队",
+            "format": "int32",
+            "type": "integer"
+        },
+        "playerList": {
+            "description": "球员列表",
+            "type": "string"
+        },
+        "staffList": {
+            "description": "职员列表",
+            "type": "string"
+        },
+        "coachList": {
+            "description": "教练列表",
+            "type": "string"
+        },
+         "startDate": 
+        {
+            "description": "比赛开始时间 精确到日",
+            "type": "string",
+            "format": "date-time"
+        },
+         "endDate": 
+        {
+            "description": "比赛结束时间 精确到日",
+            "type": "string",
+            "format": "date-time"
+        },
+        "group": {
+            "description": "小组",
+            "type": "string"
+        },
+        "introduceHtmlId": {
+            "description": "html 对象 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "introduceHtm": 
+        {
+            "$ref": "#/definitions/Html"
+        },
+        "shareHtmlId": {
+            "description": "html 对象 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "shareHtml": 
+        {
+            "$ref": "#/definitions/Html"
+        }
+        
+    }
+}

@@ -1,0 +1,60 @@
+{
+	"type": "object",
+	"description":"唯一赛事",
+    "properties": {
+        "id": {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "ucName": {
+            "description": "唯一赛事名称",
+            "type": "string"
+        },
+        "establishedYear": {
+            "description": "成立年份",
+            "type": "string"
+        },
+        "assId": {
+            "description": "创办协会id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "assName": {
+            "description": "创办协会名称",
+            "type": "string"
+        },
+        "isDomestic ": {
+            "description": "0:非国内赛事  1:国内赛事",
+            "format": "int32",
+            "type": "integer"
+        },
+        "isProfessional": {
+            "description": "0:非职业球队  1:职业球队",
+            "format": "int32",
+            "type": "integer"
+        },
+        "dataSource": {
+            "description": "数据来源",
+            "type": "string"
+        },
+        "introduceHtmlId": {
+            "description": "html 对象 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "introduceHtm": 
+        {
+            "$ref": "#/definitions/Html"
+        },
+        "shareHtmlId": {
+            "description": "html 对象 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "shareHtml": 
+        {
+            "$ref": "#/definitions/Html"
+        }
+    }
+}

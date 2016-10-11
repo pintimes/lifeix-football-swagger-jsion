@@ -1,0 +1,65 @@
+{
+	"type": "object",
+	"description":"阶段",
+    "properties": {
+        "id": {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "competitionId": {
+            "description": "所属赛事id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "stageName": {
+            "description": "阶段名称",
+            "type": "string"
+        },
+        "startDate": 
+        {
+            "description": "赛事开始时间 精确到日",
+            "type": "string",
+            "format": "date-time"
+        },
+         "endDate": 
+        {
+            "description": "赛事结束时间 精确到日",
+            "type": "string",
+            "format": "date-time"
+        },
+        "stageRule": {
+            "description": "0:小组单循环 1:小组双循环2:单场淘汰赛2:主客场淘汰赛",
+            "format": "int32",
+            "type": "integer"
+        },
+        "status": {
+            "description": "0:未开始 1:进行中 2:已结束",
+            "format": "int32",
+            "type": "integer"
+        },
+        "nextStageTeamList": {
+            "description": "下一阶段球队列表  json array",
+            "type": "string"
+        },
+        "introduceHtmlId": {
+            "description": "html 对象 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "introduceHtm": 
+        {
+            "$ref": "#/definitions/Html"
+        },
+        "shareHtmlId": {
+            "description": "html 对象 id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "shareHtml": 
+        {
+            "$ref": "#/definitions/Html"
+        }
+        
+    }
+}
