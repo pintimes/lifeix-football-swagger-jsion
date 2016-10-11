@@ -1,0 +1,47 @@
+{
+                "summary": "获得裁判列表",
+                "tags": [
+                    "referee"
+                ],
+                "description": "获得裁判列表",
+                "parameters": [
+                	{
+			            "$ref": "#/parameters/apiKeyYHeader"
+			        },
+	                {
+			            "description": "裁判级别",
+			            "name": "level",
+			            "type": "string",
+			            "required": true,
+			            "in": "query"
+			        },
+			         {
+			            "description": "开始查询的id",
+			            "name": "startId",
+			            "format": "int64",
+			            "type": "integer",
+			            "required": false,
+			            "in": "query"
+			        },
+			        {
+			            "description": "一页显示多少",
+			            "name": "pageSize",
+			            "format": "int32",
+			            "type": "integer",
+			            "required": false,
+			            "in": "query"
+			        }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/RefereeCategoryTop"
+                            }
+                        },
+                        "description": "RefereeCategoryTop列表响应对象"
+                    }
+                },
+                "operationId": "getReferees"
+            }

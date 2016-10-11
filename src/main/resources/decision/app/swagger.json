@@ -1,0 +1,81 @@
+{
+    "swagger": "2.0",
+    "info": 
+    {
+        "title": "中国足球网API - 你来判系统",
+        "description": "你来判",
+        "termsOfService": "",
+        "contact": 
+        {
+            "email": "huijiem@l99.com",
+            "name": "苗慧捷"
+        },
+
+        "version": "1.0.0"
+    },
+
+    "host": "api.c-f.com",
+    "schemes": 
+    [
+        "http"
+    ],
+
+    "basePath": "/football",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "tags": 
+    [
+        
+    ],
+
+    "responses": 
+    {
+        
+    },
+
+    "parameters": 
+    {
+        "apiKeyYHeader": 
+        {
+            "description": "key",
+            "name": "key",
+            "type": "string",
+            "required": true,
+            "in": "header"
+        },
+        "decisionCategoryPath": 
+        {
+            "description": "你来判类目Id",
+            "name": "categoryId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+        
+        "decisionRoundPath": 
+        {
+            "description": "你来判轮次Id",
+            "name": "roundId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+        
+        "decisionItemPath": 
+        {
+            "description": "你来判题目Id",
+            "name": "itemId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "summary": "Decision按类目和轮次获取题目",
+    "tags": 
+    [
+    	"decision"
+    ],
+    "description": "Decision按类目和轮次获取题目",
+    "produces": 
+    [
+        "application/json"
+    ],
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/decisionCategoryPath"
+        },
+        {
+            "$ref": "#/parameters/decisionRoundPath"
+        }
+    ],
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/DecisionItem"
+                }
+            },
+            "description": "题目列表"
+        }
+    },
+
+    "operationId": "getDecisionItems"
+}

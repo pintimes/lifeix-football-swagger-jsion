@@ -1,0 +1,21 @@
+{
+    "description": "教练分类",
+    "properties": 
+    {
+        "categoryName": 
+        {
+            "description": "分类名称",
+            "type": "string"
+        },
+
+        "coaches": 
+        {
+            "description": "教练列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Coach"
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "summary": "发布所有新闻到中国足球网",
+    "tags": 
+    [
+        "posts"
+    ],
+
+    "description": "发布所有新闻到中国足球网，已经发布过的新闻将会进行更新操作，未发布的新闻将发布到中国足球网，该操作会同步news系统和wemedia系统下的post表数据",
+
+    "consumes": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "错误信息"
+        },
+        
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+
+    "operationId": "publishAll"
+}

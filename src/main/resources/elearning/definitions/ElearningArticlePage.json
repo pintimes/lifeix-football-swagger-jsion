@@ -1,0 +1,48 @@
+{
+    "description": "elearning文章单篇",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "title": 
+        {
+            "description": "主标题",
+            "type": "string"
+        },
+        "subTitle": 
+        {
+            "description": "副标题",
+            "type": "string"
+        },
+		"text": 
+        {
+            "description": "文字内容",
+            "type": "string"
+        },
+        "animation": 
+        {
+            "description": "动画地址",
+            "type": "string"
+        },
+        "images": 
+        {
+            "description": "图片地址",
+            "type": "array",
+            "items": {
+            	"type": "string"
+            }
+        },
+        "videos": 
+        {
+            "description": "视频列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/ElearningVideo"
+            }
+        }
+    }
+}

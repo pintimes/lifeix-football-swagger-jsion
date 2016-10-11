@@ -8,12 +8,13 @@
     "description": "用户收藏：可以收藏文章，培训材料等等",
     "produces": 
     [
-        "application/json"
+         "application/json; charset=UTF-8"
     ],
 
-    "consumes": 
+     "consumes": 
     [
-        "application/json"
+       
+         "application/x-www-form-urlencoded"
     ],
 
     "parameters": 
@@ -27,15 +28,15 @@
             "in": "formData",
             "type": "string",
             "required": true,
-            "description": "书签类型：post,elearning_quiz"
+            "description": "参看Bookmark对象"
         },
 
         {
-            "name": "id",
+            "name": "targetId",
             "in": "formData",
             "type": "string",
             "required": true,
-            "description": "Id"
+            "description": "targetId：比如postId，videoId，……Id"
         }
     ],
 

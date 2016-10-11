@@ -1,0 +1,112 @@
+{
+	"summary": "获得Post历史记录分页列表",
+    "tags": 
+    [
+       "posts"
+    ],
+
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "根据搜索条件获取Post历史记录分页列表",
+    "parameters": 
+	[
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "description": "查询开始时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+            "name": "startDate",
+            "type": "string",
+            "format":"date-time",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "查询结束时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+            "name": "endDate",
+            "type": "string",
+            "format":"date-time",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "页号",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "required": false,
+            "default":1,
+            "in": "query"
+        },
+        
+        {
+            "description": "每页记录数",
+            "name": "limit",
+            "type": "integer",
+            "format": "int32",
+            "required": false,
+            "default":20,
+            "in": "query"
+        },
+        
+        {
+            "description": "标题（支持模糊查询）",
+            "name": "title",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+        
+        {
+            "description": "来源（支持模糊查询）",
+            "name": "source",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+        
+        {
+            "description": "按照某个字段排序",
+            "name": "orderBy",
+            "type": "string",
+            "required": false,
+            "default":"createTime",
+            "in": "query"
+        },
+
+        {
+            "description": "排序方式（正序或倒序）",
+            "name": "order",
+            "type": "string",
+            "required": false,
+            "default":"desc",
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Page"
+            },
+
+            "description": "Post历史页面"
+        }
+    },
+
+    "operationId": "searchPage2"
+}

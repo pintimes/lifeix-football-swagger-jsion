@@ -53,15 +53,6 @@
             "default": "visitor",
             "in": "header"
         },
-        
-        "comsumerIdHeader": 
-        {
-            "description": "用户id",
-            "name": "X-Consumer-Custom-ID",
-            "type": "string",
-            "required": true,
-            "in": "header"
-        },
 
         "authorPath": 
         {
@@ -304,6 +295,24 @@
         {
             "description": "elearning视频ID",
             "name": "videoId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+        
+        "elearningReportPath": 
+        {
+            "description": "elearning测试报告ID",
+            "name": "reportId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+        
+        "elearningMaterialPath": 
+        {
+            "description": "elearning资料文档ID",
+            "name": "materialId",
             "type": "string",
             "required": true,
             "in": "path"

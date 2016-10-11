@@ -1,0 +1,21 @@
+{
+    "description": "球员分类",
+    "properties": 
+    {
+        "topName": 
+        {
+            "description": "顶级分类名称",
+            "type": "string"
+        },
+
+        "category": 
+        {
+            "description": "下级分类",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/PlayerCategory"
+            }
+        }
+    }
+}

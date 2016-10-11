@@ -1,0 +1,60 @@
+{
+    "description": "elearning视频",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "r1": 
+        {
+            "description": "答题选项列表1",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/ElearningOption"
+            }
+        },
+        "r2": 
+        {
+            "description": "答题选项列表2",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/ElearningOption"
+            }
+        },
+        "considerations": 
+        {
+            "description": "视频思考点",
+            "type": "string"
+        },
+        "explanation": 
+        {
+            "description": "视频解释",
+            "type": "string"
+        },
+        "rule": 
+        {
+            "description": "视频引用足球规则",
+            "type": "string"
+        },
+        "videoPath": 
+        {
+            "description": "视频地址",
+            "type": "string"
+        },
+        "imagePath": 
+        {
+            "description": "视频图片地址",
+            "type": "string"
+        },
+        "duration": 
+        {
+            "description": "视频时长",
+            "type": "integer",
+            "format": "int64"
+        }
+    }
+}

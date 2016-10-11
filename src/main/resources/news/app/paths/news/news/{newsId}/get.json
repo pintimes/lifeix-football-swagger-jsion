@@ -1,0 +1,44 @@
+{
+    "summary": "获得单个news",
+    "tags": 
+    [
+        "news"
+    ],
+
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+	
+    "description": "根据id获取单个News详情",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "$ref": "#/parameters/newsPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/News"
+            },
+
+            "description": "News对象"
+        }
+    },
+
+    "operationId": "getNewsDetail"
+}

@@ -1,0 +1,34 @@
+{
+    "summary": "获得Admin列表",
+    "tags": 
+    [
+        "admin"
+    ],
+
+    "description": "返回管理员列表,该接口只能被管理员访问",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Admin"
+                }
+            },
+
+            "description": "Admin列表响应对象"
+        }
+    },
+
+    "operationId": "getAdminList"
+}

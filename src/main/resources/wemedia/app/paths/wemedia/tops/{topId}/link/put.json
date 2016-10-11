@@ -1,0 +1,67 @@
+{
+    "summary": "更新top的Link",
+    "tags": 
+    [
+        "WemediaTop"
+    ],
+
+    "description": "更新top的Link，使其能够通过点击跳转到不同页面",
+    
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/topPath"
+        },
+
+        {
+            "description": "链接类型",
+            "name": "linkType",
+            "type": "string",
+            "required": true,
+            "in": "formData"
+        },
+        
+        {
+            "description": "赛事id",
+            "name": "competitionId",
+            "type": "string",
+            "required": false,
+            "in": "formData"
+        },
+        {
+            "description": "比赛id",
+            "name": "matchId",
+            "type": "string",
+            "required": false,
+            "in": "formData"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "修改成功"
+        },
+        
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+
+    "operationId": "updateLink"
+}

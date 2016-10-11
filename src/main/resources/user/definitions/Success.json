@@ -1,0 +1,12 @@
+{
+    "description": "调用api成功返回对象",
+    "properties": 
+    {
+        "message": 
+        {
+            "description": "成功信息",
+            "type": "string"
+        }
+    },
+    "type": "object"
+}

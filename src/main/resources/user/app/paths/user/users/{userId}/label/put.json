@@ -1,0 +1,55 @@
+{
+    "summary": "更新用户角色标签",
+    "tags": 
+    [
+       	"users"
+    ],
+
+    "description": "更新用户角色标签",
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+    
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/userPath"
+        },
+        {
+            "description": "角色标签",
+            "name": "label",
+            "type":"string",
+            "required": true,
+            "in": "formData"
+        }
+    ],
+    
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema": 
+			{
+				"$ref": "#/definitions/Success"
+			},
+            "description": "修改角色成功"
+        },
+        
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+    
+    "operationId": "updateUserLabel"
+}

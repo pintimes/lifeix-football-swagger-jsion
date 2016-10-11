@@ -1,0 +1,45 @@
+{
+    "summary": "获得一个目标角色的喜欢数据",
+    "tags": 
+    [
+        "likes"
+    ],
+
+    "operationId": "getLike",
+    "description": "返回他的喜欢数",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "description": "喜欢目标的Id",
+            "name": "target",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+        
+        {
+            "description": "喜欢目标的Type",
+            "name": "type",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Like"
+            },
+
+            "description": "Like响应对象"
+        }
+    }
+}

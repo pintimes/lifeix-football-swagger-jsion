@@ -1,0 +1,64 @@
+{
+    "summary": "获取用户的是否收藏过某targets",
+    "tags": 
+    [
+        "bookmarks"
+    ],
+
+    "consumes": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "description": "通过传入类型以及ids获得当前用户是否收藏过这些Targets，一般用于需要获得某实体列表的收藏情况",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "name": "type",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": "参见Bookmark"
+        },
+
+        {
+            "description": "收藏夹的targetId列表，以','分割",
+            "name": "targetIds",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "Bookmarks是否存在的键值对",
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                     "$ref": "#/definitions/Exist"
+                }
+            }
+        },
+
+        "401": 
+        {
+            "description": "未授权"
+        }
+    },
+
+    "operationId": "existBookmarks"
+}

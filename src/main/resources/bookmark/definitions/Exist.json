@@ -1,0 +1,19 @@
+{
+    "description": "是否存在",
+    "properties": 
+    {
+        "targetId": 
+        {
+            "description": "targetId",
+            "type": "string"
+        },
+
+        "exist": 
+        {
+            "description": "是否存在",
+            "type": "boolean"
+        }
+    },
+
+    "type": "object"
+}

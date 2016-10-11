@@ -1,0 +1,53 @@
+{
+    "summary": "分页获取培训分类下的视频单篇列表",
+    "tags": 
+    [
+    	"elearning"
+    ],
+
+    "description": "分页获取培训分类下的视频单篇列表",
+    
+    "produces": 
+    [
+        "application/json"
+    ],
+    
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/elearningCategoryPath"
+        },
+        {
+            "description": "跳过的单篇数量，不传返回第一页",
+            "name": "start",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+		{
+            "description": "每页显示的单篇数量，默认值20",
+            "name": "limit",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+			"schema": 
+            {
+                "type": "array",
+	            "items": 
+	            {
+	                "$ref": "#/definitions/ElearningVideoPage"
+	            }
+            },
+            "description": "视频单篇列表"
+        }
+    },
+
+    "operationId": "getElearningTrainingVideoPages"
+}

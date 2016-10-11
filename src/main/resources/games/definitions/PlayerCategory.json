@@ -1,0 +1,21 @@
+{
+    "description": "球员分类",
+    "properties": 
+    {
+        "categoryName": 
+        {
+            "description": "分类名称",
+            "type": "string"
+        },
+
+        "players": 
+        {
+            "description": "球员列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/PlayerInfo"
+            }
+        }
+    }
+}

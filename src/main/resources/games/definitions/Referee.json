@@ -1,0 +1,85 @@
+{
+    "description": "裁判员",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "name": 
+        {
+            "description": "名字：郎平",
+            "type": "string"
+        },
+        "avatar": 
+        {
+            "description": "照片",
+            "type": "string"
+        },
+         "sex": 
+        {
+            "description": "性别",
+            "type": "string"
+        },
+        "level": 
+        {
+            "description": "级别",
+            "type": "string"
+        },
+        "birthday": 
+        {
+            "description": "出生地  中国北京",
+            "type": "string",
+            "format": "date-time"
+        },
+        "birthplace": 
+        {
+            "description": "出生地  中国北京",
+            "type": "string"
+        },
+        "country": 
+        {
+            "description": "国家： 中国",
+            "type": "string"
+        },
+        "topLeagueNum": 
+        {
+            "description": "顶级联赛执法次数",
+            "format": "int32",
+            "type": "integer"
+        },
+        "fifaTopANum": 
+        {
+            "description": "国际A级比赛执法场次",
+            "format": "int32",
+            "type": "integer"
+        },
+        "position": 
+        {
+            "description": "主裁、边裁、第四官员",
+            "type": "string"
+        },
+        "sinceInternational": 
+        {
+            "description": "成为国际级裁判的时间",
+            "type": "string"
+        },
+        "function": 
+        {
+            "description": "主裁判、助理裁判",
+            "type": "string"
+        },
+        "category": 
+        {
+            "description": "11人制，5人制，沙滩",
+            "type": "string"
+        },
+        "association": 
+        {
+            "description": "属于的协会",
+            "type": "string"
+        }
+    }
+}

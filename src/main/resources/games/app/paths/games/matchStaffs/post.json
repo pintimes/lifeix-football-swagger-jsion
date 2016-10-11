@@ -1,0 +1,50 @@
+{
+    "summary": "新增比赛工作人员:比赛监督、赛事监督",
+    "tags": 
+    [
+        "matchStaff"
+    ],
+
+    "description": "新增比赛工作人员",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/MatchStaff"
+                }
+            },
+
+            "description": "对阵列表",
+            "name": "matchStaffs",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+       "200": 
+        {
+            "description": "add success"
+        }
+    },
+
+    "operationId": "addMatchStaff"
+}

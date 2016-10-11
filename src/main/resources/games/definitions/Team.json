@@ -1,0 +1,60 @@
+{
+    "description": "队伍信息",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "name": 
+        {
+            "description": "球队名称：中国队",
+            "type": "string"
+        },
+        "flag": 
+        {
+            "description": "队旗",
+            "type": "string"
+        },
+        "chiefCoach": 
+        {
+            "$ref": "#/definitions/Coach"
+        },
+        "assistantCoach": 
+        {
+	    	"description": "助理教练",
+	        "type": "array",
+	        "items": 
+	        {
+	            "$ref": "#/definitions/Coach"
+	        }
+        },
+        "teamLeader": 
+        {
+            "$ref": "#/definitions/Staff"
+        },
+        "doctor": 
+        {
+            "$ref": "#/definitions/Staff"
+        },
+        "players": 
+        {
+            "description": "球员",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Player"
+            }
+        },
+         "teamCategory": 
+        {
+            "$ref": "#/definitions/TeamCategory"
+        },
+        "jerseys": 
+        {
+            "$ref": "#/definitions/Jerseys"
+        }
+    }
+}

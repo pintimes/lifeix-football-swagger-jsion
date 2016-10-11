@@ -1,0 +1,39 @@
+{
+    "description": "Like",
+    "properties": 
+    {
+        "target": 
+        {
+            "description": "目标，比如国家队成员",
+            "type": "string"
+        },
+
+        "type": 
+        {
+            "description": "Like类型，只能从其中选择-> 帖子：post, 教练：coach,裁判：refree,球员：player",
+            "type": "string"
+        },
+
+        "likeNum": 
+        {
+            "description": "被喜欢的总数",
+            "type": "integer",
+            "format": "int32"
+        },
+
+        "unlikeNum": 
+        {
+            "description": "被踩的总数",
+            "type": "integer",
+            "format": "int32"
+        },
+        
+        "like": 
+        {
+            "description": "当前Ip是否喜欢过该target->true 是喜欢;false是不喜欢;不返回值则表示未处理过",
+            "type": "boolean"
+        }
+    },
+
+    "type": "object"
+}

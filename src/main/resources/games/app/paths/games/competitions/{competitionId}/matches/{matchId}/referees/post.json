@@ -1,0 +1,55 @@
+{
+    "summary": "新增比赛裁判",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "新增比赛裁判",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "$ref": "#/parameters/matchPath"
+        },
+        {
+            "description": "比赛裁判id example:1,2,3 ",
+            "name": "refereeIds",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "比赛裁判位置 example:主裁,边裁,第四官员",
+            "name": "positions",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "add success"
+        }
+    },
+
+    "operationId": "addRelationMatchAndReferee"
+}

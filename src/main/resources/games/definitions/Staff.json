@@ -1,0 +1,49 @@
+{
+    "description": "工作人员",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
+        "name": 
+        {
+            "description": "名字：高洪波",
+            "type": "string"
+        },
+        "avatar": 
+        {
+            "description": "照片",
+            "type": "string"
+        },
+        "country": 
+        {
+            "description": "国家： 中国",
+            "type": "string"
+        },
+        "birthday": 
+        {
+            "description": "出生地  中国北京",
+            "type": "string",
+            "format": "date-time"
+        },
+        "birthplace": 
+        {
+            "description": "出生地  中国北京",
+            "type": "string"
+        },
+		 "position": 
+        {
+            "description": "职位：领队,队医....",
+            "type": "string"
+        },
+         "introduce": 
+        {
+            "description": "介绍",
+            "type": "string"
+        }
+    }
+}

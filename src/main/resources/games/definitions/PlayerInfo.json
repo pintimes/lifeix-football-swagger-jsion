@@ -1,0 +1,69 @@
+{
+    "description": "队员",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "name": 
+        {
+            "description": "名字：李铁",
+            "type": "string"
+        },
+        "avatar": 
+        {
+            "description": "头像地址",
+            "type": "string"
+        },
+		"birthday": 
+        {
+            "description": "出生地  中国北京",
+            "type": "string",
+            "format": "date-time"
+        },
+  		"birthplace": 
+        {
+            "description": "出生地  中国北京",
+            "type": "string"
+        },
+		"country": 
+        {
+            "description": "国籍",
+            "type": "string"
+        },
+        "height": 
+        {
+            "description": "身高",
+            "type": "string"
+        },
+        "weight": 
+        {
+            "description": "体重",
+            "type": "string"
+        },
+        "position": 
+        {
+            "description": "位置：前锋",
+            "type": "string"
+        },
+         "first": {
+            "description": "1:首发 2：替补",
+            "type": "integer",
+            "format": "int32"
+        },
+        "record": 
+        {
+            "$ref": "#/definitions/PlayerNationalRecord"
+        },
+        "jeserysNum": 
+        {
+            "description": "球衣号码",
+            "format": "int32",
+            "type": "integer"
+        }
+    }
+}

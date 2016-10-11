@@ -1,0 +1,43 @@
+{
+    "description": "置顶资讯",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
+        "categoryId": 
+        {
+            "description": "置顶资讯类目",
+            "type": "string"
+        },
+        
+        "postId": 
+        {
+            "description": "对应资讯id",
+            "type": "string"
+        },
+        
+        "post": 
+        {
+            "description": "对应资讯",
+            "$ref": "#/definitions/Post"
+        },
+        
+        "order": 
+        {
+            "description": "优先级",
+            "type": "integer",
+            "format": "int32"
+        },
+        
+        "createTime": 
+        {
+            "description": "创建时间",
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}

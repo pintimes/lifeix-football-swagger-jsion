@@ -1,0 +1,51 @@
+{
+    "summary": "更新链接图片",
+    "tags": 
+    [
+        "WemediaPost"
+    ],
+
+    "description": "更新链接图片",
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+    
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/postPath"
+        },
+        {
+            "description": "链接图片",
+            "name": "image",
+            "type":"string",
+            "required": true,
+            "in": "formData"
+        }
+    ],
+    
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "修改成功"
+        },
+        
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+    
+    "operationId": "updateImage"
+}

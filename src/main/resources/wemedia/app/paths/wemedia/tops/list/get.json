@@ -1,0 +1,44 @@
+{
+    "summary": "获得置顶资讯列表",
+    "tags": 
+    [
+        "WemediaTop"
+    ],
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+	
+    "description": "根据类目id列表获得类目下的置顶资讯列表",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/PostTop"
+                }
+            },
+
+            "description": "置顶资讯列表"
+        }
+    },
+
+    "operationId": "getTopPostList"
+}

@@ -1,0 +1,30 @@
+{
+    "summary": "查看球队分类下的所有教练",
+    "tags": 
+    [
+        "coach"
+    ],
+    "description": "查看球队分类下的所有教练",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/teamCategoryPath"
+        }
+    ],
+
+    "responses": {
+        "200": {
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/Coach"
+                }
+            },
+            "description": "Coach列表响应对象"
+        }
+    },
+    "operationId": "getCoachByTeamCategory"
+}

@@ -1,0 +1,48 @@
+{
+    "summary": "Admin登录",
+    "tags": 
+    [
+        "admin"
+    ],
+
+    "description": "Admin登录，传入Email,Password的加密形式·",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Admin"
+            },
+
+            "description": "管理员",
+            "name": "admin",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Admin"
+            },
+
+            "description": "Admin响应对象"
+        }
+    },
+
+    "operationId": "loginAdmin"
+}

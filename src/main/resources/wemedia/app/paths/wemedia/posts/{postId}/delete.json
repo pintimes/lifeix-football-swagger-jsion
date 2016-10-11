@@ -1,0 +1,45 @@
+{
+    "summary": "删除Post",
+    "tags": 
+    [
+        "WemediaPost"
+    ],
+
+    "description": "删除Post：只有管理员才有权限",
+
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+    
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "$ref": "#/parameters/postPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "删除成功"
+        },
+
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+
+    "operationId": "deletePost"
+}

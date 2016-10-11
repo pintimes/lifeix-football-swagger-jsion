@@ -1,0 +1,32 @@
+{
+    "summary": "赛事所有的参赛球队信息和比赛信息（赛程）",
+    "tags": 
+    [
+        "competition"
+    ],
+    "description": "赛事所有的参赛球队信息和比赛信息（赛程）",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Competition"
+            },
+
+            "description": "Competition响应对象"
+        }
+    },
+
+    "operationId": "getCompetition"
+}

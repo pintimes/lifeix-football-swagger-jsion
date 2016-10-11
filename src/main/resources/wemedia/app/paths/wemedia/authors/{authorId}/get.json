@@ -1,0 +1,34 @@
+{
+    "summary": "获得单个作者",
+    "tags": 
+    [
+        "WemediaAuthor"
+    ],
+
+    "description": "查看单个作者的信息",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "$ref": "#/parameters/authorPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Author"
+            },
+
+            "description": "Author响应对象"
+        }
+    },
+
+    "operationId": "getAuthor"
+}

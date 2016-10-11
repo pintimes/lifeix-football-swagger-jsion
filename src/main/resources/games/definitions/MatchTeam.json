@@ -1,0 +1,76 @@
+{
+    "description": "比赛队伍信息",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "introduce": 
+        {
+            "description": "介绍",
+            "type": "string"
+        },
+        "setupDate": 
+        {
+            "description": "大名单公布时间",
+            "type": "string",
+            "format": "date-time"
+        },
+         "competitionInfo": 
+        {
+            "$ref": "#/definitions/CompetitionInfo"
+        },
+         "teamInfo": 
+        {
+            "$ref": "#/definitions/TeamInfo"
+        },
+         "competitionTeamInfo": 
+        {
+            "$ref": "#/definitions/CompetitionTeamInfo"
+        },
+        "chiefCoach": 
+        {
+            "$ref": "#/definitions/Coach"
+        },
+        "assistantCoach": 
+        {
+	    	"description": "助理教练",
+	        "type": "array",
+	        "items": 
+	        {
+	            "$ref": "#/definitions/Coach"
+	        }
+        },
+        "teamLeader": 
+        {
+            "$ref": "#/definitions/Staff"
+        },
+        "doctor": 
+        {
+            "$ref": "#/definitions/Staff"
+        },
+        "firstPlayers": 
+        {
+            "description": "球员",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/PlayerInfo"
+            }
+        },
+        "substitutionPlayers": 
+        {
+            "description": "球员",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/PlayerInfo"
+            }
+        }
+        
+    }
+}

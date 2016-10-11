@@ -1,0 +1,34 @@
+{
+    "description": "比赛队伍信息",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "introduce": 
+        {
+            "description": "介绍",
+            "type": "string"
+        },
+        "setupDate": 
+        {
+            "description": "大名单公布时间",
+            "type": "string",
+            "format": "date-time"
+        },
+        "teamId": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+         "teamInfo": 
+        {
+            "$ref": "#/definitions/TeamInfo"
+        }
+    }
+}

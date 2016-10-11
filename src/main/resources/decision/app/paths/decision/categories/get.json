@@ -1,0 +1,29 @@
+{
+    "summary": "Decision获取类目",
+    "tags": 
+    [
+    	"decision"
+    ],
+    "description": "Decision获取类目",
+    "produces": 
+    [
+        "application/json"
+    ],
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/DecisionCategory"
+                }
+            },
+            "description": "类目列表"
+        }
+    },
+
+    "operationId": "getDecisionCategories"
+}

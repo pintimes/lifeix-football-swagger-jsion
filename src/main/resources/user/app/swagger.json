@@ -7,8 +7,8 @@
         "termsOfService": "",
         "contact": 
         {
-            "email": "guangweiz@l99.com",
-            "name": "曾光伟"
+            "email": "lex@l99.com",
+            "name": "徐乐"
         },
 
         "version": "1.0.0"
@@ -17,7 +17,6 @@
     "host": "api.c-f.com",
     "schemes": 
     [
-        "http",
         "https"
     ],
 

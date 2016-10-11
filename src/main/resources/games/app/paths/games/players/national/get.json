@@ -1,0 +1,29 @@
+{
+    "summary": "查看国家队下的所有球员",
+    "tags": 
+    [
+        "player"
+    ],
+    "description": "查看国家队下的所有球员",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": {
+            "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/PlayerCategoryTop"
+                }
+            },
+            "description": "PlayerCategoryTop列表响应对象"
+        }
+    },
+
+    "operationId": "getNationalPlayer"
+}

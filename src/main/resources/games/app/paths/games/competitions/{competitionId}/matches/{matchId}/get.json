@@ -1,0 +1,36 @@
+{
+    "summary": "获得比赛信息",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "获得比赛信息",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "$ref": "#/parameters/matchPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Match"
+            },
+
+            "description": "Match响应对象"
+        }
+    },
+
+    "operationId": "getMatch"
+}

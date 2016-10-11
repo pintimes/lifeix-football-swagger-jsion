@@ -1,0 +1,75 @@
+{
+            "description": "赛事分组",
+            "properties": {
+                "id": {
+                    "description": "id",
+		            "format": "int64",
+		            "type": "integer"
+                },
+                "competitionId": {
+                    "description": "赛事id",
+		            "format": "int64",
+		            "type": "integer"
+                },
+                "groupId": {
+                    "description": "赛事小组id",
+		            "format": "int64",
+		            "type": "integer"
+                },
+                "groupName": {
+                    "description": "分组名称",
+                    "type": "string"
+                },
+                "competitionTeamId": {
+                    "description": "赛事球队id",
+		            "format": "int64",
+		            "type": "integer"
+                },
+                "teamId": {
+                    "description": "球队id",
+		            "format": "int64",
+		            "type": "integer"
+                },
+                "teamInfo": 
+		        {
+		            "$ref": "#/definitions/TeamInfo"
+		        },
+                "matchNum": {
+                    "description": "比赛场次",
+		            "format": "int32",
+		            "type": "integer"
+                },
+                "winNum": {
+                    "description": "获胜场次",
+		            "format": "int32",
+		            "type": "integer"
+                },
+                "drawNum": {
+                    "description": "平局场次",
+		            "format": "int32",
+		            "type": "integer"
+                },
+                "lostNum": {
+                    "description": "失败场次",
+		            "format": "int32",
+		            "type": "integer"
+                },
+                "gf": {
+                    "description": "进球数",
+		            "format": "int32",
+		            "type": "integer"
+                },
+                "ga": {
+                    "description": "失球数",
+		            "format": "int32",
+		            "type": "integer"
+                },
+                "pts": {
+                    "description": "积分",
+		            "format": "int32",
+		            "type": "integer"
+                }
+                
+            },
+            "type": "object"
+        }

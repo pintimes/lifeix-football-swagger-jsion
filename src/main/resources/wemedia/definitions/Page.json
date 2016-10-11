@@ -1,0 +1,22 @@
+{
+	"description": "easyui datagrid页面对象",
+	"properties": 
+	{
+		"total": 
+		{
+			"description": "当前页记录条数",
+			"type": "string"
+		},
+
+		"rows": 
+		{
+			"description": "记录列表",
+			"type": "array",
+			"items": 
+			{
+				"type": "object"
+			}
+		}
+	},
+	"type": "object"
+}

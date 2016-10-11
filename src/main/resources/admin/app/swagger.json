@@ -1,0 +1,55 @@
+{
+    "swagger": "2.0",
+    "info": 
+    {
+        "title": "中国足球网API - Admin系统",
+        "description": "管理员注册，权限",
+        "termsOfService": "",
+        "contact": 
+        {
+            "email": "guangweiz@l99.com",
+            "name": "曾光伟"
+        },
+
+        "version": "1.0.0"
+    },
+
+    "host": "api.c-f.com",
+    "schemes": 
+    [
+        "http"
+    ],
+
+    "basePath": "/football",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "tags": 
+    [
+        
+    ],
+
+    "responses": 
+    {
+        
+    },
+
+    "parameters": 
+    {
+        "apiKeyYHeader": 
+        {
+            "description": "key",
+            "name": "key",
+            "type": "string",
+            "required": true,
+            "in": "header"
+        }
+    }
+}

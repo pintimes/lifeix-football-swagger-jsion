@@ -1,0 +1,32 @@
+{
+    "summary": "获得职员信息",
+    "tags": 
+    [
+        "staff"
+    ],
+    "description": "查看职员信息",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/staffPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Staff"
+            },
+
+            "description": "Staff响应对象"
+        }
+    },
+
+    "operationId": "getStaff"
+}

@@ -1,0 +1,40 @@
+{
+            "description": "赛事分组",
+            "properties": {
+                "id": {
+                    "description": "id",
+		            "format": "int64",
+		            "type": "integer"
+                },
+                "competitionId": {
+                    "description": "赛事id",
+		            "format": "int64",
+		            "type": "integer"
+                },
+                "groupName": {
+                    "description": "分组名称",
+                    "type": "string"
+                },
+                "topRank": {
+                    "description": "晋级个数",
+		            "format": "int32",
+		            "type": "integer"
+                },
+                 "bottomRank": {
+                    "description": "降级个数",
+		            "format": "int32",
+		            "type": "integer"
+                },
+                "teams": 
+		        {
+		            "description": "小组球队",
+		            "type": "array",
+		            "items": 
+		            {
+		                "$ref": "#/definitions/CompetitionTeamPts"
+		            }
+		        }
+                
+            },
+            "type": "object"
+        }

@@ -1,0 +1,59 @@
+{
+    "summary": "用户完成某次视频测试后提交测试报告",
+    "tags": 
+    [
+        "elearning"
+    ],
+
+    "description": "用户完成某次视频测试后提交测试报告",
+    
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+		{
+            "schema": 
+            {
+                "$ref": "#/definitions/ElearningVideoReportParam"
+            },
+
+            "description": "测试报告参数",
+            "name": "videoReportParam",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/ElearningVideoReport"
+            },
+            "description": "提交成功，返回VideoReport对象"
+        },
+        "400": 
+        {
+            "description": "videoReport/userId为空"
+        },
+        "404":
+        {
+        	"description": "对应的测试类目不存在"
+        }
+    },
+
+    "operationId": "elearningVideoReportSubmmit"
+}

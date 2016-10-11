@@ -1,0 +1,30 @@
+{
+    "summary": "获取单个资料文档",
+    "tags": 
+    [
+        "elearning"
+    ],
+
+    "description": "获取单个资料文档",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/elearningMaterialPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/ElearningMaterial"
+            },
+
+            "description": "单个资料文档"
+        }
+    },
+
+    "operationId": "getElearningMaterial"
+}

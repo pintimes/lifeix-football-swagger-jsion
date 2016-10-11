@@ -1,0 +1,101 @@
+{
+    "description": "队员",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+		"name": 
+        {
+            "description": "名字：李铁",
+            "type": "string"
+        },
+        "englishName": 
+        {
+            "description": "名字：李铁",
+            "type": "string"
+        },
+        "avatar": 
+        {
+            "description": "头像地址",
+            "type": "string"
+        },
+		"birthday": 
+        {
+            "description": "出生日期",
+            "type": "string",
+            "format": "date-time"
+        },
+  		"birthplace": 
+        {
+            "description": "出生地  中国北京",
+            "type": "string"
+        },
+        "height": 
+        {
+            "description": "身高",
+            "type": "string"
+        },
+        "weight": 
+        {
+            "description": "体重",
+            "type": "string"
+        },
+        "position": 
+        {
+            "description": "位置：前锋",
+            "type": "string"
+        },
+        "country": 
+        {
+            "description": "国家： 中国",
+            "type": "string"
+        },
+		 "selectedNum": 
+        {
+            "description": "国家队入选次数",
+            "type": "string"
+        },
+        "record": 
+        {
+            "$ref": "#/definitions/PlayerNationalRecord"
+        },
+        "nationTeam": 
+        {
+            "$ref": "#/definitions/TeamInfo"
+        },
+        "club": 
+        {
+            "$ref": "#/definitions/TeamInfo"
+        },
+        "career": 
+        {
+            "description": "职业生涯",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/TeamInfo"
+            }
+        },
+        "matches": 
+        {
+            "description": "参加过的国家队比赛",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/PlayerNationalMatch"
+            }
+        },
+        "playerVideos": {
+            "description": "球员视频",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/PlayerVideo"
+            }
+         }
+    }
+}

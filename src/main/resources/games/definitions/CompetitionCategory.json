@@ -1,0 +1,32 @@
+{
+    "description": "赛事类目",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
+        "name": 
+        {
+            "description": "赛事类目名称",
+            "type": "string"
+        },
+        "iconUrl": 
+        {
+            "description": "赛事类目图标地址",
+            "type": "string"
+        },
+        "type": 
+        {
+            "description": "赛事类型 类别 0：双循环比赛  1：淘汰赛  2：小组赛+主客场淘汰赛  3：小组赛+单场淘汰赛  4：小组赛+单场淘汰赛+主客场淘汰赛 ",
+            "type": "string"
+        },
+        "rule": 
+        {
+            "description": "赛事规则",
+            "type": "string"
+        }
+    }
+}

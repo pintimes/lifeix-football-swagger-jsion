@@ -1,0 +1,61 @@
+{
+    "summary": "用户删除收藏夹",
+    "tags": 
+    [
+        "bookmarks"
+    ],
+
+    "consumes": 
+    [
+       "application/x-www-form-urlencoded"
+    ],
+
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "description": "根据TargetIds删除用户的收藏夹",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "name": "type",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": "参见Bookmark"
+        },
+
+        {
+            "description": "收藏夹的targetId列表,以','分割",
+            "name": "targetIds",
+             "type": "string",
+             "required": true,
+             "in": "formData"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "删除成功"
+        },
+
+        "400": 
+        {
+            "description": "错误处理"
+        },
+
+        "401": 
+        {
+            "description": "未授权"
+        }
+    },
+
+    "operationId": "deleteBookmarksByTypeAndTargets"
+}

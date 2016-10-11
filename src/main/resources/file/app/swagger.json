@@ -1,0 +1,55 @@
+{
+    "swagger": "2.0",
+    "info": 
+    {
+        "title": "中国足球网API - 文件服务",
+        "description": "用于与七牛服务对接",
+        "termsOfService": "",
+        "contact": 
+        {
+            "email": "huijiem@l99.com",
+            "name": "苗慧捷"
+        },
+
+        "version": "1.0.0"
+    },
+
+    "host": "api.c-f.com",
+    "schemes": 
+    [
+        "http"
+    ],
+
+    "basePath": "/football",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "tags": 
+    [
+        
+    ],
+
+    "responses": 
+    {
+        
+    },
+
+    "parameters": 
+    {
+        "apiKeyYHeader": 
+        {
+            "description": "key",
+            "name": "key",
+            "type": "string",
+            "required": true,
+            "in": "header"
+        }
+    }
+}

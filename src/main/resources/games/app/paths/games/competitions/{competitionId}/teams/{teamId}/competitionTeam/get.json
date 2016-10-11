@@ -1,0 +1,34 @@
+{
+    "summary": "获得参赛球队的详细信息,包括教练、球员、工作人员信息",
+    "tags": 
+    [
+        "CompetitionTeam"
+    ],
+
+    "description": "获得球队信息",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+
+        {
+            "$ref": "#/parameters/teamPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/CompetitionTeam"
+            },
+
+            "description": "CompetitionTeam响应对象"
+        }
+    },
+
+    "operationId": "getCompetitionTeam"
+}
