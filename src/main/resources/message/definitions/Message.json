@@ -1,0 +1,42 @@
+{
+    "description": "APP",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
+        "from": 
+        {
+            "$ref": "#/definitions/Person"
+        },
+        
+        "to": 
+        {
+            "$ref": "#/definitions/Person"
+        },
+
+        "images": 
+        {
+            "description": "预览图片",
+            "type": "string"
+        },
+
+        "content": 
+        {
+            "description": "内容",
+            "type": "string"
+        },
+
+        "createTime": 
+        {
+            "description": "收藏时间",
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+
+    "type": "object"
+}

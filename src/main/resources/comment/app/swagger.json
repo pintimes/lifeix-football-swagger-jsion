@@ -2,8 +2,8 @@
     "swagger": "2.0",
     "info": 
     {
-        "title": "中国足球网API - App系统",
-        "description": "用于获得启动参数",
+        "title": "中国足球网API - 评论系统",
+        "description": "用于对各个子系统进行评论",
         "termsOfService": "",
         "contact": 
         {
@@ -52,22 +52,31 @@
             "in": "header"
         },
         
-         "platformPath": 
+        "commentIdPath": 
         {
-            "description": "",
-            "name": "platform",
+            "description": "commentId",
+            "name": "commentId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        },
+
+        "typePath": 
+        {
+            "description": "目标类型",
+            "name": "type",
             "type": "string",
             "required": true,
             "in": "path"
         },
         
-        "versionQuery": 
+        "targetIdPath": 
         {
-            "description": "版本控制，以前版本默认1.0，最新APP API版本1.1.0 跟着项目版本变化",
-            "name": "version",
+            "description": "目标Id",
+            "name": "targetId",
             "type": "string",
-            "required": false,
-            "in": "query"
+            "required": true,
+            "in": "path"
         }
     }
 }

@@ -1,0 +1,59 @@
+{
+    "description": "APP",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
+        "type": 
+        {
+            "description": "类型：资讯 post,你来判 decision,回复 comment",
+            "type": "string"
+        },
+
+        "targetId": 
+        {
+            "description": "目标Id，比如postId，commentId等",
+            "type": "string"
+        },
+
+        "from": 
+        {
+            "$ref": "#/definitions/Person"
+        },
+
+        "to": 
+        {
+            "$ref": "#/definitions/Person"
+        },
+
+        "images": 
+        {
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            },
+
+            "description": "图片地址"
+        },
+
+        "content": 
+        {
+            "description": "内容",
+            "type": "string"
+        },
+
+        "createTime": 
+        {
+            "description": "评论时间",
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+
+    "type": "object"
+}

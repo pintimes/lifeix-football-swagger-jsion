@@ -1,0 +1,53 @@
+{
+    "description": "菜单",
+    "properties": 
+    {
+        "type": 
+        {
+            "description": "decision",
+            "type": "string"
+        },
+
+        "title": 
+        {
+            "description": "标题",
+            "type": "string"
+        },
+
+        "image": 
+        {
+            "description": "缩略图",
+            "type": "string"
+        },
+
+        "icon": 
+        {
+            "type": "array",
+            "items": 
+            {
+                "type": "object",
+                "properties": 
+                {
+                    "txt": 
+                    {
+                        "description": "文字",
+                        "type": "string"
+                    },
+
+                    "image": 
+                    {
+                        "description": "图片地址，如果未传入则采用默认图",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+
+        "createTime": 
+        {
+            "description": "创建日期",
+            "format": "date-time",
+            "type": "string"
+        }
+    }
+}

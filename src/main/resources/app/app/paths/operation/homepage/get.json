@@ -1,11 +1,11 @@
 {
-    "summary": "获得启动参数",
+    "summary": "获得首页运营栏",
     "tags": 
     [
         "app"
     ],
 
-    "description": "需要通过不同的平台来获取不同的菜单",
+    "description": "获得首页运营栏",
     "produces": 
     [
         "application/json"
@@ -20,16 +20,7 @@
     [
         {
             "$ref": "#/parameters/apiKeyYHeader"
-        },
-
-        {
-            "$ref": "#/parameters/platformPath"
-        } ,
-
-        {
-            "$ref": "#/parameters/versionQuery"
         }
-        
     ],
 
     "responses": 
@@ -41,13 +32,13 @@
                 "type": "array",
                 "items": 
                 {
-                    "$ref": "#/definitions/Menu"
+                    "$ref": "#/definitions/Operation"
                 }
             },
 
-            "description": "Menus对象"
+            "description": "Operation对象"
         }
     },
 
-    "operationId": "getMenus"
+    "operationId": "getHomepageOperation"
 }

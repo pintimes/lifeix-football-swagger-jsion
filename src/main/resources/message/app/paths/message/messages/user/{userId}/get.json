@@ -1,0 +1,63 @@
+{
+    "summary": "获取某用户评论",
+    "tags": 
+    [
+        "messages"
+    ],
+
+    "consumes": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "description": "获取某用户的消息列表，默认按照时间倒排，翻页通过时间控制",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        
+        {
+            "$ref": "#/parameters/userIdPath"
+        },
+
+        {
+            "name": "limit",
+            "in": "query",
+            "format": "int32",
+            "type": "integer",
+            "description": "每页数目，默认是每页20条"
+        },
+        
+        {
+            "name": "date",
+            "in": "query",
+            "format": "date-time",
+            "type": "string",
+            "description": "如果查最新消息不传即可；如果是分页查询则需将前一页最后一条记录的时间传入，通过时间定位"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "Message对象",
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Message"
+                }
+            }
+        }
+    },
+
+    "operationId": "getMessagesByUser"
+}

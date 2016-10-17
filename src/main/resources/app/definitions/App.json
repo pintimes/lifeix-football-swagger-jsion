@@ -14,15 +14,21 @@
             "type": "string"
         },
 
-        "coachLevelIntroduceUrl": 
+        "refreeLevelIntroduceUrl": 
         {
             "description": "裁判等级介绍H5地址",
             "type": "string"
         },
-
-        "coachIntroduceUrl": 
+        
+        "refreeMaterialUrl": 
         {
-            "description": "裁判介绍H5地址",
+            "description": "裁判资料库H5地址",
+            "type": "string"
+        },
+        
+         "userAgreementUrl": 
+        {
+            "description": "用户协议",
             "type": "string"
         },
 

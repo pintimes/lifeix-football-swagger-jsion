@@ -1,0 +1,92 @@
+{
+    "summary": "评论",
+    "tags": 
+    [
+        "comments"
+    ],
+
+    "description": "用户评论，可以对任意类型的target进行评论",
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "name": "type",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "目标类型Id，如果是回复则传入'comment'"
+        },
+
+        {
+            "name": "targetId",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "targetId：比如postId,commentId"
+        },
+
+        {
+            "name": "images",
+            "in": "formData",
+            "type": "string",
+            "required": false,
+            "description": "图片地址，多张图片采用','分割"
+        },
+
+        {
+            "name": "content",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "评论内容"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Comment"
+            },
+
+            "description": "Comment对象"
+        },
+
+        "400": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "业务错误消息"
+        },
+
+        "401": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "未授权错误消息"
+        }
+    },
+
+    "operationId": "addComment"
+}

@@ -2,8 +2,8 @@
     "swagger": "2.0",
     "info": 
     {
-        "title": "中国足球网API - App系统",
-        "description": "用于获得启动参数",
+        "title": "中国足球网API - 消息系统",
+        "description": "用户消息中心",
         "termsOfService": "",
         "contact": 
         {
@@ -52,22 +52,13 @@
             "in": "header"
         },
         
-         "platformPath": 
+        "userIdPath": 
         {
-            "description": "",
-            "name": "platform",
+            "description": "userId",
+            "name": "userId",
             "type": "string",
             "required": true,
             "in": "path"
-        },
-        
-        "versionQuery": 
-        {
-            "description": "版本控制，以前版本默认1.0，最新APP API版本1.1.0 跟着项目版本变化",
-            "name": "version",
-            "type": "string",
-            "required": false,
-            "in": "query"
         }
     }
 }
