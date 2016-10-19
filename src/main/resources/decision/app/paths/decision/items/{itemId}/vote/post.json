@@ -38,7 +38,11 @@
     {
         "200": 
         {
-            "description": "投票成功"
+            "schema": 
+            {
+                "$ref": "#/definitions/DecisionItem"
+            },
+            "description": "题目最新信息"
         },
         "400": 
         {
