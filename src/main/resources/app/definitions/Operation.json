@@ -4,7 +4,7 @@
     {
         "type": 
         {
-            "description": "decision",
+            "description": "decision,h5",
             "type": "string"
         },
 
@@ -17,6 +17,12 @@
         "image": 
         {
             "description": "缩略图",
+            "type": "string"
+        },
+        
+         "url": 
+        {
+            "description": "地址",
             "type": "string"
         },
 

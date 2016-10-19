@@ -8,12 +8,12 @@
     "description": "删除Comment：只有管理员/评论用户才有权限",
     "consumes": 
     [
-        "application/x-www-form-urlencoded"
+        "application/json; charset=UTF-8"
     ],
 
     "produces": 
     [
-        "text/plain; charset=UTF-8"
+        "application/json; charset=UTF-8"
     ],
 
     "parameters": 

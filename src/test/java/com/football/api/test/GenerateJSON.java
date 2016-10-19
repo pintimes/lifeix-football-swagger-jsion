@@ -25,6 +25,9 @@ public class GenerateJSON {
 	}
 
 	private static void doSomething(String root, String name) throws FileNotFoundException {
+		if (name.equals("football")) {
+			return ;
+		}
 		File swaggerFile = new File(root + "app/swagger.json");
 		File pathRoot = new File(root + "app/paths");
 		File definationRoot = new File(root + "definitions");

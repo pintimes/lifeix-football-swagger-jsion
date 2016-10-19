@@ -13,49 +13,73 @@ import io.swagger.codegen.SwaggerCodegen;
 
 public class GenJavaCode {
 
-	
 	public static void main(String[] args) {
 		File swaggerDir = new File("swagger/");
+		String tempDir = "d:/out/";
+		String workspace = "D:/WorkSpace/springboot/lifeix-football-api-test";
 		File[] files = swaggerDir.listFiles();
 		for (File swaggerFile : files) {
 			try {
-				generateCode(FileUtil.getFileName(swaggerFile));
+				/**
+				 * 生成java代码
+				 */
+				generateJavaCode(tempDir,workspace,FileUtil.getFileName(swaggerFile));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
- 	}
-	
-	private static void generateCode(String module) throws IOException{
-		String root = "d:/out/"+module;
+	}
+
+	private static void generateJavaCode(String tempDir,String workspaceDir,String module) throws IOException {
+		String root = tempDir + module;
 		File srcDir = new File(root);
 		if (srcDir.exists()) {
 			srcDir.delete();
 		}
-		
-		File swaggerFile = new File("swagger/"+module+".json"); 
-		SwaggerCodegen.main(new String[] { "generate", "-i", swaggerFile.getAbsolutePath(), "-l", "java", "-o", ""+srcDir.getAbsolutePath() ,"--api-package","com.lifeix.api.controller","--model-package","com.lifeix.api."+module+".model"});
-
-		File controller = new File("D:/WorkSpace/springboot/comment-api-test/src/main/java/com/lifeix/api/"+module+"/controller/");
-		if (controller.exists()) {
-			controller.delete();
+		/**
+		 * 在临时文件夹创建代码
+		 */
+		String apiPackage = "com.lifeix.api." + module;
+		String modelPackage = "com.lifeix.model." + module;
+		File swaggerFile = new File("swagger/" + module + ".json");
+		String[] params = new String[] { "generate", "-i", swaggerFile.getAbsolutePath(), "-l", "java", "-o", srcDir.getAbsolutePath(), "--api-package", apiPackage,
+				"--model-package", modelPackage };
+		SwaggerCodegen.main(params);
+		/**
+		 * 清除com.lifeix下所有目录
+		 */
+		String workroot = workspaceDir + "/src/main/java/com/lifeix/";
+//		File workspaceFile = new File(workroot);
+//		if (workspaceFile.exists()) {
+//			workspaceFile.delete();
+//		}
+//		workspaceFile.mkdirs();
+		/**
+		 * 将临时文件夹中的API Copy到Workspace Api
+		 */
+		File api = new File(workroot + "api/" + module + "/");
+		if (api.exists()) {
+			api.delete();
 		}
-		controller.mkdirs();
-		File src =  new File(root+"/src/main/java/com/lifeix/api/controller/");
-		copyFolder(src, controller);
-		
-		File model = new File("D:/WorkSpace/springboot/comment-api-test/src/main/java/com/lifeix/api/"+module+"/model/");
+		api.mkdirs();
+		File src = new File(root + "/src/main/java/com/lifeix/api/" + module + "/");
+		copyFolder(src, api);
+		/**
+		 * 将临时文件夹中的Model Copy到Workspace Model
+		 */
+		File model = new File(workroot + "/model/" + module + "/");
 		if (model.exists()) {
 			model.delete();
 		}
 		model.mkdirs();
-		src =  new File(root+"/src/main/java/com/lifeix/api/"+module+"/model/");
+		src = new File(root + "/src/main/java/com/lifeix/model/" + module + "/");
 		copyFolder(src, model);
 		System.out.println("Done");
 	}
-	
+
 	/**
 	 * 复制一个目录及其子目录、文件到另外一个目录
+	 * 
 	 * @param src
 	 * @param dest
 	 * @throws IOException
@@ -79,7 +103,7 @@ public class GenJavaCode {
 			byte[] buffer = new byte[1024];
 
 			int length;
-			
+
 			while ((length = in.read(buffer)) > 0) {
 				out.write(buffer, 0, length);
 			}
