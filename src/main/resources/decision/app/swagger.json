@@ -51,6 +51,14 @@
             "required": true,
             "in": "header"
         },
+        "apiKeyYHeaderC": 
+        {
+            "description": "key，非必填",
+            "name": "key",
+            "type": "string",
+            "required": false,
+            "in": "header"
+        },
         "decisionCategoryPath": 
         {
             "description": "你来判类目Id",

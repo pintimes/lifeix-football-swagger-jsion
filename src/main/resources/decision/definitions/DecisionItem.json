@@ -17,6 +17,11 @@
             "description": "图片地址，相对路径，前缀需要加七牛资源访问域名",
             "type": "string"
         },
+        "imagePathBig": 
+        {
+            "description": "大图片地址，相对路径，前缀需要加七牛资源访问域名",
+            "type": "string"
+        },
         "title": 
         {
             "description": "标题",
