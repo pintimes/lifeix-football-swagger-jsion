@@ -1,0 +1,47 @@
+{
+    "summary": "发送短信",
+    "tags": 
+    [
+        "sender"
+    ],
+
+    "description": "发送短信",
+    
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+		{
+            "schema": 
+            {
+                "type": "array",
+	            "items": 
+	            {
+	                "$ref": "#/definitions/ShortMessage"
+	            }
+            },
+            "description": "短信列表",
+            "name": "shortMessages",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "responses": 
+    {
+        "400": 
+        {
+            "description": "短信列表为空或超出限制(单次添加最多500条)"
+        }
+    },
+
+    "operationId": "insertSms"
+}

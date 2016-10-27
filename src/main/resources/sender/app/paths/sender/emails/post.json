@@ -1,0 +1,47 @@
+{
+    "summary": "发送邮件",
+    "tags": 
+    [
+        "sender"
+    ],
+
+    "description": "发送邮件",
+    
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+		{
+            "schema": 
+            {
+                "type": "array",
+	            "items": 
+	            {
+	                "$ref": "#/definitions/Email"
+	            }
+            },
+            "description": "邮件列表",
+            "name": "emails",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "responses": 
+    {
+        "400": 
+        {
+            "description": "邮件列表为空或超出限制(单次添加最多200条)"
+        }
+    },
+
+    "operationId": "insertEmails"
+}

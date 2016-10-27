@@ -1,0 +1,26 @@
+{
+    "description": "短信",
+    "properties": 
+    {
+        "signName": 
+        {
+            "description": "短信签名",
+            "type": "string"
+        },
+        "templateCode": 
+        {
+            "description": "短信模板号",
+            "type": "string"
+        },
+        "paramString": 
+        {
+            "description": "参数，json字符串",
+            "type": "string"
+        },
+        "recNum": 
+        {
+            "description": "接收者手机号码",
+            "type": "string"
+        }
+    }
+}
