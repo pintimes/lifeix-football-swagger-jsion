@@ -137,6 +137,15 @@
             "type": "integer",
             "required": true,
             "in": "path"
+        },
+        "userPath": 
+        {
+            "description": "userId",
+            "name": "userId",
+            "format": "int64",
+            "type": "integer",
+            "required": true,
+            "in": "path"
         }
     }
 }

@@ -1,0 +1,30 @@
+{
+    "summary": "获取裁判服装信息",
+    "tags": 
+    [
+        "competition"
+    ],
+
+    "description": "获取裁判服装信息",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/userPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/RefereeDress"
+            },
+
+            "description": "裁判服装信息"
+        }
+    },
+
+    "operationId": "getRefereeDressByUserId"
+}
