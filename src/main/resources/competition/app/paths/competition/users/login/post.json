@@ -1,0 +1,73 @@
+{
+    "summary": "用户登录",
+    "tags": 
+    [
+        "user"
+    ],
+
+    "description": "用户登录",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+     "consumes": 
+    [
+       
+         "application/x-www-form-urlencoded"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        
+         {
+            "name": "loginSign",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "登录标记"
+        },
+        {
+            "name": "password",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "密码"
+        },
+        {
+            "name": "group",
+            "in": "formData",
+            "type": "string",
+            "required": false,
+            "description": "权限组"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/User"
+            },
+
+            "description": "User对象"
+        },
+        
+        "400": 
+        {
+            "description": "错误处理"
+        },
+        
+        "401": 
+        {
+            "description": "未授权"
+        }
+    },
+
+    "operationId": "login"
+}

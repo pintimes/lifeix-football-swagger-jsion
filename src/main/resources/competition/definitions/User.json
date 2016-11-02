@@ -1,0 +1,166 @@
+{
+    "description": "用户",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "cfId": 
+        {
+            "description": "中国足球网用户id",
+             "type": "string"
+        },
+		"name": 
+        {
+            "description": "名字：李铁",
+            "type": "string"
+        },
+        "password": 
+        {
+            "description": "密码",
+            "type": "string"
+        },
+        "gender": {
+            "description": "0:女 1:男 ",
+            "format": "int32",
+            "type": "integer"
+        },
+        "avatar": 
+        {
+            "description": "头像地址",
+            "type": "string"
+        },
+        "birthday": 
+        {
+            "description": "生日",
+            "type": "string",
+            "format": "date-time"
+        },
+        "height": 
+        {
+            "description": "出生地  中国北京",
+            "format": "int32",
+            "type": "integer"
+        },
+        "weight": 
+        {
+            "description": "裁判级别",
+            "format": "int32",
+            "type": "integer"
+        },
+        "origo": 
+        {
+            "description": "原籍",
+            "type": "string"
+        },
+        "country": 
+        {
+            "description": "国籍",
+            "type": "string"
+        },
+        "identity": 
+        {
+            "description": "身份证",
+            "type": "string"
+        },
+        "uniqueId": 
+        {
+            "description": "身份证",
+            "type": "string"
+        },
+        "phoneNum": 
+        {
+            "description": "电话号码",
+            "type": "string"
+        },
+        "email": 
+        {
+            "description": "邮件",
+            "type": "string"
+        },
+         "ethnicGroup": 
+        {
+            "description": "名族",
+            "type": "string"
+        },
+        "politicalStatus": 
+        {
+            "description": "政治面貌",
+            "type": "string"
+        },
+        "vocation": 
+        {
+            "description": "职业",
+            "type": "string"
+        },
+        "organization": 
+        {
+            "description": "现工作单位",
+            "type": "string"
+        },
+        "bloodType": 
+        {
+            "description": "血型",
+            "type": "string"
+        },
+        "officePhone": 
+        {
+            "description": "办公电话",
+            "type": "string"
+        },
+        "homePhone": 
+        {
+            "description": "宅电",
+            "type": "string"
+        },
+        "address": 
+        {
+            "description": "通讯地址",
+            "type": "string"
+        },
+        "zipCode": 
+        {
+            "description": "邮编",
+            "type": "string"
+        },
+        "qq": 
+        {
+            "description": "qq",
+            "type": "string"
+        },
+        "fileYear": 
+        {
+            "description": "档案年份",
+            "type": "string"
+        },
+        "diploma": 
+        {
+            "description": "学历",
+            "type": "string"
+        },
+        "institution": 
+        {
+            "description": "毕业院校",
+            "type": "string"
+        },
+        "roleList": 
+        {
+            "description": "权限列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Role"
+            }
+        },
+        "key": 
+        {
+            "description": "网关使用key",
+            "type": "string"
+        }
+        
+    }
+}

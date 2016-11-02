@@ -66,37 +66,10 @@
             "required": true,
             "in": "path"
         },
-        "videoPath": 
-        {
-            "description": "视频Id",
-            "name": "videoId",
-            "format": "int64",
-            "type": "integer",
-            "required": true,
-            "in": "path"
-        },
-        "photoPath": 
-        {
-            "description": "照片Id",
-            "name": "photoId",
-            "format": "int64",
-            "type": "integer",
-            "required": true,
-            "in": "path"
-        },
         "assPath": 
         {
             "description": "协会Id",
             "name": "assId",
-            "format": "int64",
-            "type": "integer",
-            "required": true,
-            "in": "path"
-        },
-        "courtPath": 
-        {
-            "description": "球场Id",
-            "name": "courtId",
             "format": "int64",
             "type": "integer",
             "required": true,

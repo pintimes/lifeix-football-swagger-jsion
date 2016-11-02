@@ -1,0 +1,53 @@
+{
+    "description": "裁判服装",
+    "type": "object",
+    "properties": 
+    {
+        "userId": 
+        {
+            "description": "用户id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "suitJacket": 
+        {
+            "description": "套服上衣",
+            "type": "string"
+        },
+         "suitTrousers": 
+        {
+            "description": "套服裤子",
+            "type": "string"
+        },
+         "refereeClothingJacket": 
+        {
+            "description": "裁判服上衣",
+            "type": "string"
+        },
+         "refereeClothingShorts": 
+        {
+            "description": "裁判服短裤",
+            "type": "string"
+        },
+         "refereeClothingSocks": 
+        {
+            "description": "裁判服球袜",
+            "type": "string"
+        },
+         "runningShoesSize": 
+        {
+            "description": "跑步鞋鞋号",
+            "type": "string"
+        },
+         "footballShoesSize": 
+        {
+            "description": "足球鞋鞋号",
+            "type": "string"
+        },
+        "cotton": 
+        {
+            "description": "棉服",
+            "type": "string"
+        }
+    }
+}

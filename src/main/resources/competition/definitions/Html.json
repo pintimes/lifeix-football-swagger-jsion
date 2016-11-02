@@ -10,11 +10,6 @@
             "type": "integer"
         },
 
-        "category": 
-        {
-            "description": "分类 :introduce share...",
-            "type": "string"
-        },
         "htmlUrl": 
         {
             "description": "....?version=xxx",

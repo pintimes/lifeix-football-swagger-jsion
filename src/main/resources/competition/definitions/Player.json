@@ -1,0 +1,117 @@
+{
+    "description": "队员",
+    "type": "object",
+    "properties": 
+    {
+        "userId": 
+        {
+            "description": "userId",
+            "format": "int64",
+            "type": "integer"
+        },
+		"name": 
+        {
+            "description": "名字：李铁",
+            "type": "string"
+        },
+        "password": 
+        {
+            "description": "密码",
+            "type": "string"
+        },
+        "gender": {
+            "description": "0:女 1:男 ",
+            "format": "int32",
+            "type": "integer"
+        },
+        "avatar": 
+        {
+            "description": "头像地址",
+            "type": "string"
+        },
+        "birthday": 
+        {
+            "description": "生日",
+            "type": "string",
+            "format": "date-time"
+        },
+        "height": 
+        {
+            "description": "出生地  中国北京",
+            "format": "int32",
+            "type": "integer"
+        },
+        "weight": 
+        {
+            "description": "裁判级别",
+            "format": "int32",
+            "type": "integer"
+        },
+        "origo": 
+        {
+            "description": "原籍",
+            "type": "string"
+        },
+        "country": 
+        {
+            "description": "国籍",
+            "type": "string"
+        },
+        "identity": 
+        {
+            "description": "身份证",
+            "type": "string"
+        },
+        "boneAge": 
+        {
+            "description": "骨龄",
+            "format": "int32",
+            "type": "integer"
+        },
+        "boneAgeImage": 
+        {
+            "description": "骨龄照片",
+            "type": "string"
+        },
+        "club": 
+        {
+            "description": "俱乐部",
+            "type": "string"
+        },
+        "entryCard": 
+        {
+            "description": "参赛证",
+            "type": "string"
+        },
+        "entryCardImage": 
+        {
+            "description": "参赛证证明",
+            "type": "string"
+        },
+        "socialSecurity": 
+        {
+            "description": "社保卡",
+            "type": "string"
+        },
+        "socialSecurityImage": 
+        {
+            "description": "社保卡证明",
+            "type": "string"
+        },
+        "position": 
+        {
+            "description": "位置",
+            "type": "string"
+        },
+        "jerseysNo": 
+        {
+            "description": "球衣号码",
+            "type": "string"
+        },
+        "isCaptain": 
+        {
+            "description": "是否是队长",
+            "type": "string"
+        }
+    }
+}

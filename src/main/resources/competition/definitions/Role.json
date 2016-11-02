@@ -1,0 +1,29 @@
+{
+    "description": "权限",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "roleName": 
+        {
+            "description": "权限名称",
+            "type": "string"
+        },
+        "roleDesc": 
+        {
+            "description": "权限描述",
+            "type": "string"
+        },
+        "status": 
+        {
+            "description": "0 待审核 1：通过 2：禁用",
+            "format": "int32",
+            "type": "integer"
+        }
+    }
+}

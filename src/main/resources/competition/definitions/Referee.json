@@ -1,0 +1,156 @@
+{
+    "description": "裁判员",
+    "type": "object",
+    "properties": 
+    {
+        "userId": 
+        {
+            "description": "userId",
+            "format": "int64",
+            "type": "integer"
+        },
+		"name": 
+        {
+            "description": "名字：李铁",
+            "type": "string"
+        },
+        "password": 
+        {
+            "description": "密码",
+            "type": "string"
+        },
+        "gender": {
+            "description": "0:女 1:男 ",
+            "format": "int32",
+            "type": "integer"
+        },
+        "avatar": 
+        {
+            "description": "头像地址",
+            "type": "string"
+        },
+        "birthday": 
+        {
+            "description": "生日",
+            "type": "string",
+            "format": "date-time"
+        },
+        "height": 
+        {
+            "description": "出生地  中国北京",
+            "format": "int32",
+            "type": "integer"
+        },
+        "weight": 
+        {
+            "description": "裁判级别",
+            "format": "int32",
+            "type": "integer"
+        },
+        "refereeType": 
+        {
+            "description": "0:主裁判 1：助理裁判",
+            "format": "int32",
+            "type": "integer"
+        },
+        "category": 
+        {
+            "description": "0:11人制 1:8人制 2:5人制",
+            "format": "int32",
+            "type": "integer"
+        },
+        "assId": 
+        {
+            "description": "协会id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "assName": 
+        {
+            "description": "协会名称",
+            "type": "string"
+        },
+        "grade": 
+        {
+            "description": "级别",
+            "format": "int32",
+            "type": "integer"
+        },
+        "gradeYear": 
+        {
+            "description": "获得各级等级证书的年份信息",
+            "type": "string"
+        },
+        "curGradeYear": 
+        {
+            "description": "现级别年限",
+            "type": "string"
+        },
+        "approvalTime": 
+        {
+            "description": "审批年份",
+            "type": "string"
+        },
+        "availableTime": 
+        {
+            "description": "可执法时段",
+            "type": "string"
+        },
+        "approvedTime": 
+        {
+            "description": "批准日期",
+            "type": "string"
+        },
+        "credentialNo": 
+        {
+            "description": "证书编号",
+            "type": "string"
+        },
+        "leagueName": 
+        {
+            "description": "执法联赛",
+            "type": "string"
+        },
+        "approvedAssId": 
+        {
+            "description": "批准协会",
+            "format": "int64",
+            "type": "integer"
+        },
+        "approvedAssName": 
+        {
+            "description": "批准协会名称",
+            "type": "string"
+        },
+        "financialInfo": 
+        {
+            "description": "财务信息",
+            "type": "string"
+        },
+        "oralEnLevel": 
+        {
+            "description": "英语口语水平",
+            "type": "string"
+        },
+        "writingEnLevel": 
+        {
+            "description": "英语写作水平",
+            "type": "string"
+        },
+        "credential": 
+        {
+            "description": "相关证书",
+            "type": "string"
+        },
+        "pftResult": 
+        {
+            "description": "体能测试成绩",
+            "type": "string"
+        },
+        "trainingExp": 
+        {
+            "description": "近3年参加培训经历",
+            "type": "string"
+        }
+    }
+}

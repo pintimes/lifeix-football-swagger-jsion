@@ -14,10 +14,6 @@
                     "description": "球队名称",
                     "type": "string"
                 },
-                "name": {
-                    "description": "球衣名称:2016中国国家队主场球衣",
-                    "type": "string"
-                },
                 "jacket": {
                     "description": "上衣",
                     "type": "string"
@@ -30,16 +26,11 @@
                     "description": "袜子",
                     "type": "string"
                 },
-                "photo": {
+                "image": {
                     "description": "球衣图片",
                     "type": "string"
                 },
-                "Invalid": {
-                    "description": "0:默认 1:球衣不再使用",
-		            "format": "int32",
-		            "type": "integer"
-                },
-                "companyName": {
+                "sponsor": {
                     "description": "球衣赞助商",
                     "type": "string"
                 }

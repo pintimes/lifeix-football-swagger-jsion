@@ -3,7 +3,7 @@
     "type": "object",
     "properties": 
     {
-        "id": 
+        "assId": 
         {
             "description": "id",
             "format": "int64",
@@ -13,6 +13,26 @@
         "assName": 
         {
             "description": "协会名称",
+            "type": "string"
+        },
+        "email": 
+        {
+            "description": "协会邮箱",
+            "type": "string"
+        },
+        "address": 
+        {
+            "description": "协会地址",
+            "type": "string"
+        },
+        "phoneNum": 
+        {
+            "description": "协会联系电话",
+            "type": "string"
+        },
+        "buildYear": 
+        {
+            "description": "协会创建年份",
             "type": "string"
         },
         "logo": 
@@ -26,14 +46,10 @@
             "format": "int64",
             "type": "integer"
         },
-        "introduceHtmlId": {
-            "description": "html 对象 id",
-            "format": "int64",
-            "type": "integer"
-        },
-        "introduceHtml": 
+        "remark": 
         {
-            "$ref": "#/definitions/Html"
+            "description": "协会创建年份",
+            "type": "string"
         }
     }
 }
