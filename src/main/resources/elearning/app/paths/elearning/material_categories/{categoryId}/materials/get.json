@@ -1,0 +1,39 @@
+{
+    "summary": "获取某一分类下的资料列表",
+    "tags": 
+    [
+    	"elearning"
+    ],
+
+    "description": "获取某一分类下的资料列表",
+    
+    "produces": 
+    [
+        "application/json"
+    ],
+    
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/elearningCategoryPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+			"schema": 
+            {
+                "type": "array",
+	            "items": 
+	            {
+	                "$ref": "#/definitions/ElearningMaterial"
+	            }
+            },
+            "description": "资料列表"
+        }
+    },
+
+    "operationId": "getElearningTrainingVideoPages"
+}

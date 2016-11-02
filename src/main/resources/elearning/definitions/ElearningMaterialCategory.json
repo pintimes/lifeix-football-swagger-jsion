@@ -1,0 +1,31 @@
+{
+    "description": "elearning培训类目",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "name": 
+        {
+            "description": "类目名称",
+            "type": "string"
+        },
+        "cats": 
+        {
+            "description": "子类目，预留字段，目前暂时只有一级类目",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/ElearningMaterialCategory"
+            }
+        },
+        "type": 
+        {
+            "description": "类目种类，1-裁判",
+            "format": "int32",
+            "type": "integer"
+        }
+    }
+}
