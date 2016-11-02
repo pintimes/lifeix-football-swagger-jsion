@@ -20,12 +20,17 @@
         },
         "url": 
         {
-            "description": "资料地址",
+            "description": "资料地址，相对路径，需要拼接七牛文件地址前缀",
+            "type": "string"
+        },
+        "icon": 
+        {
+            "description": "资料icon，相对路径，需要拼接七牛文件地址前缀",
             "type": "string"
         },
         "type": 
         {
-            "description": "资料类型ssss",
+            "description": "资料类型",
             "format": "int32",
             "type": "integer"
         }
