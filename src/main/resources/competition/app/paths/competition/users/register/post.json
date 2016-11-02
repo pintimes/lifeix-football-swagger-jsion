@@ -1,0 +1,50 @@
+{
+    "summary": "用户注册",
+    "tags": 
+    [
+        "coach"
+    ],
+
+    "description": "用户注册",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/User"
+            },
+            "description": "用户",
+            "name": "user",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/User"
+            },
+
+            "description": "User响应对象"
+        }
+    },
+
+    "operationId": "addUser"
+}
