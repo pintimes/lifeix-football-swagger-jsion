@@ -1,0 +1,32 @@
+{
+    "summary": "查看教练信息",
+    "tags": 
+    [
+        "coach"
+    ],
+    "description": "查看教练信息",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/userPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Coach"
+            },
+
+            "description": "Coach响应对象"
+        }
+    },
+
+    "operationId": "getCoach"
+}

@@ -84,39 +84,10 @@
             "required": true,
             "in": "path"
         },
-        "playerPath": 
+        "userPath": 
         {
-            "description": "球员Id",
+            "description": "用户Id",
             "name": "playerId",
-            "format": "int64",
-            "type": "integer",
-            "required": true,
-            "in": "path"
-        },
-
-        "coachPath": 
-        {
-            "description": "教练Id",
-            "name": "coachId",
-            "format": "int64",
-            "type": "integer",
-            "required": true,
-            "in": "path"
-        },
-
-        "refereePath": 
-        {
-            "description": "裁判Id",
-            "name": "refereeId",
-            "format": "int64",
-            "type": "integer",
-            "required": true,
-            "in": "path"
-        },
-        "staffPath": 
-        {
-            "description": "员工的Id",
-            "name": "staffId",
             "format": "int64",
             "type": "integer",
             "required": true,

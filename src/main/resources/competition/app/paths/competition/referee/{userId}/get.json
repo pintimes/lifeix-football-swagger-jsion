@@ -1,0 +1,32 @@
+{
+    "summary": "查看裁判信息",
+    "tags": 
+    [
+        "referee"
+    ],
+    "description": "查看球员信息",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/userPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Referee"
+            },
+
+            "description": "Referee响应对象"
+        }
+    },
+
+    "operationId": "getReferee"
+}
