@@ -1,0 +1,51 @@
+{
+	"summary": "修改密码",
+	"tags": 
+	[
+		"user"
+	],
+
+	"description": "修改密码",
+
+	"consumes": 
+	[
+		"application/json"
+	],
+	
+	"parameters": 
+	[
+		{
+			"description": "手机号码",
+			"name": "phoneNo",
+			"type": "string",
+			"required": true,
+			"in": "query"
+		},
+		
+		{
+			"description": "验证码",
+			"name": "smsCode",
+			"type": "string",
+			"required": true,
+			"in": "query"
+		},
+
+		{
+			"description": "密码",
+			"name": "password",
+			"type": "string",
+			"required": true,
+			"in": "query"
+		}
+	],
+
+	"responses": 
+	{
+		"200": 
+		{
+			"description": "密码修改成功"
+		}
+	},
+
+	"operationId": "updatePassword"
+}
