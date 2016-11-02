@@ -30,32 +30,21 @@
     "responses":{
     },
     "parameters":{
-        "authorHeader":{
-            "description":"authorization",
-            "name":"authorization",
-            "type":"string",
-            "default":"Basic MzA4MDE1Mjo2Wkp5dExkL3haNnlhQ3c4QnNveS8wNnJmR0ZZQTZRUUsrWmp3amFRNStOTitvSndmVU52bUhtWnNDQ215S2FJ",
-            "in":"header"
+        "apiKeyYHeader": 
+        {
+            "description": "key",
+            "name": "key",
+            "type": "string",
+            "required": true,
+            "in": "header"
         },
-        "authorYHeader":{
-            "description":"authorization",
-            "name":"authorization",
-            "type":"string",
-            "default":"Basic MzA4MDE1Mjo2Wkp5dExkL3haNnlhQ3c4QnNveS8wNnJmR0ZZQTZRUUsrWmp3amFRNStOTitvSndmVU52bUhtWnNDQ215S2FJ",
-            "in":"header"
-        },
-        "apiKeyHeader":{
-            "description":"apiKey",
-            "name":"apiKey",
-            "type":"string",
-            "in":"header"
-        },
-        "apiKeyYHeader":{
-            "description":"apiKey",
-            "name":"apiKey",
-            "type":"string",
-            "default":"1221",
-            "in":"header"
+        "apiKeyYHeaderC": 
+        {
+            "description": "key，非必填",
+            "name": "key",
+            "type": "string",
+            "required": false,
+            "in": "header"
         },
         "htmlPath": 
         {
