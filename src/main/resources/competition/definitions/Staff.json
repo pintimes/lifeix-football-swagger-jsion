@@ -1,0 +1,81 @@
+{
+    "description": "用户",
+    "type": "object",
+    "properties": 
+    {
+        "userId": 
+        {
+            "description": "userId",
+            "format": "int64",
+            "type": "integer"
+        },
+        "cfId": 
+        {
+            "description": "中国足球网用户id",
+             "type": "string"
+        },
+		"name": 
+        {
+            "description": "名字：李铁",
+            "type": "string"
+        },
+        "password": 
+        {
+            "description": "密码",
+            "type": "string"
+        },
+        "gender": {
+            "description": "0:女 1:男 ",
+            "format": "int32",
+            "type": "integer"
+        },
+        "avatar": 
+        {
+            "description": "头像地址",
+            "type": "string"
+        },
+        "birthday": 
+        {
+            "description": "生日",
+            "type": "string",
+            "format": "date-time"
+        },
+        "height": 
+        {
+            "description": "出生地  中国北京",
+            "format": "int32",
+            "type": "integer"
+        },
+        "weight": 
+        {
+            "description": "裁判级别",
+            "format": "int32",
+            "type": "integer"
+        },
+        "origo": 
+        {
+            "description": "原籍",
+            "type": "string"
+        },
+        "country": 
+        {
+            "description": "国籍",
+            "type": "string"
+        },
+        "qualification": 
+        {
+            "description": "资质",
+            "type": "string"
+        },
+        "qualificationImage": 
+        {
+            "description": "资质证明",
+            "type": "string"
+        },
+        "position": 
+        {
+            "description": "职位",
+            "type": "string"
+        }
+    }
+}
