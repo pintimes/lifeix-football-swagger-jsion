@@ -9,26 +9,29 @@
             "format": "int64",
             "type": "integer"
         },
-
-        "name": 
+		"name": 
         {
-            "description": "名字：高洪波",
+            "description": "名字：李铁",
             "type": "string"
         },
-        "gender": 
+        "password": 
         {
-            "description": "性别",
+            "description": "密码",
+            "type": "string"
+        },
+        "gender": {
+            "description": "0:女 1:男 ",
             "format": "int32",
             "type": "integer"
         },
         "avatar": 
         {
-            "description": "头像",
+            "description": "头像地址",
             "type": "string"
         },
         "birthday": 
         {
-            "description": "出生地  中国北京",
+            "description": "生日",
             "type": "string",
             "format": "date-time"
         },
@@ -40,11 +43,11 @@
         },
         "weight": 
         {
-            "description": "裁判级别",
+            "description": "体重",
             "format": "int32",
             "type": "integer"
         },
-		"origo": 
+        "origo": 
         {
             "description": "原籍",
             "type": "string"
@@ -52,6 +55,91 @@
         "country": 
         {
             "description": "国籍",
+            "type": "string"
+        },
+        "identity": 
+        {
+            "description": "身份证",
+            "type": "string"
+        },
+        "identityFrontImage": 
+        {
+            "description": "身份证正面照",
+            "type": "string"
+        },
+        "identityBackImage": 
+        {
+            "description": "身份证反面照",
+            "type": "string"
+        },
+        "phoneNum": 
+        {
+            "description": "电话号码",
+            "type": "string"
+        },
+        "email": 
+        {
+            "description": "邮件",
+            "type": "string"
+        },
+         "ethnicGroup": 
+        {
+            "description": "名族",
+            "type": "string"
+        },
+        "politicalStatus": 
+        {
+            "description": "政治面貌",
+            "type": "string"
+        },
+        "vocation": 
+        {
+            "description": "职业",
+            "type": "string"
+        },
+        "organization": 
+        {
+            "description": "现工作单位",
+            "type": "string"
+        },
+        "bloodType": 
+        {
+            "description": "血型",
+            "type": "string"
+        },
+        "officePhone": 
+        {
+            "description": "办公电话",
+            "type": "string"
+        },
+        "homePhone": 
+        {
+            "description": "宅电",
+            "type": "string"
+        },
+        "address": 
+        {
+            "description": "通讯地址",
+            "type": "string"
+        },
+        "zipCode": 
+        {
+            "description": "邮编",
+            "type": "string"
+        },
+        "qq": 
+        {
+            "description": "qq",
+            "type": "string"
+        },
+        "diploma": 
+        {
+            "description": "学历",
+            "type": "string"
+        },
+        "institution": 
+        {
+            "description": "毕业院校",
             "type": "string"
         },
         "grade": 

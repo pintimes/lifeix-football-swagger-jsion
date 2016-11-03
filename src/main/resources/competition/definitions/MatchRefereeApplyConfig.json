@@ -1,0 +1,47 @@
+{
+    "description": "比赛裁判配置信息",
+    "type": "object",
+    "properties": 
+    {
+        "competitionId": 
+        {
+            "description": "赛事ID",
+            "format": "int64",
+            "type": "integer"
+        },
+		"competitionName": 
+        {
+            "description": "赛事名称",
+            "type": "string"
+        },
+        "matchId": 
+        {
+            "description": "比赛ID",
+            "format": "int64",
+            "type": "integer"
+        },
+        "applyPosition": 
+        {
+            "description": "报名职位",
+            "type": "string"
+        },
+        "maxApplyNum": 
+        {
+            "description": "最大报名数",
+            "format": "int32",
+            "type": "integer"
+        },
+        "appliedNum": 
+        {
+            "description": "已报名数",
+            "format": "int32",
+            "type": "integer"
+        },
+        "lowestRefereeLevel": 
+        {
+            "description": "报名裁判最低级别",
+            "format": "int32",
+            "type": "integer"
+        }
+    }
+}

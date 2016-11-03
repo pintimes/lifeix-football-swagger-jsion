@@ -1,0 +1,37 @@
+{
+    "description": "消息",
+    "type": "object",
+    "properties": 
+    {
+    	"id": 
+        {
+            "description": "消息ID",
+            "format": "int64",
+            "type": "integer"
+        },
+        "userId": 
+        {
+            "description": "用户ID",
+            "format": "int64",
+            "type": "integer"
+        },
+		"content": 
+        {
+            "description": "消息内容",
+            "type": "string"
+        },
+        "type": 
+        {
+            "description": "消息种类",
+            "type": "string"
+        },
+        "page": {
+            "description": "消息跳转页类型 ",
+            "type": "string"
+        },
+        "params": {
+            "description": "消息跳转需要的参数 ,json格式",
+            "type": "string"
+        }
+    }
+}

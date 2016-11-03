@@ -26,6 +26,11 @@
             "description": "类目种类，1-裁判",
             "format": "int32",
             "type": "integer"
-        }
+        },
+        "shareUrl": 
+        {
+            "description": "类目分享地址",
+            "type": "string"
+        },
     }
 }

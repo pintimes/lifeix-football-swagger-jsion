@@ -67,6 +67,16 @@
             "description": "身份证",
             "type": "string"
         },
+        "identityFrontImage": 
+        {
+            "description": "身份证正面照",
+            "type": "string"
+        },
+        "identityBackImage": 
+        {
+            "description": "身份证反面照",
+            "type": "string"
+        },
         "uniqueId": 
         {
             "description": "身份证",
@@ -130,11 +140,6 @@
         "qq": 
         {
             "description": "qq",
-            "type": "string"
-        },
-        "fileYear": 
-        {
-            "description": "档案年份",
             "type": "string"
         },
         "diploma": 

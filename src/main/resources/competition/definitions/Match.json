@@ -1,0 +1,262 @@
+{
+    "description": "比赛",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "userId",
+            "format": "int64",
+            "type": "integer"
+        },
+        "ucId": 
+        {
+            "description": "唯一赛事ID",
+            "format": "int64",
+            "type": "integer"
+        },
+        "competitionId": 
+        {
+            "description": "赛事ID",
+            "format": "int64",
+            "type": "integer"
+        },
+		"competitionName": 
+        {
+            "description": "赛事名称",
+            "type": "string"
+        },
+        "stageId": 
+        {
+            "description": "阶段ID",
+            "format": "int64",
+            "type": "integer"
+        },
+        "stageName": 
+        {
+            "description": "阶段名称",
+            "type": "string"
+        },
+        "sequence": {
+            "description": "场序 ",
+            "format": "int32",
+            "type": "integer"
+        },
+        "hostTeamId": 
+        {
+            "description": "主队唯一ID",
+            "format": "int64",
+            "type": "integer"
+        },
+        "hostCompetitionTeamId": 
+        {
+            "description": "主队ID",
+            "format": "int64",
+            "type": "integer"
+        },
+        "hostTeamName": 
+        {
+            "description": "主队名称",
+            "type": "string"
+        },
+        "hostFlag": 
+        {
+            "description": "主队队旗",
+            "type": "string"
+        },
+        "hostScore": 
+        {
+            "description": "主队得分",
+            "format": "int32",
+            "type": "integer"
+        },
+        "awayTeamId": 
+        {
+            "description": "客队唯一ID",
+            "format": "int64",
+            "type": "integer"
+        },
+        "awayCompetitionTeamId": 
+        {
+            "description": "客队ID",
+            "format": "int64",
+            "type": "integer"
+        },
+        "awayTeamName": 
+        {
+            "description": "客队名称",
+            "type": "string"
+        },
+        "awayFlag": 
+        {
+            "description": "客队队旗",
+            "type": "string"
+        },
+        "awayScore": 
+        {
+            "description": "客队得分",
+            "format": "int32",
+            "type": "integer"
+        },
+         "matchDate": 
+        {
+            "description": "比赛日期",
+            "type": "string",
+            "format": "date-time"
+        },
+         "matchTime": 
+        {
+            "description": "比赛开始时间",
+            "type": "string",
+            "format": "date-time"
+        },
+        "status": 
+        {
+            "description": "比赛状态, 0:未开始 1:进行中 2：已结束",
+            "format": "int32",
+            "type": "integer"
+        },
+        "group": 
+        {
+            "description": "分组",
+            "type": "string"
+        },
+        "round": 
+        {
+            "description": "轮次",
+            "type": "string"
+        },
+        "venueId": 
+        {
+            "description": "场地ID",
+            "format": "int64",
+            "type": "integer"
+        },
+        "venueName": 
+        {
+            "description": "场地名称",
+            "type": "string"
+        },
+        "hostStaffList": 
+        {
+            "description": "主队工作人员",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Staff"
+            }
+        },
+        "hostCoachList": 
+        {
+            "description": "主队教练员",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Coach"
+            }
+        },
+        "hostPlayerList": 
+        {
+            "description": "主队球员",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Player"
+            }
+        },
+        "hostJerseysId": 
+        {
+            "description": "主队球衣ID",
+            "format": "int64",
+            "type": "integer"
+        },
+        "hostJerseys": 
+        {
+            "description": "主队球衣信息",
+            "$ref": "#/definitions/Jerseys"
+        },
+        "awayStaffList": 
+        {
+            "description": "客队工作人员",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Staff"
+            }
+        },
+        "awayCoachList": 
+        {
+            "description": "客队教练员",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Coach"
+            }
+        },
+        "awayPlayerList": 
+        {
+            "description": "客队球员",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Player"
+            }
+        },
+        "awayJerseysId": 
+        {
+            "description": "客队球衣ID",
+            "format": "int64",
+            "type": "integer"
+        },
+        "awayJerseys": 
+        {
+            "description": "客队球衣信息",
+            "$ref": "#/definitions/Jerseys"
+        },
+        "refereeList": 
+        {
+            "description": "裁判员",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Referee"
+            }
+        },
+        "matchStaffList": 
+        {
+            "description": "比赛官员",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/MatchStaff"
+            }
+        },
+        "maxRefereeApplyNum": 
+        {
+            "description": "最大报名数",
+            "format": "int32",
+            "type": "integer"
+        },
+        "refereeAppliedNum": 
+        {
+            "description": "已报名数",
+            "format": "int32",
+            "type": "integer"
+        },
+        "isApplyClosed": 
+        {
+            "description": "报名状态，0-开放，1-关闭",
+            "format": "int32",
+            "type": "integer"
+        },
+        "refereeApplyConfig": 
+        {
+            "description": "裁判报名配置信息，包含各职位的状态",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/MatchRefereeApplyConfig"
+            }
+        }
+    }
+}

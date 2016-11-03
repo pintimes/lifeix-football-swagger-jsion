@@ -1,11 +1,11 @@
 {
-    "summary": "用户注册",
+    "summary": "裁判提交或修改服装信息",
     "tags": 
     [
-        "user"
+        "referee"
     ],
 
-    "description": "用户注册",
+    "description": "裁判提交或修改服装信息",
     "produces": 
     [
         "application/json"
@@ -17,12 +17,15 @@
             "$ref": "#/parameters/apiKeyYHeader"
         },
         {
+            "$ref": "#/parameters/userPath"
+        },
+        {
             "schema": 
             {
-                "$ref": "#/definitions/User"
+                "$ref": "#/definitions/RefereeDress"
             },
-            "description": "用户",
-            "name": "user",
+            "description": "裁判服装信息",
+            "name": "refereeDress",
             "required": true,
             "in": "body"
         }
@@ -37,14 +40,9 @@
     {
         "200": 
         {
-            "schema": 
-            {
-                "$ref": "#/definitions/User"
-            },
-
-            "description": "User响应对象"
+            "description": "提交或修改成功"
         }
     },
 
-    "operationId": "addUser"
+    "operationId": "postOrModifyRefereeAddress"
 }

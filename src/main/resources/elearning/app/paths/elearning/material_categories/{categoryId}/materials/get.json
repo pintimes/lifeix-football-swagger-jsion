@@ -35,5 +35,5 @@
         }
     },
 
-    "operationId": "getElearningTrainingVideoPages"
+    "operationId": "getElearningMaterialsByCategoryId"
 }
