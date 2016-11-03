@@ -1,0 +1,44 @@
+{
+    "summary": "获取赛事列表",
+    "tags": 
+    [
+        "competition"
+    ],
+
+    "description": "获取赛事列表",
+    "parameters": 
+    [
+        {
+            "description": "赛事裁判申请状态 0：未开始 1：报名进行中 2：报名已结束",
+            "name": "refereeApplyStatus",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "0:按赛事进行报名 1:按比赛进行报名",
+            "name": "single",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Competition"
+                }
+            },
+            "description": "赛事列表"
+        }
+    },
+
+    "operationId": "getCompetitions"
+}
