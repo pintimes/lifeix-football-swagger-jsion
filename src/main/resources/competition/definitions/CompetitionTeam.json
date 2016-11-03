@@ -1,0 +1,127 @@
+{
+    "description": "赛事球队",
+    "type": "object",
+    "properties": 
+    {
+    	"id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "teamId": 
+        {
+            "description": "球队id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "competitionId": 
+        {
+            "description": "赛事id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "competitionName": 
+        {
+            "description": "赛事名称",
+            "type": "string"
+        },
+        "competitionTeamName": 
+        {
+            "description": "赛事球队名称",
+            "type": "string"
+        },
+        "competitionTeamFlag": 
+        {
+            "description": "赛事球队旗帜",
+            "type": "string"
+        },
+        "familyPhoto": 
+        {
+            "description": "全家福",
+            "type": "string"
+        },
+        "staffList": 
+        {
+            "description": "职员列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Staff"
+            }
+        },
+        "coachList": 
+        {
+            "description": "教练列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Coach"
+            }
+        },
+        "playerList": 
+        {
+            "description": "球员列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Player"
+            }
+        },
+        "isClub": 
+        {
+            "description": "是否是俱乐部",
+            "format": "int32",
+            "type": "integer"
+        },
+        "isNational": 
+        {
+            "description": "是否是国家队",
+            "format": "int32",
+            "type": "integer"
+        },
+        "group": 
+        {
+            "description": "小组",
+            "type": "string"
+        },
+        
+        "hostJerseysId": 
+        {
+            "description": "主队球衣id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "hostJerseys": 
+        {
+            "description": "主队球衣",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Jerseys"
+            }
+        },
+        
+        "awayJerseysId": 
+        {
+            "description": "客队球衣id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "awayJerseys": 
+        {
+            "description": "客队球衣",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Jerseys"
+            }
+        },
+        "approved": 
+        {
+            "description": "审核通过 0默认 1通过",
+            "format": "int32",
+            "type": "integer"
+        }
+    }
+}

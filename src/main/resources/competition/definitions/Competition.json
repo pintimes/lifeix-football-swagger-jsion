@@ -1,0 +1,139 @@
+{
+    "description": "赛事",
+    "type": "object",
+    "properties": 
+    {
+       "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+       "assId": 
+        {
+            "description": "协会id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "assName": 
+        {
+            "description": "协会名称",
+            "type": "string"
+        },
+        "ucId": 
+        {
+            "description": "唯一赛事id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "ucName": 
+        {
+            "description": "唯一赛事名称",
+            "type": "string"
+        },
+        "competitionName": 
+        {
+            "description": "赛事名称",
+            "type": "string"
+        },
+        "startDate": 
+        {
+            "description": "开始日期",
+            "type": "string",
+            "format": "date-time"
+        },
+        "endDate": 
+        {
+            "description": "结束日期",
+            "type": "string",
+            "format": "date-time"
+        },
+        "flag": 
+        {
+            "description": "赛事标志",
+            "type": "string"
+        },
+        "ruleId": 
+        {
+            "description": "规则id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "rule": 
+        {
+            "description": "规则",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Html"
+            }
+        },
+        "category": 
+        {
+            "description": "0:11人制 1:8人制 2:5人制",
+            "format": "int32",
+            "type": "integer"
+        },
+        "teamList": 
+        {
+            "description": "赛事参赛队",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/CompetitionTeam"
+            }
+        },
+        "releaseSchedule": 
+        {
+            "description": "0未公布 1已公布",
+            "format": "int32",
+            "type": "integer"
+        },
+        "refereeApplyStartTime": 
+        {
+            "description": "赛事报名开始时间",
+            "type": "string",
+            "format": "date-time"
+        },
+        "refereeApplyEndTime": 
+        {
+            "description": "赛事报名结束时间",
+            "type": "string",
+            "format": "date-time"
+        },
+        "minRefereeGrade": 
+        {
+            "description": "最低可执法裁判级别 级别 0:待认证 1：三级 2：二级 3：一级 4：国家级 5：fifa",
+            "format": "int32",
+            "type": "integer"
+        },
+        "refereeApplyStatus": 
+        {
+            "description": "0-未开始, 1-报名进行中, 2-报名已结束",
+            "format": "int32",
+            "type": "integer"
+        },
+        "isElite": 
+        {
+            "description": "0非 1精英赛事",
+            "format": "int32",
+            "type": "integer"
+        },
+        "single": 
+        {
+            "description": "0时报名赛事 1：时报名球队",
+            "format": "int32",
+            "type": "integer"
+        },
+        "refereeApplyConfig": 
+        {
+            "description": "裁判报名配置",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/CompetitionRefereeApplyConfig"
+            }
+        }
+       
+    }
+}
