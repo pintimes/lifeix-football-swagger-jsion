@@ -15,6 +15,9 @@
 	"parameters": 
 	[
 		{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+		{
 			"description": "手机号码",
 			"name": "phoneNo",
 			"type": "string",
