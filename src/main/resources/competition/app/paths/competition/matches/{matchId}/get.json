@@ -1,0 +1,30 @@
+{
+    "summary": "获取单场比赛详情",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "获取单场比赛详情",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/matchPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Match"
+            },
+
+            "description": "比赛详情"
+        }
+    },
+
+    "operationId": "getMatchDetail"
+}
