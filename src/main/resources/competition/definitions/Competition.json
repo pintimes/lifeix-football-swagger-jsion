@@ -62,11 +62,29 @@
         "rule": 
         {
             "description": "规则",
-            "type": "array",
-            "items": 
-            {
-                "$ref": "#/definitions/Html"
-            }
+            "$ref": "#/definitions/Html"
+        },
+        "commissionId": 
+        {
+            "description": "组委会名单id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "commission": 
+        {
+            "description": "组委会名单",
+            "$ref": "#/definitions/Html"
+        },
+        "punishmentId": 
+        {
+            "description": "处罚办法id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "punishment": 
+        {
+            "description": "处罚办法",
+            "$ref": "#/definitions/Html"
         },
         "category": 
         {
