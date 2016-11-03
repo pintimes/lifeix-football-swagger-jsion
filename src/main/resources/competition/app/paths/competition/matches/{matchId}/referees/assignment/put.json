@@ -20,9 +20,6 @@
         {
             "$ref": "#/parameters/matchPath"
         },
-        {
-            "$ref": "#/parameters/userPath"
-        },
 		{
 			"description": "状态",
 			"name": "status",
