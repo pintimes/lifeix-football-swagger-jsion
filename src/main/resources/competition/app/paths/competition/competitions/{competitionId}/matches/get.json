@@ -1,0 +1,33 @@
+{
+    "summary": "获取赛事比赛列表",
+    "tags": 
+    [
+        "competition,match"
+    ],
+
+    "description": "获取赛事比赛列表",
+    "parameters": 
+    [
+         {
+            "$ref": "#/parameters/competitionPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Match"
+                }
+            },
+            "description": "赛事比赛列表"
+        }
+    },
+
+    "operationId": "getCompetitionMatches"
+}

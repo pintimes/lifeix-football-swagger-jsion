@@ -1,0 +1,55 @@
+{
+    "summary": "裁判赛事报名申请",
+    "tags": 
+    [
+        "referee,apply"
+    ],
+
+    "description": "裁判赛事报名申请",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+     "consumes": 
+    [
+       
+       "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/userPath"
+        },
+        {
+            "description": "赛事id",
+            "name": "competitionId",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "职位",
+            "name": "position",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+
+            "description": "报名赛事成功"
+        }
+        
+    },
+
+    "operationId": "applyCompetition"
+}
