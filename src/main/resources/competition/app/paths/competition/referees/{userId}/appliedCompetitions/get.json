@@ -1,0 +1,33 @@
+{
+    "summary": "裁判报名过的赛事",
+    "tags": 
+    [
+        "referee"
+    ],
+
+    "description": "裁判报名过的赛事",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/userPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Competition"
+                }
+            },
+            "description": "裁判报名过的赛事"
+        }
+    },
+
+    "operationId": "appliedCompetition"
+}

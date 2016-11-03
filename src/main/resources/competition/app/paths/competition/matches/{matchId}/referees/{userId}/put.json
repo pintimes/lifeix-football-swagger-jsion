@@ -1,0 +1,44 @@
+{
+	"summary": "裁判报名确认或取消执法比赛调用此接口",
+	"tags": 
+	[
+		"validate"
+	],
+
+	"description": "裁判报名确认或取消执法比赛调用此接口",
+
+	"consumes": 
+	[
+		"application/json"
+	],
+	
+	"parameters": 
+	[
+		{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/matchPath"
+        },
+        {
+            "$ref": "#/parameters/userPath"
+        },
+		{
+			"description": "状态",
+			"name": "status",
+			"type": "string",
+			"required": true,
+			"in": "query"
+		}
+	],
+
+	"responses": 
+	{
+		"200": 
+		{
+			"description": "报名确认完成"
+		}
+	},
+
+	"operationId": "updateMatchRefereeStatus"
+}

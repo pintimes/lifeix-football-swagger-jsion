@@ -1,0 +1,40 @@
+{
+    "summary": "某场赛事中裁判报名过或者指派给我的比赛列表",
+    "tags": 
+    [
+        "referee"
+    ],
+
+    "description": "某场赛事中裁判报名过或者指派给我的比赛列表",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/userPath"
+        },
+        {
+            "description": "赛事id",
+            "name": "competitionId",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Match"
+                }
+            },
+            "description": "裁判报名过或者指派给我的比赛列表"
+        }
+    },
+
+    "operationId": "appliedMatch"
+}
