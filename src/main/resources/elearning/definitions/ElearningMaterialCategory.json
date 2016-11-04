@@ -27,7 +27,7 @@
             "format": "int32",
             "type": "integer"
         },
-        "shareUrl": 
+        "url": 
         {
             "description": "类目分享地址",
             "type": "string"
