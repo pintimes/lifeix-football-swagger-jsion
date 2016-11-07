@@ -29,8 +29,8 @@
             "description": "消息跳转页类型 ",
             "type": "string"
         },
-        "params": {
-            "description": "消息跳转需要的参数 ,json格式",
+        "data": {
+            "description": "消息跳转需要的数据 ,json格式",
             "type": "string"
         }
     }
