@@ -1,0 +1,47 @@
+{
+    "summary": "验证码校验",
+    "tags": 
+    [
+        "smsCode"
+    ],
+
+    "description": "验证码校验",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+     "consumes": 
+    [
+       
+       "application/json"
+    ],
+
+    "parameters": 
+    [
+         {
+            "name": "phoneNo",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "电话号码"
+        },
+        {
+            "name": "smsCode",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "用户输入的验证码"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "验证成功"
+        }
+    },
+
+    "operationId": "validateSmsCode"
+}
