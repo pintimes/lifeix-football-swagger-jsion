@@ -2,7 +2,7 @@
     "swagger":"2.0",
     "info":{
         "title":"Lifeix DataCenter API",
-        "description":"此API用于Lifeix dataCenter",
+        "description":"此API用于Lifeix competition",
         "termsOfService":"",
         "contact":{
             "name":"苗慧杰 谷超超",
@@ -19,7 +19,7 @@
     "schemes":[
         "http"
     ],
-    "basePath":"/dataCenter",
+    "basePath":"/competition",
     "produces":[
         "application/json"
     ],
@@ -46,7 +46,7 @@
             "required": false,
             "in": "header"
         },
-        "htmlPath": 
+        "resourcePath": 
         {
             "description": "html5对象Id",
             "name": "htmlId",

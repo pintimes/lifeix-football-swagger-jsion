@@ -62,7 +62,7 @@
         "rule": 
         {
             "description": "规则",
-            "$ref": "#/definitions/Html"
+            "$ref": "#/definitions/Resource"
         },
         "commissionId": 
         {
@@ -73,7 +73,7 @@
         "commission": 
         {
             "description": "组委会名单",
-            "$ref": "#/definitions/Html"
+            "$ref": "#/definitions/Resource"
         },
         "punishmentId": 
         {
@@ -84,7 +84,7 @@
         "punishment": 
         {
             "description": "处罚办法",
-            "$ref": "#/definitions/Html"
+            "$ref": "#/definitions/Resource"
         },
         "category": 
         {
@@ -160,7 +160,7 @@
         },
         "refereeStatus": 
         {
-            "description": "0-未报名  1-已报名  2-报名通过 默认未报名",
+            "description": "0-已报名 1-审核未通过 2-正式裁判 4-裁委会指派",
             "format": "int32",
             "type": "integer"
         }

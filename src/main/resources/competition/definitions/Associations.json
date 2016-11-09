@@ -9,10 +9,14 @@
             "format": "int64",
             "type": "integer"
         },
-
         "assName": 
         {
             "description": "协会名称",
+            "type": "string"
+        },
+         "address": 
+        {
+            "description": "协会地址",
             "type": "string"
         },
         "email": 
@@ -20,12 +24,7 @@
             "description": "协会邮箱",
             "type": "string"
         },
-        "address": 
-        {
-            "description": "协会地址",
-            "type": "string"
-        },
-        "phoneNum": 
+        "phoneNo": 
         {
             "description": "协会联系电话",
             "type": "string"

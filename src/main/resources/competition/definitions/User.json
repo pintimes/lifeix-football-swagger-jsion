@@ -165,7 +165,11 @@
         {
             "description": "网关使用key",
             "type": "string"
+        },
+        "simpleAssName": 
+        {
+            "description": "协会英文大写缩写",
+            "type": "string"
         }
-        
     }
 }

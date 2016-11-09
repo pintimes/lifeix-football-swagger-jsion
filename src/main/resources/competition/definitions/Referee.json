@@ -3,11 +3,16 @@
     "type": "object",
     "properties": 
     {
-        "userId": 
+    	"id": 
         {
-            "description": "userId",
+            "description": "id",
             "format": "int64",
             "type": "integer"
+        },
+        "cfId": 
+        {
+            "description": "中国足球网用户id",
+             "type": "string"
         },
 		"name": 
         {
@@ -43,7 +48,7 @@
         },
         "weight": 
         {
-            "description": "体重",
+            "description": "裁判级别",
             "format": "int32",
             "type": "integer"
         },
@@ -72,9 +77,14 @@
             "description": "身份证反面照",
             "type": "string"
         },
-        "phoneNum": 
+        "uniqueId": 
         {
-            "description": "电话号码",
+            "description": "身份证",
+            "type": "string"
+        },
+        "phoneNo": 
+        {
+            "description": "手机号码",
             "type": "string"
         },
         "email": 
@@ -141,6 +151,32 @@
         {
             "description": "毕业院校",
             "type": "string"
+        },
+        "roleList": 
+        {
+            "description": "权限列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Role"
+            }
+        },
+        "key": 
+        {
+            "description": "网关使用key",
+            "type": "string"
+        },
+        "simpleAssName": 
+        {
+            "description": "协会英文大写缩写",
+            "type": "string"
+        },
+    
+        "userId": 
+        {
+            "description": "userId",
+            "format": "int64",
+            "type": "integer"
         },
         "refereeType": 
         {
