@@ -19,30 +19,33 @@
 
     "parameters": 
     [
-        {
-            "$ref": "#/parameters/apiKeyYHeader"
-        },
-        
          {
             "name": "loginSign",
-            "in": "formData",
+            "in": "query",
             "type": "string",
             "required": true,
             "description": "登录标记"
         },
         {
             "name": "password",
-            "in": "formData",
+            "in": "query",
             "type": "string",
             "required": true,
             "description": "密码"
         },
         {
-            "name": "group",
+            "name": "deviceId",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "设备号"
+        },
+        {
+            "name": "deviceToken",
             "in": "formData",
             "type": "string",
             "required": false,
-            "description": "权限组"
+            "description": "设备标志"
         }
     ],
 
