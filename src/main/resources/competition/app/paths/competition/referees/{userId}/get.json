@@ -4,7 +4,7 @@
     [
         "referee"
     ],
-    "description": "查看球员信息",
+    "description": "查看裁判信息",
     "parameters": 
     [
     	{
@@ -28,5 +28,5 @@
         }
     },
 
-    "operationId": "getReferee"
+    "operationId": "getReferees"
 }

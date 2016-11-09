@@ -24,6 +24,12 @@
             "description": "0 待审核 1：通过 2：禁用",
             "format": "int32",
             "type": "integer"
+        },
+        "assId": 
+        {
+            "description": "协会id",
+           	"format": "int64",
+            "type": "integer"
         }
     }
 }

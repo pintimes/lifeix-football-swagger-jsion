@@ -8,6 +8,9 @@
     "description": "某场赛事中裁判报名过或者指派给我的比赛列表",
     "parameters": 
     [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
         {
             "$ref": "#/parameters/userPath"
         },

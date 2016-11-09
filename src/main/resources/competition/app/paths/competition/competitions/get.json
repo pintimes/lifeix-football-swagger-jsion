@@ -8,17 +8,27 @@
     "description": "获取赛事列表",
     "parameters": 
     [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
         {
-            "description": "赛事裁判申请状态 0：未开始 1：报名进行中 2：报名已结束",
-            "name": "refereeApplyStatus",
+            "description": "协会id",
+            "name": "assId",
             "type": "string",
-            "required": true,
+            "required": false,
             "in": "query"
         },
         {
             "description": "0:按赛事进行报名 1:按比赛进行报名",
             "name": "single",
             "type": "string",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "是否可以报名,true or false",
+            "name": "canApply",
+            "type": "boolean",
             "required": false,
             "in": "query"
         }

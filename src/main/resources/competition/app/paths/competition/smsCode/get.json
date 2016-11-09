@@ -25,5 +25,5 @@
         }
     },
 
-    "operationId": "getSmsCode"
+    "operationId": "sendSmsCode"
 }

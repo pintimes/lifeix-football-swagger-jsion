@@ -107,6 +107,18 @@
             "format": "int32",
             "type": "integer"
         },
+         "teamApplyStartTime": 
+        {
+            "description": "球队报名开始时间",
+            "type": "string",
+            "format": "date-time"
+        },
+        "teamApplyEndTime": 
+        {
+            "description": "球队报名结束时间",
+            "type": "string",
+            "format": "date-time"
+        },
         "refereeApplyStartTime": 
         {
             "description": "赛事报名开始时间",
@@ -122,12 +134,6 @@
         "minRefereeGrade": 
         {
             "description": "最低可执法裁判级别 级别 0:待认证 1：三级 2：二级 3：一级 4：国家级 5：fifa",
-            "format": "int32",
-            "type": "integer"
-        },
-        "refereeApplyStatus": 
-        {
-            "description": "0-未开始, 1-报名进行中, 2-报名已结束",
             "format": "int32",
             "type": "integer"
         },
@@ -151,6 +157,12 @@
             {
                 "$ref": "#/definitions/CompetitionRefereeApplyConfig"
             }
+        },
+        "refereeStatus": 
+        {
+            "description": "0-未报名  1-已报名  2-报名通过 默认未报名",
+            "format": "int32",
+            "type": "integer"
         }
        
     }

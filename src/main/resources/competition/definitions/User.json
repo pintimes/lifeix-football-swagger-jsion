@@ -82,9 +82,9 @@
             "description": "身份证",
             "type": "string"
         },
-        "phoneNum": 
+        "phoneNo": 
         {
-            "description": "电话号码",
+            "description": "手机号码",
             "type": "string"
         },
         "email": 

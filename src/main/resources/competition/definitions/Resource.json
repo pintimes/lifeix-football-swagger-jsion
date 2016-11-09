@@ -1,5 +1,5 @@
 {
-    "description": "html5",
+    "description": "资源",
     "type": "object",
     "properties": 
     {
@@ -9,10 +9,9 @@
             "format": "int64",
             "type": "integer"
         },
-
-        "htmlUrl": 
+        "uri": 
         {
-            "description": "....?version=xxx",
+            "description": "资源地位",
             "type": "string"
         },
         "desc": 
