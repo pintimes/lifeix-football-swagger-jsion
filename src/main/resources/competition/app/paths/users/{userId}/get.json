@@ -1,0 +1,33 @@
+{
+    "summary": "获取用户详情",
+    "tags": 
+    [
+        "user"
+    ],
+
+    "description": "获取用户详情",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/userPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema": 
+            {
+                "$ref": "#/definitions/User"
+            },
+            
+            "description": "获取用户详情"
+        }
+    },
+
+    "operationId": "getUser"
+}
