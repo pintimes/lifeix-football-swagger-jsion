@@ -29,5 +29,5 @@
         }
     },
 
-    "operationId": "getRefereeDressByUserId"
+    "operationId": "getRefereeDress"
 }

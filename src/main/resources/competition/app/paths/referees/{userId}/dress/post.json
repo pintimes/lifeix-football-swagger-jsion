@@ -44,5 +44,5 @@
         }
     },
 
-    "operationId": "postOrModifyRefereeAddress"
+    "operationId": "saveRefereeDress"
 }
