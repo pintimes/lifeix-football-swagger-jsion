@@ -1,0 +1,51 @@
+{
+    "summary": "添加裁判",
+    "tags": 
+    [
+        "referee"
+    ],
+
+    "description": "添加裁判",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+     "consumes": 
+    [
+       
+       "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Referee"
+            },
+            "description": "裁判",
+            "name": "referee",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema": 
+            {
+                "$ref": "#/definitions/Referee"
+            },
+            
+            "description": "添加裁判成功"
+        }
+    },
+
+    "operationId": "addReferee"
+}
