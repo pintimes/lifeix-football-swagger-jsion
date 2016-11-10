@@ -131,6 +131,11 @@
             "type": "string",
             "format": "date-time"
         },
+        "refereeApplyStatus": 
+        {
+            "description": " true-开放状态 false-关闭状态",
+            "type": "boolean",
+        },
         "minRefereeGrade": 
         {
             "description": "最低可执法裁判级别 级别 0:待认证 1：三级 2：二级 3：一级 4：国家级 5：fifa",

@@ -25,10 +25,19 @@
             "required": false,
             "in": "query"
         },
+         {
+            "description": "开始查询id",
+            "name": "startId",
+            "format": "int64",
+            "type": "integer"
+            "required": false,
+            "in": "query"
+        },
         {
-            "description": "是否可以报名,true or false",
-            "name": "canApply",
-            "type": "boolean",
+            "description": "限制数目",
+            "name": "limit",
+            "format": "int32",
+            "type": "integer"
             "required": false,
             "in": "query"
         }
