@@ -1,11 +1,11 @@
 {
-    "summary": "裁判赛事报名申请",
+    "summary": "裁判比赛报名申请",
     "tags": 
     [
-        "referee,apply"
+        "apply"
     ],
 
-    "description": "裁判赛事报名申请",
+    "description": "裁判比赛报名申请",
     "produces": 
     [
          "application/json; charset=UTF-8"
@@ -23,17 +23,10 @@
             "$ref": "#/parameters/apiKeyYHeader"
         },
         {
-            "$ref": "#/parameters/userPath"
+            "$ref": "#/parameters/matchPath"
         },
         {
-            "description": "赛事id",
-            "name": "competitionId",
-            "type": "string",
-            "required": true,
-            "in": "query"
-        },
-        {
-            "description": "职位",
+            "description": "职位  1-主裁 2-助理裁判 3-第四官员",
             "name": "position",
             "type": "string",
             "required": true,
@@ -46,10 +39,10 @@
         "200": 
         {
 
-            "description": "报名赛事成功"
+            "description": "报名比赛成功"
         }
         
     },
 
-    "operationId": "applyCompetition"
+    "operationId": "applyMatch"
 }

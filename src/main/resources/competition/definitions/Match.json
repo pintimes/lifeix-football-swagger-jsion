@@ -231,18 +231,6 @@
                 "$ref": "#/definitions/MatchStaff"
             }
         },
-        "maxRefereeApplyNum": 
-        {
-            "description": "最大报名数",
-            "format": "int32",
-            "type": "integer"
-        },
-        "refereeAppliedNum": 
-        {
-            "description": "已报名数",
-            "format": "int32",
-            "type": "integer"
-        },
         "isApplyClosed": 
         {
             "description": "报名状态，0-开放，1-关闭",

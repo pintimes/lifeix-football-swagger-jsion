@@ -26,7 +26,7 @@
             "$ref": "#/parameters/competitionPath"
         },
         {
-            "description": "岗位 0-裁判监督 1-主裁 2-助理裁判 3-第四官员",
+            "description": "1-主裁 2-助理裁判",
             "name": "position",
             "type": "integer",
             "required": true,
