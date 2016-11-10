@@ -1,0 +1,48 @@
+{
+	"summary": "裁判报名确认或取消执法比赛",
+	"tags": 
+	[
+		"assign"
+	],
+
+	"description": "裁判报名确认或取消执法比赛",
+
+	"consumes": 
+	[
+		"application/json"
+	],
+	
+	"parameters": 
+	[
+		{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/matchPath"
+        },
+		{
+			"description": "接受或拒绝指派",
+			"name": "acceptFlag",
+			"type": "boolean",
+			"required": true,
+			"in": "query"
+		},
+		{
+			"description": "拒绝原因",
+			"name": "message",
+			"type": "string",
+			"required": true,
+			"in": "query"
+		}
+	],
+
+	"responses": 
+	{
+		"200": 
+		{
+			"description": "流程完成"
+		}
+	},
+
+	"operationId": "confirmOrRefuseAssignment"
+}
