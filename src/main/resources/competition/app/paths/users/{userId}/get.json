@@ -29,5 +29,5 @@
         }
     },
 
-    "operationId": "getUser"
+    "operationId": "getUserInfo"
 }

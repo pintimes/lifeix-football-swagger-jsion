@@ -5,7 +5,7 @@
     {
         "competitionId": 
         {
-            "description": "id",
+            "description": "赛事id",
             "format": "int64",
             "type": "integer"
         },
@@ -14,10 +14,11 @@
             "description": "赛事名称",
             "type": "string"
         },
-        "applyPosition": 
+        "position": 
         {
-            "description": "申请职位",
-            "type": "string"
+            "description": "申请职位, 0-裁判监督，1-主裁判，2-助理裁判，3-第四官员",
+            "format": "int64",
+            "type": "integer"
         },
         "maxApplyNum": 
         {
@@ -25,7 +26,7 @@
             "format": "int64",
             "type": "integer"
         },
-        "AppliedNum": 
+        "appliedNum": 
         {
             "description": "已报名人数",
             "format": "int32",

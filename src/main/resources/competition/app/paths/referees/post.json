@@ -1,11 +1,11 @@
 {
-    "summary": "添加裁判",
+    "summary": "提交裁判信息",
     "tags": 
     [
         "referee"
     ],
 
-    "description": "添加裁判",
+    "description": "提交裁判信息",
     "produces": 
     [
          "application/json; charset=UTF-8"
@@ -43,9 +43,9 @@
                 "$ref": "#/definitions/Referee"
             },
             
-            "description": "添加裁判成功"
+            "description": "提交裁判信息成功"
         }
     },
 
-    "operationId": "addReferee"
+    "operationId": "postRefereeInfo"
 }
