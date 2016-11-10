@@ -29,5 +29,5 @@
         }
     },
 
-    "operationId": "getMatch"
+    "operationId": "getMatchDetail"
 }

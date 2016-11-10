@@ -28,5 +28,5 @@
         }
     },
 
-    "operationId": "getStaff"
+    "operationId": "getStaffInfo"
 }

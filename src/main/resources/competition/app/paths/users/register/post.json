@@ -13,7 +13,6 @@
 
     "parameters": 
     [
-    	,
         {
             "name": "deviceId",
             "in": "query",
@@ -65,5 +64,5 @@
         }
     },
 
-    "operationId": "addUser"
+    "operationId": "register"
 }

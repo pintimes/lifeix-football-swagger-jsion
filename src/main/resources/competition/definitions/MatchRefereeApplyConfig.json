@@ -20,10 +20,11 @@
             "format": "int64",
             "type": "integer"
         },
-        "applyPosition": 
+        "position": 
         {
-            "description": "报名职位",
-            "type": "string"
+            "description": "申请职位, 0-裁判监督，1-主裁判，2-助理裁判，3-第四官员",
+            "format": "int64",
+            "type": "integer"
         },
         "maxApplyNum": 
         {
