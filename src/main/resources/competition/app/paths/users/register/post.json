@@ -13,7 +13,6 @@
 
     "parameters": 
     [
-    	,
         {
             "name": "deviceId",
             "in": "query",
