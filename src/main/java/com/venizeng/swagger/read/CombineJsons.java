@@ -72,6 +72,7 @@ public class CombineJsons {
         }
         JSONObject path = new JSONObject();
         for (File methodFile : methods) {
+            System.out.println(methodFile.getAbsolutePath());
             JSONObject jsonObject = fromFile(methodFile);
             String method = FileUtil.getFileName(methodFile);
             path.put(method, jsonObject);

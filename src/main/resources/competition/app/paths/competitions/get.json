@@ -29,7 +29,7 @@
             "description": "开始查询id",
             "name": "startId",
             "format": "int64",
-            "type": "integer"
+            "type": "integer",
             "required": false,
             "in": "query"
         },
@@ -37,7 +37,7 @@
             "description": "限制数目",
             "name": "limit",
             "format": "int32",
-            "type": "integer"
+            "type": "integer",
             "required": false,
             "in": "query"
         }
