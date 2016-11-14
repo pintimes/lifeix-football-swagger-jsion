@@ -171,7 +171,6 @@
             "description": "协会英文大写缩写",
             "type": "string"
         },
-    
         "userId": 
         {
             "description": "userId",
@@ -180,44 +179,39 @@
         },
         "refereeType": 
         {
-            "description": "0:主裁判 1：助理裁判",
+            "description": "裁判人员类别： 1-裁判讲师， 2-裁判监督， 3-裁判员",
             "format": "int32",
             "type": "integer"
         },
         "category": 
         {
-            "description": "0:11人制 1:8人制 2:5人制",
+            "description": "执法人制：0-11人制， 1-8人制， 2-5人制",
             "format": "int32",
             "type": "integer"
         },
         "assId": 
         {
-            "description": "协会id",
+            "description": "注册协会id",
             "format": "int64",
             "type": "integer"
         },
         "assName": 
         {
-            "description": "协会名称",
+            "description": "注册协会名称",
             "type": "string"
         },
         "grade": 
         {
-            "description": "级别",
+            "description": "裁判员等级：0-见习，1-后备力量，2-国家三级，3-国家二级，4-国家一级，5-国际级助理，6-国际级",
             "format": "int32",
             "type": "integer"
-        },
-        "gradeYear": 
-        {
-            "description": "获得各级等级证书的年份信息",
-            "type": "string"
         },
         "curGradeYear": 
         {
             "description": "现级别年限",
             "type": "string"
         },
-        "approvalTime": 
+        "approvalYear": 
         {
             "description": "审批年份",
             "type": "string"
@@ -268,9 +262,9 @@
             "description": "英语写作水平",
             "type": "string"
         },
-        "credential": 
+        "healthCertificate": 
         {
-            "description": "相关证书",
+            "description": "健康证明",
             "type": "string"
         },
         "pftResult": 
@@ -281,11 +275,6 @@
         "trainingExp": 
         {
             "description": "近3年参加培训经历",
-            "type": "string"
-        },
-        "fileYear": 
-        {
-            "description": "档案年份",
             "type": "string"
         }
     }

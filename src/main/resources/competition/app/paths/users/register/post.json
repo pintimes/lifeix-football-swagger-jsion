@@ -13,6 +13,21 @@
 
     "parameters": 
     [
+    	{
+            "name": "role",
+            "in": "query",
+            "type": "integer",
+            "format": "int64",
+            "required": true,
+            "description": "角色"
+        },
+        {
+            "name": "smsCode",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "验证码"
+        },
         {
             "name": "deviceId",
             "in": "query",
@@ -26,13 +41,6 @@
             "type": "string",
             "required": false,
             "description": "设备标志"
-        },
-        {
-            "name": "role",
-            "in": "query",
-            "type": "string",
-            "required": true,
-            "description": "角色"
         },
         {
             "schema": 
