@@ -1,14 +1,8 @@
 {
-    "summary": "创建消息",
+    "summary": "获得用户的消息读取情况",
     "tags": 
     [
-        "messages"
-    ],
-
-    "description": "只有内部业务系统才能创建消息，消息的完整性由业务系统控制",
-    "produces": 
-    [
-        "application/json; charset=UTF-8"
+        "messages", "count"
     ],
 
     "consumes": 
@@ -16,6 +10,12 @@
         "application/json; charset=UTF-8"
     ],
 
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "description": "包括总数，未读数目，已读数目",
     "parameters": 
     [
         {
@@ -23,15 +23,11 @@
         },
 
         {
-            "schema": 
-            {
-                "$ref": "#/definitions/Message"
-            },
-
-            "description": "消息",
-            "name": "message",
+            "name": "app",
+            "in": "query",
+            "type": "string",
             "required": true,
-            "in": "body"
+            "description": "应用：比如c-f,competition"
         }
     ],
 
@@ -39,12 +35,12 @@
     {
         "200": 
         {
-            "schema": 
+           "schema": 
             {
-                "$ref": "#/definitions/Message"
+                "$ref": "#/definitions/CountInfo"
             },
 
-            "description": "Message对象"
+            "description": "MsgCountInfo对象"
         },
 
         "400": 
@@ -68,5 +64,5 @@
         }
     },
 
-    "operationId": "addMessage"
+    "operationId": "count"
 }

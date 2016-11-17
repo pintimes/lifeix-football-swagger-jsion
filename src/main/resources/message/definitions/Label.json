@@ -1,0 +1,37 @@
+{
+    "description": "Label",
+    "properties": 
+    {
+        "text": 
+        {
+            "description": "文本内容",
+            "type": "string"
+        },
+
+        "color": 
+        {
+            "description": "内容颜色：oxffff0000",
+            "type": "string"
+        },
+
+        "bgcolor": 
+        {
+            "description": "背景颜色：oxffff0000",
+            "type": "string"
+        },
+
+        "image": 
+        {
+            "description": "背景图片",
+            "type": "string"
+        },
+        
+        "icon": 
+        {
+            "description": "居中图标",
+            "type": "string"
+        }
+    },
+
+    "type": "object"
+}

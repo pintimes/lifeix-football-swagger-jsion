@@ -1,0 +1,50 @@
+{
+    "summary": "获得未读消息数目",
+    "tags": 
+    [
+        "messages",
+        "count"
+    ],
+
+    "consumes": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "description": "获得在当前APP下的未读消息数目",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "name": "app",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "应用：比如c-f,competition"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "format": "int64",
+                "type": "integer"
+            },
+
+            "description": "未读数目，如果参数错误直接返回0"
+        }
+    },
+
+    "operationId": "countUnreadnum"
+}

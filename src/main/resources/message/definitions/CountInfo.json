@@ -1,0 +1,28 @@
+{
+    "description": "统计数目信息对象",
+    "properties": 
+    {
+        "num": 
+        {
+            "format": "int64",
+            "type": "integer",
+            "description": "总数"
+        },
+
+        "unread": 
+        {
+            "format": "int64",
+            "type": "integer",
+            "description": "未读数目"
+        },
+
+        "read": 
+        {
+            "format": "int64",
+            "type": "integer",
+            "description": "已读数目"
+        }
+    },
+
+    "type": "object"
+}

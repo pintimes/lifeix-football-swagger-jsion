@@ -1,5 +1,5 @@
 {
-    "summary": "获取某用户评论",
+    "summary": "获得用户的消息列表",
     "tags": 
     [
         "messages"
@@ -15,15 +15,35 @@
         "application/json; charset=UTF-8"
     ],
 
-    "description": "获取某用户的消息列表，默认按照时间倒排，翻页通过时间控制",
+    "description": "获得用户的消息列表",
     "parameters": 
     [
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
+
+        {
+            "name": "app",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "应用：比如c-f,competition"
+        },
         
         {
-            "$ref": "#/parameters/userIdPath"
+            "name": "categoryId",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "类目Id，如果传入categoryId，则返回categoryId={categoryId}的消息"
+        },
+        
+        {
+            "name": "type",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "消息类型，如果传入type，则返回type={type}的消息"
         },
 
         {
@@ -33,7 +53,7 @@
             "type": "integer",
             "description": "每页数目，默认是每页20条"
         },
-        
+
         {
             "name": "date",
             "in": "query",
@@ -47,7 +67,6 @@
     {
         "200": 
         {
-            "description": "Message对象",
             "schema": 
             {
                 "type": "array",
@@ -55,9 +74,11 @@
                 {
                     "$ref": "#/definitions/Message"
                 }
-            }
+            },
+
+            "description": "Message列表"
         }
     },
 
-    "operationId": "getMessagesByUser"
+    "operationId": "getMessages"
 }

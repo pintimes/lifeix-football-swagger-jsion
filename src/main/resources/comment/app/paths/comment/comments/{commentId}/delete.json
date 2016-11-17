@@ -5,7 +5,7 @@
         "comments"
     ],
 
-    "description": "删除Comment：只有管理员/评论用户才有权限",
+    "description": "删除Comment：只有管理员/所属用户才有权限",
     "consumes": 
     [
         "application/json; charset=UTF-8"
@@ -55,5 +55,5 @@
         }
     },
 
-    "operationId": "deleteComment"
+    "operationId": "deleteCommentById"
 }

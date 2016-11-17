@@ -15,17 +15,27 @@
         "application/json; charset=UTF-8"
     ],
 
-    "description": "获取目标的评论列表",
+    "description": "获取评论列表，默认按时间倒叙排列",
     "parameters": 
     [
         {
             "$ref": "#/parameters/apiKeyYHeader"
         },
+
         {
-            "$ref": "#/parameters/typePath"
+            "description": "主题类型",
+            "name": "subjectType",
+            "type": "string",
+            "required": true,
+            "in": "query"
         },
+
         {
-            "$ref": "#/parameters/targetIdPath"
+            "description": "目标Id",
+            "name": "subjecttId",
+            "type": "string",
+            "required": true,
+            "in": "query"
         },
 
         {
@@ -35,7 +45,7 @@
             "type": "integer",
             "description": "每页数目，默认是每页20条"
         },
-        
+
         {
             "name": "date",
             "in": "query",
@@ -58,8 +68,28 @@
                     "$ref": "#/definitions/Comment"
                 }
             }
+        },
+
+        "400": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "业务错误消息"
+        },
+
+        "401": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "未授权错误消息"
         }
     },
 
-    "operationId": "getCommentsByTarget"
+    "operationId": "getComments"
 }

@@ -1,0 +1,44 @@
+{
+    "summary": "读取消息",
+    "tags": 
+    [
+        "messages"
+    ],
+
+    "consumes": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "description": "读取消息，用户调用此接口后read=true",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "$ref": "#/parameters/msgPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Message"
+            },
+
+            "description": "Message对象"
+        }
+    },
+
+    "operationId": "getMessage"
+}
