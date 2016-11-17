@@ -1,5 +1,5 @@
 {
-    "description": "APP",
+    "description": "消息对象",
     "properties": 
     {
         "id": 
@@ -8,25 +8,75 @@
             "type": "string"
         },
 
-        "from": 
+        "read": 
         {
-            "$ref": "#/definitions/Person"
+            "description": "是否已读",
+            "type": "boolean"
         },
-        
-        "to": 
+
+        "sender": 
         {
-            "$ref": "#/definitions/Person"
+            "$ref": "#/definitions/User"
+        },
+
+        "receiver": 
+        {
+            "$ref": "#/definitions/User"
+        },
+
+        "app": 
+        {
+            "description": "属于哪个APP,c-f：中国足球网,competetiton:赛事系统，必填项",
+            "type": "string"
+        },
+
+        "categoryId": 
+        {
+            "description": "类目Id，用于UI定位，具体的请参考对应的业务系统，必填项",
+            "type": "string"
+        },
+
+        "type": 
+        {
+            "description": "类型，用于定位消息的操作类型，具体的操作请参考对应的业务系统",
+            "type": "string"
+        },
+
+        "labels": 
+        {
+            "description": "标签列表，用于在消息中显示相应的标签",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Label"
+            }
         },
 
         "images": 
         {
-            "description": "预览图片",
+            "description": "图片列表地址",
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            }
+        },
+
+        "title": 
+        {
+            "description": "标题:消息的简单描述，必填项",
             "type": "string"
         },
 
         "content": 
         {
-            "description": "内容",
+            "description": "内容:消息的详情,选填项",
+            "type": "string"
+        },
+
+        "params": 
+        {
+            "description": "消息的参数，由业务系统和客户端确定",
             "type": "string"
         },
 

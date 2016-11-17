@@ -1,0 +1,43 @@
+{
+    "summary": "获得最新的版本号",
+    "tags": 
+    [
+        "app"
+    ],
+
+    "description": "分别获得Android，iOS的最新版本",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "$ref": "#/parameters/platformPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+             "schema": 
+            {
+                "type": "string"
+            },
+            "description": "版本号"
+        }
+    },
+
+    "operationId": "getLatestVersion"
+}

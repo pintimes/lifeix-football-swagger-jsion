@@ -4,30 +4,52 @@
     {
         "id": 
         {
-            "description": "id",
+            "description": "评论Id",
             "type": "string"
         },
 
-        "type": 
+        "target": 
         {
-            "description": "类型：资讯 post,你来判 decision,回复 comment",
-            "type": "string"
-        },
+            "properties": 
+            {
+                "type": 
+                {
+                    "description": "目标类型：资讯 post,你来判 decision,评论 comment",
+                    "type": "string"
+                },
 
-        "targetId": 
-        {
-            "description": "目标Id，比如postId，commentId等",
-            "type": "string"
+                "id": 
+                {
+                    "description": "id",
+                    "type": "string"
+                },
+
+                "author": 
+                {
+                    "$ref": "#/definitions/User"
+                },
+
+                "content": 
+                {
+                    "description": "目标内容",
+                    "type": "string"
+                },
+
+                "createTime": 
+                {
+                    "description": "评论时间",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            },
+
+            "description": "评论对象",
+            "type": "object"
         },
 
         "from": 
         {
-            "$ref": "#/definitions/Person"
-        },
-
-        "to": 
-        {
-            "$ref": "#/definitions/Person"
+            "$ref": "#/definitions/User"
         },
 
         "images": 

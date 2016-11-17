@@ -2,8 +2,8 @@
     "swagger": "2.0",
     "info": 
     {
-        "title": "中国足球网API - 消息系统",
-        "description": "用户消息中心",
+        "title": "中国足球网API - 消息中心",
+        "description": "消息中心可以适用于中国足球网和赛事系统,可供业务系统和用户使用。业务系统创建和维护消息，用户可管理自己的消息",
         "termsOfService": "",
         "contact": 
         {
@@ -52,10 +52,10 @@
             "in": "header"
         },
         
-        "userIdPath": 
+         "msgPath": 
         {
-            "description": "userId",
-            "name": "userId",
+            "description": "消息Id",
+            "name": "msgId",
             "type": "string",
             "required": true,
             "in": "path"

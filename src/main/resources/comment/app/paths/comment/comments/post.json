@@ -23,19 +23,27 @@
         },
 
         {
-            "name": "type",
+            "name": "subjectType",
             "in": "formData",
             "type": "string",
             "required": true,
-            "description": "目标类型Id，如果是回复则传入'comment'"
+            "description": "主题类型：资讯 post,你来判 decision"
         },
 
         {
-            "name": "targetId",
+            "name": "subjectId",
             "in": "formData",
             "type": "string",
             "required": true,
-            "description": "targetId：比如postId,commentId"
+            "description": "targetId：比如postId,decisionId"
+        },
+
+        {
+            "name": "targetCommentId",
+            "in": "formData",
+            "type": "string",
+            "required": false,
+            "description": "如果回复评论则targetCommentId 不能为空"
         },
 
         {

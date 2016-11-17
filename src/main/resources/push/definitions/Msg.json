@@ -1,0 +1,126 @@
+{
+    "description": "推送消息",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "消息id",
+            "type": "string"
+        },
+
+        "status": 
+        {
+            "description": "状态",
+            "type": "string"
+        },
+
+        "type": 
+        {
+            "description": "通知类型：boardcast",
+            "type": "string"
+        },
+
+        "title": 
+        {
+            "description": "标题，50个字符内",
+            "type": "string"
+        },
+
+        "text": 
+        {
+            "description": "推送内容，100个字符内",
+            "type": "string"
+        },
+
+        "custom": 
+        {
+            "description": "自定义消息",
+            "properties": 
+            {
+                "type": 
+                {
+                    "description": "消息类型:0 打开APP",
+                    "type": "string"
+                },
+
+                "page": 
+                {
+                    "description": "打开页面",
+                    "type": "string"
+                },
+
+                "title": 
+                {
+                    "description": "标题，50个字符内",
+                    "type": "string"
+                },
+
+                "ID": 
+                {
+                    "description": "内容Id",
+                    "type": "string"
+                },
+
+                "imageUrl": 
+                {
+                    "description": "图片地址",
+                    "type": "string"
+                },
+
+                "contentUrl": 
+                {
+                    "description": "内容地址",
+                    "type": "string"
+                },
+
+                "shareUrl": 
+                {
+                    "description": "分享地址",
+                    "type": "string"
+                },
+
+                "decision": 
+                {
+                    "description": "你来判自定义消息",
+                    "properties": 
+                    {
+                        "categoryId": 
+                        {
+                            "description": "分类Id（目前为2016年中超：2016-csl）",
+                            "type": "string"
+                        },
+                         "roundId": 
+                        {
+                            "description": "轮次Id（如果不需要定位到轮次，可不填写）",
+                            "type": "string"
+                        },
+                         "problemId": 
+                        {
+                            "description": "题目Id（如果不需要定位到题目，可不填写）",
+                            "type": "string"
+                        }
+                    },
+
+                    "type": "object"
+                }
+            },
+
+            "type": "object"
+        },
+
+        "description": 
+        {
+            "description": "用于描述消息",
+            "type": "string"
+        },
+
+        "createTime": 
+        {
+            "description": "创建日期",
+            "format": "date-time",
+            "type": "string"
+        }
+    },
+
+    "type": "object"
+}
