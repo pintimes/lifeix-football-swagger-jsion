@@ -1,0 +1,30 @@
+{
+    "summary": "获取协会列表",
+    "tags": 
+    [
+        "associations"
+    ],
+
+    "description": "获取协会列表",
+    "parameters": 
+    [
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Association"
+                }
+            },
+            "description": "协会列表"
+        }
+    },
+
+    "operationId": "getAvailableAssociations"
+}
