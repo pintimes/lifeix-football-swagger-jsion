@@ -1,0 +1,30 @@
+{
+    "summary": "获取血型",
+    "tags": 
+    [
+        "constants"
+    ],
+
+    "description": "获取血型",
+    "parameters": 
+    [
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Pairs"
+                }
+            },
+            "description": "血型"
+        }
+    },
+
+    "operationId": "getBloodTypes"
+}

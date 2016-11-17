@@ -1,0 +1,30 @@
+{
+    "summary": "获取裁判类型",
+    "tags": 
+    [
+        "constants"
+    ],
+
+    "description": "获取裁判类型",
+    "parameters": 
+    [
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Pairs"
+                }
+            },
+            "description": "裁判类型"
+        }
+    },
+
+    "operationId": "getRefereeTypes"
+}

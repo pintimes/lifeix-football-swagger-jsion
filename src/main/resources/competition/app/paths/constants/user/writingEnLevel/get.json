@@ -1,0 +1,30 @@
+{
+    "summary": "获取英语写作水平",
+    "tags": 
+    [
+        "constants"
+    ],
+
+    "description": "获取英语写作水平",
+    "parameters": 
+    [
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Pairs"
+                }
+            },
+            "description": "写作水平"
+        }
+    },
+
+    "operationId": "getWritingEnLevel"
+}

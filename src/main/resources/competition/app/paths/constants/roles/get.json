@@ -1,0 +1,30 @@
+{
+    "summary": "获取可注册角色",
+    "tags": 
+    [
+        "constants"
+    ],
+
+    "description": "获取可注册角色",
+    "parameters": 
+    [
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Pairs"
+                }
+            },
+            "description": "可注册角色"
+        }
+    },
+
+    "operationId": "getRegisterRoles"
+}

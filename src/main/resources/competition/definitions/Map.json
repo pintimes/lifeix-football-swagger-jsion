@@ -1,0 +1,12 @@
+ {
+      "type": "object",
+      "description": "map",
+      "additionalProperties": {
+        "type": "array",
+        "items": 
+        {
+            "$ref": "#/definitions/Pairs"
+        }
+      }
+  }
+    

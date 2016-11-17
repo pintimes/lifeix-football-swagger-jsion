@@ -1,0 +1,30 @@
+{
+    "summary": "获取衣服尺码",
+    "tags": 
+    [
+        "constants"
+    ],
+
+    "description": "获取衣服尺码",
+    "parameters": 
+    [
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Pairs"
+                }
+            },
+            "description": "衣服尺码"
+        }
+    },
+
+    "operationId": "getClothSize"
+}

@@ -1,0 +1,27 @@
+{
+    "summary": "获取裁判模块常量",
+    "tags": 
+    [
+        "constants"
+    ],
+
+    "description": "获取裁判模块常量",
+    "parameters": 
+    [
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Map"
+            },
+
+            "description": "裁判模块常量集合"
+        }
+    },
+
+    "operationId": "getRefereeConstants"
+}

@@ -1,0 +1,30 @@
+{
+    "summary": "获取执法分类",
+    "tags": 
+    [
+        "constants"
+    ],
+
+    "description": "获取执法分类 ",
+    "parameters": 
+    [
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Pairs"
+                }
+            },
+            "description": "执法分类"
+        }
+    },
+
+    "operationId": "getRefereeCategories"
+}

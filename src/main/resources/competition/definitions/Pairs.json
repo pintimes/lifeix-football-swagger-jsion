@@ -1,0 +1,18 @@
+{
+    "description": "键值对",
+    "type": "object",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "键",
+            "format": "int64",
+            "type": "integer"
+        },
+        "name": 
+        {
+            "description": "名称",
+            "type": "string"
+        }
+    }
+}
