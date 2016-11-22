@@ -12,7 +12,7 @@
     "parameters": 
     [
 		{
-            "description": "资料类目种类，1-裁判",
+            "description": "资料类目种类，1-裁判体测，2-规则相关",
             "name": "type",
             "type": "integer",
             "required": true,
