@@ -25,7 +25,7 @@
             "type": "string"
         },
         "gender": {
-            "description": "0:女 1:男 ",
+            "description": "1:男 2:女 ",
             "format": "int32",
             "type": "integer"
         },

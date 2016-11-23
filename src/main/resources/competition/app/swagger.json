@@ -19,7 +19,7 @@
     "schemes":[
         "http"
     ],
-    "basePath":"/football",
+    "basePath":"/football/competition",
     "produces":[
         "application/json"
     ],
