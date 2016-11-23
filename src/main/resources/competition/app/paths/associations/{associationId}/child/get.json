@@ -1,0 +1,32 @@
+{
+    "summary": "查看子集协会",
+    "tags": 
+    [
+        "association"
+    ],
+    "description": "查看子集协会",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/assPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Association"
+            },
+
+            "description": "Association响应对象"
+        }
+    },
+
+    "operationId": "getChildAssociations"
+}

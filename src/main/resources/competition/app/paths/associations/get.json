@@ -8,6 +8,13 @@
     "description": "获取协会列表",
     "parameters": 
     [
+        {
+            "description": "是否可用",
+            "name": "status",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        }
     ],
 
     "responses": 
