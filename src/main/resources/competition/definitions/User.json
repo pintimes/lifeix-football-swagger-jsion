@@ -25,7 +25,7 @@
             "type": "string"
         },
         "gender": {
-            "description": "0:女 1:男 ",
+            "description": "1:男 2:女 ",
             "format": "int32",
             "type": "integer"
         },
@@ -77,7 +77,7 @@
         },
         "uniqueId": 
         {
-            "description": "身份证",
+            "description": "系统唯一编号",
             "type": "string"
         },
         "phoneNo": 
@@ -167,6 +167,21 @@
         "simpleAssName": 
         {
             "description": "协会英文大写缩写",
+            "type": "string"
+        },
+        "oralEnLevel": 
+        {
+            "description": "英语口语水平",
+            "type": "string"
+        },
+        "writingEnLevel": 
+        {
+            "description": "英语写作水平",
+            "type": "string"
+        },
+        "socialSecurityNo": 
+        {
+            "description": "社保卡号",
             "type": "string"
         }
     }

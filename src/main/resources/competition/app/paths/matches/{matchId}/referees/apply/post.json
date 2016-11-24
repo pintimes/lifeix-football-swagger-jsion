@@ -1,11 +1,11 @@
 {
-    "summary": "裁判比赛报名申请",
+    "summary": "裁判比赛报名",
     "tags": 
     [
         "apply"
     ],
 
-    "description": "裁判比赛报名申请",
+    "description": "裁判比赛报名",
     "produces": 
     [
          "application/json; charset=UTF-8"
