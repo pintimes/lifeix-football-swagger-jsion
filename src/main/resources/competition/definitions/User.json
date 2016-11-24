@@ -183,6 +183,12 @@
         {
             "description": "社保卡号",
             "type": "string"
+        },
+        "createTime": 
+        {
+            "description": "创建日期 时分秒",
+            "type": "string",
+            "format": "date-time"
         }
     }
 }

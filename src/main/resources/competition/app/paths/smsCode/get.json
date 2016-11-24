@@ -21,7 +21,7 @@
     {
         "200": 
         {
-        	"schema": 
+        	"schema":
             {
                 "$ref": "#/definitions/SmsCode"
             },
