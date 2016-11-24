@@ -13,7 +13,7 @@
         },
         {
             "description": "上传文件类型，|0 任意类型|1 图片|2 音频|3 视频|",
-            "name": "type",
+            "name": "file_type",
             "type": "integer",
             "format": "int32",
             "required": true,
