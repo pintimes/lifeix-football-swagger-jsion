@@ -131,7 +131,7 @@
             "type": "string",
             "format": "date-time"
         },
-        "refereeApplyStatus": 
+        "competitionApplyStatus": 
         {
             "description": " true-开放状态 false-关闭状态",
             "type": "boolean",
@@ -165,9 +165,14 @@
         },
         "refereeStatus": 
         {
-            "description": "0-已报名 1-审核未通过 2-正式裁判 4-裁委会指派",
+            "description": "0-报名待审核 1-审核未通过 2-正式裁判 3-拒绝指派 4-指派待确认",
             "format": "int32",
             "type": "integer"
+        },
+        "full": 
+        {
+            "description": " true-报名满了 false-未满",
+            "type": "boolean",
         }
        
     }
