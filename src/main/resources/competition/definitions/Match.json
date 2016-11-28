@@ -249,8 +249,12 @@
         "refereeStatus": 
         {
             "description": "0-候选裁判 1-审核不通过 2-正式裁判，3-拒绝指派，4-裁判长指派待本人确认,5-未报名",
-            "format": "int32",
-            "type": "integer"
+            "$ref": "#/definitions/Pairs"
+        },
+        "position": 
+        {
+            "description": "裁判报名的岗位",
+            "$ref": "#/definitions/Pairs"
         }
     }
 }
