@@ -1,17 +1,17 @@
 {
-    "summary": "赛事裁判报名",
+    "summary": "赛事裁判指派",
     "tags": 
     [
-        "apply"
+        "assign"
     ],
 
-    "description": "赛事裁判报名",
+    "description": "赛事裁判指派",
     "produces": 
     [
          "application/json; charset=UTF-8"
     ],
 
-     "consumes": 
+    "consumes": 
     [
        
        "application/json"
@@ -31,6 +31,13 @@
             "type": "integer",
             "required": true,
             "in": "query"
+        },
+        {
+            "description": "userId1,userId2",
+            "name": "userIds",
+            "type": "String",
+            "required": true,
+            "in": "query"
         }
     ],
 
@@ -39,9 +46,9 @@
         "200": 
         {
             
-            "description": "裁判报名成功"
+            "description": "指派成功"
         }
     },
 
-    "operationId": "applyCompetition"
+    "operationId": "assignCompetitionReferees"
 }
