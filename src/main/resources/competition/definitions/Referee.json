@@ -186,16 +186,10 @@
             "description": "执法人制：0-11人制， 1-8人制， 2-5人制",
             "$ref": "#/definitions/Pairs"
         },
-        "assId": 
+        "association": 
         {
-            "description": "注册协会id",
-            "format": "int64",
-            "type": "integer"
-        },
-        "assName": 
-        {
-            "description": "注册协会名称",
-            "type": "string"
+            "description": "注册协会",
+            "$ref": "#/definitions/Association"
         },
         "grade": 
         {
@@ -232,16 +226,10 @@
             "description": "执法联赛",
             "type": "string"
         },
-        "approvedAssId": 
+        "approvedAssociation": 
         {
             "description": "批准协会",
-            "format": "int64",
-            "type": "integer"
-        },
-        "approvedAssName": 
-        {
-            "description": "批准协会名称",
-            "type": "string"
+            "$ref": "#/definitions/Association"
         },
         "bjyhNo": 
         {
