@@ -41,13 +41,13 @@
         },
         "height": 
         {
-            "description": "出生地  中国北京",
+            "description": "身高",
             "format": "int32",
             "type": "integer"
         },
         "weight": 
         {
-            "description": "裁判级别",
+            "description": "体重",
             "format": "int32",
             "type": "integer"
         },
@@ -186,11 +186,6 @@
             "description": "执法人制：0-11人制， 1-8人制， 2-5人制",
             "$ref": "#/definitions/Pairs"
         },
-        "association": 
-        {
-            "description": "注册协会",
-            "$ref": "#/definitions/Association"
-        },
         "grade": 
         {
             "description": "裁判员等级：0-见习，1-后备力量，2-国家三级，3-国家二级，4-国家一级，5-国际级助理，6-国际级",
@@ -226,10 +221,15 @@
             "description": "执法联赛",
             "type": "string"
         },
+        "association": 
+        {
+            "description": "注册协会",
+            "$ref": "#/definitions/Associations"
+        },
         "approvedAssociation": 
         {
             "description": "批准协会",
-            "$ref": "#/definitions/Association"
+            "$ref": "#/definitions/Associations"
         },
         "bjyhNo": 
         {

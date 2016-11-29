@@ -42,13 +42,13 @@
         },
         "height": 
         {
-            "description": "出生地  中国北京",
+            "description": "身高",
             "format": "int32",
             "type": "integer"
         },
         "weight": 
         {
-            "description": "裁判级别",
+            "description": "体重",
             "format": "int32",
             "type": "integer"
         },
