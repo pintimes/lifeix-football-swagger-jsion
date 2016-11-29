@@ -243,6 +243,11 @@
             "description": "批准协会名称",
             "type": "string"
         },
+        "bjyhNo": 
+        {
+            "description": "北京银行卡号",
+            "type": "string"
+        },
         "financialInfo": 
         {
             "description": "财务信息",
