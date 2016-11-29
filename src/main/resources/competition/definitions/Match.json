@@ -5,7 +5,7 @@
     {
         "id": 
         {
-            "description": "userId",
+            "description": "比赛id",
             "format": "int64",
             "type": "integer"
         },
