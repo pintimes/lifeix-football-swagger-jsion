@@ -1,0 +1,34 @@
+{
+    "description": "资料文档主题",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "name": 
+        {
+            "description": "主题名称",
+            "type": "string"
+        },
+        "latestMaterials": 
+        {
+            "description": "最新的N条资料",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/ElearningMaterial"
+            }
+        },
+        "categories": 
+        {
+            "description": "分类列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/ElearningMaterialCategory"
+            }
+        }
+    }
+}

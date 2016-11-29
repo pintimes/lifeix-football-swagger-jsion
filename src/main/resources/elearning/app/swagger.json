@@ -113,6 +113,15 @@
             "type": "string",
             "required": true,
             "in": "path"
+        },
+
+        "elearningSubjectPath": 
+        {
+            "description": "elearning主题ID",
+            "name": "subjectId",
+            "type": "string",
+            "required": true,
+            "in": "path"
         }
     }
 }
