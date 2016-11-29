@@ -2,7 +2,7 @@
     "summary": "获取elearning资料类目",
     "tags": 
     [
-    	"elearning"
+    	"material"
     ],
     "description": "获取elearning资料类目",
     "produces": 
@@ -12,9 +12,9 @@
     "parameters": 
     [
 		{
-            "description": "资料类目种类，1-裁判体测，2-规则相关",
-            "name": "type",
-            "type": "integer",
+            "description": "资料主题ID，ms_1表示裁判体侧",
+            "name": "subjectId",
+            "type": "string",
             "required": true,
             "in": "query"
         }

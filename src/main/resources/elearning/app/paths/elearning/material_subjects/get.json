@@ -1,0 +1,30 @@
+{
+    "summary": "获取资料主题列表",
+    "tags": 
+    [
+    	"material"
+    ],
+    "description": "获取资料主题列表",
+    "produces": 
+    [
+        "application/json"
+    ],
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/ElearningMaterialSubject"
+                }
+            },
+
+            "description": "资料主题列表"
+        }
+    },
+
+    "operationId": "getElearningMaterialSubjects"
+}

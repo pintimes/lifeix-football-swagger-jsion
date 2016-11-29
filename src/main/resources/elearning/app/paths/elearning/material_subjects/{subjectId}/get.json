@@ -1,0 +1,30 @@
+{
+    "summary": "获取单个资料主题",
+    "tags": 
+    [
+        "material"
+    ],
+
+    "description": "获取单个资料主题",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/elearningSubjectPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/ElearningMaterialSubject"
+            },
+
+            "description": "单个资料主题"
+        }
+    },
+
+    "operationId": "getElearningMaterialSubjectById"
+}

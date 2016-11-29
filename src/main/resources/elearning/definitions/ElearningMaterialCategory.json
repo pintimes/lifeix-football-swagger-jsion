@@ -1,5 +1,5 @@
 {
-    "description": "elearning培训类目",
+    "description": "资料文档分类",
     "properties": 
     {
         "id": 
@@ -9,28 +9,36 @@
         },
         "name": 
         {
-            "description": "类目名称",
+            "description": "分类名称",
             "type": "string"
         },
         "cats": 
         {
-            "description": "子类目，预留字段，目前暂时只有一级类目",
+            "description": "子分类，预留字段，目前暂时只有一级分类",
             "type": "array",
             "items": 
             {
                 "$ref": "#/definitions/ElearningMaterialCategory"
             }
         },
-        "type": 
-        {
-            "description": "类目种类，1-裁判",
-            "format": "int32",
-            "type": "integer"
-        },
         "url": 
         {
-            "description": "类目分享地址",
+            "description": "分类分享地址",
             "type": "string"
         },
+        "subjectId": 
+        {
+            "description": "分类主题ID",
+            "type": "string"
+        },
+        "materials": 
+        {
+            "description": "该分类下的直属文件列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/ElearningMaterial"
+            }
+        }
     }
 }

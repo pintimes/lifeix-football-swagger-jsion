@@ -27,6 +27,11 @@
         {
             "description": "资料icon，相对路径，需要拼接七牛文件地址前缀",
             "type": "string"
+        },
+        "new": 
+        {
+            "description": "是否是新上传的文件(暂定30天内)，true表示新上传",
+            "type": "boolean"
         }
     }
 }
