@@ -26,8 +26,7 @@
         },
         "gender": {
             "description": "0:女 1:男 ",
-            "format": "int32",
-            "type": "integer"
+            "$ref": "#/definitions/Pairs"
         },
         "avatar": 
         {
@@ -115,7 +114,7 @@
         "bloodType": 
         {
             "description": "血型",
-            "type": "string"
+            "$ref": "#/definitions/Pairs"
         },
         "officePhone": 
         {
@@ -180,14 +179,12 @@
         "refereeType": 
         {
             "description": "裁判人员类别： 1-裁判讲师， 2-裁判监督， 3-裁判员",
-            "format": "int32",
-            "type": "integer"
+            "$ref": "#/definitions/Pairs"
         },
         "category": 
         {
             "description": "执法人制：0-11人制， 1-8人制， 2-5人制",
-            "format": "int32",
-            "type": "integer"
+            "$ref": "#/definitions/Pairs"
         },
         "assId": 
         {
@@ -203,8 +200,7 @@
         "grade": 
         {
             "description": "裁判员等级：0-见习，1-后备力量，2-国家三级，3-国家二级，4-国家一级，5-国际级助理，6-国际级",
-            "format": "int32",
-            "type": "integer"
+            "$ref": "#/definitions/Pairs"
         },
         "curGradeYear": 
         {

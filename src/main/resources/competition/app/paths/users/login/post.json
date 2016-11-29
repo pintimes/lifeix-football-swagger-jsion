@@ -19,19 +19,12 @@
 
     "parameters": 
     [
-         {
+        {
             "name": "loginSign",
             "in": "query",
             "type": "string",
             "required": true,
             "description": "登录标记"
-        },
-        {
-            "name": "password",
-            "in": "query",
-            "type": "string",
-            "required": true,
-            "description": "密码"
         },
         {
             "name": "deviceId",
@@ -46,6 +39,16 @@
             "type": "string",
             "required": false,
             "description": "设备token"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/User"
+            },
+            "description": "用户",
+            "name": "user",
+            "required": true,
+            "in": "body"
         }
     ],
 

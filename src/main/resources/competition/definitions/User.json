@@ -26,8 +26,7 @@
         },
         "gender": {
             "description": "1:男 2:女 ",
-            "format": "int32",
-            "type": "integer"
+            "$ref": "#/definitions/Pairs"
         },
         "avatar": 
         {
@@ -90,7 +89,7 @@
             "description": "邮件",
             "type": "string"
         },
-         "ethnicGroup": 
+        "ethnicGroup": 
         {
             "description": "名族",
             "type": "string"
@@ -113,7 +112,7 @@
         "bloodType": 
         {
             "description": "血型",
-            "type": "string"
+            "$ref": "#/definitions/Pairs"
         },
         "officePhone": 
         {
@@ -172,17 +171,23 @@
         "oralEnLevel": 
         {
             "description": "英语口语水平",
-            "type": "string"
+            "$ref": "#/definitions/Pairs"
         },
         "writingEnLevel": 
         {
             "description": "英语写作水平",
-            "type": "string"
+            "$ref": "#/definitions/Pairs"
         },
         "socialSecurityNo": 
         {
             "description": "社保卡号",
             "type": "string"
+        },
+        "createTime": 
+        {
+            "description": "创建日期 时分秒",
+            "type": "string",
+            "format": "date-time"
         }
     }
 }

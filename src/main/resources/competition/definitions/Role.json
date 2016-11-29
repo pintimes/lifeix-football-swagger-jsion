@@ -21,7 +21,7 @@
         },
         "status": 
         {
-            "description": "0 待审核 1：通过 2：禁用",
+            "description": "0 注册用户1：待审核 2：审核通过3.角色禁用",
             "format": "int32",
             "type": "integer"
         },

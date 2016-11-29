@@ -1,0 +1,41 @@
+{
+	"summary": "裁委会审核赛事报名的裁判",
+	"tags": 
+	[
+		"apply"
+	],
+
+	"description": "裁委会审核赛事报名的裁判",
+
+	"consumes": 
+	[
+		"application/json"
+	],
+	
+	"parameters": 
+	[
+		{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+		{
+			"description": "true为审核通过，false为审核不通过",
+			"name": "approveFlag",
+			"type": "boolean",
+			"required": true,
+			"in": "query"
+		}
+	],
+
+	"responses": 
+	{
+		"200": 
+		{
+			"description": "审核完成"
+		}
+	},
+
+	"operationId": "verifyAppliedCompetitionReferee"
+}
