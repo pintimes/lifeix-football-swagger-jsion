@@ -26,8 +26,8 @@
             "in": "query"
         },
 		{
-            "description": "资料类型，1-裁判，不传则返回所有类型",
-            "name": "type",
+            "description": "资料主题ID，ms_1表示裁判体测，不传则返回所有",
+            "name": "subjectId",
             "type": "integer",
             "required": false,
             "in": "query"

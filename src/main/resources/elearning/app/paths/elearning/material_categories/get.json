@@ -12,7 +12,7 @@
     "parameters": 
     [
 		{
-            "description": "资料主题ID，ms_1表示裁判体侧",
+            "description": "资料主题ID，ms_1表示裁判体测",
             "name": "subjectId",
             "type": "string",
             "required": true,
