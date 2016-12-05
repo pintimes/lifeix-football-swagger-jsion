@@ -1,11 +1,11 @@
 {
-    "summary": "获取赛事详情",
+    "summary": "修改赛事",
     "tags": 
     [
         "competition"
     ],
 
-    "description": "获取赛事详情",
+    "description": "修改赛事",
     "parameters": 
     [
     	{
@@ -13,6 +13,16 @@
         },
         {
             "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Competition"
+            },
+            "description": "赛事对象 ",
+            "name": "competition",
+            "required": true,
+            "in": "body"
         }
     ],
 

@@ -19,6 +19,13 @@
             "in": "query"
         },
         {
+            "description": "是否进行中,默认true,true-未结束的赛事  false-全部赛事",
+            "name": "inProcess",
+            "type": "Boolean",
+            "required": false,
+            "in": "query"
+        },
+        {
             "description": "0:按赛事进行报名 1:按比赛进行报名",
             "name": "single",
             "type": "string",

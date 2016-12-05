@@ -1,0 +1,40 @@
+{
+    "summary": "获取唯一赛事列表",
+    "tags": 
+    [
+        "uccompetition"
+    ],
+
+    "description": "获取唯一赛事列表",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "description": "协会id",
+            "name": "assId",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/UniqueCompetition"
+                }
+            },
+            "description": "赛事列表"
+        }
+    },
+
+    "operationId": "getUniqueCompetitions"
+}

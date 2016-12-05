@@ -1,0 +1,36 @@
+{
+    "summary": "获取唯一赛事下的赛事列表",
+    "tags": 
+    [
+        "competition"
+    ],
+
+    "description": "获取唯一赛事下的赛事列表",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/uniqueCompetitionPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Competition"
+                }
+            },
+            "description": "赛事列表"
+        }
+    },
+
+    "operationId": "getCompetitions"
+}

@@ -1,0 +1,46 @@
+{
+    "summary": "创建唯一赛事（临时赛事）",
+    "tags": 
+    [
+        "uccompetition"
+    ],
+
+    "description": "创建唯一赛事（临时赛事）",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+     "consumes": 
+    [
+       
+       "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+   	   	{
+            "schema": 
+            {
+                "$ref": "#/definitions/UniqueCompetition"
+            },
+            "description": "唯一赛事 assId ucName 必填",
+            "name": "user",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "创建成功"
+        }
+    },
+
+    "operationId": "addUniqueCompetition"
+}

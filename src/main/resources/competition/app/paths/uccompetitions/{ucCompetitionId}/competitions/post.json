@@ -1,0 +1,50 @@
+{
+    "summary": "创建赛事",
+    "tags": 
+    [
+        "competition"
+    ],
+
+    "description": "创建赛事",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+     "consumes": 
+    [
+       
+       "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/uniqueCompetitionPath"
+        },
+   	   	{
+            "schema": 
+            {
+                "$ref": "#/definitions/Competition"
+            },
+            "description": "赛事中 assId 必填",
+            "name": "competition",
+            "required": true,
+            "in": "body"
+        }
+        
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "创建成功"
+        }
+    },
+
+    "operationId": "addUniqueCompetition"
+}

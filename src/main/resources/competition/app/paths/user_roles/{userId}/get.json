@@ -1,0 +1,36 @@
+{
+    "summary": "获取用户权限",
+    "tags": 
+    [
+        "role"
+    ],
+
+    "description": "获取用户权限",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/userPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Role"
+                }
+            },
+            "description": "用户权限列表"
+        }
+    },
+
+    "operationId": "getUserRole"
+}
