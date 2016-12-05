@@ -1,0 +1,36 @@
+{
+    "summary": "审批通过用户权限",
+    "tags": 
+    [
+        "role"
+    ],
+
+    "description": "审批通过用户权限",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/userPath"
+        },
+        {
+            "name": "roleId",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "权限id,参考constant下的接口"
+        }
+    ],
+
+   "responses": 
+    {
+        "200": 
+        {
+
+            "description": "审批通过"
+        }
+    },
+
+    "operationId": "approveUserRole"
+}

@@ -1,0 +1,71 @@
+{
+    "summary": "查看裁判列表信息",
+    "tags": 
+    [
+        "referee"
+    ],
+    "description": "查看裁判列表信息",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "name": "assIds",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "协会id 以,分隔"
+        },
+        {
+            "name": "grade",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "裁判级别"
+        },
+        {
+            "name": "category",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "类别 11人 8人 5人"
+        },
+        {
+            "name": "refereeName",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "裁判姓名 模糊查询"
+        },
+        {
+            "name": "startId",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "使用userId"
+        },
+        {
+            "name": "limit",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "查询多少条记录"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Referee"
+            },
+
+            "description": "Referee响应对象"
+        }
+    },
+
+    "operationId": "getReferees"
+}

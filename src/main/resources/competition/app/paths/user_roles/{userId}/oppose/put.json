@@ -1,0 +1,43 @@
+{
+    "summary": "审批不通过用户权限",
+    "tags": 
+    [
+        "role"
+    ],
+
+    "description": "审批不通过用户权限",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/userPath"
+        },
+        {
+            "name": "roleId",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "权限id,参考constant下的接口"
+        },
+        {
+            "name": "reason",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "不通过的原因"
+        }
+    ],
+
+   "responses": 
+    {
+        "200": 
+        {
+
+            "description": "审批不通过"
+        }
+    },
+
+    "operationId": "opposeUserRole"
+}
