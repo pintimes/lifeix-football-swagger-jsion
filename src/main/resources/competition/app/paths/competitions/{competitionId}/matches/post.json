@@ -23,6 +23,9 @@
             "$ref": "#/parameters/apiKeyYHeader"
         },
         {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
             "schema": 
             {
                 "$ref": "#/definitions/Match"

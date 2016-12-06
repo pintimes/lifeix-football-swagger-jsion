@@ -1,54 +1,41 @@
 {
-    "summary": "赛事裁判指派",
-    "tags": 
-    [
-        "assign"
-    ],
+	"summary": "裁委会指派裁判进入赛事裁判大名单",
+	"tags": 
+	[
+		"assign"
+	],
 
-    "description": "赛事裁判指派",
-    "produces": 
-    [
-         "application/json; charset=UTF-8"
-    ],
+	"description": "裁委会指派裁判进入赛事裁判大名单",
 
-    "consumes": 
-    [
-       
-       "application/json"
-    ],
-
-    "parameters": 
-    [
-    	{
+	"consumes": 
+	[
+		"application/json"
+	],
+	
+	"parameters": 
+	[
+		{
             "$ref": "#/parameters/apiKeyYHeader"
         },
         {
             "$ref": "#/parameters/competitionPath"
         },
-        {
-            "description": "1-主裁 2-助理裁判",
-            "name": "position",
-            "type": "integer",
-            "required": true,
-            "in": "query"
-        },
-        {
-            "description": "userId1,userId2",
-            "name": "userIds",
-            "type": "String",
-            "required": true,
-            "in": "query"
-        }
-    ],
+		{
+			"description": "以，分隔",
+			"name": "userIds",
+			"type": "string",
+			"required": true,
+			"in": "query"
+		}
+	],
 
-    "responses": 
-    {
-        "200": 
-        {
-            
-            "description": "指派成功"
-        }
-    },
+	"responses": 
+	{
+		"200": 
+		{
+			"description": "流程完成"
+		}
+	},
 
-    "operationId": "assignCompetitionReferees"
+	"operationId": "assignCompetitionReferees"
 }

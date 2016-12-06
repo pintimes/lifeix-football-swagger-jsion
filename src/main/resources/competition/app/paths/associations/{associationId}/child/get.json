@@ -11,7 +11,7 @@
             "$ref": "#/parameters/apiKeyYHeader"
         },
         {
-            "$ref": "#/parameters/assPath"
+            "$ref": "#/parameters/associationPath"
         }
     ],
 

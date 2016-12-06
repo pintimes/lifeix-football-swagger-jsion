@@ -46,5 +46,5 @@
         }
     },
 
-    "operationId": "addUniqueCompetition"
+    "operationId": "addCompetition"
 }

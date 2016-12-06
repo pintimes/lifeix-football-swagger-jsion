@@ -39,5 +39,5 @@
         }
     },
 
-    "operationId": "getCompetition"
+    "operationId": "updateCompetition"
 }

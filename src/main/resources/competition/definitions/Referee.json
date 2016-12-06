@@ -224,12 +224,12 @@
         "association": 
         {
             "description": "注册协会",
-            "$ref": "#/definitions/Associations"
+            "$ref": "#/definitions/Association"
         },
         "approvedAssociation": 
         {
             "description": "批准协会",
-            "$ref": "#/definitions/Associations"
+            "$ref": "#/definitions/Association"
         },
         "bjyhNo": 
         {

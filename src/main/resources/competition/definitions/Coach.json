@@ -1,5 +1,4 @@
 {
-   	"base":"User",
     "description": "教练",
     "type": "object",
     "properties": 

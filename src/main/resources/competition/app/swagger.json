@@ -55,15 +55,6 @@
             "required": true,
             "in": "path"
         },
-        "assPath": 
-        {
-            "description": "协会Id",
-            "name": "assId",
-            "format": "int64",
-            "type": "integer",
-            "required": true,
-            "in": "path"
-        },
         "jerseysPath": 
         {
             "description": "球衣Id",
@@ -76,7 +67,7 @@
 		"uniqueCompetitionPath": 
         {
             "description": "赛事的Id",
-            "name": "competitionId",
+            "name": "ucCompetitionId",
             "format": "int64",
             "type": "integer",
             "required": true,
@@ -86,6 +77,15 @@
         {
             "description": "赛事的Id",
             "name": "competitionId",
+            "format": "int64",
+            "type": "integer",
+            "required": true,
+            "in": "path"
+        },
+        "associationPath": 
+        {
+            "description": "协会Id",
+            "name": "associationId",
             "format": "int64",
             "type": "integer",
             "required": true,
