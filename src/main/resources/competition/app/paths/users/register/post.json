@@ -29,6 +29,14 @@
             "description": "验证码"
         },
         {
+            "name": "device",
+            "in": "query",
+            "type": "integer",
+            "format": "int32",
+            "required": false,
+            "description": "1-WEB 2-IOS 3-ANDROID"
+        },
+        {
             "name": "deviceId",
             "in": "query",
             "type": "string",
