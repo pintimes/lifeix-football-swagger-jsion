@@ -19,6 +19,11 @@
             "description": "名字：李铁",
             "type": "string"
         },
+        "nickName": 
+        {
+            "description": "昵称",
+            "type": "string"
+        },
         "password": 
         {
             "description": "密码",
