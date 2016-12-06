@@ -15,6 +15,12 @@
             "format": "int64",
             "type": "integer"
         },
+        "ucId": 
+        {
+            "description": "唯一赛事id",
+            "format": "int64",
+            "type": "integer"
+        },
         "competitionId": 
         {
             "description": "赛事id",

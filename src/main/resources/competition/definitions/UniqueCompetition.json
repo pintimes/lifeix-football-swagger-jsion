@@ -1,0 +1,56 @@
+{
+    "description": "唯一赛事",
+    "type": "object",
+    "properties": 
+    {
+       "id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "ucName": 
+        {
+            "description": "唯一赛事名称",
+            "type": "string"
+        },
+        "ucflag": 
+        {
+            "description": "唯一赛事标志",
+            "type": "string"
+        },
+        "establishedYear": 
+        {
+            "description": "创立年份",
+            "type": "string"
+        },
+       "assId": 
+        {
+            "description": "协会id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "assName": 
+        {
+            "description": "协会名称",
+            "type": "string"
+        },
+        "type": 
+        {
+            "description": "0：联赛 1：杯赛 2：其他",
+            "format": "int32",
+            "type": "integer"
+        },
+        "country": 
+        {
+            "description": "国家",
+            "type": "string"
+        },
+		"dataSource": 
+        {
+            "description": "数据来源",
+            "format": "int32",
+            "type": "integer"
+        }      
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "summary": "新增比赛",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "新增比赛",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+     "consumes": 
+    [
+       
+       "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Match"
+            },
+            "description": "比赛 其中ucId competitionId competitionName hostCompetitionTeamId awayCompetitionTeamId 必填",
+            "name": "user",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Match"
+            },
+
+            "description": "Match对象"
+        },
+        "401": 
+        {
+            "description": "未授权"
+        }
+    },
+
+    "operationId": "addMatch"
+}

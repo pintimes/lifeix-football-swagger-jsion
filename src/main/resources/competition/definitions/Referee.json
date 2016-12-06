@@ -265,6 +265,22 @@
         {
             "description": "近3年参加培训经历",
             "type": "string"
+        },
+        "position": 
+        {
+            "description": "位置",
+            "$ref": "#/definitions/Pairs"
+        },
+        "refereeApplyStatus": 
+        {
+            "description": "申请状态",
+            "$ref": "#/definitions/Pairs"
+        },
+        "roleStatus": 
+        {
+            "description": "权限状态",
+            "format": "int64",
+            "type": "integer"
         }
     }
 }
