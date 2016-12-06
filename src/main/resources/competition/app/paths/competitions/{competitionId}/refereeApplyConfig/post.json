@@ -1,0 +1,69 @@
+{
+    "summary": "新增赛事裁判报名要求",
+    "tags": 
+    [
+        "applyConfig"
+    ],
+
+    "description": "新增赛事裁判报名要求",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+     "consumes": 
+    [
+       
+       "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "description": "报名开始时间  yyyy-MM-dd'T'HH:mm:ss.SSSXXX   2016-11-28T12:00:00.000+08:00",
+            "name": "applyStartTime",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "报名结束时间  yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+            "name": "applyEndTime",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/CompetitionRefereeApplyConfig"
+            },
+            "description": "赛事裁判报名配置",
+            "name": "config",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/CompetitionRefereeApplyConfig"
+            },
+
+            "description": "CompetitionRefereeApplyConfig响应对象"
+        }
+        
+    },
+
+    "operationId": "addCompetitionRefereeApplyConfig"
+}
