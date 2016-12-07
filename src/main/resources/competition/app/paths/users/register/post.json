@@ -33,7 +33,7 @@
             "in": "query",
             "type": "integer",
             "format": "int32",
-            "required": false,
+            "required": true,
             "description": "1-WEB 2-IOS 3-ANDROID"
         },
         {
