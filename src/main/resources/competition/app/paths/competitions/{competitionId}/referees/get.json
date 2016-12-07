@@ -1,0 +1,63 @@
+{
+    "summary": "获取赛事报名裁判",
+    "tags": 
+    [
+        "competition"
+    ],
+
+    "description": "获取赛事报名裁判",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "name": "position",
+            "in": "query",
+            "type": "integer",
+            "format": "int32",
+            "required": false,
+            "description": "职位 1-主裁判 2-助理裁判"
+        },
+        {
+            "name": "status",
+            "in": "query",
+            "type": "integer",
+            "format": "int32",
+            "required": false,
+            "description": "角色状态 0-初始化 1-审核中 2-通过"
+        },
+        {
+            "name": "startId",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "开始查询id"
+        },
+        {
+            "name": "limit",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "查询多少条记录"
+        }
+    ],
+
+   "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Referee"
+            },
+
+            "description": "Referee响应对象"
+        }
+    },
+
+    "operationId": "getCompetitionReferees"
+}
