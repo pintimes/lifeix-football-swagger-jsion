@@ -48,6 +48,11 @@
             "type": "string",
             "format": "date-time"
         },
+        "venues": 
+        {
+            "description": "比赛场地",
+            "type": "string"
+        },
         "flag": 
         {
             "description": "赛事标志",
