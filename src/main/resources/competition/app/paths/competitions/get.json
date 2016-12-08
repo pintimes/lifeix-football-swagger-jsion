@@ -32,7 +32,7 @@
             "required": false,
             "in": "query"
         },
-         {
+        {
             "description": "开始查询id",
             "name": "startId",
             "format": "int64",
