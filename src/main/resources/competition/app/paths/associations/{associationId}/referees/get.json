@@ -1,0 +1,52 @@
+{
+    "summary": "获取协会下裁判列表",
+    "tags": 
+    [
+        "associations"
+    ],
+
+    "description": "获取协会下裁判列表",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/associationPath"
+        },
+        {
+            "description": "开始查询id",
+            "name": "startId",
+            "format": "int64",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "限制数目",
+            "name": "limit",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Referee"
+                }
+            },
+            "description": "裁判列表"
+        }
+    },
+
+    "operationId": "getAssociationReferees"
+}
