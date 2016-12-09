@@ -1,0 +1,61 @@
+{
+	"summary": "忘记密码后重置密码",
+	"tags": 
+	[
+		"user"
+	],
+
+	"description": "忘记密码后重置密码",
+
+	"consumes": 
+	[
+		"application/json"
+	],
+	
+	"parameters": 
+	[
+		{
+			"description": "手机号码",
+			"name": "phoneNo",
+			"type": "string",
+			"required": true,
+			"in": "query"
+		},
+		
+		{
+			"description": "验证码",
+			"name": "smsCode",
+			"type": "string",
+			"required": true,
+			"in": "query"
+		},
+		{
+            "schema": 
+            {
+                "$ref": "#/definitions/User"
+            },
+            "description": "用户密码在用户对象中传递",
+            "name": "user",
+            "required": true,
+            "in": "body"
+        }
+	],
+
+	"responses": 
+	{
+		"200": 
+		{
+			"description": "密码重置成功"
+		},
+        "400": 
+        {
+            "description": "密码不能为空 /手机号不能为空 /手机号格式不正确 / 验证码不能为空 / 验证码不正确 /密码重置失败"
+        },
+        "404": 
+        {
+            "description": "用户不存在"
+        }
+	},
+
+	"operationId": "forgetAndResetPassword"
+}
