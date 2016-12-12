@@ -12,6 +12,16 @@
             "description": "主题名称",
             "type": "string"
         },
+        "image": 
+        {
+            "description": "主题背景图，相对路径，需要拼接七牛文件地址前缀",
+            "type": "string"
+        },
+        "desc": 
+        {
+            "description": "主题描述",
+            "type": "string"
+        },
         "latestMaterials": 
         {
             "description": "最新的N条资料",
