@@ -1,11 +1,11 @@
 {
-    "summary": "验证码校验",
+    "summary": "检查注册验证码是否正确",
     "tags": 
     [
         "smsCode"
     ],
 
-    "description": "验证码校验",
+    "description": "检查注册验证码是否正确",
     "produces": 
     [
          "application/json; charset=UTF-8"
@@ -39,9 +39,13 @@
     {
         "200": 
         {
-            "description": "验证成功"
+            "description": "注册验证码正确"
+        },
+        "400": 
+        {
+            "description": "手机号不能为空 / 手机号格式不正确 / 验证码不能为空 / 验证码不正确"
         }
     },
 
-    "operationId": "validateSmsCode"
+    "operationId": "checkRegisterSmsCode"
 }

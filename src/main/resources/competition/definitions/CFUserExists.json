@@ -1,0 +1,12 @@
+{
+    "description": "足球网用户是否存在",
+    "type": "object",
+    "properties": 
+    {
+    	"cfUser": 
+        {
+            "description": "true：已经是c-f的用户，false：不是c-f的用户",
+            "type": "boolean"
+        }
+    }
+}

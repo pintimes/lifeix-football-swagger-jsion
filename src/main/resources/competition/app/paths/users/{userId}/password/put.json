@@ -17,6 +17,9 @@
 		{
             "$ref": "#/parameters/apiKeyYHeader"
         },
+        {
+            "$ref": "#/parameters/userPath"
+        }
 		{
 			"description": "手机号码",
 			"name": "phoneNo",
@@ -24,7 +27,6 @@
 			"required": true,
 			"in": "query"
 		},
-		
 		{
 			"description": "验证码",
 			"name": "smsCode",
@@ -49,7 +51,15 @@
 		"200": 
 		{
 			"description": "密码修改成功"
-		}
+		},
+        "400": 
+        {
+            "description": "密码不能为空 / 手机号不能为空 / 手机号格式不正确 / 验证码不能为空 / 验证码不正确 / 密码修改失败"
+        },
+        "404": 
+        {
+            "description": "用户不存在"
+        }
 	},
 
 	"operationId": "updatePassword"
