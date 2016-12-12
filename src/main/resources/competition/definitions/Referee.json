@@ -183,12 +183,17 @@
         },
         "category": 
         {
-            "description": "执法人制：0-11人制， 1-8人制， 2-5人制",
+            "description": "裁判类别-参考 /constant下接口",
             "$ref": "#/definitions/Pairs"
         },
         "grade": 
         {
-            "description": "裁判员等级：0-见习，1-后备力量，2-国家三级，3-国家二级，4-国家一级，5-国际级助理，6-国际级",
+            "description": "裁判级别-参考 /constant下接口",
+            "$ref": "#/definitions/Pairs"
+        },
+        "instructorGrade": 
+        {
+            "description": "裁判讲师级别-参考 /constant下接口",
             "$ref": "#/definitions/Pairs"
         },
         "curGradeYear": 
@@ -199,11 +204,6 @@
         "approvalYear": 
         {
             "description": "审批年份",
-            "type": "string"
-        },
-        "availableTime": 
-        {
-            "description": "可执法时段",
             "type": "string"
         },
         "approvedTime": 

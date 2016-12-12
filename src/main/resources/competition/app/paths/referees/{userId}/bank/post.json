@@ -1,0 +1,48 @@
+{
+    "summary": "裁判提交或修改银行信息",
+    "tags": 
+    [
+        "referee"
+    ],
+
+    "description": "裁判提交或修改银行信息",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/userPath"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Bank"
+            },
+            "description": "裁判银行信息",
+            "name": "bank",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "提交或修改成功"
+        }
+    },
+
+    "operationId": "saveBank"
+}
