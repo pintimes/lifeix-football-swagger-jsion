@@ -1,0 +1,33 @@
+{
+    "description": "银行卡信息",
+    "type": "object",
+    "properties": 
+    {
+    	"id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "userId": 
+        {
+            "description": "中国足球网用户id",
+            "format": "int64",
+            "type": "integer"
+        },
+		"name": 
+        {
+            "description": "名字：李铁",
+            "type": "string"
+        },
+        "bankName": 
+        {
+            "description": "银行名称",
+            "type": "string"
+        },
+        "cardNo": {
+            "description": "卡号 ",
+            "type": "string"
+        }
+    }
+}
