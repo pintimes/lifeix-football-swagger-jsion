@@ -1,0 +1,49 @@
+{
+    "summary": "删除赛事资源文件",
+    "tags": 
+    [
+        "competition"
+    ],
+
+    "description": "根据competitionId删除赛事资源文件",
+    "parameters": 
+    [
+       {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+			"description": "true为删除 默认不删除 false",
+			"name": "deleteRule",
+			"type": "boolean",
+			"required": false,
+			"in": "query"
+		},
+		{
+			"description": "true为删除 默认不删除 false",
+			"name": "deleteCommission",
+			"type": "boolean",
+			"required": false,
+			"in": "query"
+		},
+		{
+			"description": "true为删除 默认不删除 false",
+			"name": "deletePunishment",
+			"type": "boolean",
+			"required": false,
+			"in": "query"
+		}
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "删除成功"
+        }
+    },
+
+    "operationId": "deleteCompetitionResources"
+}
