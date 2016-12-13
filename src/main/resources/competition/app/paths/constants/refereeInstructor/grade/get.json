@@ -1,0 +1,30 @@
+{
+    "summary": "获取裁判讲师级别",
+    "tags": 
+    [
+        "constants"
+    ],
+
+    "description": "获取裁判讲师级别",
+    "parameters": 
+    [
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Pairs"
+                }
+            },
+            "description": "裁判讲师级别"
+        }
+    },
+
+    "operationId": "getRefereeInstructorGrades"
+}
