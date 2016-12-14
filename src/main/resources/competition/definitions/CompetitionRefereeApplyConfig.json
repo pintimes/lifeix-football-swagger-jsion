@@ -14,6 +14,12 @@
             "description": "赛事名称",
             "type": "string"
         },
+        "single": 
+        {
+            "description": "0-报名赛事  1-报名比赛",
+            "format": "int32",
+            "type": "integer"
+        },
         "position": 
         {
             "description": "申请职位, 0-裁判监督，1-主裁判，2-助理裁判，3-第四官员",
