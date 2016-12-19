@@ -41,6 +41,10 @@
     {
         "200": 
         {
+            "schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
             "description": "删除成功"
         }
     },

@@ -38,7 +38,10 @@
     {
         "200": 
         {
-
+			"schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
             "description": "裁判指派成功"
         }
         

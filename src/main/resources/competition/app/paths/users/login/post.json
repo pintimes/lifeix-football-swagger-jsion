@@ -27,6 +27,13 @@
             "description": "登录标记"
         },
         {
+            "name": "device",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "设备来源  1-web 2-iso 3-android"
+        },
+        {
             "name": "deviceId",
             "in": "query",
             "type": "string",

@@ -1,0 +1,18 @@
+{
+    "description": "成功对象",
+    "type": "object",
+    "properties": 
+    {
+        "code": 
+        {
+            "description": "HTTP code",
+            "format": "int32",
+            "type": "integer"
+        },
+        "message": 
+        {
+            "description": "消息",
+            "type": "string"
+        }
+    }
+}

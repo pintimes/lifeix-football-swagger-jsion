@@ -40,6 +40,10 @@
 	{
 		"200": 
 		{
+			"schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
 			"description": "流程完成"
 		}
 	},

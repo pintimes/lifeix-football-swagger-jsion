@@ -33,6 +33,10 @@
 	{
 		"200": 
 		{
+			"schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },    
 			"description": "审核完成"
 		}
 	},

@@ -32,10 +32,10 @@
         {
             "schema": 
             {
-                "$ref": "#/definitions/Competition"
+                "$ref": "#/definitions/SuccResponse"
             },
 
-            "description": "Competition响应对象"
+            "description": "SuccResponse响应对象"
         }
     },
 
