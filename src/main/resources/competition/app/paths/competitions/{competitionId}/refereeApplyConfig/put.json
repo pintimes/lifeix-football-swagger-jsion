@@ -1,0 +1,57 @@
+{
+    "summary": "修改赛事",
+    "tags": 
+    [
+        "applyConfig"
+    ],
+
+    "description": "修改赛事",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "description": "报名开始时间  yyyy-MM-dd'T'HH:mm:ss.SSSXXX   2016-11-28T12:00:00.000+08:00",
+            "name": "applyStartTime",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "报名结束时间  yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+            "name": "applyEndTime",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/CompetitionRefereeApplyConfig"
+            },
+            "description": "赛事裁判报名配置",
+            "name": "config",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+   "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+
+            "description": "SuccResponse响应对象"
+        }
+    },
+
+    "operationId": "updateCompetitionRefereeApplyConfig"
+}
