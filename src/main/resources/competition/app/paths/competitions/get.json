@@ -14,7 +14,8 @@
         {
             "description": "协会id",
             "name": "assId",
-            "type": "string",
+            "format": "int64",
+            "type": "integer",
             "required": false,
             "in": "query"
         },
