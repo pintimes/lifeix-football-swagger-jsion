@@ -1,0 +1,55 @@
+{
+    "summary": "将比赛分配给裁判长",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "将比赛分配给裁判长",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+     "consumes": 
+    [
+       
+       "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "description": "用户id",
+            "name": "userId",
+            "format": "int64",
+            "type": "integer",
+            "required": true,
+            "in": "query"
+    	},
+    	{
+	        "description": "比赛id- matchId1,matchId2",
+	        "name": "matchIds",
+	        "type": "string",
+	        "required": true,
+	        "in": "query"
+   		}
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+            "description": "提交裁判信息成功"
+        }
+    },
+
+    "operationId": "assignMatchSuperVisor"
+}
