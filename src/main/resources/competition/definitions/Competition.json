@@ -91,6 +91,28 @@
             "description": "处罚办法",
             "$ref": "#/definitions/Resource"
         },
+        "groupTableId": 
+        {
+            "description": "分组表id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "groupTable": 
+        {
+            "description": "分组表",
+            "$ref": "#/definitions/Resource"
+        },
+        "scheduleTableId": 
+        {
+            "description": "处罚办法id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "scheduleTable": 
+        {
+            "description": "赛程表",
+            "$ref": "#/definitions/Resource"
+        },
         "category": 
         {
             "description": "0:11人制 1:8人制 2:5人制",
