@@ -31,6 +31,14 @@
             "in": "query"
     	},
     	{
+            "description": "赛事id",
+            "name": "competitionId",
+            "format": "int64",
+            "type": "integer",
+            "required": true,
+            "in": "query"
+    	},
+    	{
 	        "description": "比赛id- matchId1,matchId2",
 	        "name": "matchIds",
 	        "type": "string",

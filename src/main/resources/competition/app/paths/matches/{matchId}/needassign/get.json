@@ -1,0 +1,33 @@
+{
+    "summary": "获取需要指派单场比赛详情",
+    "tags": 
+    [
+        "assign"
+    ],
+
+    "description": "获取单场比赛详情",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/matchPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Match"
+            },
+
+            "description": "比赛详情"
+        }
+    },
+
+    "operationId": "getNeedAssignMatch"
+}
