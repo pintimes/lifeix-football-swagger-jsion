@@ -20,8 +20,8 @@
             "in": "query"
         },
         {
-            "description": "是否进行中,默认true,true-未结束的赛事  false-全部赛事",
-            "name": "inProcess",
+            "description": "ios-true web-不传",
+            "name": "releaseShedule",
             "type": "boolean",
             "required": false,
             "in": "query"

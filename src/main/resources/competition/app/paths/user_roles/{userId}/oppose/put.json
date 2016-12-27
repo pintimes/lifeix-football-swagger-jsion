@@ -34,7 +34,10 @@
     {
         "200": 
         {
-
+		 	"schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
             "description": "审批不通过"
         }
     },

@@ -31,10 +31,14 @@
         {
             "schema": 
             {
-                "$ref": "#/definitions/CompetitionRefereeApplyConfig"
+            	"type": "array",
+		        "items": 
+		        {
+		            "$ref": "#/definitions/CompetitionRefereeApplyConfig"
+		        }      
             },
             "description": "赛事裁判报名配置",
-            "name": "config",
+            "name": "configs",
             "required": true,
             "in": "body"
         }
