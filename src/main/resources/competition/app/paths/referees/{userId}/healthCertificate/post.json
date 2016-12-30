@@ -1,11 +1,11 @@
 {
-    "summary": "裁判提交或修改银行信息",
+    "summary": "裁判提交或修改健康证明",
     "tags": 
     [
         "referee"
     ],
 
-    "description": "裁判提交或修改银行信息",
+    "description": "裁判提交或修改健康证明",
     "produces": 
     [
         "application/json"
@@ -25,11 +25,11 @@
            		"type": "array",
 		        "items": 
 		        {
-                	"$ref": "#/definitions/Bank"
+                	"$ref": "#/definitions/Resource"
 		        }         
             },
-            "description": "裁判银行信息",
-            "name": "bank",
+            "description": "健康证明照片",
+            "name": "healthCertificates",
             "required": true,
             "in": "body"
         }
@@ -54,5 +54,5 @@
         }
     },
 
-    "operationId": "addOrUpateRefereeBank"
+    "operationId": "addOrUpateRefereeHealthCertificate"
 }
