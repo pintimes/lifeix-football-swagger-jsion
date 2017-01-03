@@ -178,7 +178,7 @@
         },
         "category": 
         {
-            "description": "裁判类别-参考 /constant下接口",
+            "description": "裁判类别(可执法人制)-参考 /constant下接口",
             "$ref": "#/definitions/Pairs"
         },
         "grade": 
