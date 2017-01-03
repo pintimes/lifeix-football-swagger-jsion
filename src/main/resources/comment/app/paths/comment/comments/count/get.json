@@ -1,0 +1,79 @@
+{
+    "summary": "获取主题对应的评论数目",
+    "tags": 
+    [
+        "comments"
+    ],
+
+    "consumes": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "description": "比如获得5条资讯对应的评论数",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "description": "主题类型：post,decision",
+            "name": "subjectType",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+
+        {
+            "description": "目标Id列表，以‘,’分割",
+            "name": "subjecttIds",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "Count对象，key为subjectId",
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Count"
+                }
+            }
+        },
+
+        "400": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "业务错误消息"
+        },
+
+        "401": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "未授权错误消息"
+        }
+    },
+
+    "operationId": "count"
+}

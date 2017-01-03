@@ -73,6 +73,11 @@
             "description": "内容:消息的详情,选填项",
             "type": "string"
         },
+        
+        "action": 
+        {
+            "$ref": "#/definitions/OperAction"
+        },
 
         "params": 
         {

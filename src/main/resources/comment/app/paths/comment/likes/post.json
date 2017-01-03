@@ -1,19 +1,19 @@
 {
-    "summary": "删除Comment",
+    "summary": "点赞",
     "tags": 
     [
-        "comments"
+        "like"
     ],
 
-    "description": "删除Comment：只有管理员/所属用户才有权限",
-    "consumes": 
-    [
-        "application/json; charset=UTF-8"
-    ],
-
+    "description": "登录用户才能点赞，可以对评论或者回复点赞，用户对目标只能点赞一次",
     "produces": 
     [
         "application/json; charset=UTF-8"
+    ],
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
     ],
 
     "parameters": 
@@ -23,7 +23,11 @@
         },
 
         {
-            "$ref": "#/parameters/commentIdPath"
+            "name": "commentId",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "评论Id"
         }
     ],
 
@@ -35,8 +39,7 @@
             {
                 "$ref": "#/definitions/Succ"
             },
-
-            "description": "只要调用就返回成功"
+            "description": "点赞成功，不管后台返回什么前端都是成功"
         },
 
         "401": 
@@ -50,5 +53,5 @@
         }
     },
 
-    "operationId": "deleteComment"
+    "operationId": "addLike"
 }

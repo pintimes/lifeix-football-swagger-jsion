@@ -1,0 +1,37 @@
+{
+    "description": "Label",
+    "properties": 
+    {
+        "type": 
+        {
+            "description": "当前消息的类型：competition，post,……",
+            "type": "string"
+        },
+
+        "targetId": 
+        {
+            "description": "目标Id，比如notifyId,可能为空",
+            "type": "string"
+        },
+
+        "targetTitle": 
+        {
+            "description": "目标标题,比如资讯标题,可能为空",
+            "type": "string"
+        },
+
+        "url": 
+        {
+            "description": "资源地址，如果url不为空的时候则可跳转到界面",
+            "type": "string"
+        },
+        
+        "params": 
+        {
+            "description": "JSON形式的额外参数，根据项目不同有不同的需求",
+            "type": "string"
+        }
+    },
+
+    "type": "object"
+}

@@ -1,11 +1,11 @@
 {
-    "summary": "删除Comment",
+    "summary": "取消赞",
     "tags": 
     [
-        "comments"
+        "like"
     ],
 
-    "description": "删除Comment：只有管理员/所属用户才有权限",
+    "description": "取消赞",
     "consumes": 
     [
         "application/json; charset=UTF-8"
@@ -23,7 +23,11 @@
         },
 
         {
-            "$ref": "#/parameters/commentIdPath"
+            "name": "commentId",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "评论Id"
         }
     ],
 
@@ -36,7 +40,7 @@
                 "$ref": "#/definitions/Succ"
             },
 
-            "description": "只要调用就返回成功"
+            "description": "不论删除成功"
         },
 
         "401": 
@@ -50,5 +54,5 @@
         }
     },
 
-    "operationId": "deleteComment"
+    "operationId": "deleteLike"
 }

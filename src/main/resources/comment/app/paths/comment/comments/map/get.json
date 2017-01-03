@@ -1,5 +1,5 @@
 {
-    "summary": "获取评论",
+    "summary": "获取列表评论",
     "tags": 
     [
         "comments"
@@ -15,7 +15,7 @@
         "application/json; charset=UTF-8"
     ],
 
-    "description": "获取subject对应的评论列表（比如资讯<大连对恒大>），评论默认按时间倒叙排列",
+    "description": "返回一种类型的评论列表 比如你来判的列表中每一个选项都需要三个评论",
     "parameters": 
     [
         {
@@ -23,7 +23,7 @@
         },
 
         {
-            "description": "主题类型：post,decision",
+            "description": "主题类型",
             "name": "subjectType",
             "type": "string",
             "required": true,
@@ -31,8 +31,8 @@
         },
 
         {
-            "description": "目标Id:比如postid",
-            "name": "subjecttId",
+            "description": "目标Id列表，以‘,’分割",
+            "name": "subjecttIds",
             "type": "string",
             "required": true,
             "in": "query"
@@ -43,30 +43,7 @@
             "in": "query",
             "format": "int32",
             "type": "integer",
-            "description": "每页数目，默认是每页10条"
-        },
-
-        {
-            "name": "date",
-            "in": "query",
-            "format": "date-time",
-            "type": "string",
-            "description": "如果查最新评论不传即可；如果是分页查询则需将前一页最后一条记录的时间传入，通过时间定位"
-        },
-
-        {
-            "name": "containReply",
-            "in": "query",
-            "type": "boolean",
-            "description": "是否包含回复，默认不包含"
-        },
-
-        {
-            "name": "replyLimit",
-            "in": "query",
-            "format": "int32",
-            "type": "integer",
-            "description": "回复的数目，默认是每页4条"
+            "description": "每页数目，默认是每页20条"
         }
     ],
 
@@ -106,5 +83,5 @@
         }
     },
 
-    "operationId": "getSubjectComments"
+    "operationId": "listCommentsByMutiSubjects"
 }

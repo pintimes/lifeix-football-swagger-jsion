@@ -1,21 +1,21 @@
 {
-    "summary": "获得单个news",
+    "summary": "获取单个Post",
     "tags": 
     [
-        "news"
+        "posts"
     ],
-
+    
 	"consumes": 
     [
-        "application/x-www-form-urlencoded"
+        "application/json; charset=UTF-8"
     ],
     
     "produces": 
     [
         "application/json; charset=UTF-8"
     ],
-	
-    "description": "根据id获取单个News详情",
+    
+    "description": "根据Id获取单个Post对象",
     "parameters": 
     [
         {
@@ -23,7 +23,7 @@
         },
 
         {
-            "$ref": "#/parameters/newsPath"
+            "$ref": "#/parameters/postPath"
         }
     ],
 
@@ -33,12 +33,12 @@
         {
             "schema": 
             {
-                "$ref": "#/definitions/News"
+                "$ref": "#/definitions/Post"
             },
 
-            "description": "News对象"
+            "description": "Post对象"
         }
     },
 
-    "operationId": "getNewsDetail"
+    "operationId": "getPost"
 }

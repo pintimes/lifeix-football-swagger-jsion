@@ -1,11 +1,11 @@
 {
-    "summary": "添加评论",
+    "summary": "添加回复",
     "tags": 
     [
-        "comments"
+        "replies"
     ],
 
-    "description": "用户评论，可以对任意类型的target进行评论",
+    "description": "登录之后才能回复，能够回复自己",
     "produces": 
     [
         "application/json; charset=UTF-8"
@@ -23,19 +23,19 @@
         },
 
         {
-            "name": "subjectType",
+            "name": "commentId",
             "in": "formData",
             "type": "string",
             "required": true,
-            "description": "主题类型：资讯 post,你来判 decision"
+            "description": "评论Id"
         },
-
-        {
-            "name": "subjectId",
+        
+         {
+            "name": "replyId",
             "in": "formData",
             "type": "string",
             "required": true,
-            "description": "targetId：比如postId,decisionId"
+            "description": "回复Id"
         },
 
         {
@@ -50,8 +50,8 @@
             "name": "content",
             "in": "formData",
             "type": "string",
-            "required": false,
-            "description": "评论内容"
+            "required": true,
+            "description": "回复内容"
         }
     ],
 
@@ -61,10 +61,10 @@
         {
             "schema": 
             {
-                "$ref": "#/definitions/Comment"
+                "$ref": "#/definitions/Reply"
             },
 
-            "description": "Comment对象"
+            "description": "Reply对象"
         },
 
         "400": 
@@ -88,5 +88,5 @@
         }
     },
 
-    "operationId": "addComment"
+    "operationId": "addReply"
 }

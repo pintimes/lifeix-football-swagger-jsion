@@ -1,0 +1,44 @@
+{
+    "summary": "读取消息",
+    "tags": 
+    [
+        "messages"
+    ],
+
+    "description": "调用此接口可以将msg设为已读",
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "description": "Id列表,以','分割",
+            "name": "ids",
+            "type": "string",
+            "required": true,
+            "in": "formData"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+
+            "description": "成功"
+        }
+    },
+
+    "operationId": "readMessage"
+}
