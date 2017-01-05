@@ -160,8 +160,8 @@
         },
         "competitionApplyStatus": 
         {
-            "description": " true-开放状态 false-关闭状态",
-            "type": "boolean",
+            "description": "取name作为显示",
+            "$ref": "#/definitions/Pairs"
         },
         "minRefereeGrade": 
         {
