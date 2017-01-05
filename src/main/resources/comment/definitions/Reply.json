@@ -1,5 +1,5 @@
 {
-    "description": "评论",
+    "description": "回复",
     "properties": 
     {
         "id": 
@@ -63,22 +63,16 @@
             "format": "date-time"
         },
 
-        "replies": 
+        "commentId": 
         {
-            "items": 
-            {
-                "$ref": "#/definitions/Reply"
-            },
-
-            "description": "回复",
-            "type": "array"
+            "description": "评论ID",
+            "type": "string"
         },
 
-        "replySum": 
+        "targetUser": 
         {
-            "description": "回复数目",
-            "type": "integer",
-            "format": "int64"
+            "$ref": "#/definitions/User",
+            "description": "被评论者"
         }
     },
 

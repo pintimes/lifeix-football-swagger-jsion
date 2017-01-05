@@ -29,6 +29,14 @@
             "type": "string",
             "required": true,
             "description": "应用：比如c-f,competition"
+        },
+        
+         {
+            "name": "categoryId",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "类目Id，如果传入categoryId，则返回categoryId={categoryId}的未读消息数目"
         }
     ],
 
@@ -38,11 +46,10 @@
         {
             "schema": 
             {
-                "format": "int64",
-                "type": "integer"
+                "$ref": "#/definitions/CountInfo"
             },
 
-            "description": "未读数目，如果参数错误直接返回0"
+            "description": "MsgCountInfo对象"
         }
     },
 

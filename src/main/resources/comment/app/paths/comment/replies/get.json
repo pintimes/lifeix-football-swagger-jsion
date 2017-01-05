@@ -1,8 +1,8 @@
 {
-    "summary": "获取评论",
+    "summary": "获取评论的回复列表",
     "tags": 
     [
-        "comments"
+        "replies"
     ],
 
     "consumes": 
@@ -15,7 +15,7 @@
         "application/json; charset=UTF-8"
     ],
 
-    "description": "获取subject对应的评论列表（比如资讯<大连对恒大>），评论默认按时间倒叙排列",
+    "description": "获取回复列表，默认按时间升序排列",
     "parameters": 
     [
         {
@@ -23,16 +23,8 @@
         },
 
         {
-            "description": "主题类型：post,decision",
-            "name": "subjectType",
-            "type": "string",
-            "required": true,
-            "in": "query"
-        },
-
-        {
-            "description": "目标Id:比如postid",
-            "name": "subjecttId",
+            "description": "评论Id",
+            "name": "commentId",
             "type": "string",
             "required": true,
             "in": "query"
@@ -51,22 +43,7 @@
             "in": "query",
             "format": "date-time",
             "type": "string",
-            "description": "如果查最新评论不传即可；如果是分页查询则需将前一页最后一条记录的时间传入，通过时间定位"
-        },
-
-        {
-            "name": "containReply",
-            "in": "query",
-            "type": "boolean",
-            "description": "是否包含回复，默认不包含"
-        },
-
-        {
-            "name": "replyLimit",
-            "in": "query",
-            "format": "int32",
-            "type": "integer",
-            "description": "回复的数目，默认是每页4条"
+            "description": "如果查最老的回复不传即可；如果是分页查询则需将前一页最后一条记录的时间传入，通过时间定位"
         }
     ],
 
@@ -74,13 +51,13 @@
     {
         "200": 
         {
-            "description": "Comment对象",
+            "description": "Reply对象",
             "schema": 
             {
                 "type": "array",
                 "items": 
                 {
-                    "$ref": "#/definitions/Comment"
+                    "$ref": "#/definitions/Reply"
                 }
             }
         },
@@ -106,5 +83,5 @@
         }
     },
 
-    "operationId": "getSubjectComments"
+    "operationId": "listReplies"
 }

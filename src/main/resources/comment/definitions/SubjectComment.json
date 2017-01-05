@@ -1,0 +1,31 @@
+{
+    "description": "主题评论以及点赞summary",
+    "properties": 
+    {
+        "commentNum": 
+        {
+            "description": "评论数",
+            "type": "integer",
+            "format": "int64"
+        },
+
+        "subjectId": 
+        {
+            "description": "主题ID",
+            "type": "string"
+        },
+
+        "replies": 
+        {
+            "items": 
+            {
+                "$ref": "#/definitions/Comment"
+            },
+
+            "description": "评论",
+            "type": "array"
+        }
+    },
+
+    "type": "object"
+}

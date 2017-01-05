@@ -1,11 +1,11 @@
 {
-    "summary": "删除Comment",
+    "summary": "删除回复",
     "tags": 
     [
-        "comments"
+        "replies"
     ],
 
-    "description": "删除Comment：只有管理员/所属用户才有权限",
+    "description": "删除回复：只有管理员/所属用户才有权限",
     "consumes": 
     [
         "application/json; charset=UTF-8"
@@ -23,7 +23,7 @@
         },
 
         {
-            "$ref": "#/parameters/commentIdPath"
+            "$ref": "#/parameters/replyPath"
         }
     ],
 
@@ -36,7 +36,17 @@
                 "$ref": "#/definitions/Succ"
             },
 
-            "description": "只要调用就返回成功"
+            "description": "删除成功"
+        },
+
+        "400": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "业务错误消息"
         },
 
         "401": 
@@ -50,5 +60,5 @@
         }
     },
 
-    "operationId": "deleteComment"
+    "operationId": "deleteReply"
 }
