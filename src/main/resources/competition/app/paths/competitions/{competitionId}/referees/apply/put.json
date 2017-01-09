@@ -20,6 +20,14 @@
         {
             "$ref": "#/parameters/competitionPath"
         },
+        {
+            "name": "userId",
+            "in": "query",
+            "type": "integer",
+            "format": "int64",
+            "required": true,
+            "description": "要审批的用户id"
+        },
 		{
 			"description": "true为审核通过，false为审核不通过",
 			"name": "approveFlag",
