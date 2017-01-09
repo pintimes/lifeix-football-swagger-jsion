@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.net.MalformedURLException;
 
 import com.venizeng.swagger.read.FileUtil;
 
@@ -26,87 +26,64 @@ import jcifs.smb.SmbSession;
  */
 public class GenerateRemotes {
 
-	private static String SMBDIR = "smb://192.168.50.199/立方网/cfootball/football-api/";
-	// private static String SMBDIR = "smb://root:Lifeix2016@192.168.1.18";
-	private NtlmPasswordAuthentication auth = null;
+	// private static String SMBDIR =
+	// "smb://192.168.50.199/立方网/cfootball/football-api/";
+	private static String SMBDIR = "smb://192.168.1.17/fb/api/";
 
 	public static void main(String[] args) throws Exception {
 		GenerateRemotes generateRemotes = new GenerateRemotes();
-		generateRemotes.init();
-		generateRemotes.generateRemote(new File("swagger/comment.json"));
-		// generateAll();
+		generateRemotes.process();
 	}
 
-	private void init() throws Exception {
-		
-		auth = new NtlmPasswordAuthentication("192.168.50.199", "lifeix", "lifeix"); // 先登录验证
-		InetAddress ip = InetAddress.getByName("192.168.50.199");
+	private void process() throws Exception {
+		/**
+		 * 登录
+		 */
+		NtlmPasswordAuthentication auth = new NtlmPasswordAuthentication("", "football", "Lifeix2016"); // 先登录验证
+		InetAddress ip = InetAddress.getByName("192.168.1.17");
 		UniAddress myDomain = new UniAddress(ip);
 		SmbSession.logon(myDomain, auth);
-	}
+		System.setProperty("jcifs.smb.client.dfs.disabled", "true");
 
-	private void generateAll() {
 		File swaggerDir = new File("swagger/");
 		File[] files = swaggerDir.listFiles();
 		for (File swaggerFile : files) {
-			generateRemote(swaggerFile);
-		}
-	}
-
-	private void generateRemote(File swaggerFile) {
-		String fileName = FileUtil.getFileName(swaggerFile);
-		/**
-		 * 生成html
-		 */
-		String htmlRoot = "d:/out/" + fileName;
-		SwaggerCodegen.main(new String[] { "generate", "-i", swaggerFile.getAbsolutePath(), "-l", "html", "-o", "d:/out/" + fileName });
-		/**
-		 * 删除remote文件夹
-		 */
-		String remoteDir = SMBDIR + fileName + "/";
-		deleteSMB(remoteDir);
-		/**
-		 * 写入html
-		 */
-		writeSMB(remoteDir, new File(htmlRoot + "/index.html"));
-		/**
-		 * 写入swagger
-		 */
-		writeSMB(remoteDir, swaggerFile);
-	}
-
-	private void deleteSMB(String dirpath) {
-		try {
-			SmbFile remoteFile = getRemoteFile(dirpath);
-			remoteFile.connect(); // 尝试连接
-
-			SmbFile[] files = remoteFile.listFiles();
-			for (SmbFile smbFile : files) {
-				smbFile.delete();
+			String fileName = FileUtil.getFileName(swaggerFile);
+			try {
+				process(auth, fileName);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			String msg = "发生错误：" + e.getLocalizedMessage();
-			System.out.println(msg);
 		}
 	}
 
-	private void writeSMB(String dirpath, File file) {
+	private void process(NtlmPasswordAuthentication auth, String name) throws Exception {
+		SmbFile dir = new SmbFile(SMBDIR + name + "/", auth);
+		if (!dir.exists()) {
+			dir.mkdir();
+		}
+		// 生成Swagger
+		File swaggerFile = new File("swagger/" + name + ".json");
+		SmbFile json = new SmbFile(SMBDIR + name + "/" + name + ".json", auth);
+		writeFile(swaggerFile, json);
+		// 生成Html1
+		String tempFileDir = "d:/temp4/html/" + name + "/";
+		SwaggerCodegen.main(new String[] { "generate", "-i", swaggerFile.getAbsolutePath(), "-l", "html", "-o", tempFileDir });
+		SmbFile html = new SmbFile(SMBDIR + name + "/index.html", auth);
+		writeFile(new File(tempFileDir + "index.html"), html);
+		// 生成Html2
+		String tempFileDir2 = "d:/temp4/html2/" + name + "/";
+		SwaggerCodegen.main(new String[] { "generate", "-i", swaggerFile.getAbsolutePath(), "-l", "html2", "-o", tempFileDir2 });
+		SmbFile html2 = new SmbFile(SMBDIR + name + "/index2.html", auth);
+		writeFile(new File(tempFileDir2 + "index.html"), html2);
+	}
+
+	private void writeFile(File source, SmbFile smbFile) {
 		InputStream in = null;
 		OutputStream out = null;
 		try {
-			System.out.println(dirpath);
-			SmbFile dir = getRemoteFile(dirpath);
-			if (!dir.exists()) {
-				dir.mkdir();
-			}
-
-			SmbFile remoteFile = new SmbFile(dirpath + file.getName());
-			System.out.println("remoteFilepath ---> " + remoteFile.getPath());
-			remoteFile.connect(); // 尝试连接
-
-			in = new BufferedInputStream(new FileInputStream(file));
-			out = new BufferedOutputStream(new SmbFileOutputStream(remoteFile));
-
+			in = new BufferedInputStream(new FileInputStream(source));
+			out = new BufferedOutputStream(new SmbFileOutputStream(smbFile));
 			byte[] buffer = new byte[4096];
 			int len = 0; // 读取长度
 			while ((len = in.read(buffer, 0, buffer.length)) != -1) {
@@ -114,8 +91,7 @@ public class GenerateRemotes {
 			}
 			out.flush(); // 刷新缓冲的输出流
 		} catch (Exception e) {
-			String msg = "发生错误：" + e.getLocalizedMessage();
-			System.out.println(msg);
+			e.printStackTrace();
 		} finally {
 			try {
 				if (out != null) {
@@ -125,13 +101,9 @@ public class GenerateRemotes {
 					in.close();
 				}
 			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
-	}
-
-	private SmbFile getRemoteFile(String filepath) throws Exception {
-		SmbFile smbFile = new SmbFile(filepath, auth);
-		return smbFile;
 	}
 
 }

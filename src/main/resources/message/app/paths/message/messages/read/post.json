@@ -5,7 +5,7 @@
         "messages"
     ],
 
-    "description": "调用此接口可以将msg设为已读",
+    "description": "调用此接口可以将msg设为已读，当ids不为空时默认按照id删除，否则按照app+category删除",
     "produces": 
     [
         "application/json; charset=UTF-8"
@@ -23,10 +23,26 @@
         },
 
         {
+            "name": "app",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "应用：比如c-f,competition"
+        },
+
+        {
+            "name": "categoryId",
+            "in": "formData",
+            "type": "string",
+            "required": false,
+            "description": "类目Id， 将整个类目标签下的消息都置为已读"
+        },
+
+        {
             "description": "Id列表,以','分割",
             "name": "ids",
             "type": "string",
-            "required": true,
+            "required": false,
             "in": "formData"
         }
     ],
@@ -35,10 +51,19 @@
     {
         "200": 
         {
-
             "description": "成功"
+        },
+
+        "400": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "业务错误消息"
         }
     },
 
-    "operationId": "readMessage"
+    "operationId": "notifyReadMessage"
 }
