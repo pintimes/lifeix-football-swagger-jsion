@@ -1,0 +1,34 @@
+{
+    "description": "赛事分页",
+    "type": "object",
+    "properties": 
+    {
+        "pageNo": 
+        {
+            "description": "页码",
+            "format": "int32",
+            "type": "integer"
+        },
+        "pageSize": 
+        {
+            "description": "每页记录数",
+            "format": "int32",
+            "type": "integer"
+        },
+        "list": 
+        {
+            "description": "赛事列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Competition"
+            }
+        },
+        "totalRecords": 
+        {
+            "description": "符合查询条件的总记录数",
+            "format": "int32",
+            "type": "integer"
+        }
+    }
+}

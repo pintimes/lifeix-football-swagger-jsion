@@ -115,9 +115,8 @@
         },
         "category": 
         {
-            "description": "0:11人制 1:8人制 2:5人制",
-            "format": "int32",
-            "type": "integer"
+            "description": "人制",
+            "$ref": "#/definitions/Pairs"
         },
         "teamList": 
         {
