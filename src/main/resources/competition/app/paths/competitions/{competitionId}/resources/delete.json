@@ -14,39 +14,12 @@
         {
             "$ref": "#/parameters/competitionPath"
         },
-        {
-			"description": "true为删除 默认不删除 false",
-			"name": "deleteRule",
-			"type": "boolean",
-			"required": false,
-			"in": "query"
-		},
 		{
-			"description": "true为删除 默认不删除 false",
-			"name": "deleteCommission",
-			"type": "boolean",
-			"required": false,
-			"in": "query"
-		},
-		{
-			"description": "true为删除 默认不删除 false",
-			"name": "deletePunishment",
-			"type": "boolean",
-			"required": false,
-			"in": "query"
-		},
-		{
-			"description": "true为删除 默认不删除 false",
-			"name": "deleteGroup",
-			"type": "boolean",
-			"required": false,
-			"in": "query"
-		},
-		{
-			"description": "true为删除 默认不删除 false",
-			"name": "deleteSchedule",
-			"type": "boolean",
-			"required": false,
+			"description": "0-组委会名单 1-竞赛规则 2-处罚办法",
+			"name": "type",
+			"format": "int32",
+            "type": "integer",
+			"required": true,
 			"in": "query"
 		}
     ],

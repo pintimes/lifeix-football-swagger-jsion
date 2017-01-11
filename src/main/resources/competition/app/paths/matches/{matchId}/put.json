@@ -1,11 +1,11 @@
 {
-    "summary": "新增比赛",
+    "summary": "修改比赛",
     "tags": 
     [
         "match"
     ],
 
-    "description": "新增比赛",
+    "description": "修改比赛",
     "produces": 
     [
          "application/json; charset=UTF-8"
@@ -21,6 +21,9 @@
     [
     	{
             "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/matchPath"
         },
         {
             "schema": 
@@ -40,10 +43,10 @@
         {
             "schema": 
             {
-                "$ref": "#/definitions/Match"
+                "$ref": "#/definitions/SuccResponse"
             },
 
-            "description": "Match对象"
+            "description": "修改成功"
         },
         "401": 
         {
@@ -51,5 +54,5 @@
         }
     },
 
-    "operationId": "addMatch"
+    "operationId": "updateMatch"
 }
