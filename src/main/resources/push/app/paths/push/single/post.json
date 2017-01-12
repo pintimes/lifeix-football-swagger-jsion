@@ -1,0 +1,94 @@
+{
+    "summary": "推送消息",
+    "tags": 
+    [
+        "push"
+    ],
+
+    "description": "推送给单个设备",
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "consumes": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "parameters": 
+    [
+        {
+            "name": "platform",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "平台:ios,android"
+        },
+
+        {
+            "name": "deviceId",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "设备号"
+        },
+
+        {
+            "description": "推送标题",
+            "name": "title",
+            "type": "string",
+            "required": true,
+            "in": "formData"
+        },
+
+        {
+            "description": "副标题，ios可以不需要",
+            "name": "text",
+            "type": "string",
+            "required": false,
+            "in": "formData"
+        },
+
+        {
+            "description": "自定义内容，为Json形式",
+            "name": "custom",
+            "type": "string",
+            "required": true,
+            "in": "formData"
+        },
+
+        {
+            "description": "对消息的描述，用于快速找到这条消息以及唯一性判断,该描述在系统中是唯一的，一条描述对应一条消息",
+            "name": "description",
+            "type": "string",
+            "required": true,
+            "in": "formData"
+        }
+    ],
+
+    "responses": 
+    {
+        "400": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "业务错误消息"
+        },
+
+        "401": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "未授权错误消息"
+        }
+    },
+
+    "operationId": "addMessage"
+}

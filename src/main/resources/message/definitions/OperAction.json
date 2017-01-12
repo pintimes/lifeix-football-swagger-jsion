@@ -1,5 +1,5 @@
 {
-    "description": "Label",
+    "description": "操作类型",
     "properties": 
     {
         "type": 
@@ -25,11 +25,15 @@
             "description": "资源地址，如果url不为空的时候则可跳转到界面",
             "type": "string"
         },
-        
+
         "params": 
         {
-            "description": "JSON形式的额外参数，根据项目不同有不同的需求",
-            "type": "string"
+            "type": "object",
+            "description": "Map形式的消息参数，由业务系统和客户端确定",
+            "additionalProperties": 
+            {
+                "type": "string"
+            }
         }
     },
 

@@ -73,16 +73,10 @@
             "description": "内容:消息的详情,选填项",
             "type": "string"
         },
-        
+
         "action": 
         {
             "$ref": "#/definitions/OperAction"
-        },
-
-        "params": 
-        {
-            "description": "消息的参数，由业务系统和客户端确定",
-            "type": "string"
         },
 
         "createTime": 

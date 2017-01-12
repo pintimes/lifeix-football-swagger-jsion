@@ -24,7 +24,7 @@
 
         {
             "name": "app",
-            "in": "query",
+            "in": "formData",
             "type": "string",
             "required": false,
             "description": "应用：比如c-f,competition"
