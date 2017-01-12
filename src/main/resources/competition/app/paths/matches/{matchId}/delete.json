@@ -1,0 +1,33 @@
+{
+    "summary": "删除单场比赛",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "获取单场比赛详情",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/matchPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+
+            "description": "删除成功"
+        }
+    },
+
+    "operationId": "deleteMatch"
+}
