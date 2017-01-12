@@ -27,7 +27,7 @@
         },
 
         {
-            "name": "deviceId",
+            "name": "deviceToken",
             "in": "formData",
             "type": "string",
             "required": true,
@@ -43,15 +43,15 @@
         },
 
         {
-            "description": "副标题，ios可以不需要",
+            "description": "副标题，android需要",
             "name": "text",
             "type": "string",
-            "required": false,
+            "required": true,
             "in": "formData"
         },
 
         {
-            "description": "自定义内容，为Json形式",
+            "description": "自定义内容，必须是Json形式",
             "name": "custom",
             "type": "string",
             "required": true,
