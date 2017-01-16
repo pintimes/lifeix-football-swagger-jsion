@@ -255,6 +255,11 @@
         {
             "description": "裁判报名的岗位",
             "$ref": "#/definitions/Pairs"
+        },
+        "remark": 
+        {
+            "description": "备注/其他",
+            "type": "string"
         }
     }
 }
