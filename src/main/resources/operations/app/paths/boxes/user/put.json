@@ -1,0 +1,79 @@
+{
+    "summary": "更新用户方格列表",
+    "tags": 
+    [
+        "更新用户方格列表"
+    ],
+
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+    
+    "description": "根据传入的方格id列表更新用户方格列表，需要用户权限，即用户登录时服务器返回的key",
+    "parameters": 
+    [
+        {
+        	"description":"需要用户权限，即用户登录时服务器返回的key",
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "description": "方格id列表",
+            "name": "boxIds",
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            },
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "平台",
+            "name": "platform",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "版本号",
+            "name": "version",
+            "type": "string",
+            "required": false,
+            "default":"1.2.0",
+            "in": "query"
+        },
+        {
+            "description": "是否覆盖更新，为true时将用户方格列表完全替换为新的列表；为false时只会替换当前平台下用户的方格列表，在其他平台上有而在当前平台没有的方格会被保留",
+            "name": "cover",
+            "type": "string",
+            "format":"boolean",
+            "required": false,
+            "default":"false",
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema": 
+			{
+				"$ref": "#/definitions/Success"
+			},
+            "description": "修改成功"
+        },
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+
+    "operationId": "updateUserBoxIds"
+}

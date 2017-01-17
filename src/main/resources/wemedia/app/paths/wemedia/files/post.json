@@ -1,0 +1,58 @@
+{
+    "summary": "创建File",
+    "tags": 
+    [
+        "WemediaFile"
+    ],
+
+    "description": "创建File",
+    
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/File"
+            },
+
+            "description": "文件记录",
+            "name": "file",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/File"
+            },
+
+            "description": "File对象"
+        },
+
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+
+    "operationId": "insertFile"
+}

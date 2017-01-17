@@ -2,7 +2,7 @@
 	"summary": "app端微博用户注册/登录",
 	"tags": 
 	[
-		"users"
+		"微博登录"
 	],
 
 	"description": "微博用户注册/登录，通过前台传来的access_token和openId获得用户信息，然后存入数据库并返回给前台",
@@ -18,6 +18,9 @@
 
 	"parameters": 
 	[
+		{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
 		{
 			"description": "设备编号:1:web;2:ios;3:android",
 			"name": "device",

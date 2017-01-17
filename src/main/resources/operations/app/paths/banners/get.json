@@ -1,0 +1,77 @@
+{
+    "summary": "获取某个类目下的banner列表",
+    "tags": 
+    [
+        "获取banner列表"
+    ],
+
+	"consumes": 
+    [
+       "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "获取某个类目下的banner列表",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        
+        {
+            "description": "类目id",
+            "name": "categoryId",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        
+        {
+            "description": "平台",
+            "name": "platform",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        
+        {
+            "description": "版本号，初始版本为1号版本,web不需要传；app如果不传则默认为1号版本",
+            "name": "version",
+            "type": "string",
+            "required": false,
+            "default":"1.2.0",
+            "in": "query"
+        },
+        
+        {
+            "description": "数目限制",
+            "name": "limit",
+            "type": "integer",
+            "format": "int32",
+            "required": false,
+            "default":6,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+           "schema": 
+            {
+            	"type": "array",
+		    	"items": {
+                	"$ref": "#/definitions/Banner"
+                }
+            },
+            "description": "当前平台和版本下的banner列表"
+        }
+    },
+
+    "operationId": "getBannerList"
+}

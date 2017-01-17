@@ -1,11 +1,11 @@
 {
-    "summary": "更新用户昵称",
+    "summary": "修改用户昵称",
     "tags": 
     [
-       	"users"
+       	"修改昵称"
     ],
 
-    "description": "更新用户昵称",
+    "description": "修改用户昵称",
 
     "consumes": 
     [
@@ -20,7 +20,7 @@
     "parameters": 
     [
         {
-            "$ref": "#/parameters/apiKeyYHeader"
+            "$ref": "#/parameters/apiKeyHeader"
         },
         {
             "$ref": "#/parameters/userPath"
@@ -45,9 +45,24 @@
             "description": "修改昵称成功"
         },
         
+        "400": 
+        {
+            "description": "传递给服务器的请求参数异常，调用方需要检查参数是否传递正确"
+        },
+        
         "401": 
         {
             "description": "没有权限"
+        },
+        
+        "403": 
+        {
+            "description": "禁止访问，该接口未对当前调用方开放"
+        },
+        
+        "500": 
+        {
+            "description": "服务器异常"
         }
     },
     

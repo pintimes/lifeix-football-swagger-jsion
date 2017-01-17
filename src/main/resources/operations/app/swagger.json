@@ -1,0 +1,66 @@
+{
+    "swagger": "2.0",
+    "info": 
+    {
+        "title": "中国足球网运营系统API",
+        "description": "中国足球网运营系统API",
+        "termsOfService": "",
+        "contact": 
+        {
+            "email": "lex@l99.com",
+            "name": "徐乐"
+        },
+
+        "version": "1.0.0"
+    },
+
+    "host": "api.c-f.com",
+    "schemes": 
+    [
+        "http"
+    ],
+
+    "basePath": "/football/app",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "tags": 
+    [
+        
+    ],
+
+    "responses": 
+    {
+        
+    },
+
+    "parameters": 
+    {
+        "apiKeyHeader": 
+        {
+            "description": "key",
+            "name": "key",
+            "type": "string",
+            "required": true,
+            "default": "visitor",
+            "in": "header"
+        },
+        
+        "bannerPath": 
+        {
+            "description": "banner的id",
+            "name": "bannerId",
+            "type": "string",
+            "required": true,
+            "in": "path"
+        }
+
+    }
+}

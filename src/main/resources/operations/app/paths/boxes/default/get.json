@@ -1,0 +1,58 @@
+{
+    "summary": "app端获取默认方格列表",
+    "tags": 
+    [
+        "获取默认方格"
+    ],
+
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "app端获取默认方格列表",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "description": "平台",
+            "name": "platform",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "版本号",
+            "name": "version",
+            "type": "string",
+            "required": false,
+            "default":"1.2.0",
+            "in": "query"
+        }
+        
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+           "schema": 
+            {
+                "type": "array",
+		    	"items": {
+                	"$ref": "#/definitions/Box"
+                }
+            },
+            "description": "默认方格列表"
+        }
+    },
+
+    "operationId": "getAppDefaultBoxesList"
+}

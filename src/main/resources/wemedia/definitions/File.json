@@ -1,0 +1,94 @@
+{
+	"description": "文件记录",
+    "properties": {
+    	"id": {
+        	"description": "id",
+            "type": "string"
+        },
+    	"title": {
+        	"description": "文件标题（可重复），例如，当前文件是资讯图片时，则文件名为资讯标题",
+            "type": "string"
+        },
+    	"type": {
+        	"description": "文件类型，如图片、视频、音频等",
+            "type": "string"
+        },
+    	"format": {
+        	"description": "文件格式，如jpg、mp4等",
+            "type": "string"
+        },
+    	"size": {
+        	"description": "文件大小",
+            "type": "string",
+            "format":"int64"
+        },
+    	"description": {
+        	"description": "文件描述",
+            "type": "string"
+        },
+    	"createTime": {
+        	"description": "创建时间",
+            "type": "string",
+            "format":"date-time"
+        },
+    	"url": {
+        	"description": "文件地址",
+            "type": "string"
+        },
+    	"keywords": {
+        	"description": "关键词列表",
+            "type": "array",
+            "items":{
+            	"type": "string"
+            }
+        },
+    	"menuIds": {
+        	"description": "所属导航栏菜单id列表",
+            "type": "array",
+            "items":{
+            	"type": "string"
+            }
+        },
+    	"categoryIds": {
+        	"description": "所属文件类目id列表",
+            "type": "array",
+            "items":{
+            	"type": "string"
+            }
+        },
+        "latestUpdateTime": {
+        	"description": "最后修改时间",
+            "type": "string",
+            "format":"date-time"
+        },
+        "status": {
+        	"description": "文件状态，0：不可用；1：可用",
+            "type": "string",
+            "format":"int32"
+        },
+        "uploadProgress": {
+        	"description": "文件上传进度，0~1之间的整数",
+            "type": "string",
+            "format": "int32"
+        },
+        "remarks": {
+        	"description": "备注",
+            "type": "string"
+        },
+        "authorId": {
+        	"description": "作者id",
+            "type": "string"
+        },
+        "constringent": {
+        	"description": "是否执行过压缩操作",
+            "type": "string",
+            "format": "boolean"
+        },
+        "watermarked": {
+        	"description": "是否执行过打水印操作",
+            "type": "string",
+            "format": "boolean"
+        }
+    },
+	"type": "object"
+}

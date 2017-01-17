@@ -1,0 +1,43 @@
+{
+    "summary": "获取banner详情",
+    "tags": 
+    [
+        "Banner"
+    ],
+
+	"consumes": 
+    [
+       "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "根据id获取banner详情",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        
+        {
+            "$ref": "#/parameters/bannerPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+           "schema": 
+            {
+            	"$ref": "#/definitions/Banner"
+            },
+            "description": "banner对象"
+        }
+    },
+
+    "operationId": "getBanner"
+}

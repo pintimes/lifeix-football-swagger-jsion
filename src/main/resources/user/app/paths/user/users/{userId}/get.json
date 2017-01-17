@@ -2,7 +2,7 @@
     "summary": "获取单个用户信息",
     "tags": 
     [
-        "users"
+        "查询单个用户"
     ],
     
     "consumes": 
@@ -20,7 +20,7 @@
     "parameters": 
     [
         {
-            "$ref": "#/parameters/apiKeyYHeader"
+            "$ref": "#/parameters/apiKeyHeader"
         },
 
         {

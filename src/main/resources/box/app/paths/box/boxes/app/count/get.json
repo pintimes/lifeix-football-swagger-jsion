@@ -1,0 +1,50 @@
+{
+    "summary": "根据平台统计方格总数",
+    "tags": 
+    [
+        "获取方格数"
+    ],
+
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "根据平台统计方格总数",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "description": "平台",
+            "name": "platform",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "版本号",
+            "name": "version",
+            "type": "string",
+            "required": false,
+            "default":"1.2.0",
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+           	"description": "平台下全部方格数"
+        }
+    },
+
+    "operationId": "countAppAllBoxes"
+}

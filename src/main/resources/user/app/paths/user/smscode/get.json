@@ -1,0 +1,33 @@
+{
+    "summary": "发送短信验证码",
+    "tags": 
+    [
+        "发送验证码"
+    ],
+
+    "description": "发送短信验证码",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+
+        {
+            "description": "手机号码",
+            "name": "mobile",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "短信验证码发送成功"
+        }
+    },
+
+    "operationId": "sendSmsCode"
+}

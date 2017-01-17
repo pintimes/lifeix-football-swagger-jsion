@@ -6,7 +6,7 @@
         "description": "获得裁判联赛级别",
         "parameters": [
         	{
-	            "$ref": "#/parameters/apiKeyYHeader"
+	            "$ref": "#/parameters/apiKeyHeader"
 	        }
         ],
         "responses": {

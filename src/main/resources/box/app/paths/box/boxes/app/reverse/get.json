@@ -1,0 +1,68 @@
+{
+    "summary": "app端获取未订阅的方格列表",
+    "tags": 
+    [
+        "获取未订阅方格"
+    ],
+
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "app端获取未订阅的方格列表",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "description": "方格id列表",
+            "name": "boxIds",
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            },
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "平台",
+            "name": "platform",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "版本号",
+            "name": "version",
+            "type": "string",
+            "required": false,
+            "default":"1.2.0",
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+           "schema": 
+            {
+                "type": "array",
+		    	"items": {
+                	"$ref": "#/definitions/Box"
+                }
+            },
+            "description": "未订阅的方格列表"
+        }
+    },
+
+    "operationId": "getAppReverseBoxesList"
+}

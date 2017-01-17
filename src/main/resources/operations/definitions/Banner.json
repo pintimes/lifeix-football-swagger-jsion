@@ -1,0 +1,67 @@
+{
+    "description": "banner",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "资源编号",
+            "type": "string"
+        },
+
+        "categoryId": 
+        {
+            "description": "类目id",
+            "type": "string"
+        },
+
+        "name": 
+        {
+            "description": "资源名称或标题",
+            "type": "string"
+        },
+        
+        "image": 
+        {
+            "description": "图标或图片",
+            "type": "string"
+        },
+
+        "labels": 
+        {
+            "description": "标签列表",
+            "items": 
+            {
+                "$ref": "#/definitions/Label"
+            },
+
+            "type": "array"
+        },
+        
+        "createTime": 
+        {
+            "description": "resource创建日期(毫秒)",
+            "type": "string",
+            "format": "date-time"
+        },
+
+        "platform": 
+        {
+            "description": "适用平台：web/ios/android",
+            "type": "string"
+        },
+        
+        "version": 
+        {
+            "description": "版本",
+            "type": "string"
+        },
+
+        "link": 
+        {
+            "description": "链接对象",
+            "$ref": "#/definitions/Link"
+        }
+    },
+
+    "type": "object"
+}

@@ -1,0 +1,40 @@
+{
+    "summary": "判断用户是否操作过方格",
+    "tags": 
+    [
+        "判断用户是否操作过方格"
+    ],
+
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "判断用户是否操作过方格，用户方格列表和默认列表完全相同时认为没有操作过，否则认为用户操作过个人方格列表",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "返回json对象，操作过时返回{'result':true}，未操作过时返回{'result':false}"
+        },
+        "403":
+        {
+        	"description":"没有权限，禁止访问"
+        }
+        
+    },
+
+    "operationId": "ifUserOperated"
+}

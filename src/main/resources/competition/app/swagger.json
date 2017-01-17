@@ -30,7 +30,7 @@
     "responses":{
     },
     "parameters":{
-        "apiKeyYHeader": 
+        "apiKeyHeader": 
         {
             "description": "key",
             "name": "key",
@@ -38,7 +38,7 @@
             "required": true,
             "in": "header"
         },
-        "apiKeyYHeaderC": 
+        "apiKeyHeaderC": 
         {
             "description": "key，非必填",
             "name": "key",

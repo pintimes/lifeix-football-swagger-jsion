@@ -11,7 +11,7 @@
             "name": "徐乐"
         },
 
-        "version": "1.0.0"
+        "version": "1.1.0"
     },
 
     "host": "api.c-f.com",
@@ -43,9 +43,9 @@
 
     "parameters": 
     {
-        "apiKeyYHeader": 
+        "apiKeyHeader": 
         {
-            "description": "key",
+            "description": "key，所有api都需要该参数，用户未登录状态下为key=visitor，用户登录状态下为用户key",
             "name": "key",
             "type": "string",
             "required": true,

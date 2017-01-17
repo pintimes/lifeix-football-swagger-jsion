@@ -9,7 +9,7 @@
     "parameters": 
     [
     	{
-            "$ref": "#/parameters/apiKeyYHeader"
+            "$ref": "#/parameters/apiKeyHeader"
         },
         {
             "$ref": "#/parameters/userPath"

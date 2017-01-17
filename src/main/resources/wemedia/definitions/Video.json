@@ -16,7 +16,7 @@
 
         "time": 
         {
-            "description": "视频时常",
+            "description": "视频时长",
             "type": "integer",
             "format": "int32"
         }

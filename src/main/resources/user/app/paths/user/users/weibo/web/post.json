@@ -2,7 +2,7 @@
 	"summary": "web端微博用户注册/登录",
 	"tags": 
 	[
-		"users"
+		"微博登录"
 	],
 
 	"description": "微博用户注册/登录，通过前台传来的code获得access_token等信息，然后通过access_token等信息获得用户信息，然后存入数据库并返回给前台",
@@ -18,6 +18,9 @@
 
 	"parameters": 
 	[
+		{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
 		{
 			"description": "用户微博登录临时凭证，10分钟有效，使用一次后立刻失效",
 			"name": "code",

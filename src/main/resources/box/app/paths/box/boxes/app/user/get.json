@@ -1,0 +1,57 @@
+{
+    "summary": "获取用户订阅的box列表或者默认box列表",
+    "tags": 
+    [
+        "获取用户方格列表"
+    ],
+
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "根据key获取用户订阅的box列表或者默认box列表；key为用户key时返回用户box列表，为visitor时返回默认列表",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "description": "平台",
+            "name": "platform",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "版本号",
+            "name": "version",
+            "type": "string",
+            "required": false,
+            "default":"1.2.0",
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+           "schema": 
+            {
+                "type": "array",
+		    	"items": {
+                	"$ref": "#/definitions/Box"
+                }
+            },
+            "description": "方格列表"
+        }
+    },
+
+    "operationId": "getUserBoxesList"
+}

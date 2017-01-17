@@ -1,0 +1,45 @@
+{
+    "summary": "获取资源列表",
+    "tags": 
+    [
+        "Banner"
+    ],
+
+	"consumes": 
+    [
+       "application/json; charset=UTF-8"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "获取资源列表，有多个资源列表时一次性返回，返回形式为二维列表（数组）：[[],[],...]",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+           "schema": 
+            {
+            	"type": "array",
+		    	"items": {
+		    		"type": "array",
+		    		"items": {
+                		"$ref": "#/definitions/Resource"
+                	}
+                }
+            },
+            "description": "资源列表"
+        }
+    },
+
+    "operationId": "getCurBannerList"
+}

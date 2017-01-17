@@ -1,0 +1,48 @@
+{
+    "summary": "banner库中删除banner",
+    "tags": 
+    [
+        "Banner"
+    ],
+
+	"consumes": 
+    [
+       "application/json; charset=UTF-8"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "banner库中根据id删除banner（不可恢复）",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+
+        {
+            "$ref": "#/parameters/bannerPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema": 
+			{
+				"$ref": "#/definitions/Success"
+			},
+            "description": "删除成功"
+        },
+
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+
+    "operationId": "deleteBanner"
+}

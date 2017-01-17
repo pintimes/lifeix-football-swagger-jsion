@@ -2,7 +2,7 @@
 	"summary": "web端微信用户注册/登录",
 	"tags": 
 	[
-		"users"
+		"微信登录"
 	],
 
 	"description": "web端微信用户注册/登录，通过web前台传来的code获得access_token等信息，然后通过access_token等信息获得用户信息，然后存入数据库并返回给前台",
@@ -18,6 +18,9 @@
 
 	"parameters": 
 	[
+		{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
 		{
 			"description": "用户微信登录临时凭证，10分钟内有效，且使用一次后立刻失效",
 			"name": "code",

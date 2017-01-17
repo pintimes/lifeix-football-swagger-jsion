@@ -1,11 +1,11 @@
 {
-    "summary": "User登录",
+    "summary": "普通用户登录",
     "tags": 
     [
-        "users"
+        "登录"
     ],
 
-    "description": "User登录",
+    "description": "普通用户登录",
     
     "produces": 
     [
@@ -14,26 +14,58 @@
 
     "consumes": 
     [
-        "application/json"
+        "application/x-www-form-urlencoded"
     ],
 
     "parameters": 
     [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
         {
-            "name": "username",
-            "in": "formData",
+            "name": "source",
+            "type": "string",
+            "required": false,
+            "description": "来源，competition/c-f，内部系统调用时才需要该参数",
+            "in": "formData"
+        },
+        {
+            "name": "device",
+            "type": "integer",
+            "format": "int32",
+            "required": true,
+            "description": "设备类型，1：web，2：ios，3：android",
+            "in": "formData"
+        },
+        {
+            "name": "deviceId",
+            "type": "string",
+            "required": false,
+            "description": "设备号，web不需要传该参数，其他平台需要传该参数",
+            "in": "formData"
+        },
+        {
+            "name": "deviceToken",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "in": "formData"
+        },
+        {
+            "name": "account",
             "type": "string",
             "required": true,
-            "description": "用户名"
+            "description": "账号（用户名/手机号/邮箱）",
+            "in": "formData"
         },
-
         {
             "name": "password",
-            "in": "formData",
             "type": "string",
             "required": true,
-            "description": "密码密文，MD5加密"
+            "description": "密码（明文）",
+            "in": "formData"
         }
+
     ],
 
     "responses": 

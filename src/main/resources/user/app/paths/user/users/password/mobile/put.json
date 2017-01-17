@@ -1,0 +1,63 @@
+{
+    "summary": "通过短信验证码修改密码",
+    "tags": 
+    [
+        "修改密码"
+    ],
+
+    "description": "通过短信验证码修改密码",
+    
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "name": "mobile",
+            "type": "string",
+            "required": true,
+            "description": "手机号",
+            "in": "formData"
+        },
+        {
+            "name": "password",
+            "type": "string",
+            "required": true,
+            "description": "密码（明文）",
+            "in": "formData"
+        },
+        {
+            "name": "smsCode",
+            "type": "string",
+            "required": true,
+            "description": "短信验证码",
+            "in": "formData"
+        }
+
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Success"
+            },
+
+            "description": "修改成功"
+        }
+    },
+
+    "operationId": "updatePasswordByMobileAndSmscode"
+}

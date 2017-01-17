@@ -1,0 +1,144 @@
+{
+    "summary": "用户手机注册赛事系统时，赛事系统向用户中心添加一条用户记录",
+    "tags": 
+    [
+        "添加用户"
+    ],
+
+    "description": "用户手机注册赛事系统时，赛事系统向用户中心添加一条用户记录",
+    
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        
+        {
+            "name": "device",
+            "type": "integer",
+            "format": "int32",
+            "required": true,
+            "description": "设备类型，1：web，2：ios，3：android",
+            "in": "formData"
+        },
+        {
+            "name": "deviceId",
+            "type": "string",
+            "required": false,
+            "description": "设备号，web不需要传该参数，其他平台需要传该参数",
+            "in": "formData"
+        },
+        {
+            "name": "deviceToken",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "in": "formData"
+        },
+        {
+            "name": "username",
+            "type": "string",
+            "required": false,
+            "description": "用户名",
+            "in": "formData"
+        },
+        {
+            "name": "password",
+            "type": "string",
+            "required": true,
+            "description": "密码",
+            "in": "formData"
+        },
+        {
+            "name": "birthday",
+            "type": "string",
+            "format": "date-time",
+            "required": false,
+            "description": "出生日期",
+            "in": "formData"
+        },
+        {
+            "name": "gender",
+            "type": "string",
+            "format": "int32",
+            "required": false,
+            "description": "性别",
+            "in": "formData"
+        },
+        {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "姓名",
+            "in": "formData"
+        },
+        {
+            "name": "email",
+            "type": "string",
+            "required": false,
+            "description": "邮箱",
+            "in": "formData"
+        },
+        {
+            "name": "mobile",
+            "type": "string",
+            "required": false,
+            "description": "手机号",
+            "in": "formData"
+        },
+        {
+            "name": "nickname",
+            "type": "string",
+            "required": false,
+            "description": "昵称",
+            "in": "formData"
+        },
+        {
+            "name": "idCard",
+            "type": "string",
+            "required": false,
+            "description": "身份证号",
+            "in": "formData"
+        },
+        {
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "description": "角色",
+            "in": "formData"
+        },
+        {
+            "name": "source",
+            "type": "string",
+            "required": true,
+            "description": "来源（c-f/competition）",
+            "in": "formData"
+        }
+
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/User"
+            },
+
+            "description": "User对象"
+        }
+    },
+
+    "operationId": "recordUser"
+}

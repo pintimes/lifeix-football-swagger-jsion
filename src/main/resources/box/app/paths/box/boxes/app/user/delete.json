@@ -1,0 +1,72 @@
+{
+    "summary": "app端用户删除box",
+    "tags": 
+    [
+        "删除方格"
+    ],
+
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+    
+    "description": "用户删除box,只有在用户登录状态才需要调用该接口。传入用户要删除的方格列表，需要用户权限key",
+    
+    "parameters": 
+    [
+        {
+        	"description":"需要用户权限，即用户登录时服务器返回的key",
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "description": "用户要删除的方格id列表",
+            "name": "boxIds",
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            },
+            "required": true,
+            "in": "formData"
+        },
+        {
+            "description": "平台",
+            "name": "platform",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "版本号",
+            "name": "version",
+            "type": "string",
+            "required": false,
+            "default":"1.2.0",
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema": 
+			{
+				"$ref": "#/definitions/Success"
+			},
+            "description": "删除成功"
+        },
+
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+
+    "operationId": "deleteAppUserBoxes"
+}

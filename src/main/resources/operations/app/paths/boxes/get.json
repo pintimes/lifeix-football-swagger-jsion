@@ -1,0 +1,70 @@
+{
+    "summary": "app端获得方格列表",
+    "tags": 
+    [
+        "根据id列表获得方格列表"
+    ],
+
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "根据客户端传入的方格id列表获得方格列表",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+
+        {
+            "description": "方格id列表",
+            "name": "boxIds",
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            },
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "平台",
+            "name": "platform",
+            "type": "string",
+            "required": false,
+            "default":"ios",
+            "in": "query"
+        },
+        {
+            "description": "版本号",
+            "name": "version",
+            "type": "string",
+            "required": false,
+            "default":"1.2.0",
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+           "schema": 
+            {
+            	"type": "array",
+		    	"items": {
+                	"$ref": "#/definitions/Box"
+                }
+            },
+            "description": "方格列表"
+        }
+    },
+
+    "operationId": "getAppBoxesList"
+}

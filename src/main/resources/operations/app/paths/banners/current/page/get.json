@@ -1,0 +1,66 @@
+{
+    "summary": "管理后台获取当前banner列表页",
+    "tags": 
+    [
+        "Banner"
+    ],
+
+	"consumes": 
+    [
+       "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "管理后台获取当前banner列表页，返回easyui需要的Page格式的数据",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        
+        {
+            "description": "类目id",
+            "name": "categoryId",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+        
+        {
+            "description": "平台",
+            "name": "platform",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+        
+        {
+            "description": "版本号",
+            "name": "version",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+           "schema": 
+            {
+            	"$ref": "#/definitions/Page",
+		    	"items": {
+                	"$ref": "#/definitions/Banner"
+                }
+            },
+            "description": "banner列表"
+        }
+    },
+
+    "operationId": "getCurBannerPage"
+}

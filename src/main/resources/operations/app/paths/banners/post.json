@@ -1,0 +1,46 @@
+{
+    "summary": "banner库中新增banner",
+    "tags": 
+    [
+        "Banner"
+    ],
+
+	"consumes": 
+    [
+       "application/json; charset=UTF-8"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "banner库中新增banner",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        
+        {
+            "description": "banner对象",
+            "name": "banner",
+            "$ref": "#/definitions/Banner",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema": {
+	           "$ref": "#/definitions/Banner"
+	        },
+           	"description": "banner对象"
+        }
+    },
+
+    "operationId": "insertBanner"
+}

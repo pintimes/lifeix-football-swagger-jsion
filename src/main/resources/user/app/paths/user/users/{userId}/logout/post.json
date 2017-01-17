@@ -2,7 +2,7 @@
     "summary": "User退出登录",
     "tags": 
     [
-        "users"
+        "退出登录"
     ],
 
     "description": "User退出登录",
@@ -15,7 +15,7 @@
     "parameters": 
     [
     	{
-            "$ref": "#/parameters/apiKeyYHeader"
+            "$ref": "#/parameters/apiKeyHeader"
         },
         
         {
@@ -32,7 +32,7 @@
 		},
 		
 		{
-			"description": "设备id",
+			"description": "设备id，device为1时不需要传递该参数",
 			"name": "deviceId",
 			"type": "string",
 			"required": false,
@@ -49,6 +49,26 @@
 				"$ref": "#/definitions/Success"
 			},
             "description": "退出成功"
+        },
+        
+        "400": 
+        {
+            "description": "传递给服务器的请求参数异常，调用方需要检查参数是否传递正确"
+        },
+        
+        "401": 
+        {
+            "description": "没有权限"
+        },
+        
+        "403": 
+        {
+            "description": "禁止访问，该接口未对当前调用方开放"
+        },
+        
+        "500": 
+        {
+            "description": "服务器异常"
         }
     },
 

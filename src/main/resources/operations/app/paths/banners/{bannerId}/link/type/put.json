@@ -1,0 +1,55 @@
+{
+    "summary": "修改banner对象link的type",
+    "tags": 
+    [
+        "WemediaPost"
+    ],
+
+    "description": "修改banner对象link的type",
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+    
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/bannerPath"
+        },
+        {
+            "description": "链接类型（app:page/h5/app/html;web:h5/html）",
+            "name": "type",
+            "type":"string",
+            "required": true,
+            "in": "formData"
+        }
+    ],
+    
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema": 
+			{
+				"$ref": "#/definitions/Success"
+			},
+            "description": "修改成功"
+        },
+        
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+    
+    "operationId": "updateBannerLinkType"
+}

@@ -1,0 +1,31 @@
+{
+    "description": "标签",
+    "properties": 
+    {
+        "name": 
+        {
+            "description": "标签名称",
+            "type": "string"
+        },
+
+        "color": 
+        {
+            "description": "标签颜色",
+            "type": "string"
+        },
+
+        "backgroud": 
+        {
+            "description": "标签背景",
+            "type": "string"
+        },
+
+        "image": 
+        {
+            "description": "标签图标",
+            "type": "string"
+        }
+    },
+
+    "type": "object"
+}

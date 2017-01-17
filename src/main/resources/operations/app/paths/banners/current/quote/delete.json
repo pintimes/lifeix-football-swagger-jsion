@@ -1,0 +1,78 @@
+{
+    "summary": "取消引用banner库中的banner",
+    "tags": 
+    [
+        "Banner"
+    ],
+
+	"consumes": 
+    [
+       "application/json; charset=UTF-8"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "取消引用banner库中的banner",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+
+		{
+            "description": "应用版本",
+            "name": "version",
+            "type":"string",
+            "required": false,
+            "default": "all",
+            "in": "formData"
+        },
+        
+        {
+            "description": "应用平台",
+            "name": "platform",
+            "type":"string",
+            "required": false,
+            "default": "all",
+            "in": "formData"
+        },
+	
+        {
+            "description": "类目id",
+            "name": "categoryId",
+            "type":"string",
+            "required": true,
+            "in": "formData"
+        },
+        
+        {
+            "description": "banner对象的id",
+            "name": "bannerId",
+            "type":"string",
+            "required": true,
+            "in": "formData"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema": 
+			{
+				"$ref": "#/definitions/Success"
+			},
+            "description": "删除成功"
+        },
+
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+
+    "operationId": "removeBannerFromCurBanner"
+}

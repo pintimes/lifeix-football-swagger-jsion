@@ -2,7 +2,7 @@
 	"summary": "app端微信用户注册/登录",
 	"tags": 
 	[
-		"users"
+		"微信登录"
 	],
 
 	"description": "app端微信用户注册/登录，通过客户端传来的access_token和openid等参数获得用户信息，然后存入数据库并返回给客户端",
@@ -19,6 +19,9 @@
 
 	"parameters": 
 	[
+		{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
 		{
 			"description": "设备编号:1:web;2:ios;3:android",
 			"name": "device",

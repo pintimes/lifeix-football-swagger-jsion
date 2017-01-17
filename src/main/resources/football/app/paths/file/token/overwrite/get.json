@@ -8,7 +8,7 @@
     "parameters": 
     [
         {
-            "$ref": "#/parameters/apiKeyYHeader"
+            "$ref": "#/parameters/apiKeyHeader"
         },
         {
             "description": "要覆盖的文件名称列表，如果要覆盖多个，则传多个file_name并列， eg. file_name=xxx&file_name=xxx",

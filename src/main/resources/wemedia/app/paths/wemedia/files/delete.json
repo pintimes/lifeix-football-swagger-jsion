@@ -1,0 +1,52 @@
+{
+    "summary": "删除File",
+    "tags": 
+    [
+        "删除文件记录"
+    ],
+
+    "description": "删除File：只有管理员才有权限",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+
+        {
+            "description": "文件id列表，多个id使用','分隔",
+            "name": "fileIds",
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            },
+            "required": true,
+            "in": "formData"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "删除成功"
+        },
+
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+
+    "operationId": "deleteFiles"
+}

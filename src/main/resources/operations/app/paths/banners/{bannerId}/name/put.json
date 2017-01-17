@@ -1,0 +1,55 @@
+{
+    "summary": "修改banner标题",
+    "tags": 
+    [
+        "WemediaPost"
+    ],
+
+    "description": "修改banner标题(ui层面)",
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+    
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/bannerPath"
+        },
+        {
+            "description": "标题",
+            "name": "name",
+            "type":"string",
+            "required": true,
+            "in": "formData"
+        }
+    ],
+    
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema": 
+			{
+				"$ref": "#/definitions/Success"
+			},
+            "description": "修改成功"
+        },
+        
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+    
+    "operationId": "updateBannerName"
+}

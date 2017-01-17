@@ -1,0 +1,48 @@
+{
+    "description": "标签",
+    "properties": 
+    {
+        "type": 
+        {
+            "description": "跳转类型。app: app(打开另外一个app),html(打开浏览器页面),h5(在应用内打开html页面),page(打开应用界面)   web:html(根据url打开页面),page(根据参数打开页面)",
+            "type": "string"
+        },
+
+        "page": 
+        {
+            "description": "跳转页面，app和web端返回不同的值，例如app端page='coachlist_page'，web端page='coach'，取值范围列表需要前台维护",
+            "type": "string"
+        },
+
+        "targetId": 
+        {
+            "description": "目标页id，如资讯id",
+            "type": "string"
+        },
+
+        "targetTitle": 
+        {
+            "description": "目标页标题，如“中国男足资讯”",
+            "type": "string"
+        },
+
+        "url": 
+        {
+            "description": "链接页面地址",
+            "type": "string"
+        },
+        "urlScheme": 
+        {
+            "description": "打开另一个app需要的参数",
+            "type": "string"
+        },
+        
+        "params": 
+        {
+            "description": "链接跳转需要的额外参数map",
+            "type": "object"
+        }
+    },
+
+    "type": "object"
+}

@@ -1,0 +1,58 @@
+{
+    "summary": "更新用户信息",
+    "tags": 
+    [
+       	"修改用户对象"
+    ],
+
+    "description": "更新用户信息",
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+    
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/userPath"
+        },
+        {
+            "description": "用户对象，包含所有要修改的用户基本信息（不包括用户id、邮箱、手机号、用户名、密码信息的修改，就算传了这些参数也会进行过滤掉）",
+            "name": "user",
+            "schema": 
+            {
+	            "$ref": "#/definitions/User"
+            },
+            "required": true,
+            "in": "body"
+        }
+    ],
+    
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema": 
+			{
+				"$ref": "#/definitions/Success"
+			},
+            "description": "修改用户信息成功"
+        },
+        
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+    
+    "operationId": "updateUser"
+}

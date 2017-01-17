@@ -15,7 +15,7 @@
     "parameters": 
     [
         {
-            "$ref": "#/parameters/apiKeyYHeader"
+            "$ref": "#/parameters/apiKeyHeader"
         },
         {
             "description": "查询开始时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX，不传默认返回第一页数据",

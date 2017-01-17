@@ -1,0 +1,55 @@
+{
+    "summary": "修改banner对象link的目标链接",
+    "tags": 
+    [
+        "WemediaPost"
+    ],
+
+    "description": "修改banner对象link的目标链接：url",
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "text/plain; charset=UTF-8"
+    ],
+    
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/bannerPath"
+        },
+        {
+            "description": "banner对象链接目标链接",
+            "name": "url",
+            "type":"string",
+            "required": true,
+            "in": "formData"
+        }
+    ],
+    
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema": 
+			{
+				"$ref": "#/definitions/Success"
+			},
+            "description": "修改成功"
+        },
+        
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+    
+    "operationId": "updateBannerLinkUrl"
+}

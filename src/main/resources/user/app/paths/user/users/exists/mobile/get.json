@@ -1,0 +1,38 @@
+{
+    "summary": "判断手机号在用户中心是否存在",
+    "tags": 
+    [
+        "根据手机号查询用户"
+    ],
+
+    "description": "判断手机号在用户中心是否存在",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+
+        {
+            "description": "手机号码",
+            "name": "mobile",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/User"
+            },
+
+            "description": "User对象（包含用户id、头像、昵称信息），手机号不存在时返回null"
+        }
+    },
+
+    "operationId": "mobileExists"
+}

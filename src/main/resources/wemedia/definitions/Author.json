@@ -6,11 +6,19 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "昵称",
+                    "description": "名称",
                     "type": "string"
                 },
                 "image": {
                     "description": "头像地址",
+                    "type": "string"
+                },
+                "mobile": {
+                    "description": "手机号",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "邮箱",
                     "type": "string"
                 }
             },

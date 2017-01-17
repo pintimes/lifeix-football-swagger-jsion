@@ -1,0 +1,56 @@
+{
+    "summary": "banner库中修改banner",
+    "tags": 
+    [
+        "Banner"
+    ],
+
+	"consumes": 
+    [
+       "application/json; charset=UTF-8"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "banner库中根据id修改banner（全部覆盖，传入的banner对象不为空的属性将会覆盖原来的属性）",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+
+        {
+            "$ref": "#/parameters/bannerPath"
+        },
+        
+        {
+            "description": "banner对象",
+            "name": "banner",
+            "$ref": "#/definitions/Banner",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema": 
+			{
+				"$ref": "#/definitions/Banner"
+			},
+            "description": "修改成功"
+        },
+
+        "401": 
+        {
+            "description": "没有权限"
+        }
+    },
+
+    "operationId": "updateBanner"
+}

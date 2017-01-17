@@ -1,0 +1,56 @@
+{
+    "summary": "获取文件列表",
+    "tags": 
+    [
+        "获取文件列表"
+    ],
+
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "根据文件id列表获取文件列表",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+
+        {
+            "description": "文件id列表,多个id以','分隔",
+            "name": "fileIds",
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            },
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/File"
+                }
+            },
+
+            "description": "file列表"
+        }
+    },
+
+    "operationId": "getFiles"
+}

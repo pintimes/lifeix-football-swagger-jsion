@@ -1,0 +1,84 @@
+{
+    "summary": "引用banner库中的banner",
+    "tags": 
+    [
+        "Banner"
+    ],
+
+	"consumes": 
+    [
+       "application/json; charset=UTF-8"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "引用banner库中的banner（在某个类目下新增banner）",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        
+        {
+            "description": "应用版本",
+            "name": "version",
+            "type":"string",
+            "required": false,
+            "default": "all",
+            "in": "formData"
+        },
+        
+        {
+            "description": "应用平台",
+            "name": "platform",
+            "type":"string",
+            "required": false,
+            "default": "all",
+            "in": "formData"
+        },
+        
+        {
+            "description": "类目id",
+            "name": "categoryId",
+            "type":"string",
+            "required": true,
+            "in": "formData"
+        },
+        
+        {
+            "description": "banner对象的id",
+            "name": "bannerId",
+            "type":"string",
+            "required": true,
+            "in": "formData"
+        },
+        
+        {
+            "description": "当前类目banner列表中的顺序",
+            "name": "order",
+            "type":"integer",
+            "format":"int32",
+            "required": false,
+            "default": 0,
+            "in": "formData"
+        }
+        
+        
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+        	"schema": {
+           		"$ref": "#/definitions/Banner"
+           	},
+           	"description": "banner对象"
+        }
+    },
+
+    "operationId": "addBannerIntoCurBanner"
+}

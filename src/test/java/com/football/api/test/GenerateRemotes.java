@@ -24,7 +24,7 @@ public class GenerateRemotes {
     private static String SMBDIR = "smb://lifeix:lifeix@192.168.50.199/立方网/cfootball/football-api/";
 
     public static void main(String[] args) {
-//        generateRemote(new File("swagger/competition.json"));
+        generateRemote(new File("swagger/user.json"));
          generateAll();
     }
 

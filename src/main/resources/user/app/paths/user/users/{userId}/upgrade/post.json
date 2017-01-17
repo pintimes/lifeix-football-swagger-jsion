@@ -1,0 +1,53 @@
+{
+    "summary": "升级用户",
+    "tags": 
+    [
+        "升级用户"
+    ],
+
+    "description": "升级用户，添加来源用户到网关的comsumer中",
+    
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        
+        {
+            "$ref": "#/parameters/userPath"
+        },
+        {
+            "name": "source",
+            "type": "string",
+            "required": true,
+            "description": "来源，如：c-f/competition",
+            "in": "formData"
+        }
+
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/User"
+            },
+
+            "description": "User对象（包含用户id等简单用户信息）"
+        }
+    },
+
+    "operationId": "upgradeUser"
+}

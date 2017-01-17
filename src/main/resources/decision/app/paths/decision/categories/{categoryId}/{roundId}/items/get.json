@@ -12,7 +12,7 @@
     "parameters": 
     [
         {
-            "$ref": "#/parameters/apiKeyYHeaderC"
+            "$ref": "#/parameters/apiKeyHeaderC"
         },
         {
             "$ref": "#/parameters/decisionCategoryPath"

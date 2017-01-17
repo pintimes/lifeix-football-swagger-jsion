@@ -2,7 +2,7 @@
     "summary": "更新用户头像",
     "tags": 
     [
-       	"users"
+       	"修改头像"
     ],
 
     "description": "更新用户头像",
@@ -20,13 +20,13 @@
     "parameters": 
     [
         {
-            "$ref": "#/parameters/apiKeyYHeader"
+            "$ref": "#/parameters/apiKeyHeader"
         },
         {
             "$ref": "#/parameters/userPath"
         },
         {
-            "description": "头像",
+            "description": "新头像",
             "name": "avatar",
             "type":"string",
             "required": true,
@@ -46,9 +46,24 @@
             "description": "修改头像成功"
         },
         
+        "400": 
+        {
+            "description": "传递给服务器的请求参数异常，调用方需要检查参数是否传递正确"
+        },
+        
         "401": 
         {
             "description": "没有权限"
+        },
+        
+        "403": 
+        {
+            "description": "禁止访问，该接口未对当前调用方开放"
+        },
+        
+        "500": 
+        {
+            "description": "服务器异常"
         }
     },
     

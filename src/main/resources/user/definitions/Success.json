@@ -2,6 +2,12 @@
     "description": "调用api成功返回对象",
     "properties": 
     {
+        "status": 
+        {
+            "description": "状态码",
+            "type": "string",
+            "format":"int32"
+        },
         "message": 
         {
             "description": "成功信息",

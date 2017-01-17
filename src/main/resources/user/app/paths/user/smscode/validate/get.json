@@ -1,0 +1,37 @@
+{
+    "summary": "验证手机号是否存在,存在则发送验证码",
+    "tags": 
+    [
+        "发送验证码"
+    ],
+
+    "description": "验证手机号是否存在，存在则发送验证码，不存在时不发生验证码，返回错误信息",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+
+        {
+            "description": "手机号码",
+            "name": "mobile",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "发送验证码成功"
+        },
+        "404": 
+        {
+            "description": "该手机号未注册"
+        }
+    },
+
+    "operationId": "sendSmscodeValidate"
+}

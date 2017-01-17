@@ -43,7 +43,7 @@
 
     "parameters": 
     {
-        "apiKeyYHeader": 
+        "apiKeyHeader": 
         {
             "description": "key",
             "name": "key",
