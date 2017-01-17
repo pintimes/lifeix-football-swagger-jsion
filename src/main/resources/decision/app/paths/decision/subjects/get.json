@@ -1,0 +1,46 @@
+{
+    "summary": "Decision获取主题列表",
+    "tags": 
+    [
+    	"decision"
+    ],
+    "description": "Decision获取主题列表",
+    "produces": 
+    [
+        "application/json"
+    ],
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "object",
+                "properties": 
+                {
+                    "code": 
+                    {
+                        "description": "业务状态码，200成功",
+                        "type": "string"
+                    },
+                    "message": 
+                    {
+                        "description": "业务状态信息",
+                        "type": "string"
+                    },
+                    "data": 
+                    {
+                    	 "type": "array",
+			             "items": 
+			             {
+			                    "$ref": "#/definitions/DecisionSubject"
+			             }
+                    }
+                }
+            },
+            "description": "主题列表"
+        }
+    },
+
+    "operationId": "getDecisionSubjects"
+}

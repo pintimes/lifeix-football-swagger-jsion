@@ -1,0 +1,59 @@
+{
+    "summary": "Decision按轮次获取题目列表 ",
+    "tags": 
+    [
+    	"decision"
+    ],
+    "description": "Decision按轮次获取题目列表 ",
+    "produces": 
+    [
+        "application/json"
+    ],
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeaderC"
+        },
+        {
+            "description": "轮次ID",
+            "name": "roundId",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "object",
+                "properties": 
+                {
+                    "code": 
+                    {
+                        "description": "业务状态码，200成功",
+                        "type": "string"
+                    },
+                    "message": 
+                    {
+                        "description": "业务状态信息",
+                        "type": "string"
+                    },
+                    "data": 
+                    {
+                    	 "type": "array",
+			             "items": 
+			             {
+			                   "$ref": "#/definitions/DecisionItem"
+			             }
+                    }
+                }
+            },
+            "description": "题目列表"
+        }
+    },
+
+    "operationId": "getDecisionItemsByRoundId"
+}

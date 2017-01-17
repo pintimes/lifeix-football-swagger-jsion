@@ -1,0 +1,26 @@
+{
+    "description": "你来判主题",
+    "properties": 
+    {
+        "id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+        "name": 
+        {
+            "description": "名称",
+            "type": "string"
+        },
+        "desc": 
+        {
+            "description": "描述",
+            "type": "string"
+        },
+        "image": 
+        {
+            "description": "图片，相对路径，需要拼接七牛文件前缀",
+            "type": "string"
+        }
+    }
+}

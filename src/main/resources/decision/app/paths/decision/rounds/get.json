@@ -1,0 +1,56 @@
+{
+    "summary": "Decision按主题获取轮次列表",
+    "tags": 
+    [
+    	"decision"
+    ],
+    "description": "Decision按主题获取轮次列表",
+    "produces": 
+    [
+        "application/json"
+    ],
+    "parameters": 
+    [
+        {
+            "description": "主题ID",
+            "name": "subjectId",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "object",
+                "properties": 
+                {
+                    "code": 
+                    {
+                        "description": "业务状态码，200成功",
+                        "type": "string"
+                    },
+                    "message": 
+                    {
+                        "description": "业务状态信息",
+                        "type": "string"
+                    },
+                    "data": 
+                    {
+                    	 "type": "array",
+			             "items": 
+			             {
+			                    "$ref": "#/definitions/DecisionRound"
+			             }
+                    }
+                }
+            },
+            "description": "轮次列表"
+        }
+    },
+
+    "operationId": "getDecisionRoundsBySubjectId"
+}
