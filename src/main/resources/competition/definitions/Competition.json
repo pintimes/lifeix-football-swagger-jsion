@@ -199,6 +199,26 @@
         {
             "description": " true-报名满了 false-未满",
             "type": "boolean",
+        },
+        "sponsor": 
+        {
+            "description": "主办单位,多个时,以‘,’分隔",
+            "type": "string"
+        },
+        "undertake": 
+        {
+            "description": "承办单位,多个时,以‘,’分隔",
+            "type": "string"
+        },
+        "coOrganizer": 
+        {
+            "description": "协办单位,多个时,以‘,’分隔",
+            "type": "string"
+        },
+        "supporter": 
+        {
+            "description": "支持方,多个时,以‘,’分隔",
+            "type": "string"
         }
        
     }
