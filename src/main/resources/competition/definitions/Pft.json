@@ -1,0 +1,23 @@
+{
+    "description": "体测信息",
+    "type": "object",
+    "properties": 
+    {
+        "name": 
+        {
+            "description": "名称",
+            "type": "string"
+        },
+        "testDate": 
+        {
+            "description": "测试时间",
+            "type": "string",
+            "format": "date-time"
+        },
+        "pftLevel": 
+        {
+            "description": "体测水平",
+            "$ref": "#/definitions/Pairs"
+        }
+    }
+}

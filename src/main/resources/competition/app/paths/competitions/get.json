@@ -12,6 +12,14 @@
             "$ref": "#/parameters/apiKeyHeader"
         },
         {
+            "description": "客户端 1-web（默认） 2-移动端",
+            "name": "app",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
             "description": "协会id",
             "name": "assId",
             "format": "int64",
@@ -20,8 +28,8 @@
             "in": "query"
         },
         {
-            "description": "是否进行中,默认true,true-未结束的赛事  false-全部赛事",
-            "name": "inProcess",
+            "description": "ios-true web-不传",
+            "name": "releaseShedule",
             "type": "boolean",
             "required": false,
             "in": "query"
@@ -34,16 +42,24 @@
             "in": "query"
         },
         {
-            "description": "开始查询id",
+            "description": "开始查询赛事id 例如：查询第二页时，传第一页最后一条记录的id",
             "name": "startId",
-            "format": "int64",
+            "format": "int32",
             "type": "integer",
             "required": false,
             "in": "query"
         },
         {
-            "description": "限制数目",
-            "name": "limit",
+            "description": "页码",
+            "name": "pageNo",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "每页数目",
+            "name": "pageSize",
             "format": "int32",
             "type": "integer",
             "required": false,
@@ -57,11 +73,7 @@
         {
             "schema": 
             {
-                "type": "array",
-                "items": 
-                {
-                    "$ref": "#/definitions/Competition"
-                }
+                "$ref": "#/definitions/CompetitionPageModel"
             },
             "description": "赛事列表"
         }

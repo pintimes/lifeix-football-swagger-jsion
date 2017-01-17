@@ -74,10 +74,9 @@
             "type": "string"
         },
 
-        "params": 
+        "action": 
         {
-            "description": "消息的参数，由业务系统和客户端确定",
-            "type": "string"
+            "$ref": "#/definitions/OperAction"
         },
 
         "createTime": 

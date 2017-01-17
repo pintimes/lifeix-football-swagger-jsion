@@ -1,5 +1,5 @@
 {
-    "description": "Person对象，用于存储一个Person的基本信息",
+    "description": "登录用户",
     "properties": 
     {
         "id": 

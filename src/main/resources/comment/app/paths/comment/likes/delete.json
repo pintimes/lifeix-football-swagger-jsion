@@ -1,0 +1,58 @@
+{
+    "summary": "取消赞",
+    "tags": 
+    [
+        "like"
+    ],
+
+    "description": "取消赞",
+    "consumes": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "name": "commentId",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "评论Id"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Succ"
+            },
+
+            "description": "不论删除成功"
+        },
+
+        "401": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "未授权错误消息"
+        }
+    },
+
+    "operationId": "deleteLike"
+}

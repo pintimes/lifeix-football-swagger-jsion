@@ -111,11 +111,6 @@
             "description": "现工作单位",
             "type": "string"
         },
-        "bloodType": 
-        {
-            "description": "血型",
-            "$ref": "#/definitions/Pairs"
-        },
         "officePhone": 
         {
             "description": "办公电话",
@@ -183,8 +178,12 @@
         },
         "category": 
         {
-            "description": "裁判类别-参考 /constant下接口",
-            "$ref": "#/definitions/Pairs"
+            "description": "裁判类别(可执法人制)-参考 /constant下接口",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Pairs"
+            }
         },
         "grade": 
         {
@@ -231,16 +230,6 @@
             "description": "批准协会",
             "$ref": "#/definitions/Association"
         },
-        "bjyhNo": 
-        {
-            "description": "北京银行卡号",
-            "type": "string"
-        },
-        "financialInfo": 
-        {
-            "description": "财务信息",
-            "type": "string"
-        },
         "oralEnLevel": 
         {
             "description": "英语口语水平",
@@ -254,12 +243,20 @@
         "healthCertificate": 
         {
             "description": "健康证明",
-            "type": "string"
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Resource"
+            }
         },
         "pftResult": 
         {
-            "description": "体能测试成绩",
-            "type": "string"
+            "description": "体测信息",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Pft"
+            }
         },
         "trainingExp": 
         {

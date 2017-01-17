@@ -1,5 +1,5 @@
 {
-    "summary": "评论",
+    "summary": "添加评论",
     "tags": 
     [
         "comments"
@@ -39,14 +39,6 @@
         },
 
         {
-            "name": "targetCommentId",
-            "in": "formData",
-            "type": "string",
-            "required": false,
-            "description": "如果回复评论则targetCommentId 不能为空"
-        },
-
-        {
             "name": "images",
             "in": "formData",
             "type": "string",
@@ -58,7 +50,7 @@
             "name": "content",
             "in": "formData",
             "type": "string",
-            "required": true,
+            "required": false,
             "description": "评论内容"
         }
     ],

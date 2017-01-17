@@ -31,17 +31,12 @@
     {
         "200": 
         {
-            "description": "删除成功"
-        },
-
-        "400": 
-        {
             "schema": 
             {
-                "$ref": "#/definitions/Error"
+                "$ref": "#/definitions/Succ"
             },
 
-            "description": "业务错误消息"
+            "description": "只要调用就返回成功"
         },
 
         "401": 
@@ -55,5 +50,5 @@
         }
     },
 
-    "operationId": "deleteCommentById"
+    "operationId": "deleteComment"
 }

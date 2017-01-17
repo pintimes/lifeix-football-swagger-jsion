@@ -1,0 +1,44 @@
+{
+    "summary": "获取单个Post",
+    "tags": 
+    [
+        "posts"
+    ],
+    
+	"consumes": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "根据Id获取单个Post对象",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "$ref": "#/parameters/postPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Post"
+            },
+
+            "description": "Post对象"
+        }
+    },
+
+    "operationId": "getPost"
+}

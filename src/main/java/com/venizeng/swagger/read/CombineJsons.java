@@ -31,6 +31,7 @@ public class CombineJsons {
     }
 
     private JSONObject readSwagger(String filepath) {
+    	System.out.println(filepath);
         return fromFile(new File(filepath));
     }
 
@@ -45,10 +46,10 @@ public class CombineJsons {
     }
 
     private JSONObject readPaths(String pathsDirfilepath) {
-        JSONObject jsonObject = new JSONObject();
-        LinkedHashMap<String, JSONObject> map = readPaths(new File(pathsDirfilepath),
-                new File(pathsDirfilepath));
+        LinkedHashMap<String, JSONObject> map = readPaths(new File(pathsDirfilepath), new File(pathsDirfilepath));
         Set<String> set = map.keySet();
+        System.out.println(map.size());
+        JSONObject jsonObject = new JSONObject();
         for (String key : set) {
             jsonObject.put(key, map.get(key));
         }
@@ -72,7 +73,6 @@ public class CombineJsons {
         }
         JSONObject path = new JSONObject();
         for (File methodFile : methods) {
-            System.out.println(methodFile.getAbsolutePath());
             JSONObject jsonObject = fromFile(methodFile);
             String method = FileUtil.getFileName(methodFile);
             path.put(method, jsonObject);

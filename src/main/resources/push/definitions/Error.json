@@ -1,0 +1,13 @@
+{
+    "description": "错误对象",
+    "properties": 
+    {
+        "message": 
+        {
+            "description": "错误信息",
+            "type": "string"
+        }
+    },
+
+    "type": "object"
+}

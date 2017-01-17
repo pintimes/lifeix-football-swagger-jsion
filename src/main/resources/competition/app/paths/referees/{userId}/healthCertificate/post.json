@@ -1,0 +1,58 @@
+{
+    "summary": "裁判提交或修改健康证明",
+    "tags": 
+    [
+        "referee"
+    ],
+
+    "description": "裁判提交或修改健康证明",
+    "produces": 
+    [
+        "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/userPath"
+        },
+        {
+            "schema": 
+            {
+           		"type": "array",
+		        "items": 
+		        {
+                	"$ref": "#/definitions/Resource"
+		        }         
+            },
+            "description": "健康证明照片",
+            "name": "healthCertificates",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+    "consumes": 
+    [
+        "application/json"
+    ],
+
+    "responses": 
+    {
+       	
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+
+            "description": "SuccResponse响应对象" 
+        }
+    },
+
+    "operationId": "addOrUpateRefereeHealthCertificate"
+}

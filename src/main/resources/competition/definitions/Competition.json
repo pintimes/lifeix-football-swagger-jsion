@@ -115,9 +115,8 @@
         },
         "category": 
         {
-            "description": "0:11人制 1:8人制 2:5人制",
-            "format": "int32",
-            "type": "integer"
+            "description": "人制",
+            "$ref": "#/definitions/Pairs"
         },
         "teamList": 
         {
@@ -160,8 +159,8 @@
         },
         "competitionApplyStatus": 
         {
-            "description": " true-开放状态 false-关闭状态",
-            "type": "boolean",
+            "description": "取name作为显示",
+            "$ref": "#/definitions/Pairs"
         },
         "minRefereeGrade": 
         {
@@ -200,6 +199,26 @@
         {
             "description": " true-报名满了 false-未满",
             "type": "boolean",
+        },
+        "sponsor": 
+        {
+            "description": "主办单位,多个时,以‘,’分隔",
+            "type": "string"
+        },
+        "undertake": 
+        {
+            "description": "承办单位,多个时,以‘,’分隔",
+            "type": "string"
+        },
+        "coOrganizer": 
+        {
+            "description": "协办单位,多个时,以‘,’分隔",
+            "type": "string"
+        },
+        "supporter": 
+        {
+            "description": "支持方,多个时,以‘,’分隔",
+            "type": "string"
         }
        
     }

@@ -1,0 +1,92 @@
+{
+    "summary": "添加回复",
+    "tags": 
+    [
+        "replies"
+    ],
+
+    "description": "登录之后才能回复，能够回复自己",
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "name": "commentId",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "评论Id"
+        },
+        
+         {
+            "name": "replyId",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "回复Id"
+        },
+
+        {
+            "name": "images",
+            "in": "formData",
+            "type": "string",
+            "required": false,
+            "description": "图片地址，多张图片采用','分割"
+        },
+
+        {
+            "name": "content",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "回复内容"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Reply"
+            },
+
+            "description": "Reply对象"
+        },
+
+        "400": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "业务错误消息"
+        },
+
+        "401": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "未授权错误消息"
+        }
+    },
+
+    "operationId": "addReply"
+}

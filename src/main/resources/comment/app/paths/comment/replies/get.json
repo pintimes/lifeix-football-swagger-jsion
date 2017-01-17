@@ -1,0 +1,87 @@
+{
+    "summary": "获取评论的回复列表",
+    "tags": 
+    [
+        "replies"
+    ],
+
+    "consumes": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "description": "获取回复列表，默认按时间升序排列",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "description": "评论Id",
+            "name": "commentId",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+
+        {
+            "name": "limit",
+            "in": "query",
+            "format": "int32",
+            "type": "integer",
+            "description": "每页数目，默认是每页10条"
+        },
+
+        {
+            "name": "date",
+            "in": "query",
+            "format": "date-time",
+            "type": "string",
+            "description": "如果查最老的回复不传即可；如果是分页查询则需将前一页最后一条记录的时间传入，通过时间定位"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "Reply对象",
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Reply"
+                }
+            }
+        },
+
+        "400": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "业务错误消息"
+        },
+
+        "401": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "未授权错误消息"
+        }
+    },
+
+    "operationId": "listReplies"
+}

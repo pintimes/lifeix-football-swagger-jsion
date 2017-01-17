@@ -1,55 +1,17 @@
 {
-    "description": "APP",
+    "description": "评论",
     "properties": 
     {
         "id": 
         {
-            "description": "评论Id",
+            "description": "Id",
             "type": "string"
         },
 
-        "target": 
+        "user": 
         {
-            "properties": 
-            {
-                "type": 
-                {
-                    "description": "目标类型：资讯 post,你来判 decision,评论 comment",
-                    "type": "string"
-                },
-
-                "id": 
-                {
-                    "description": "id",
-                    "type": "string"
-                },
-
-                "author": 
-                {
-                    "$ref": "#/definitions/User"
-                },
-
-                "content": 
-                {
-                    "description": "目标内容",
-                    "type": "string"
-                },
-
-                "createTime": 
-                {
-                    "description": "评论时间",
-                    "type": "string",
-                    "format": "date-time"
-                }
-            },
-
-            "description": "评论对象",
-            "type": "object"
-        },
-
-        "from": 
-        {
-            "$ref": "#/definitions/User"
+            "$ref": "#/definitions/User",
+            "description": "评论者"
         },
 
         "images": 
@@ -69,11 +31,54 @@
             "type": "string"
         },
 
+        "subjectType": 
+        {
+            "description": "主题类型:比如post,decision,……",
+            "type": "string"
+        },
+
+        "subjectId": 
+        {
+            "description": "主题ID",
+            "type": "string"
+        },
+
+        "likeNum": 
+        {
+            "description": "喜欢数",
+            "type": "integer",
+            "format": "int64"
+        },
+
+        "like": 
+        {
+            "description": "当前用户是否喜欢过",
+            "type": "boolean"
+        },
+
         "createTime": 
         {
             "description": "评论时间",
             "type": "string",
             "format": "date-time"
+        },
+
+        "replies": 
+        {
+            "items": 
+            {
+                "$ref": "#/definitions/Reply"
+            },
+
+            "description": "回复",
+            "type": "array"
+        },
+
+        "replySum": 
+        {
+            "description": "回复数目",
+            "type": "integer",
+            "format": "int64"
         }
     },
 

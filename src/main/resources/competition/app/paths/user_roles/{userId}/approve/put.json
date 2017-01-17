@@ -27,7 +27,10 @@
     {
         "200": 
         {
-
+			"schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
             "description": "审批通过"
         }
     },

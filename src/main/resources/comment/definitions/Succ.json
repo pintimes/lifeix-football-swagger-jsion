@@ -1,0 +1,18 @@
+{
+    "description": "成功对象",
+    "properties": 
+    {
+        "succ": 
+        {
+            "description": "成功的状态码，默认=succ",
+            "type": "string"
+        },
+        "message": 
+        {
+            "description": "消息提示",
+            "type": "string"
+        }
+    },
+
+    "type": "object"
+}

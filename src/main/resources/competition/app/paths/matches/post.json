@@ -27,7 +27,7 @@
             {
                 "$ref": "#/definitions/Match"
             },
-            "description": "比赛 其中ucId competitionId competitionName hostCompetitionTeamId awayCompetitionTeamId 必填",
+            "description": "比赛 其中ucId competitionId competitionName hostTeamName(A1) awayTeamName(A2) 必填",
             "name": "user",
             "required": true,
             "in": "body"

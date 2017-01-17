@@ -1,0 +1,87 @@
+{
+    "summary": "获取列表评论",
+    "tags": 
+    [
+        "comments"
+    ],
+
+    "consumes": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+
+    "description": "返回一种类型的评论列表 比如你来判的列表中每一个选项都需要三个评论",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+
+        {
+            "description": "主题类型",
+            "name": "subjectType",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+
+        {
+            "description": "目标Id列表，以‘,’分割",
+            "name": "subjecttIds",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        },
+
+        {
+            "name": "limit",
+            "in": "query",
+            "format": "int32",
+            "type": "integer",
+            "description": "每页数目，默认是每页20条"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "Comment对象",
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Comment"
+                }
+            }
+        },
+
+        "400": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "业务错误消息"
+        },
+
+        "401": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Error"
+            },
+
+            "description": "未授权错误消息"
+        }
+    },
+
+    "operationId": "listCommentsByMutiSubjects"
+}

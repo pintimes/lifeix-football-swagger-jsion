@@ -1,0 +1,34 @@
+{
+    "description": "裁判分页",
+    "type": "object",
+    "properties": 
+    {
+        "pageNo": 
+        {
+            "description": "页码",
+            "format": "int32",
+            "type": "integer"
+        },
+        "pageSize": 
+        {
+            "description": "每页记录数",
+            "format": "int32",
+            "type": "integer"
+        },
+        "list": 
+        {
+            "description": "裁判列表",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Referee"
+            }
+        },
+        "totalRecords": 
+        {
+            "description": "符合查询条件的总记录数",
+            "format": "int32",
+            "type": "integer"
+        }
+    }
+}

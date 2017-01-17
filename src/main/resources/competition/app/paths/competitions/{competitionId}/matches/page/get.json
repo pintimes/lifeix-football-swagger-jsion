@@ -1,0 +1,56 @@
+{
+    "summary": "获取赛事比赛列表",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "获取赛事比赛列表",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyYHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "description": "开始查询场序号",
+            "name": "startSequenceId",
+            "format": "int64",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "页码数",
+            "name": "pageNo",
+            "format": "int64",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "每页数目",
+            "name": "pageSize",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/RefereePageModel"
+            },
+            "description": "赛事比赛列表"
+        }
+    },
+
+    "operationId": "getPageCompetitionMatches"
+}

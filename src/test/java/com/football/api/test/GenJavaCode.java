@@ -16,7 +16,7 @@ public class GenJavaCode {
 	public static void main(String[] args) {
 		File swaggerDir = new File("swagger/");
 		String tempDir = "d:/out/";
-		String workspace = "D:/WorkSpace/springboot/lifeix-football-api-test";
+		String workspace = "D:/temp";
 		File[] files = swaggerDir.listFiles();
 		for (File swaggerFile : files) {
 			try {
