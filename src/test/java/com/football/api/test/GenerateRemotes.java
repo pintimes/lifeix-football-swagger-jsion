@@ -30,17 +30,10 @@ public class GenerateRemotes {
 	// "smb://192.168.50.199/立方网/cfootball/football-api/";
 	private static String SMBDIR = "smb://192.168.1.17/fb/api/";
 
-<<<<<<< HEAD
-    public static void main(String[] args) {
-        generateRemote(new File("swagger/user.json"));
-         generateAll();
-    }
-=======
 	public static void main(String[] args) throws Exception {
 		GenerateRemotes generateRemotes = new GenerateRemotes();
 		generateRemotes.process();
 	}
->>>>>>> refs/remotes/origin/master
 
 	private void process() throws Exception {
 		/**
