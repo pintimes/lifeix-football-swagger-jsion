@@ -15,6 +15,14 @@
             "$ref": "#/parameters/competitionPath"
         },
         {
+            "name": "matchId",
+            "in": "query",
+            "type": "integer",
+            "format": "int64",
+            "required": false,
+            "description": "比赛id，比赛选派时查询此接口需要传入"
+        },
+        {
             "name": "position",
             "in": "query",
             "type": "integer",
