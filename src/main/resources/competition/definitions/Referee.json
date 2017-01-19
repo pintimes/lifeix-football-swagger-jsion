@@ -270,7 +270,12 @@
         },
         "refereeApplyStatus": 
         {
-            "description": "申请状态",
+            "description": "赛事申请状态",
+            "$ref": "#/definitions/Pairs"
+        },
+        "refereeAssignStatus": 
+        {
+            "description": "比赛指派状态",
             "$ref": "#/definitions/Pairs"
         },
         "roleStatus": 
