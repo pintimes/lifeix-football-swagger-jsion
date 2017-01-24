@@ -1,0 +1,54 @@
+{
+	"summary": "裁判管理员或裁判长取消已确认的指派",
+	"tags": 
+	[
+		"assign"
+	],
+
+	"description": "裁判管理员或裁判长取消已确认的指派",
+
+	"consumes": 
+	[
+		"application/json"
+	],
+	
+	"parameters": 
+	[
+		{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/matchPath"
+        },
+		{
+			"description": "被取消的用户ID",
+			"name": "userId",
+			"type": "integer",
+			"format": "int64",
+			"required": true,
+			"in": "query"
+		},
+		{
+			"description": "被取消的职位ID",
+			"name": "position",
+			"type": "integer",
+			"format": "int64",
+			"required": true,
+			"in": "query"
+		}
+	],
+
+	"responses": 
+	{
+		"200": 
+		{
+			"schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+			"description": "流程完成"
+		}
+	},
+
+	"operationId": "cancelAssignment"
+}

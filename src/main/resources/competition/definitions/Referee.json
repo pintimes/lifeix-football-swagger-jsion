@@ -283,6 +283,12 @@
             "description": "权限状态",
             "format": "int64",
             "type": "integer"
-        }
+        },
+        "sequenceNo": 
+        {
+            "description": "序号",
+            "format": "int64",
+            "type": "integer"
+        },
     }
 }
