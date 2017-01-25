@@ -260,6 +260,11 @@
         {
             "description": "备注/其他",
             "type": "string"
+        },
+        "refereeDetailsPublished": 
+        {
+            "description": " true-裁判信息公布 false-裁判信息未公布",
+            "type": "boolean",
         }
     }
 }

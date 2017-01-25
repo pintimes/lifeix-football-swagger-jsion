@@ -1,0 +1,59 @@
+{
+    "summary": "裁判管理员或裁判长指定某个裁判报名",
+    "tags": 
+    [
+        "apply"
+    ],
+
+    "description": "裁判管理员或裁判长指定某个裁判报名",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+     "consumes": 
+    [
+       
+       "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "description": "1-主裁 2-助理裁判",
+            "name": "position",
+            "type": "integer",
+            "format": "int64",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "被指定的用户ID",
+            "name": "userId",
+            "type": "integer",
+            "format": "int64",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+          	"schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },   
+            "description": "指定裁判报名成功"
+        }
+    },
+
+    "operationId": "specifyApplyCompetition"
+}
