@@ -195,6 +195,12 @@
             "format": "int32",
             "type": "integer"
         },
+        "refereeAppliedPosition": 
+        {
+            "description": "0-裁判监督 1-主裁 2-助理 3-第四官员",
+            "format": "int32",
+            "type": "integer"
+        },
         "full": 
         {
             "description": " true-报名满了 false-未满",
