@@ -1,0 +1,43 @@
+{
+    "summary": "修改培训信息",
+    "tags": 
+    [
+        "trainning"
+    ],
+
+    "description": "修改培训信息",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/trainningPath"
+        },
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Trainning"
+            },
+            "description": "培训对象 ",
+            "name": "trainning",
+            "required": true,
+            "in": "body"
+        }
+    ],
+
+   "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+
+            "description": "SuccResponse响应对象"
+        }
+    },
+
+    "operationId": "updateTrainning"
+}

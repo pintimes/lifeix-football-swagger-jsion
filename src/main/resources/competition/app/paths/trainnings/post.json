@@ -1,0 +1,51 @@
+{
+    "summary": "创建培训",
+    "tags": 
+    [
+        "trainning"
+    ],
+
+    "description": "创建培训",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+     "consumes": 
+    [
+       
+       "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+   	   	{
+            "schema": 
+            {
+                "$ref": "#/definitions/Trainning"
+            },
+            "description": "必填项参考mockup",
+            "name": "trainning",
+            "required": true,
+            "in": "body"
+        }
+        
+    ],
+
+    "responses": 
+    {
+       	 "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Trainning"
+            },
+            "description": "Trainning响应对象"
+        }
+    },
+
+    "operationId": "addTrainning"
+}

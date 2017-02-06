@@ -1,0 +1,29 @@
+{
+    "summary": "获取培训列表",
+    "tags": 
+    [
+        "trainning"
+    ],
+
+    "description": "获取培训列表",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        }
+    ],
+
+   "responses": 
+    {
+         "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/TrainningPageModel"
+            },
+            "description": "培训列表"
+        }
+    },
+
+    "operationId": "getTrainnings"
+}

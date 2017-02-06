@@ -64,6 +64,14 @@
             "type": "integer",
             "required": false,
             "in": "query"
+        },
+        {
+            "description": "用户id",
+            "name": "userId",
+            "format": "int64",
+            "type": "integer",
+            "required": false,
+            "in": "query"
         }
     ],
 

@@ -1,0 +1,110 @@
+{
+    "description": "培训信息",
+    "type": "object",
+    "properties": 
+    {
+    	"id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "name": 
+        {
+            "description": "培训名称",
+            "type": "string"
+        },
+		"flag": 
+        {
+            "description": "培训封面海报",
+            "type": "string"
+        },
+        "position": 
+        {
+            "description": "培训地点",
+            "type": "string"
+        },
+        "startTime": 
+        {
+            "description": "培训开始时间",
+            "type": "string",
+            "format": "date-time"
+        },
+        "endTime": 
+        {
+            "description": "培训结束时间",
+            "type": "string",
+            "format": "date-time"
+        },
+        "lecturer": 
+        {
+            "description": "培训讲师",
+            "type": "string"
+        },
+        "applyStartTime": 
+        {
+            "description": "报名开始时间",
+            "type": "string",
+            "format": "date-time"
+        },
+        "applyEndTime": 
+        {
+            "description": "报名结束时间",
+            "type": "string",
+            "format": "date-time"
+        },
+        "useReleaseTimeAsApplyStartTime": 
+        {
+            "description": "发布时间作为报名开始时间",
+            "type": "boolean"
+        },
+        "useEndDateAsApplyEndTime": 
+        {
+            "description": "培训结束时间作为报名结束时间",
+            "type": "boolean"
+        },
+        "applyStatus": 
+        {
+            "description": "1--报名未开始 2--报名中 3--报名已结束",
+            "$ref": "#/definitions/Pairs"
+        },
+        "realease": 
+        {
+            "description": "是否已发布",
+            "type": "boolean"
+        },
+       	"realeaseTime": 
+        {
+            "description": "发布时间",
+            "type": "string",
+            "format": "date-time"
+        },
+        "maxStudent": 
+        {
+            "description": "最大报名人数",
+            "format": "int32",
+            "type": "integer"
+        },
+        "appliedStudent": 
+        {
+            "description": "已经报名人数",
+            "format": "int32",
+            "type": "integer"
+        },
+        "minRefereeLevel": 
+        {
+            "description": "最低报名级别",
+            "$ref": "#/definitions/Pairs"
+        },
+        "content": 
+        {
+            "description": "培训简介",
+            "type": "string"
+        },
+        "userApplyStatus": 
+        {
+            "description": " 0--报名审核中 1--报名不通过 2--报名通过 此字段在返回数据中不存在时，未报名",
+            "$ref": "#/definitions/Pairs"
+        }
+    }
+}

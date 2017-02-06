@@ -1,0 +1,33 @@
+{
+    "summary": "获取培训详情",
+    "tags": 
+    [
+        "trainning"
+    ],
+
+    "description": "获取培训详情",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/trainningPath"
+        }
+    ],
+
+   "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Trainning"
+            },
+
+            "description": "Trainning响应对象"
+        }
+    },
+
+    "operationId": "getTrainning"
+}
