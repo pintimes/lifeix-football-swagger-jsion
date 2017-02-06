@@ -1,0 +1,45 @@
+{
+    "summary": "发布培训",
+    "tags": 
+    [
+        "trainning"
+    ],
+
+    "description": "发布培训",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+     "consumes": 
+    [
+       
+       "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+   	   	{
+            "$ref": "#/parameters/trainningPath"
+        }
+        
+    ],
+
+    "responses": 
+    {
+       	"200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+
+            "description": "SuccResponse响应对象"
+        }
+    },
+
+    "operationId": "releaseTrainning"
+}

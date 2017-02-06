@@ -9,6 +9,17 @@
             "format": "int64",
             "type": "integer"
         },
+        "assId": 
+        {
+            "description": "协会id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "assName": 
+        {
+            "description": "协会名称",
+            "type": "string"
+        },
         "name": 
         {
             "description": "培训名称",
@@ -68,12 +79,12 @@
             "description": "1--报名未开始 2--报名中 3--报名已结束",
             "$ref": "#/definitions/Pairs"
         },
-        "realease": 
+        "releaseTrainning": 
         {
             "description": "是否已发布",
             "type": "boolean"
         },
-       	"realeaseTime": 
+       	"releaseTime": 
         {
             "description": "发布时间",
             "type": "string",
