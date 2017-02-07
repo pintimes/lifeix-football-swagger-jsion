@@ -1,0 +1,52 @@
+{
+    "summary": "通过培训申请",
+    "tags": 
+    [
+        "trainning"
+    ],
+
+    "description": "通过培训申请",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+     "consumes": 
+    [
+       
+       "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+   	   	{
+            "$ref": "#/parameters/trainningPath"
+        },
+        {
+            "name": "userIds",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "用户id,多个时用,分隔"
+        }
+        
+    ],
+
+    "responses": 
+    {
+       	"200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+
+            "description": "SuccResponse响应对象"
+        }
+    },
+
+    "operationId": "approvedTrainningApply"
+}

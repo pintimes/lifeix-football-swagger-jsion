@@ -1,29 +1,18 @@
 {
-    "summary": "获取培训列表",
+    "summary": "获取培训班待审核人员列表",
     "tags": 
     [
         "trainning"
     ],
 
-    "description": "获取培训列表",
+    "description": "获取培训详情",
     "parameters": 
     [
     	{
             "$ref": "#/parameters/apiKeyHeader"
         },
-         {
-            "name": "assId",
-            "in": "query",
-            "type": "string",
-            "required": false,
-            "description": "协会id 默认1101"
-        },
         {
-            "name": "releaseTrainning",
-            "in": "query",
-            "type": "boolean",
-            "required": false,
-            "description": "查询全部时不传,移动端传true"
+            "$ref": "#/parameters/trainningPath"
         },
         {
             "name": "startId",
@@ -50,15 +39,16 @@
 
    "responses": 
     {
-         "200": 
+        "200": 
         {
             "schema": 
             {
-                "$ref": "#/definitions/TrainningPageModel"
+                "$ref": "#/definitions/RefereePageModel"
             },
-            "description": "培训列表"
+
+            "description": "Referee分页响应对象"
         }
     },
 
-    "operationId": "getTrainnings"
+    "operationId": "getNeedCheckStudents"
 }
