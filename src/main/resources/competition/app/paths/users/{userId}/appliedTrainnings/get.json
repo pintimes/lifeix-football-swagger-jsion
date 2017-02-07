@@ -1,0 +1,53 @@
+{
+    "summary": "参与过的培训",
+    "tags": 
+    [
+        "trainning"
+    ],
+
+    "description": "参与过的培训",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/userPath"
+        },
+         {
+            "name": "startId",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "id"
+        },
+        {
+            "name": "pageNo",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "页码"
+        },
+        {
+            "name": "pageSize",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "查询多少条记录"
+        }
+    ],
+
+    "responses": 
+    {
+         "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/TrainningPageModel"
+            },
+            "description": "参与过的培训列表"
+        }
+    },
+
+    "operationId": "appliedTrainnings"
+}
