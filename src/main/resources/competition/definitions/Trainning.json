@@ -102,9 +102,9 @@
             "format": "int32",
             "type": "integer"
         },
-        "minRefereeLevel": 
+        "target": 
         {
-            "description": "最低报名级别",
+            "description": "培训目标",
             "$ref": "#/definitions/Pairs"
         },
         "content": 
@@ -116,6 +116,16 @@
         {
             "description": " 0--报名审核中 1--报名不通过 2--报名通过 此字段在返回数据中不存在时，未报名",
             "$ref": "#/definitions/Pairs"
+        },
+        "linkman": 
+        {
+            "description": "联系人",
+            "type": "string"
+        },
+        "linkPhone": 
+        {
+            "description": "联系电话",
+            "type": "string"
         }
     }
 }

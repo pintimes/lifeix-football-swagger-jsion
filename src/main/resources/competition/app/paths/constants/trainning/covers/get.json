@@ -1,0 +1,30 @@
+{
+    "summary": "获取培训班默认封面",
+    "tags": 
+    [
+        "trainning"
+    ],
+
+    "description": "获取培训班默认封面",
+    "parameters": 
+    [
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                   "type": "string"
+                }
+            },
+            "description": "培训班默认封面"
+        }
+    },
+
+    "operationId": "getTrainningCovers"
+}

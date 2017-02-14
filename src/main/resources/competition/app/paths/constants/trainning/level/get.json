@@ -1,0 +1,30 @@
+{
+    "summary": "获取培训对象",
+    "tags": 
+    [
+        "trainning"
+    ],
+
+    "description": "获取培训对象",
+    "parameters": 
+    [
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Pairs"
+                }
+            },
+            "description": "获取培训对象"
+        }
+    },
+
+    "operationId": "getTrainningLevels"
+}
