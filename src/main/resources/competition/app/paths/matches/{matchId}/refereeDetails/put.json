@@ -1,0 +1,55 @@
+{
+    "summary": "裁判管理员决定是否公开比赛的裁判报名信息",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "裁判管理员决定是否公开比赛的裁判报名信息",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+     "consumes": 
+    [
+       
+       "application/json"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/matchPath"
+        },
+        {
+            "description": "比赛是否公开裁判信息，true-公开，false-不公开",
+            "name": "published",
+            "type": "boolean",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+
+            "description": "修改成功"
+        },
+        "401": 
+        {
+            "description": "未授权"
+        }
+    },
+
+    "operationId": "updateMatchRefereeDetails"
+}
