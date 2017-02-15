@@ -37,9 +37,8 @@
             "in": "query",
             "type": "string",
             "required": true,
-            "description": "拒绝原因"
+            "description": "审核不通过的原因"
         }
-        
     ],
 
     "responses": 
