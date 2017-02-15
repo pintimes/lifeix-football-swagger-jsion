@@ -31,6 +31,13 @@
             "type": "string",
             "required": true,
             "description": "用户id,多个时用,分隔"
+        },
+        {
+            "name": "reason",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "拒绝原因"
         }
         
     ],
