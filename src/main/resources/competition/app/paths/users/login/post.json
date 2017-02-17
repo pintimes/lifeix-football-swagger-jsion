@@ -48,6 +48,13 @@
             "description": "设备token"
         },
         {
+            "name": "clientId",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "设备id"
+        },
+        {
             "schema": 
             {
                 "$ref": "#/definitions/User"
