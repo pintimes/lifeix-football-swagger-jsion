@@ -22,16 +22,24 @@
             "name": "platform",
             "in": "formData",
             "type": "string",
-            "required": true,
-            "description": "平台:ios,android"
+            "required": false,
+            "description": "平台:ios,android:友盟需要提供"
         },
 
         {
             "name": "deviceToken",
             "in": "formData",
             "type": "string",
-            "required": true,
-            "description": "设备号"
+            "required": false,
+            "description": "设备号:友盟需要提供"
+        },
+        
+        {
+            "name": "clientId",
+            "in": "formData",
+            "type": "string",
+            "required": false,
+            "description": "设备号:个推需要提供"
         },
 
         {
