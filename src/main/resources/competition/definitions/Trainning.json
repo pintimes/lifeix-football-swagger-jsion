@@ -90,6 +90,11 @@
             "type": "string",
             "format": "date-time"
         },
+        "applyNoLimit": 
+        {
+            "description": "报名人数无限制",
+            "type": "boolean"
+        },
         "maxStudent": 
         {
             "description": "最大报名人数",
