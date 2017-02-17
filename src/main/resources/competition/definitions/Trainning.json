@@ -131,6 +131,11 @@
         {
             "description": "联系电话",
             "type": "string"
+        },
+        "contentUrl": 
+        {
+            "description": "内容H5地址",
+            "type": "string"
         }
     }
 }
