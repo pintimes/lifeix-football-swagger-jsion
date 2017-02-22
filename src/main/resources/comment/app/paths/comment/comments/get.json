@@ -19,7 +19,7 @@
     "parameters": 
     [
         {
-            "$ref": "#/parameters/apiKeyHeader"
+            "$ref": "#/parameters/apiKeyYHeader"
         },
 
         {
@@ -32,7 +32,7 @@
 
         {
             "description": "目标Id:比如postid",
-            "name": "subjecttId",
+            "name": "subjectId",
             "type": "string",
             "required": true,
             "in": "query"

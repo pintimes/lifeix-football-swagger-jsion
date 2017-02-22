@@ -6,6 +6,12 @@
         {
             "description": "错误信息",
             "type": "string"
+        },
+
+        "code": 
+        {
+            "description": "状态码",
+            "type": "string"
         }
     },
 

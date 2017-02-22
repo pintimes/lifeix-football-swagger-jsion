@@ -48,7 +48,6 @@ public class CombineJsons {
     private JSONObject readPaths(String pathsDirfilepath) {
         LinkedHashMap<String, JSONObject> map = readPaths(new File(pathsDirfilepath), new File(pathsDirfilepath));
         Set<String> set = map.keySet();
-        System.out.println(map.size());
         JSONObject jsonObject = new JSONObject();
         for (String key : set) {
             jsonObject.put(key, map.get(key));

@@ -1,0 +1,23 @@
+{
+	"operationId":"PlacardAction.read",
+	"summary":"summary",
+	"description":"description",
+	"produces":[
+		"application/json"
+	],
+	"consumes":[
+		"application/x-www-form-urlencoded"
+	],
+	"parameters":[],
+	"responses":{
+		"200":{
+			"schema":{
+				"type":"string"
+			},
+			"description":"response"
+		},
+		"404":{
+			"description":"路径不存在"
+		}
+	}
+}

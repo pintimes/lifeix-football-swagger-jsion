@@ -34,7 +34,7 @@
             "name": "replyId",
             "in": "formData",
             "type": "string",
-            "required": true,
+            "required": false,
             "description": "回复Id"
         },
 

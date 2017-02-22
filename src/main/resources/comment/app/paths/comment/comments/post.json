@@ -19,7 +19,7 @@
     "parameters": 
     [
         {
-            "$ref": "#/parameters/apiKeyHeader"
+            "$ref": "#/parameters/apiKeyYHeader"
         },
 
         {
