@@ -1,0 +1,23 @@
+{
+	"operationId":"ContestAction.channelList",
+	"summary":"summary",
+	"description":"description",
+	"produces":[
+		"application/json"
+	],
+	"consumes":[
+		"application/json"
+	],
+	"parameters":[],
+	"responses":{
+		"200":{
+			"schema":{
+				"type":"string"
+			},
+			"description":"response"
+		},
+		"404":{
+			"description":"路径不存在"
+		}
+	}
+}

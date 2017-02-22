@@ -5,7 +5,7 @@
         "push"
     ],
 
-    "description": "推送给单个设备",
+    "description": "推送给单个设备；支持个推和友盟",
     "produces": 
     [
         "application/json; charset=UTF-8"
@@ -23,7 +23,7 @@
             "in": "formData",
             "type": "string",
             "required": false,
-            "description": "平台:ios,android:友盟需要提供"
+            "description": "平台:ios,android"
         },
 
         {
@@ -31,17 +31,9 @@
             "in": "formData",
             "type": "string",
             "required": false,
-            "description": "设备号:友盟需要提供"
+            "description": "设备号"
         },
         
-        {
-            "name": "clientId",
-            "in": "formData",
-            "type": "string",
-            "required": false,
-            "description": "设备号:个推需要提供"
-        },
-
         {
             "description": "推送标题",
             "name": "title",
@@ -98,5 +90,5 @@
         }
     },
 
-    "operationId": "addMessage"
+    "operationId": "pushSingleByUmeng"
 }

@@ -1,0 +1,33 @@
+{
+	"operationId":"ContentVideoAction.getUploadToken",
+	"summary":"summary",
+	"description":"description",
+	"produces":[
+		"application/json"
+	],
+	"consumes":[
+		"application/json"
+	],
+	"parameters":[
+		{
+			"type":"integer",
+			"format":"int32",
+			"name":"num",
+			"description":"num",
+			"in":"query",
+			"default":1,
+			"required":false
+		}
+	],
+	"responses":{
+		"200":{
+			"schema":{
+				"type":"string"
+			},
+			"description":"response"
+		},
+		"404":{
+			"description":"路径不存在"
+		}
+	}
+}

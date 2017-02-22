@@ -1,0 +1,32 @@
+{
+	"operationId":"ChannelAction.list",
+	"summary":"summary",
+	"description":"description",
+	"produces":[
+		"application/json"
+	],
+	"consumes":[
+		"application/json"
+	],
+	"parameters":[
+		{
+			"type":"number",
+			"format":"double",
+			"name":"version",
+			"description":"客户端版本号",
+			"in":"query",
+			"required":true
+		}
+	],
+	"responses":{
+		"200":{
+			"schema":{
+				"type":"string"
+			},
+			"description":"response"
+		},
+		"404":{
+			"description":"路径不存在"
+		}
+	}
+}

@@ -1,0 +1,31 @@
+{
+	"operationId":"ManageContentAction.switchContent",
+	"summary":"summary",
+	"description":"description",
+	"produces":[
+		"application/json"
+	],
+	"consumes":[
+		"application/json"
+	],
+	"parameters":[
+		{
+			"type":"boolean",
+			"name":"switch_flag",
+			"description":"switch_flag",
+			"in":"query",
+			"required":true
+		}
+	],
+	"responses":{
+		"200":{
+			"schema":{
+				"type":"string"
+			},
+			"description":"response"
+		},
+		"404":{
+			"description":"路径不存在"
+		}
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"operationId":"ContentAdAction.view",
+	"summary":"summary",
+	"description":"description",
+	"produces":[
+		"application/json"
+	],
+	"consumes":[
+		"application/json"
+	],
+	"parameters":[
+		{
+			"type":"integer",
+			"format":"int64",
+			"name":"id",
+			"description":"id",
+			"in":"query",
+			"required":true
+		}
+	],
+	"responses":{
+		"200":{
+			"schema":{
+				"type":"string"
+			},
+			"description":"response"
+		},
+		"404":{
+			"description":"路径不存在"
+		}
+	}
+}

@@ -4,7 +4,12 @@
     {
         "succ": 
         {
-            "description": "成功的状态码，默认=succ",
+            "description": "成功的状态码，默认=succ；老的协议，忽略即可",
+            "type": "string"
+        },
+         "code": 
+        {
+            "description": "成功的状态码，默认=200",
             "type": "string"
         },
         "message": 
