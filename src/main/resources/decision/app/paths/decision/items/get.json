@@ -1,10 +1,10 @@
 {
-    "summary": "Decision按轮次获取题目列表 ",
+    "summary": "Decision获取题目列表 ",
     "tags": 
     [
     	"decision"
     ],
-    "description": "Decision按轮次获取题目列表 ",
+    "description": "Decision获取题目列表，轮次ID和itemIds至少有一个必填",
     "produces": 
     [
         "application/json"
@@ -18,7 +18,14 @@
             "description": "轮次ID",
             "name": "roundId",
             "type": "string",
-            "required": true,
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "题目ids，如有多个，请以英文逗号分隔",
+            "name": "itemIds",
+            "type": "string",
+            "required": false,
             "in": "query"
         }
     ],
@@ -55,5 +62,5 @@
         }
     },
 
-    "operationId": "getDecisionItemsByRoundId"
+    "operationId": "getDecisionItems"
 }
