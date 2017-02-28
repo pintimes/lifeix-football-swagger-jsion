@@ -28,6 +28,13 @@
             "type": "string",
             "required": true,
             "description": "评论Id"
+        },
+        {
+            "name": "commentType",
+            "in": "formData",
+            "type": "string",
+            "required": false,
+            "description": "评论类型，默认是评论，reply：对回复点赞"
         }
     ],
 
