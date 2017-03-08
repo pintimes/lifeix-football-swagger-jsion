@@ -1,0 +1,40 @@
+{
+    "summary": "导出赛事的选派安排",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "导出赛事的选派安排",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "description": "导出的文件类型，1-Excel，2-PDF",
+            "name": "fileType",
+            "format": "int32",
+            "type": "integer",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+            "description": "导出成功，文件为附件格式下载"
+        }
+    },
+
+    "operationId": "exportMatchRefereesForCompetition"
+}

@@ -1,0 +1,40 @@
+{
+    "summary": "删除某个培训班的附件资源",
+    "tags": 
+    [
+        "competition"
+    ],
+
+    "description": "删除某个培训班的附件资源",
+    "parameters": 
+    [
+       {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/trainningPath"
+        },
+		{
+			"description": "附件ID",
+			"name": "resourceId",
+			"format": "int64",
+            "type": "integer",
+			"required": true,
+			"in": "query"
+		}
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+            "description": "删除成功"
+        }
+    },
+
+    "operationId": "deleteTrainningResources"
+}

@@ -136,6 +136,17 @@
         {
             "description": "内容H5地址",
             "type": "string"
+        },
+        "attachmentId": 
+        {
+            "description": "附件ID",
+            "format": "int64",
+            "type": "integer"
+        },
+        "attachment": 
+        {
+            "description": "附件",
+            "$ref": "#/definitions/Resource"
         }
     }
 }
