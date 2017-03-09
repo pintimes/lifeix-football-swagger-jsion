@@ -246,7 +246,7 @@
             "type": "array",
             "items": 
             {
-                "$ref": "#/definitions/Resource"
+                "type": "string"
             }
         },
         "pftResult": 
@@ -290,5 +290,19 @@
             "format": "int64",
             "type": "integer"
         },
+        "dress": 
+        {
+            "description": "裁判服装信息",
+            "$ref": "#/definitions/RefereeDress"
+        },
+        "banks": 
+        {
+            "description": "银行信息",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Bank"
+            }
+        }
     }
 }
