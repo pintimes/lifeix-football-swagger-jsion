@@ -1,0 +1,40 @@
+{
+    "summary": "导出协会下的裁判员档案列表",
+    "tags": 
+    [
+        "association"
+    ],
+
+    "description": "导出协会下的裁判员档案列表",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/associationPath"
+        },
+        {
+            "description": "导出的文件类型，1-Excel，不支持其他格式",
+            "name": "fileType",
+            "format": "int32",
+            "type": "integer",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+            "description": "导出成功，文件为附件格式下载"
+        }
+    },
+
+    "operationId": "exportAssociationReferees"
+}
