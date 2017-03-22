@@ -1,0 +1,40 @@
+{
+    "summary": "裁判管理员删除一些已分配的比赛",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "删除一些已分配的比赛",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "description": "要删除的比赛ids，多个以逗号分隔",
+            "name": "matchIds",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+   "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+
+            "description": "删除成功"
+        }
+    },
+
+    "operationId": "removeAllocatedMatches"
+}

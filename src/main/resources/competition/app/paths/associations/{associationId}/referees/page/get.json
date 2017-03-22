@@ -15,6 +15,13 @@
             "$ref": "#/parameters/associationPath"
         },
         {
+            "description": "裁判类别，1-裁判讲师，2-裁判监督，3-裁判员，多个以逗号分隔，不传则返回全部类别",
+            "name": "refereeType",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+        {
             "description": "页码数",
             "name": "pageNo",
             "format": "int64",

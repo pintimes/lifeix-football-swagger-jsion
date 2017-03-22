@@ -1,0 +1,60 @@
+{
+    "summary": "裁判管理员查看已分配给某个裁判长的比赛列表",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "裁判管理员查看已分配给某个裁判长的比赛列表",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "description": "要查看的裁判长用户id",
+            "name": "userId",
+            "type": "integer",
+            "format": "int64",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "开始查询场序号，不传默认返回第一页数据，向下加载时传上一页的最大场序号",
+            "name": "startSequence",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "每页数据条数，默认20条",
+            "name": "limit",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Match"
+                }
+            },
+            "description": "比赛列表"
+        }
+    },
+
+    "operationId": "getAllocatedMatches"
+}

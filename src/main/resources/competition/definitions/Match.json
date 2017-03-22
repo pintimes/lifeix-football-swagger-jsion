@@ -265,6 +265,11 @@
         {
             "description": " true-裁判信息公布 false-裁判信息未公布",
             "type": "boolean",
+        },
+        "refereeAssignStatus": 
+        {
+            "description": "裁判指派状态",
+            "$ref": "#/definitions/Pairs"
         }
     }
 }

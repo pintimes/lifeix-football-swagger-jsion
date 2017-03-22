@@ -1,0 +1,44 @@
+{
+    "summary": "查看自己负责的裁判选派比赛列表",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "查看自己负责的裁判选派比赛列表",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "name": "status",
+            "in": "query",
+            "type": "integer",
+            "format": "int32",
+            "required": true,
+            "description": "选派状态： 0-待指派 ，1-待确认， 2-已确认"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Match"
+                }
+            },
+            "description": "比赛列表"
+        }
+    },
+
+    "operationId": "getCompetitionAssignMatches"
+}

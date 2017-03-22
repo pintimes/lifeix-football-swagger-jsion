@@ -5,23 +5,23 @@
     {
         "id": 
         {
-            "description": "id",
+            "description": "角色id, 1-赛事管理员，2-裁判管理员，3-裁判",
             "format": "int64",
             "type": "integer"
         },
         "roleName": 
         {
-            "description": "权限名称",
+            "description": "角色名称",
             "type": "string"
         },
         "roleDesc": 
         {
-            "description": "权限描述",
+            "description": "角色描述",
             "type": "string"
         },
         "status": 
         {
-            "description": "0 注册用户1：待审核 2：审核通过3.角色禁用",
+            "description": "1-待审核，  2-审核通过，  3-审核不通过",
             "format": "int32",
             "type": "integer"
         },
@@ -29,6 +29,12 @@
         {
             "description": "协会id",
            	"format": "int64",
+            "type": "integer"
+        },
+        "type": 
+        {
+            "description": "角色类别: 角色id为3(裁判)，type与裁判类别对应(1-裁判讲师，2-裁判监督，3-裁判员);",
+            "format": "int32",
             "type": "integer"
         }
     }

@@ -1,0 +1,36 @@
+{
+    "summary": "获取协会下拥有选派裁判权限的人员列表",
+    "tags": 
+    [
+        "association"
+    ],
+
+    "description": "获取协会下拥有选派裁判权限的人员列表",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/associationPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Referee"
+                }
+            },
+            "description": "裁判列表"
+        }
+    },
+
+    "operationId": "getAssociationRefereesAssignAuthorized"
+}

@@ -1,0 +1,59 @@
+{
+    "summary": "裁判管理员把一些比赛分配给裁判长",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "裁判管理员把一些比赛分配给裁判长",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+     "consumes": 
+    [
+       
+       "application/json"
+    ],
+
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "description": "要分配的裁判长用户id",
+            "name": "userId",
+            "type": "integer",
+            "format": "int64",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "要分配的比赛ids，多个以逗号分隔",
+            "name": "matchIds",
+            "type": "string",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+            "description": "分配完成"
+        }
+        
+    },
+
+    "operationId": "allocateMatchesToRefereeAssessor"
+}
