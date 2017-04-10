@@ -13,7 +13,7 @@
         },
         {
             "$ref": "#/parameters/competitionPath"
-        }
+        },
         {
             "description": "开始查询场序号，不传默认返回第一页数据，向下加载时传上一页的最大场序号",
             "name": "startSequence",
