@@ -1,0 +1,61 @@
+{
+    "summary": "获取培训管理列表",
+    "tags": 
+    [
+        "trainning"
+    ],
+
+    "description": "获取培训管理列表",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "description": "下一页查询的培训id， 例如：向后查询第二页时，传第一页最后一条记录的培训id，注：startId和endId均为空时，默认返回第一页数据",
+            "name": "startId",
+            "format": "int64",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "上一页查询的培训id，例如：向前查询第二页时，传第三页第一条记录的培训id",
+            "name": "endId",
+            "format": "int64",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "name": "pageNo",
+            "in": "query",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "description": "当前页码"
+        },
+        {
+            "name": "pageSize",
+            "in": "query",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "description": "每页数据条数"
+        }
+    ],
+
+   "responses": 
+    {
+         "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/TrainningPageModel"
+            },
+            "description": "培训列表"
+        }
+    },
+
+    "operationId": "getManageTrainnings"
+}
