@@ -1,0 +1,33 @@
+{
+    "summary": "发布赛事",
+    "tags": 
+    [
+        "competition"
+    ],
+
+    "description": "发布赛事",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        }
+    ],
+
+   "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+
+            "description": "SuccResponse响应对象"
+        }
+    },
+
+    "operationId": "release"
+}
