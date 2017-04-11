@@ -127,6 +127,11 @@
                 "$ref": "#/definitions/CompetitionTeam"
             }
         },
+        "released": 
+        {
+            "description": "true-发布，false-未发布",
+            "type": "boolean"
+        },
         "releaseSchedule": 
         {
             "description": "0未公布 1已公布",
