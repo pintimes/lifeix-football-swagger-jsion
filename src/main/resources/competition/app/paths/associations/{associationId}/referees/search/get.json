@@ -1,0 +1,86 @@
+{
+    "summary": "搜索某协会下的裁判列表",
+    "tags": 
+    [
+        "association"
+    ],
+
+    "description": "搜索某协会下的裁判列表",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/associationPath"
+        },
+        {
+            "description": "姓名",
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "注册协会ID",
+            "name": "registerAssId",
+            "format": "int64",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "裁判类别，1-裁判讲师，2-裁判监督，3-裁判员，多个以逗号分隔，不传则返回全部类别",
+            "name": "refereeType",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "等级",
+            "name": "grade",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "性别",
+            "name": "gender",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "页码数",
+            "name": "pageNo",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "每页数目",
+            "name": "pageSize",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/RefereePageModel"
+            },
+            "description": "搜索裁判列表"
+        }
+    },
+
+    "operationId": "searchAssociationReferees"
+}
