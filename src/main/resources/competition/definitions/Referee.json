@@ -270,12 +270,12 @@
         },
         "refereeApplyStatus": 
         {
-            "description": "赛事申请状态",
+            "description": "赛事/培训申请状态, 0-审核中，1-审核不通过，2-审核通过",
             "$ref": "#/definitions/Pairs"
         },
-        "refereeAssignStatus": 
+        "matchInvolvedStatus": 
         {
-            "description": "比赛指派状态",
+            "description": "裁判本人在比赛中的参与状态,2-通过，3-不通过，4-待确认，5-逾期",
             "$ref": "#/definitions/Pairs"
         },
         "roleStatus": 

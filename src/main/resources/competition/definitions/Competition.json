@@ -115,7 +115,7 @@
         },
         "category": 
         {
-            "description": "人制",
+            "description": "比赛人制，1-十一人制，2-五人制，3-沙滩足球，4-七/八/九人制",
             "$ref": "#/definitions/Pairs"
         },
         "teamList": 
@@ -162,9 +162,9 @@
             "type": "string",
             "format": "date-time"
         },
-        "competitionApplyStatus": 
+        "refereeApplyStatus": 
         {
-            "description": "取name作为显示",
+            "description": "赛事的裁判报名状态，1-未开始，2-报名中，3-报名结束",
             "$ref": "#/definitions/Pairs"
         },
         "minRefereeGrade": 
@@ -179,9 +179,9 @@
             "format": "int32",
             "type": "integer"
         },
-        "single": 
+        "refereeInvolvedMode": 
         {
-            "description": "0时报名赛事 1：时报名球队",
+            "description": "赛事的裁判参与方式，0-完全指派，1-单场比赛报名",
             "format": "int32",
             "type": "integer"
         },
@@ -194,15 +194,9 @@
                 "$ref": "#/definitions/CompetitionRefereeApplyConfig"
             }
         },
-        "refereeStatus": 
+        "refereeInvolvedStatus": 
         {
-            "description": "0-报名待审核 1-审核未通过 2-正式裁判 3-拒绝指派 4-指派待确认",
-            "format": "int32",
-            "type": "integer"
-        },
-        "refereeAppliedPosition": 
-        {
-            "description": "0-裁判监督 1-主裁 2-助理 3-第四官员",
+            "description": "裁判本人在赛事中的报名状态,0-待审核，1-审核不通过，2-审核通过",
             "format": "int32",
             "type": "integer"
         },

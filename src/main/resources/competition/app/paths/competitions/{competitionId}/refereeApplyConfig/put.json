@@ -29,6 +29,14 @@
             "in": "query"
         },
         {
+            "description": "赛事的裁判参与方式，0-完全指派，1-单场比赛报名，默认0",
+            "name": "refereeInvolvedMode",
+            "type": "integer",
+            "format": "int32",
+            "required": false,
+            "in": "query"
+        },
+        {
             "schema": 
             {
             	"type": "array",

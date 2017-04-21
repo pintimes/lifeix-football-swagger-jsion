@@ -1,0 +1,52 @@
+{
+    "summary": "查看某赛事下的比赛报名列表",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "查看某赛事下的比赛报名列表",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "description": "开始查询场序号，不传默认返回第一页数据，向下加载时传上一页的最大场序号",
+            "name": "startSequence",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "每页数据条数，默认20条",
+            "name": "limit",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Match"
+                }
+            },
+            "description": "比赛列表"
+        }
+    },
+
+    "operationId": "getCompetitionRefereeApplyingMatches"
+}

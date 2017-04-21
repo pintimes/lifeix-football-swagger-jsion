@@ -1,11 +1,11 @@
 {
-    "summary": "赛事裁判报名",
+    "summary": "裁判报名单场比赛",
     "tags": 
     [
         "apply"
     ],
 
-    "description": "赛事裁判报名",
+    "description": "裁判报名单场比赛",
     "produces": 
     [
          "application/json; charset=UTF-8"
@@ -19,16 +19,17 @@
 
     "parameters": 
     [
-    	{
+        {
             "$ref": "#/parameters/apiKeyHeader"
         },
         {
             "$ref": "#/parameters/matchPath"
         },
         {
-            "description": "1-主裁 2-助理裁判",
+            "description": "要报名的职位",
             "name": "position",
             "type": "integer",
+            "format": "int64",
             "required": true,
             "in": "query"
         }
@@ -38,13 +39,14 @@
     {
         "200": 
         {
-          	"schema": 
+            "schema": 
             {
                 "$ref": "#/definitions/SuccResponse"
-            },   
+            },
             "description": "裁判报名成功"
         }
+        
     },
 
-    "operationId": "applyCompetition"
+    "operationId": "refereeApplyMatch"
 }

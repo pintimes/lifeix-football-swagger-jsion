@@ -22,7 +22,7 @@
         },
         "position": 
         {
-            "description": "申请职位, 0-裁判监督，1-主裁判，2-助理裁判，3-第四官员",
+            "description": "申请职位, 0-裁判监督，1-主裁判，2-助理裁判，3-第四官员，4-第一裁判员，5-第二裁判员，6-记录员",
             "$ref": "#/definitions/Pairs"
         },
         "maxApplyNum": 

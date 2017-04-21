@@ -1,0 +1,16 @@
+{
+    "description": "你来判题目参考答案",
+    "properties": 
+    {
+        "title": 
+        {
+            "description": "标题",
+            "type": "string"
+        },
+        "content": 
+        {
+            "description": "内容",
+            "type": "string"
+        }
+    }
+}

@@ -231,12 +231,6 @@
                 "$ref": "#/definitions/MatchStaff"
             }
         },
-        "isApplyClosed": 
-        {
-            "description": "报名状态，0-开放，1-关闭",
-            "format": "int32",
-            "type": "integer"
-        },
         "refereeApplyConfig": 
         {
             "description": "裁判报名配置信息，包含各职位的状态",
@@ -246,9 +240,9 @@
                 "$ref": "#/definitions/MatchRefereeConfig"
             }
         },
-        "refereeStatus": 
+        "refereeInvolvedStatus": 
         {
-            "description": "0-候选裁判 1-审核不通过 2-正式裁判，3-拒绝指派，4-裁判长指派待本人确认,5-未报名",
+            "description": "裁判本人在比赛中的参与状态, 2-通过，3-不通过，4-待确认，5-逾期",
             "$ref": "#/definitions/Pairs"
         },
         "position": 
@@ -268,7 +262,7 @@
         },
         "refereeAssignStatus": 
         {
-            "description": "裁判指派状态",
+            "description": "比赛裁判职位的分配状态，0-待选派，1-待确认，2-已确认",
             "$ref": "#/definitions/Pairs"
         }
     }
