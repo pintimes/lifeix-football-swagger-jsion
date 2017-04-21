@@ -23,7 +23,7 @@
             "$ref": "#/parameters/apiKeyHeader"
         },
         {
-            "$ref": "#/parameters/matchPath"
+            "$ref": "#/parameters/competitionPath"
         },
         {
             "description": "1-主裁 2-助理裁判",

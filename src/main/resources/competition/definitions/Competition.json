@@ -196,7 +196,7 @@
         },
         "refereeInvolvedStatus": 
         {
-            "description": "裁判本人在赛事中的报名状态,0-待审核，1-审核不通过，2-审核通过",
+            "description": "裁判本人在赛事中的报名状态,0-待审核，1-审核不通过，2-通过",
             "format": "int32",
             "type": "integer"
         },

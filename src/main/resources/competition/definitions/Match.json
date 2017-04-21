@@ -242,7 +242,7 @@
         },
         "refereeInvolvedStatus": 
         {
-            "description": "裁判本人在比赛中的参与状态, 2-通过，3-不通过，4-待确认，5-逾期",
+            "description": "裁判本人在比赛中的参与状态, 0-待审核，1-审核不通过，2-通过，3-已请假，4-选派待确认，5-逾期未确认",
             "$ref": "#/definitions/Pairs"
         },
         "position": 
