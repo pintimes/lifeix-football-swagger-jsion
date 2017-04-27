@@ -2,7 +2,7 @@
     "summary": "修改用户性别",
     "tags": 
     [
-       	"修改性别"
+       	"user"
     ],
 
     "description": "修改用户性别",
@@ -14,7 +14,7 @@
     
     "produces": 
     [
-        "text/plain; charset=UTF-8"
+        "application/json; charset=UTF-8"
     ],
     
     "parameters": 

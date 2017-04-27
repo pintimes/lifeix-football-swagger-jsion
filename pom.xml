@@ -7,6 +7,11 @@
 	<name>swagger-json</name>
 	<description>swagger-json</description>
 
+	<parent>
+		<groupId>com.lifeix</groupId>
+		<artifactId>lifeix-football</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 	<dependencies>
 		<!-- 用于解析JSON -->
 		<dependency>
@@ -30,6 +35,12 @@
 			<groupId>com.lifeix</groupId>
 			<artifactId>swagger-cli</artifactId>
 			<version>2.2.1</version>
+		</dependency>
+		
+		<!-- Common工具类 -->
+		<dependency>
+			<groupId>com.lifeix</groupId>
+			<artifactId>lifeix-football-common</artifactId>
 		</dependency>
 	</dependencies>
 

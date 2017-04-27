@@ -1,5 +1,5 @@
 {
-    "description": "置顶资讯",
+	"description": "置顶资讯",
     "properties": 
     {
         "id": 
@@ -22,7 +22,6 @@
         
         "post": 
         {
-            "description": "对应资讯",
             "$ref": "#/definitions/Post"
         },
         
@@ -39,5 +38,6 @@
             "type": "string",
             "format": "date-time"
         }
-    }
+    },
+    "type": "object"
 }

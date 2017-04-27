@@ -2,7 +2,7 @@
     "summary": "User退出登录",
     "tags": 
     [
-        "退出登录"
+        "user"
     ],
 
     "description": "User退出登录",
@@ -37,7 +37,16 @@
 			"type": "string",
 			"required": false,
 			"in": "formData"
-		}
+		},
+		
+		{
+            "description": "来源，如：cf、competition",
+            "name": "source",
+            "type":"string",
+            "required": false,
+            "default":"cf",
+            "in": "formData"
+        }
     ],
 
     "responses": 

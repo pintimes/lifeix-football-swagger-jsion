@@ -2,7 +2,7 @@
     "summary": "修改用户昵称",
     "tags": 
     [
-       	"修改昵称"
+       	"user"
     ],
 
     "description": "修改用户昵称",
@@ -14,7 +14,7 @@
     
     "produces": 
     [
-        "text/plain; charset=UTF-8"
+        "application/json; charset=UTF-8"
     ],
     
     "parameters": 

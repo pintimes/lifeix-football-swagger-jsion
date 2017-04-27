@@ -2,7 +2,7 @@
 	"summary": "web端微信用户注册/登录",
 	"tags": 
 	[
-		"微信登录"
+		"user"
 	],
 
 	"description": "web端微信用户注册/登录，通过web前台传来的code获得access_token等信息，然后通过access_token等信息获得用户信息，然后存入数据库并返回给前台",
@@ -27,7 +27,15 @@
 			"type": "string",
 			"required": true,
 			"in": "formData"
-		}
+		},
+		{
+            "description": "来源，如：cf、competition",
+            "name": "source",
+            "type":"string",
+            "required": false,
+            "default":"cf",
+            "in": "formData"
+        }
 	],
 
 	"responses": 

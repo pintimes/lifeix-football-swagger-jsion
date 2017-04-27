@@ -2,7 +2,7 @@
     "summary": "用户手机注册",
     "tags": 
     [
-        "手机注册"
+        "user"
     ],
 
     "description": "用户手机注册",
@@ -41,7 +41,14 @@
             "name": "deviceToken",
             "type": "string",
             "required": false,
-            "description": "",
+            "description": "用于友盟消息推送的参数",
+            "in": "formData"
+        },
+        {
+            "description": "用于个推消息推送的参数",
+            "name": "clientId",
+            "type":"string",
+            "required": false,
             "in": "formData"
         },
         {
@@ -69,7 +76,7 @@
             "name": "source",
             "type": "string",
             "required": true,
-            "description": "注册来源（c-f/competition）",
+            "description": "注册来源，如：cf/competition，需要特别注意的是，该接口兼容老版本app传递的'c-f'值，新版本app如果是中国足球网的用户注册，请填写source=cf",
             "in": "formData"
         }
 

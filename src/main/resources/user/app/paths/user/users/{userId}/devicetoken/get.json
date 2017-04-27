@@ -1,0 +1,70 @@
+{
+    "summary": "查询用户所有设备deviceToken和clientId信息",
+    "tags": 
+    [
+        "user"
+    ],
+    
+    "consumes": 
+	[
+		"application/x-www-form-urlencoded"
+	],
+	
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "根据用户id和用户接口调用凭证key查询用户所有设备deviceToken和clientId信息",
+    
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+
+        {
+            "$ref": "#/parameters/userPath"
+        },
+        
+        {
+            "description": "是否查询用户所有设备deviceToken和clientId信息，为false时只查询在线设备的信息，否则查询所有",
+            "name": "whole",
+            "type":"string",
+            "format":"boolean",
+            "required": false,
+            "default":"false",
+            "in": "query"
+        },
+        {
+            "description": "来源，如：cf/competition",
+            "name": "source",
+            "type": "string",
+            "required": false,
+            "default":"cf",
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type":"array",
+                "items":{
+                	"$ref": "#/definitions/Device"
+                }
+            },
+            "description": "用户设备列表，Map形式，包含设备状态status(0/1)，设备类型device(ios/android...)，用于消息推送的参数deviceToken和clientId；其中，deviceToken和clientId可能为空，当两者都为空时不会返回该设备的信息"
+        },
+        
+        "401": 
+        {
+            "description": "没有调用权限"
+        }
+    },
+
+    "operationId": "getUserDeviceToken"
+}

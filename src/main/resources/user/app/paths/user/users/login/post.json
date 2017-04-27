@@ -2,7 +2,7 @@
     "summary": "普通用户登录",
     "tags": 
     [
-        "登录"
+        "user"
     ],
 
     "description": "普通用户登录",
@@ -23,10 +23,11 @@
             "$ref": "#/parameters/apiKeyHeader"
         },
         {
+            "description": "来源，如：cf、competition",
             "name": "source",
-            "type": "string",
+            "type":"string",
             "required": false,
-            "description": "来源，competition/c-f，内部系统调用时才需要该参数",
+            "default":"cf",
             "in": "formData"
         },
         {
@@ -49,6 +50,13 @@
             "type": "string",
             "required": false,
             "description": "",
+            "in": "formData"
+        },
+        {
+            "description": "用于个推消息推送的参数",
+            "name": "clientId",
+            "type":"string",
+            "required": false,
             "in": "formData"
         },
         {

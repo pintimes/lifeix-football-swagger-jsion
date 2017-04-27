@@ -44,6 +44,7 @@ public class GenJavaCode {
 		File swaggerFile = new File("swagger/" + module + ".json");
 		String[] params = new String[] { "generate", "-i", swaggerFile.getAbsolutePath(), "-l", "java", "-o", srcDir.getAbsolutePath(), "--api-package", apiPackage,
 				"--model-package", modelPackage };
+		System.out.println("params="+params);
 		SwaggerCodegen.main(params);
 		/**
 		 * 清除com.lifeix下所有目录

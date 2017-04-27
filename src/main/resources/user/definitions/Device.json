@@ -1,0 +1,40 @@
+{
+    "description": "调用api成功返回对象",
+    "properties": 
+    {
+        "device": 
+        {
+            "description": "设备类型，1：web，2：ios，3：android",
+            "type": "string",
+            "format":"int32"
+        },
+        "deviceId": 
+        {
+            "description": "设备号",
+            "type": "string"
+        },
+        "deviceToken": 
+        {
+            "description": "用于友盟消息推送的参数",
+            "type": "string"
+        },
+        "clientId": 
+        {
+            "description": "用于个推消息推送的参数",
+            "type": "string"
+        },
+        "latestLoginTime": 
+        {
+            "description": "该设备最近一次登录时间",
+            "type": "string",
+            "format":"date-time"
+        },
+        "status": 
+        {
+            "description": "当前设备登录状态，1为在线状态， 0为离线状态",
+            "type": "string",
+            "format":"int32"
+        }
+    },
+    "type": "object"
+}

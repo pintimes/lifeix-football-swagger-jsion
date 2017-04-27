@@ -2,7 +2,7 @@
     "summary": "获取单个Post",
     "tags": 
     [
-        "WemediaPost"
+        "post"
     ],
     
 	"consumes": 
@@ -15,7 +15,7 @@
         "application/json; charset=UTF-8"
     ],
     
-    "description": "根据Id获取单个Post对象",
+    "description": "根据Id获取单个Post对象，如果是mobile端，则会根据传入的screenWidth参数对文章内容中的图片进行压缩（路径后拼接参数），该操作不会影响pc端的数据",
     "parameters": 
     [
         {
@@ -24,6 +24,22 @@
 
         {
             "$ref": "#/parameters/postPath"
+        },
+        {
+            "description": "平台：pc/mobile",
+            "name": "platform",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "屏幕宽度（单位：像素）。目前该参数用于控制资讯内容图片宽度，默认值为750，当且仅当platform=mobile时该参数才有效",
+            "name": "screenWidth",
+            "type": "integer",
+            "format":"int32",
+            "default":750,
+            "required": false,
+            "in": "query"
         }
     ],
 
@@ -31,12 +47,11 @@
     {
         "200": 
         {
+            "description": "Post对象",
             "schema": 
             {
                 "$ref": "#/definitions/Post"
-            },
-
-            "description": "Post对象"
+            }
         }
     },
 

@@ -2,7 +2,7 @@
     "summary": "修改用户角色标签",
     "tags": 
     [
-       	"修改角色"
+       	"user"
     ],
 
     "description": "修改用户角色标签",
@@ -14,7 +14,7 @@
     
     "produces": 
     [
-        "text/plain; charset=UTF-8"
+        "application/json; charset=UTF-8"
     ],
     
     "parameters": 

@@ -1,0 +1,62 @@
+{
+    "summary": "获取用户简单信息列表",
+    "tags": 
+    [
+        "user"
+    ],
+    
+    "consumes": 
+	[
+		"application/x-www-form-urlencoded"
+	],
+	
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "根据ids获取User列表，其中的每个User对象只包含简单信息{id,nickname,avatar}",
+    
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        
+        {
+            "description": "用户id列表,多个id以','分隔",
+            "name": "userIds",
+            "type": "array",
+            "items": 
+            {
+                "type": "string"
+            },
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {	
+            	"type": "array",
+                "items": 
+                {
+                	"$ref": "#/definitions/User"
+                }
+            },
+
+            "description": "User列表，其中的每个User对象只包含简单信息{id,nickname,avatar}"
+        },
+        
+        "401": 
+        {
+            "description": "没有调用权限"
+        }
+    },
+
+    "operationId": "getUsersBaseInfo"
+}

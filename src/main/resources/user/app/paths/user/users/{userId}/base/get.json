@@ -1,0 +1,50 @@
+{
+    "summary": "获取用户简单信息",
+    "tags": 
+    [
+        "user"
+    ],
+    
+    "consumes": 
+	[
+		"application/x-www-form-urlencoded"
+	],
+	
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "根据id获取User简单信息{id,nickname,avatar}",
+    
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+
+        {
+            "$ref": "#/parameters/userPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/User"
+            },
+
+            "description": "User对象，只包含简单信息{id,nickname,avatar}"
+        },
+        
+        "401": 
+        {
+            "description": "没有调用权限"
+        }
+    },
+
+    "operationId": "getUserBaseInfo"
+}

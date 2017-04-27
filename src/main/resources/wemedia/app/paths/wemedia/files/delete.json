@@ -2,7 +2,7 @@
     "summary": "删除File",
     "tags": 
     [
-        "删除文件记录"
+        "file"
     ],
 
     "description": "删除File：只有管理员才有权限",

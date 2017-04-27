@@ -2,7 +2,7 @@
     "summary": "用户手机注册赛事系统时，赛事系统向用户中心添加一条用户记录",
     "tags": 
     [
-        "添加用户"
+        "user"
     ],
 
     "description": "用户手机注册赛事系统时，赛事系统向用户中心添加一条用户记录",
@@ -42,7 +42,14 @@
             "name": "deviceToken",
             "type": "string",
             "required": false,
-            "description": "",
+            "description": "用于友盟消息推送的参数",
+            "in": "formData"
+        },
+        {
+            "description": "用于个推消息推送的参数",
+            "name": "clientId",
+            "type":"string",
+            "required": false,
             "in": "formData"
         },
         {
@@ -118,10 +125,10 @@
             "in": "formData"
         },
         {
+            "description": "来源，如：cf、competition",
             "name": "source",
             "type": "string",
             "required": true,
-            "description": "来源（c-f/competition）",
             "in": "formData"
         }
 

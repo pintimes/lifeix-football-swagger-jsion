@@ -2,7 +2,7 @@
 	"summary": "获得文件分页列表",
     "tags": 
     [
-       "Wemediafile"
+       "file"
     ],
 
 	"consumes": 
@@ -158,16 +158,12 @@
         {
             "schema": 
             {
-                "$ref": "#/definitions/Page",
-                "items": 
-                {
-                    "$ref": "#/definitions/file"
-                }
+                "$ref": "#/definitions/Page"
             },
 
             "description": "file页面"
         }
     },
 
-    "operationId": "searchPage"
+    "operationId": "searchFilePage"
 }

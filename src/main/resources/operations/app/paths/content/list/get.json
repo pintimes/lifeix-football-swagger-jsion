@@ -1,5 +1,5 @@
 {
-    "summary": "获取banner下推广位和资讯列表",
+    "summary": "app端获取banner下方的[推广位+资讯]列表",
     "tags": 
     [
         "获取推广位+资讯列表"
@@ -15,14 +15,14 @@
         "application/json; charset=UTF-8"
     ],
     
-    "description": "获取banner下推广位和资讯列表",
+    "description": "app端获取banner下方的[推广位+资讯]列表",
     "parameters": 
     [
     	{
             "$ref": "#/parameters/apiKeyHeader"
         },
         {
-            "description": "类目id，如：首页（homepage），教练员（coach）...",
+            "description": "栏目（banner上方栏目）id，如：首页（homepage），教练员（coach）...（详情参照获取全部栏目api：http://api.c-f.com/football/app/boxes/list?key=visitor&platform=ios&version=1&categoryId=homepage 结果中的targetId字段）",
             "name": "categoryId",
             "type": "string",
             "required": false,
@@ -46,7 +46,7 @@
             "in": "query"
         },
         {
-            "description": "资讯时间(字符串)，格式：yyyy-MM-dd'T'HH:mm:ss.SSSXXX，例如：https://api.c-f.com/football/wemedia/posts/search?limit=19&date=2017-01-17T01:29:04.000Z&key=visitor",
+            "description": "资讯时间(字符串)，不传时返回结果中包含推广位promotions数组，传该参数时只返回资讯列表posts，格式：yyyy-MM-dd'T'HH:mm:ss.SSSXXX，例如：https://api.c-f.com/football/wemedia/posts/search?limit=19&date=2017-01-17T01:29:04.000Z&key=visitor 中的date参数",
             "name": "date",
             "type": "string",
             "required": false,
@@ -55,7 +55,7 @@
          {
             "description": "资讯数量限制",
             "name": "limit",
-            "type": "string",
+            "type": "integer",
             "format":"int32",
             "required": false,
             "default":10,
@@ -77,12 +77,22 @@
         {
            "schema": 
             {
-                "type": "array",
-		    	"items": {
-                	"$ref": "#/definitions/Box"
-                }
-            },
-            "description": "推广位+资讯列表"
+			    "description": "通用的接口返回体",
+			    "type": "object",
+			    "properties": 
+			    {
+			        "code": 
+			        {
+			            "description": "业务码，正确时返回200，客户端传递参数异常返回400，无权限时返回401，一般性服务器异常返回500",
+			            "type": "string"
+			        },
+			        "message": 
+			        {
+			            "description": "接口响应消息",
+			            "type": "string"
+			        }
+			    }
+            }
         }
     },
 

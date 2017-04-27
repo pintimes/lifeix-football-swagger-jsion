@@ -2,7 +2,7 @@
     "summary": "更新用户头像",
     "tags": 
     [
-       	"修改头像"
+       	"user"
     ],
 
     "description": "更新用户头像",
@@ -14,7 +14,7 @@
     
     "produces": 
     [
-        "text/plain; charset=UTF-8"
+        "application/json; charset=UTF-8"
     ],
     
     "parameters": 

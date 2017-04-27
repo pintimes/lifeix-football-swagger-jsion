@@ -1,0 +1,102 @@
+{
+    "summary": "更新用户设备",
+    "tags": 
+    [
+       	"user"
+    ],
+
+    "description": "更新用户设备",
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/userPath"
+        },
+        {
+            "description": "设备类型，1：web，2：ios，3：android",
+            "name": "device",
+            "type":"string",
+            "format":"int32",
+            "required": true,
+            "in": "formData"
+        },
+        {
+            "description": "设备号",
+            "name": "deviceId",
+            "type":"string",
+            "required": true,
+            "in": "formData"
+        },
+        {
+            "description": "用于友盟消息推送的参数",
+            "name": "deviceToken",
+            "type":"string",
+            "required": false,
+            "in": "formData"
+        },
+        {
+            "description": "用于个推消息推送的参数",
+            "name": "clientId",
+            "type":"string",
+            "required": false,
+            "in": "formData"
+        },
+        {
+            "description": "设备状态，不传时不修改设备状态",
+            "name": "status",
+            "type":"string",
+            "format":"int32",
+            "required": false,
+            "in": "formData"
+        },
+        {
+            "description": "用户来源",
+            "name": "source",
+            "type":"string",
+            "required": false,
+            "default":"cf",
+            "in": "formData"
+        }
+    ],
+    
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "通用的接口返回体",
+        	"schema": 
+            {
+            	"description": "通用的接口返回体",
+			    "type": "object",
+			    "properties": 
+			    {
+			        "code": 
+			        {
+			            "description": "业务码，正确时返回200",
+			            "type": "string"
+			        },
+			        "message": 
+			        {
+			            "description": "接口响应消息",
+			            "type": "string"
+			        }
+			    }
+            }
+        }
+    },
+    
+    "operationId": "updateUserDevice"
+}

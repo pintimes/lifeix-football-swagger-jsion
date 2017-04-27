@@ -2,7 +2,7 @@
     "summary": "搜索Post",
     "tags": 
     [
-       "WemediaPost"
+       "post"
     ],
 
 	"consumes": 
@@ -50,6 +50,15 @@
         {
             "description": "查询结束时间，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
             "name": "endDate",
+            "type": "string",
+            "format":"date-time",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "时间节点，查询该时间之前的资讯，格式yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+            "name": "date",
             "type": "string",
             "format":"date-time",
             "required": false,

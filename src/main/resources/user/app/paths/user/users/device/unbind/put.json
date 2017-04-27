@@ -1,0 +1,69 @@
+{
+    "summary": "解绑用户与设备",
+    "tags": 
+    [
+       	"user"
+    ],
+
+    "description": "解绑用户与设备（设备下载app时对设备记录进行初始化）",
+
+    "consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "description": "设备号",
+            "name": "deviceId",
+            "type":"string",
+            "required": true,
+            "in": "formData"
+        },
+        {
+            "description": "来源，如：cf/competition/...",
+            "name": "source",
+            "type":"string",
+            "required": false,
+            "default":"cf",
+            "in": "formData"
+        }
+    ],
+    
+    "responses": 
+    {
+        "200": 
+        {
+            "description": "通用的接口返回体",
+        	"schema": 
+            {
+            	"description": "通用的接口返回体",
+			    "type": "object",
+			    "properties": 
+			    {
+			        "code": 
+			        {
+			            "description": "业务码，正确时返回200",
+			            "type": "string"
+			        },
+			        "message": 
+			        {
+			            "description": "接口响应消息",
+			            "type": "string"
+			        }
+			    }
+            }
+        }
+    },
+    
+    "operationId": "emptyAppDeviceUser"
+}

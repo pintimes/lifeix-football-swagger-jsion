@@ -2,7 +2,7 @@
     "summary": "升级用户",
     "tags": 
     [
-        "升级用户"
+        "user"
     ],
 
     "description": "升级用户，添加来源用户到网关的comsumer中",
@@ -27,10 +27,39 @@
             "$ref": "#/parameters/userPath"
         },
         {
+            "description": "来源，如：cf/competition",
             "name": "source",
             "type": "string",
             "required": true,
-            "description": "来源，如：c-f/competition",
+            "in": "formData"
+        },
+        {
+            "description": "设备类型，1：web，2：ios，3：android",
+            "name": "device",
+            "type": "integer",
+            "format": "int32",
+            "required": true,
+            "in": "formData"
+        },
+        {
+            "description": "设备号，web不需要传该参数，其他平台需要传该参数",
+            "name": "deviceId",
+            "type": "string",
+            "required": false,
+            "in": "formData"
+        },
+        {
+            "description": "用于友盟消息推送的参数",
+            "name": "deviceToken",
+            "type": "string",
+            "required": false,
+            "in": "formData"
+        },
+        {
+            "description": "用于个推消息推送的参数",
+            "name": "clientId",
+            "type":"string",
+            "required": false,
             "in": "formData"
         }
 

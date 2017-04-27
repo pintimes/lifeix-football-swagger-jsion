@@ -2,7 +2,7 @@
     "summary": "发送短信验证码",
     "tags": 
     [
-        "发送验证码"
+        "smscode"
     ],
 
     "description": "发送短信验证码",

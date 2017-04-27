@@ -1,0 +1,22 @@
+{
+    "description": "通用的接口返回对象",
+    "properties": 
+    {
+    	"code": 
+        {
+            "description": "状态码，成功时为200，失败时为系统自定义的错误状态码",
+            "type": "string"
+        },
+        "message": 
+        {
+            "description": "成功或失败信息",
+            "type": "string"
+        },
+        "data":
+        {
+        	"description": "数据主体",
+            "type": "object"
+        }
+    },
+    "type": "object"
+}

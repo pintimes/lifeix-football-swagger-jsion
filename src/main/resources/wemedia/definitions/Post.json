@@ -19,6 +19,12 @@
             "$ref": "#/definitions/Author"
         },
         
+        "content": 
+        {
+            "description": "资讯内容",
+            "type": "string"
+        },
+        
         "url": 
         {
             "description": "Html地址，通过这个地址可以打开一个H5界面，该页面展示了该Post的数据",
@@ -30,18 +36,35 @@
             "description": "分享用的Html地址",
             "type": "string"
         },
-        
 
-        "content": 
+        "data": 
         {
-            "description": "内容,仅仅是Html的Content",
-            "type": "string"
+            "description": "资讯内容",
+			"type": "object",
+			"properties": 
+			{
+				"sections":
+				{
+		            "description": "资讯内容片段数组",
+					"type": "array",
+					"items": 
+					{
+						"$ref": "#/definitions/Section"
+					}
+				}
+			}
         },
         
         "image": 
         {
             "description": "用于显示的图片，可裁切，具体详情参见七牛图片处理API",
             "type": "string"
+        },
+        
+        "containVideo": 
+        {
+            "description": "是否包含视频",
+            "type": "boolean"
         },
 
         "images": 
@@ -84,17 +107,22 @@
             "type": "array"
         },
         
+        "categories": 
+        {
+            "items": 
+            {
+                "$ref": "#/definitions/Category"
+            },
+
+            "description": "文章类目列表",
+            "type": "array"
+        },
+        
         "status": 
         {
             "description": "状态 ：1可用 ，0不可用",
             "type": "integer",
             "format": "int32"
-        },
-        
-        "linkMap": 
-        {
-            "description": "链接map对象，包含linkType、urlApp、title、competitionId、matchId",
-            "type": "object"
         }
     },
 

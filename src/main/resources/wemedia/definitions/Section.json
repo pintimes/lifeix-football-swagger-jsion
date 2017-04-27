@@ -1,0 +1,22 @@
+{
+	"description": "资讯内容片段对象",
+	"type": "object",
+	"properties": 
+	{
+	    "type": 
+	    {
+	        "description": "资讯片段类型，如：html/decision",
+	        "type": "string"
+	    },
+	    "html": 
+	    {
+	        "description": "资讯html片段",
+	        "type": "string"
+	    },
+	    "contentId": 
+	    {
+	        "description": "资讯片段内容id，如你来判的id",
+	        "type": "string"
+	    }
+	}
+}

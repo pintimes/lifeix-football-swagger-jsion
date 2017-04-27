@@ -1,0 +1,40 @@
+{
+	"description": "资讯类目",
+	"properties": 
+	{
+		"id": 
+        {
+            "description": "id",
+            "type": "string"
+        },
+
+        "name": 
+        {
+            "description": "类目名",
+            "type": "string"
+        },
+        
+		"iconUrl": 
+		{
+			"description": "图标链接",
+			"type": "string"
+		},
+
+		"color": 
+		{
+			"description": "背景颜色",
+			"type": "string"
+		},
+		
+		"categories": 
+		{
+			"description": "子类目列表",
+			"type": "array",
+			"items": 
+			{
+				"$ref": "#/definitions/Category"
+			}
+		}
+	},
+	"type": "object"
+}

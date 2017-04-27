@@ -1,0 +1,44 @@
+{
+    "summary": "获得层级结构类目列表",
+    "tags": 
+    [
+        "category"
+    ],
+
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "获得层级结构类目列表",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Category"
+                }
+            },
+
+            "description": "层级结构类目列表"
+        }
+    },
+
+    "operationId": "hierarchicalList"
+}

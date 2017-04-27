@@ -2,7 +2,7 @@
 	"summary": "获得Post分页列表",
     "tags": 
     [
-       "WemediaPost"
+       "post"
     ],
 
 	"consumes": 
@@ -118,11 +118,7 @@
         {
             "schema": 
             {
-                "$ref": "#/definitions/Page",
-                "items": 
-                {
-                    "$ref": "#/definitions/Post"
-                }
+                "$ref": "#/definitions/Page"
             },
 
             "description": "Post页面"

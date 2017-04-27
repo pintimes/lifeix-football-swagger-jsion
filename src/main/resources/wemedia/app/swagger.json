@@ -69,15 +69,6 @@
             "type": "string",
             "required": true,
             "in": "path"
-        },
-
-        "topPath": 
-        {
-            "description": "Top的ID",
-            "name": "topId",
-            "type": "string",
-            "required": true,
-            "in": "path"
         }
     }
 }

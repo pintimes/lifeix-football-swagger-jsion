@@ -2,7 +2,7 @@
     "summary": "获得EasyUI形式的User列表",
     "tags": 
     [
-        "查询用户列表"
+        "user"
     ],
 
     "description": "返回用户列表,该接口只能被管理员访问",

@@ -25,7 +25,10 @@
         {
             "description": "banner对象",
             "name": "banner",
-            "$ref": "#/definitions/Banner",
+            "schema": 
+            {
+            	"$ref": "#/definitions/Banner"
+            },
             "required": true,
             "in": "body"
         }

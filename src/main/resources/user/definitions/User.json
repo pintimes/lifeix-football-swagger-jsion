@@ -23,7 +23,8 @@
         "gender": 
         {
             "description": "性别",
-            "type": "string"
+            "type": "string",
+            "format":"int32"
         },
 
         "birthday": 
