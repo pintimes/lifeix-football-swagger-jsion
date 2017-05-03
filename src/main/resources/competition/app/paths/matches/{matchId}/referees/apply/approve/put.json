@@ -1,0 +1,38 @@
+{
+	"summary": "裁判长审核通过比赛所有待审核的报名纪录",
+	"tags": 
+	[
+		"apply"
+	],
+
+	"description": "裁判长审核通过比赛所有待审核的报名纪录",
+
+	"consumes": 
+	[
+		"application/json"
+	],
+	
+	"parameters": 
+	[
+		{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/matchPath"
+        }
+	],
+
+	"responses": 
+	{
+		"200": 
+		{
+			"schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+			"description": "操作成功"
+		}
+	},
+
+	"operationId": "approveMatchRefereeApply"
+}

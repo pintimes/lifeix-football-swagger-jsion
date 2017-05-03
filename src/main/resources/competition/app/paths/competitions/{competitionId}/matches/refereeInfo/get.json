@@ -1,0 +1,44 @@
+{
+    "summary": "查看赛事的比赛裁判安排",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "查看赛事的比赛裁判安排",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "name": "status",
+            "in": "query",
+            "type": "integer",
+            "format": "int32",
+            "required": true,
+            "description": "状态： 0-待指派 /等待报名，1-待确认/报名中， 2-已确认/已审核"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Match"
+                }
+            },
+            "description": "比赛列表"
+        }
+    },
+
+    "operationId": "getCompetitionMatchesWithRefereeInfo"
+}

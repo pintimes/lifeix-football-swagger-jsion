@@ -1,0 +1,33 @@
+{
+    "summary": "获取比赛裁判详情",
+    "tags": 
+    [
+        "assign"
+    ],
+
+    "description": "获取比赛裁判详情",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/matchPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/Match"
+            },
+
+            "description": "获取比赛裁判详情"
+        }
+    },
+
+    "operationId": "getMatchRefereeDetails"
+}

@@ -1,0 +1,54 @@
+{
+	"summary": "裁判长取消已报名的比赛裁判",
+	"tags": 
+	[
+		"apply"
+	],
+
+	"description": "裁判长取消已报名的比赛裁判",
+
+	"consumes": 
+	[
+		"application/json"
+	],
+	
+	"parameters": 
+	[
+		{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/matchPath"
+        },
+		{
+			"description": "被取消的用户ID",
+			"name": "userId",
+			"type": "integer",
+			"format": "int64",
+			"required": true,
+			"in": "query"
+		},
+		{
+			"description": "被取消的职位ID",
+			"name": "position",
+			"type": "integer",
+			"format": "int64",
+			"required": true,
+			"in": "query"
+		}
+	],
+
+	"responses": 
+	{
+		"200": 
+		{
+			"schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+			"description": "流程完成"
+		}
+	},
+
+	"operationId": "cancelMatchRefereeApply"
+}

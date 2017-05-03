@@ -1,0 +1,41 @@
+{
+    "summary": "获取裁判参与的比赛",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "获取裁判参与的比赛",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "description": "赛事id",
+            "name": "competitionId",
+            "type": "integer",
+            "format": "int32",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Match"
+                }
+            },
+            "description": "比赛列表"
+        }
+    },
+
+    "operationId": "getRefereeInvolvedMatches"
+}

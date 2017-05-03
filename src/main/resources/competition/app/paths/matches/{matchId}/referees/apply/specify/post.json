@@ -1,11 +1,11 @@
 {
-    "summary": "将比赛分配给裁判长",
+    "summary": "裁判长指定为某裁判报名单场比赛",
     "tags": 
     [
-        "match"
+        "apply"
     ],
 
-    "description": "将比赛分配给裁判长",
+    "description": "裁判长指定为某裁判报名单场比赛",
     "produces": 
     [
          "application/json; charset=UTF-8"
@@ -19,45 +19,42 @@
 
     "parameters": 
     [
-    	{
+        {
             "$ref": "#/parameters/apiKeyHeader"
         },
         {
-            "description": "用户id",
+            "$ref": "#/parameters/matchPath"
+        },
+        {
+            "description": "被指定的裁判",
             "name": "userId",
-            "format": "int64",
             "type": "integer",
+            "format": "int64",
             "required": true,
             "in": "query"
-    	},
-    	{
-            "description": "赛事id",
-            "name": "competitionId",
-            "format": "int64",
+        },
+        {
+            "description": "要报名的职位",
+            "name": "position",
             "type": "integer",
+            "format": "int64",
             "required": true,
             "in": "query"
-    	},
-    	{
-	        "description": "比赛id- matchId1,matchId2",
-	        "name": "matchIds",
-	        "type": "string",
-	        "required": true,
-	        "in": "query"
-   		}
+        }
     ],
 
     "responses": 
     {
         "200": 
         {
-        	"schema": 
+            "schema": 
             {
                 "$ref": "#/definitions/SuccResponse"
             },
-            "description": "提交裁判信息成功"
+            "description": "指定报名成功"
         }
+        
     },
 
-    "operationId": "assignMatchSuperVisor"
+    "operationId": "specifyApplyMatch"
 }
