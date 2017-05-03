@@ -8,27 +8,26 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.util.StringUtils;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.lifeix.football.common.util.FileUtil;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.lifeix.football.common.util.HttpUtil;
 import com.lifeix.football.common.util.StringUtil;
-
-import jcifs.smb.NtlmPasswordAuthentication;
 
 /**
  * @author xule
  * @version 2017年4月25日 下午1:30:40
  */
 public class CreateJsons {
-    private static Logger logger = LoggerFactory.getLogger(CreateJsons.class);
-
-    // private static final String API_PREFIX = "http://54.223.127.33:8000/football/";
+//     private static final String API_PREFIX = "http://54.223.127.33:8000/football/";
     private static final String API_PREFIX = "http://127.0.0.1:8080/football/";
+    
+    public static final String SMBDIR = "smb://192.168.1.17/fb/temp/api_docs/";
+    public static final String INNER_DIR_NAME = "inner";
+    public static final String OUTER_DIR_NAME = "outer";
 
     private static final String reg_response = "#/definitions/Response«([^\\s'\"«»]*)»";
     private static final String reg_list = "#/definitions/Response«List«([^\\s'\"«»]*)»»";
@@ -40,7 +39,7 @@ public class CreateJsons {
 
     private static final String[] SYSTEMS = { "user" };
 
-    private static final String temp_$ref_replacer = "￥ref";
+    public static final String temp_$ref_replacer = "￥ref";
 
     private static final List<TypeMapper> TypeMappers = Arrays.asList(
             new TypeMapper("Byte", "byte", "string", "byte", "#/definitions/Response«byte»"),
@@ -53,6 +52,10 @@ public class CreateJsons {
             new TypeMapper("Float", "float", "number", "float", "#/definitions/Response«float»"),
             new TypeMapper("", "string", "string", "", "#/definitions/Response«string»"));
 
+    static{
+        JSON.DEFAULT_GENERATE_FEATURE |= SerializerFeature.DisableCircularReferenceDetect.getMask();//全局禁止$ref对象引用
+    }
+    
     private static TypeMapper findTypeMapper(String key, String value) throws Exception {
         Class<TypeMapper> clazz = TypeMapper.class;
         Field field = clazz.getDeclaredField(key);
@@ -89,6 +92,11 @@ public class CreateJsons {
          * 将json生成文件，并写入指定目录的文件夹中
          */
         putApiJsonFiles(newJsons);
+        /**
+         * 读取json文件，修改指定属性
+         */
+        UpdateJsons.doUpdate();
+        System.out.println("CreateJsons success!");
     }
 
     /**
@@ -100,9 +108,8 @@ public class CreateJsons {
      * @throws Exception 
      */
     private static void putApiJsonFiles(List<List<JSONObject>> newJsons) throws Exception {
-        String SMBDIR = "smb://192.168.1.17/fb/temp/api_docs/";
-        String clientFilePath = SMBDIR+"outer/";
-        String serviceFilePath = SMBDIR+"inner/";
+        String outerFilePath = SMBDIR+OUTER_DIR_NAME+"/";
+        String innerFilePath = SMBDIR+INNER_DIR_NAME+"/";
         String reg_inner_path = "/([^/]*)";
         String reg_outer_path = "/v2/football/([^/]*)";
         Pattern p_inner = Pattern.compile(reg_inner_path);
@@ -120,7 +127,7 @@ public class CreateJsons {
                 /**
                  * json写入文件
                  */
-                String filePath = (i == 0 ? serviceFilePath : clientFilePath) + StringUtil.firstUpcase(jsonName) + ".json";
+                String filePath = (i == 0 ? innerFilePath : outerFilePath) + StringUtil.firstUpcase(jsonName) + ".json";
                 String text = json.toJSONString().replaceAll(temp_$ref_replacer, "\\$ref");
                 SmbUtil.writeFile(filePath, text);
             }

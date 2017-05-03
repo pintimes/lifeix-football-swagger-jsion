@@ -1,11 +1,20 @@
 package com.apidocs.test;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.UnknownHostException;
+
+import com.lifeix.football.common.util.FileUtil;
+
 import jcifs.UniAddress;
 import jcifs.smb.NtlmPasswordAuthentication;
+import jcifs.smb.SmbException;
 import jcifs.smb.SmbFile;
+import jcifs.smb.SmbFileInputStream;
 import jcifs.smb.SmbFileOutputStream;
 import jcifs.smb.SmbSession;
 
@@ -14,6 +23,7 @@ import jcifs.smb.SmbSession;
  * @version 2017年4月27日 下午5:36:22
  */
 public class SmbUtil {
+    
     /**
      * 获取授权
      * @author xule
@@ -30,6 +40,10 @@ public class SmbUtil {
         return auth;
     }
     
+    public static SmbFile getSmbfile(String smbFilePath) throws Exception{
+        return new SmbFile(smbFilePath, getAuth());
+    }
+    
     /**
      * 写入文件
      * @author xule
@@ -39,23 +53,38 @@ public class SmbUtil {
      * @throws Exception 
      */
     public static void writeFile(String smbFilePath,String content) throws Exception {
-        NtlmPasswordAuthentication auth = getAuth();
-        SmbFile smbFile = new SmbFile(smbFilePath, auth);
+        SmbFile smbFile = new SmbFile(smbFilePath, getAuth());
         OutputStream out = null;
         try {
             out = new BufferedOutputStream(new SmbFileOutputStream(smbFile));
             out.write(content.getBytes());
         } catch (Exception e) {
-            e.printStackTrace();
+            throw e;
         } finally {
-            try {
-                if (out != null) {
-                    out.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (out!=null) {
+                out.close();
             }
         }
     }
     
+    /**
+     * 读取文件内容
+     * @author xule
+     * @version 2017年5月2日 上午11:06:10
+     * @param 
+     * @return String
+     */
+    public static String readFile(SmbFile smbFile) throws Exception {
+        InputStream in=null;
+        try {
+            in=new BufferedInputStream(new SmbFileInputStream(smbFile));
+            return FileUtil.readFileFromStream(in);
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (in!=null) {
+                in.close();
+            }
+        }
+    }
 }
