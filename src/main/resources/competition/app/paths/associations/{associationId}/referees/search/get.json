@@ -22,6 +22,14 @@
             "in": "query"
         },
         {
+            "description": "审核状态, 1-待审核， 2-已通过， 3-未通过",
+            "name": "status",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
             "description": "注册协会ID",
             "name": "registerAssId",
             "format": "int64",
