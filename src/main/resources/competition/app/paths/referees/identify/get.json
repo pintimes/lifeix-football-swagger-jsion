@@ -1,0 +1,37 @@
+{
+    "summary": "裁判身份查询",
+    "tags": 
+    [
+        "referee"
+    ],
+    "description": "裁判身份查询",
+    "parameters": 
+    [
+	  {
+	    "description": "姓名",
+	    "name": "name",
+	    "type": "string",
+	    "required": true,
+	    "in": "query"
+	   }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+	            "items": 
+	            {
+	                "$ref": "#/definitions/Referee"
+	            }
+            },
+
+            "description": "裁判列表"
+        }
+    },
+
+    "operationId": "identifyReferee"
+}
