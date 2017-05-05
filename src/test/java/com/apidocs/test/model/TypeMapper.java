@@ -1,4 +1,4 @@
-package com.apidocs.test;
+package com.apidocs.test.model;
 
 /**
  * @author xule

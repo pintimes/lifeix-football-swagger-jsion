@@ -19,6 +19,7 @@ import com.alibaba.fastjson.JSONPath;
 import com.alibaba.fastjson.parser.ParserConfig;
 import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.apidocs.test.util.SmbUtil;
 
 import javassist.expr.Instanceof;
 
@@ -96,10 +97,10 @@ public class test {
         // "{\"a\":{\"x\":{\"e\":{\"e\":\"f\"}}},\"b\":{\"x\":[\"s1\"]},\"c\":{\"x\":[\"s1\",\"s2\"]}}
         // ";
 //        String text8 = "{\"x\":[\"e1\",\"e2\"]}";
-//        String text8 = "{\"a\":{\"x\":[\"e1\",\"e2\"]},\"b\":{\"x\":[\"e1\",\"e2\"]}}";
+//        String text8 = "{\"a\":{\"x\":[{\"in\":\"header\"},{\"in\":\"header2\"}]},\"b\":{\"x\":[\"e1\",\"e2\"]}}";
 //        JSONObject jsonObject8 = JSONObject.parseObject(text8);
 //        System.out.println(jsonObject8);
-//        String jsonpath = "$..x";
+//        String jsonpath = "$..x[in='header']";
 //        Object eval = JSONPath.eval(jsonObject8, jsonpath);
 //        System.out.println(eval);
 //        System.out.println(eval instanceof JSONArray);
@@ -114,14 +115,16 @@ public class test {
 //
 //        SerializeConfig serializeConfig;
 //        ParserConfig parserConfig=new ParserConfig();
-        
-        String text = "{\"a\":{\"x\":[\"e1\",\"e2\"]},\"b\":{\"x\":[\"e1\",\"e2\"]}}";
-        JSONObject jsonObject = JSONObject.parseObject(text);
-        System.out.println(jsonObject);
-        String jsonpath = "$..x";
-        String value="y";
-        JSONPath.set(jsonObject, jsonpath, value);
-        System.out.println(jsonObject);
+//        String text = "{\"a\":{\"x\":[\"e1\",\"e2\"]},\"b\":{\"x\":[\"e1\",\"e2\"]}}";
+//        JSONObject jsonObject = JSONObject.parseObject(text);
+//        System.out.println(jsonObject);
+//        String jsonpath = "$..x";
+//        String value="y";
+//        JSONPath.set(jsonObject, jsonpath, value);
+//        System.out.println(jsonObject);
+//        SmbUtil.createDirs("smb://192.168.1.17/fb/temp/api/user/");
+//        SmbUtil.writeFile("smb://192.168.1.17/fb/temp/api/user/user.json", "123");
+        System.out.println(Thread.currentThread().getContextClassLoader().getResource("").getPath());
     }
 
     @Test
@@ -167,6 +170,16 @@ public class test {
         System.out.println(jsonObject2);
         updateJsonAttr(jsonObject2, jsonpath2, JSONObject.parseObject("{\"￥ref\": \"#/difinitions/User\"}"), 1);
         System.out.println(jsonObject2);
+        System.out.println("------------------------------------------------------------------");
+        /**
+         * 
+         */
+        String text3 = "{\"a\":{\"x\":[{\"in\":\"header\"},{\"in\":\"header2\"}]},\"b\":{\"x\":[\"e1\",\"e2\"]}}";
+        JSONObject jsonObject3 = JSONObject.parseObject(text3);
+        System.out.println(jsonObject3);
+        String jsonpath3 = "$.a.x[in='header']";
+        updateJsonAttr(jsonObject3, jsonpath3, null, 3);
+        System.out.println(jsonObject3);
 
     }
 
@@ -217,7 +230,7 @@ public class test {
 
     private static void updateJsonArray(JSONArray jsonArray, Object value, int operateType) throws Exception {
         switch (operateType) {
-        case 0:// 增加
+        case 0:// 添加元素
             for (Object object : jsonArray) {
                 if (object == null) {
                     continue;
@@ -229,9 +242,15 @@ public class test {
             }
             jsonArray.add(value);
             break;
-        case 1:// 删除
+        case 1:// 删除指定元素
             jsonArray.remove(value);
             break;
+//        case 2:// 删除所有元素
+//            jsonArray.clear();
+//            break;
+//        case 3:// 删除JSONArray
+//            jsonArray=null;
+//            break;
         default:
             throw new Exception("无效的operateType，operateType取值范围为[0,1]，且operateType为正整数");
         }
@@ -239,13 +258,13 @@ public class test {
 
     @Test
     public void regtest() {
-        String reg_response = "#/definitions/Response«([^\\s'\"]*)»";
+        String reg_response = "#/definitions/Response(«([^\\s'\"]*)»)?";
         Pattern p_response = Pattern.compile(reg_response);
-        String text = "#/definitions/Response«List«User»»";
+        String text = "#/definitions/Response";
         Matcher matcher = p_response.matcher(text);
         while (matcher.find()) {
             System.out.println("find!");
-            System.out.println(matcher.group(1));
+            System.out.println(matcher.group(2));
         }
     }
 

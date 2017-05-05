@@ -1,7 +1,9 @@
-package com.apidocs.test;
+package com.apidocs.test.util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetAddress;
@@ -45,6 +47,21 @@ public class SmbUtil {
     }
     
     /**
+     * 创建文件夹
+     * @author xule
+     * @version 2017年5月5日 上午10:05:01
+     * @param 
+     * @return SmbFile
+     */
+    public static SmbFile createDirs(String path) throws Exception{
+        SmbFile dir = new SmbFile(path,getAuth());
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        return dir;
+    }
+    
+    /**
      * 写入文件
      * @author xule
      * @version 2017年4月27日 下午5:38:14
@@ -54,6 +71,9 @@ public class SmbUtil {
      */
     public static void writeFile(String smbFilePath,String content) throws Exception {
         SmbFile smbFile = new SmbFile(smbFilePath, getAuth());
+        if (!smbFile.exists()) {
+            smbFile.createNewFile();
+        }
         OutputStream out = null;
         try {
             out = new BufferedOutputStream(new SmbFileOutputStream(smbFile));
@@ -84,6 +104,40 @@ public class SmbUtil {
         } finally {
             if (in!=null) {
                 in.close();
+            }
+        }
+    }
+    /**
+     * 写入文件
+     * @author xule
+     * @version 2017年5月5日 下午1:55:52
+     * @param 
+     * @return void
+     */
+    public static void writeFile(File source, SmbFile smbFile) {
+        InputStream in = null;
+        OutputStream out = null;
+        try {
+            in = new BufferedInputStream(new FileInputStream(source));
+            out = new BufferedOutputStream(new SmbFileOutputStream(smbFile));
+            byte[] buffer = new byte[4096];
+            int len = 0; // 读取长度
+            while ((len = in.read(buffer, 0, buffer.length)) != -1) {
+                out.write(buffer, 0, len);
+            }
+            out.flush(); // 刷新缓冲的输出流
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (out != null) {
+                    out.close();
+                }
+                if (in != null) {
+                    in.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

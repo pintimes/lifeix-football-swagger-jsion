@@ -32,6 +32,7 @@ public class GenerateJSON {
         File pathRoot = new File(root + "app/paths");
         File definationRoot = new File(root + "definitions");
         String json = new CombineJsons().toSwaggerJson(swaggerFile, definationRoot, pathRoot);
+        
         String path = Thread.currentThread().getContextClassLoader().getResource("").getPath();
         path = path.substring(0, path.indexOf("target"));
         File dir = new File(path + "/swagger/");

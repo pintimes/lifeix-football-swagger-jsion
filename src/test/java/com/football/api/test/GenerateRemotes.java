@@ -68,6 +68,7 @@ public class GenerateRemotes {
         writeFile(swaggerFile, json);
         // 生成Html1
         String tempFileDir = "d:/temp4/html/" + name + "/";
+        System.out.println(swaggerFile.getAbsolutePath());
         SwaggerCodegen.main(new String[] { "generate", "-i", swaggerFile.getAbsolutePath(), "-l", "html",
                 "-o", tempFileDir });
         SmbFile html = new SmbFile(SMBDIR + name + "/index.html", auth);
