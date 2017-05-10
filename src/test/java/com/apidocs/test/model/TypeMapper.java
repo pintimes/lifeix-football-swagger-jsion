@@ -10,12 +10,20 @@ public class TypeMapper {
     private String jsontype;
     private String jsonformat;
     private String response;
+    private String responseInnerObj;
+    
     
     public String getResponse() {
         return response;
     }
     public void setResponse(String response) {
         this.response = response;
+    }
+    public String getResponseInnerObj() {
+        return responseInnerObj;
+    }
+    public void setResponseInnerObj(String responseInnerObj) {
+        this.responseInnerObj = responseInnerObj;
     }
     public String getBasetype() {
         return basetype;
@@ -44,14 +52,15 @@ public class TypeMapper {
     public TypeMapper() {
         super();
     }
-    public TypeMapper(String wraptype, String basetype, String jsontype, String jsonformat,
-            String response) {
+    public TypeMapper(String wraptype, String basetype, String jsontype, String jsonformat, String response,
+            String responseInnerObj) {
         super();
         this.wraptype = wraptype;
         this.basetype = basetype;
         this.jsontype = jsontype;
         this.jsonformat = jsonformat;
         this.response = response;
+        this.responseInnerObj = responseInnerObj;
     }
-    
+
 }

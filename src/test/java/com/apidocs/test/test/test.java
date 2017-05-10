@@ -1,4 +1,4 @@
-package com.apidocs.test;
+package com.apidocs.test.test;
 
 import static org.junit.Assert.*;
 
@@ -258,13 +258,13 @@ public class test {
 
     @Test
     public void regtest() {
-        String reg_response = "#/definitions/Response(«([^\\s'\"]*)»)?";
+        String reg_response = "#/definitions/(?!Response)([^\\s'\"]*)";
         Pattern p_response = Pattern.compile(reg_response);
-        String text = "#/definitions/Response";
+        String text = "#/definitions/Map«key,value»";
         Matcher matcher = p_response.matcher(text);
         while (matcher.find()) {
             System.out.println("find!");
-            System.out.println(matcher.group(2));
+            System.out.println(matcher.group(1));
         }
     }
 

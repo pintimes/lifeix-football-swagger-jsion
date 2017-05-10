@@ -21,8 +21,7 @@ import io.swagger.codegen.SwaggerCodegen;
  * @version 2017年4月25日 下午1:30:40
  */
 public class CreateJsons {
-    // private static final String API_PREFIX = "http://54.223.127.33:8000/football/";
-    private static final String API_HOST = "http://127.0.0.1:8080/";
+    private static final String API_HOST = "http://54.223.127.33:8300/";
 
     public static final String SMBDIR = "smb://192.168.1.17/fb/temp/api_docs/";
 
@@ -38,9 +37,15 @@ public class CreateJsons {
         /**
          * 配置api文档链接
          */
-        map_system_apipath.put("user", API_HOST + "football/user/v2/api-docs?key=visitor");
+        map_system_apipath.put("decision", API_HOST + "football/decision/v2/api-docs");
+        map_system_apipath.put("app", API_HOST + "football/app/v2/api-docs");
+        map_system_apipath.put("console", API_HOST + "football/console/v2/api-docs");
+        map_system_apipath.put("elearning", API_HOST + "football/elearning/v2/api-docs");
+        map_system_apipath.put("wemedia", API_HOST + "football/wemedia/v2/api-docs");
+        map_system_apipath.put("mary", API_HOST + "football/mary/v2/api-docs");
+        map_system_apipath.put("user", API_HOST + "football/user/v2/api-docs");
     }
-
+ 
     //TODO 主流程入口
     public static void main(String[] args) throws Exception {
         /**
@@ -78,6 +83,8 @@ public class CreateJsons {
             Map<String, JSONObject> map = newJsons.get(i);
             for (String system : map.keySet()) {
                 JSONObject json = map.get(system);
+                System.out.println(json);
+                System.out.println(json.toJSONString());
                 String text = json.toJSONString().replaceAll(temp_$ref_replacer, "\\$ref");
                 /**
                  * 创建文件夹
@@ -131,7 +138,13 @@ public class CreateJsons {
         Map<String, JSONObject> mapV2Outer = new HashMap<>();
         for (String system : originalJsons.keySet()) {
             String jsonString = originalJsons.get(system);
-            JSONObject jsonObject_v1 = JSONObject.parseObject(jsonString);// v1版本
+            System.out.println(jsonString);
+            JSONObject jsonObject_v1=null;
+            try {
+                jsonObject_v1 = JSONObject.parseObject(jsonString);// v1版本
+            } catch (Exception e) {
+                continue; 
+            }
             JSONObject jsonObject_v2_inner = JSONObject.parseObject(jsonString);// v2版本内部使用
             JSONObject jsonObject_v2_outer = JSONObject.parseObject(jsonString);// v2版本外部使用
             /**
@@ -158,12 +171,17 @@ public class CreateJsons {
      */
     private static Map<String, String> getOriginalJsons() throws Exception {
         Map<String, String> map = new HashMap<>();
+        System.out.println(map_system_apipath.size());
         for (String system : map_system_apipath.keySet()) {
             String url = map_system_apipath.get(system);
             try {
                 String result = HttpUtil.sendGet(url);
+                System.out.println(result);
                 if (StringUtils.isEmpty(result)) {
-                    throw new Exception("HttpUtil.sendGet error, no response. url:" + url);
+                    continue;
+                }
+                if (result.contains("\"error\":\"Not Found\"")||result.contains("api not found")) {
+                    continue;
                 }
                 /**
                  * 使用￥ref临时替换$ref，防止出现循环引用

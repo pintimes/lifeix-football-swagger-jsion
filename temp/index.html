@@ -702,6 +702,9 @@ margin-bottom: 20px;
 
   var defs = {}
 
+  defs.boolean = {
+  "type" : "boolean"
+};
   defs.Device = {
   "type" : "object",
   "properties" : {
@@ -728,26 +731,53 @@ margin-bottom: 20px;
     }
   }
 };
+  defs.List = {
+  "type" : "object",
+  "description" : "有序对象集合，元素可重复"
+};
+  defs.List«Map«string,string»» = {
+  "type" : "array",
+  "items" : {
+    "$ref" : "#/definitions/Map«string,string»"
+  }
+};
+  defs.List«User» = {
+  "type" : "array",
+  "items" : {
+    "$ref" : "#/definitions/User"
+  }
+};
+  defs.Map = {
+  "type" : "object",
+  "additionalProperties" : {
+    "type" : "string"
+  }
+};
   defs.Map«string,string» = {
   "type" : "object",
   "additionalProperties" : {
     "type" : "string"
   }
 };
-  defs.Response = {
+  defs.object = {
+  "type" : "object"
+};
+  defs.Page«User» = {
   "type" : "object",
   "properties" : {
-    "code" : {
-      "type" : "string",
-      "description" : "返回类型为Response对象时，code属性（非http状态码）说明：200 请求成功；400 请求参数错误；401 未登录；403 无权访问（如以visitor身份访问user才能访问的api）；500 服务器异常"
+    "total" : {
+      "type" : "integer",
+      "format" : "int64"
     },
-    "message" : {
-      "type" : "string"
+    "rows" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/User"
+      }
     }
-  },
-  "description" : "通用的接口返回结构"
+  }
 };
-  defs.Response«List«Map»» = {
+  defs.Response«List«Map«string,string»»» = {
   "type" : "object",
   "properties" : {
     "code" : {
@@ -755,10 +785,7 @@ margin-bottom: 20px;
       "description" : "返回类型为Response对象时，code属性（非http状态码）说明：200 请求成功；400 请求参数错误；401 未登录；403 无权访问（如以visitor身份访问user才能访问的api）；500 服务器异常"
     },
     "data" : {
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/definitions/Map"
-      }
+      "$ref" : "#/definitions/List«Map«string,string»»"
     },
     "message" : {
       "type" : "string"
@@ -770,53 +797,33 @@ margin-bottom: 20px;
   "type" : "object",
   "properties" : {
     "code" : {
-      "type" : "string"
+      "type" : "string",
+      "description" : "返回类型为Response对象时，code属性（非http状态码）说明：200 请求成功；400 请求参数错误；401 未登录；403 无权访问（如以visitor身份访问user才能访问的api）；500 服务器异常"
     },
     "data" : {
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/definitions/User"
-      }
+      "$ref" : "#/definitions/List«User»"
     },
     "message" : {
       "type" : "string"
     }
-  }
+  },
+  "description" : "通用的接口返回结构"
 };
-  defs.Response«List«int»» = {
+  defs.Response«Page«User»» = {
   "type" : "object",
   "properties" : {
     "code" : {
-      "type" : "string"
+      "type" : "string",
+      "description" : "返回类型为Response对象时，code属性（非http状态码）说明：200 请求成功；400 请求参数错误；401 未登录；403 无权访问（如以visitor身份访问user才能访问的api）；500 服务器异常"
     },
     "data" : {
-      "type" : "array",
-      "items" : {
-        "type" : "integer",
-        "format" : "int32"
-      }
+      "$ref" : "#/definitions/Page«User»"
     },
     "message" : {
       "type" : "string"
     }
-  }
-};
-  defs.Response«List«string»» = {
-  "type" : "object",
-  "properties" : {
-    "code" : {
-      "type" : "string"
-    },
-    "data" : {
-      "type" : "array",
-      "items" : {
-        "type" : "string"
-      }
-    },
-    "message" : {
-      "type" : "string"
-    }
-  }
+  },
+  "description" : "通用的接口返回结构"
 };
   defs.Response«Success» = {
   "type" : "object",
@@ -838,7 +845,8 @@ margin-bottom: 20px;
   "type" : "object",
   "properties" : {
     "code" : {
-      "type" : "string"
+      "type" : "string",
+      "description" : "返回类型为Response对象时，code属性（非http状态码）说明：200 请求成功；400 请求参数错误；401 未登录；403 无权访问（如以visitor身份访问user才能访问的api）；500 服务器异常"
     },
     "data" : {
       "$ref" : "#/definitions/User"
@@ -846,7 +854,8 @@ margin-bottom: 20px;
     "message" : {
       "type" : "string"
     }
-  }
+  },
+  "description" : "通用的接口返回结构"
 };
   defs.Response«boolean» = {
   "type" : "object",
@@ -856,28 +865,13 @@ margin-bottom: 20px;
       "description" : "返回类型为Response对象时，code属性（非http状态码）说明：200 请求成功；400 请求参数错误；401 未登录；403 无权访问（如以visitor身份访问user才能访问的api）；500 服务器异常"
     },
     "data" : {
-      "type" : "boolean"
+      "$ref" : "#/definitions/boolean"
     },
     "message" : {
       "type" : "string"
     }
   },
   "description" : "通用的接口返回结构"
-};
-  defs.Response«int» = {
-  "type" : "object",
-  "properties" : {
-    "code" : {
-      "type" : "string"
-    },
-    "data" : {
-      "type" : "integer",
-      "format" : "int32"
-    },
-    "message" : {
-      "type" : "string"
-    }
-  }
 };
   defs.Response«object» = {
   "type" : "object",
@@ -894,19 +888,9 @@ margin-bottom: 20px;
     }
   }
 };
-  defs.Response«string» = {
+  defs.Set = {
   "type" : "object",
-  "properties" : {
-    "code" : {
-      "type" : "string"
-    },
-    "data" : {
-      "type" : "string"
-    },
-    "message" : {
-      "type" : "string"
-    }
-  }
+  "description" : "无序对象集合，元素不可重复"
 };
   defs.Success = {
   "type" : "object",
@@ -1209,7 +1193,7 @@ margin-bottom: 20px;
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Smscodecontroller-checkRegisterSmsCodeUsingPOST-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/smscode/register/check"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/smscode/register/check"
 
 
 </code></pre>
@@ -1752,7 +1736,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Smscodecontroller-checkSmsCodeUsingPOST-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/smscode/check"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/smscode/check"
 
 
 </code></pre>
@@ -2295,7 +2279,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Smscodecontroller-checkValidateSmsCodeUsingPOST-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/smscode/validate/check"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/smscode/validate/check"
 
 
 </code></pre>
@@ -2838,7 +2822,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Smscodecontroller-sendSmscodeRegisterUsingGET-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/smscode/register?mobile="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/smscode/register?mobile="
 
 
 </code></pre>
@@ -2862,7 +2846,7 @@ public class SmscodecontrollerApiExample {
         String mobile = mobile_example; // String | 手机号码
         String key = key_example; // String | key，所有api都需要该参数，用户未登录状态下为key=visitor，用户登录状态下为用户key
         try {
-            Object result = apiInstance.sendSmscodeRegisterUsingGET(mobile, key);
+            Response«object» result = apiInstance.sendSmscodeRegisterUsingGET(mobile, key);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SmscodecontrollerApi#sendSmscodeRegisterUsingGET");
@@ -2886,7 +2870,7 @@ public class SmscodecontrollerApiExample {
         String mobile = mobile_example; // String | 手机号码
         String key = key_example; // String | key，所有api都需要该参数，用户未登录状态下为key=visitor，用户登录状态下为用户key
         try {
-            Object result = apiInstance.sendSmscodeRegisterUsingGET(mobile, key);
+            Response«object» result = apiInstance.sendSmscodeRegisterUsingGET(mobile, key);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SmscodecontrollerApi#sendSmscodeRegisterUsingGET");
@@ -2915,7 +2899,7 @@ SmscodecontrollerApi *apiInstance = [[SmscodecontrollerApi alloc] init];
 // 发送验证码短信
 [apiInstance sendSmscodeRegisterUsingGETWith:mobile
     key:key
-              completionHandler: ^(Object output, NSError* error) {
+              completionHandler: ^(Response«object» output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -2975,7 +2959,7 @@ namespace Example
             try
             {
                 // 发送验证码短信
-                Object result = apiInstance.sendSmscodeRegisterUsingGET(mobile, key);
+                Response«object» result = apiInstance.sendSmscodeRegisterUsingGET(mobile, key);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3143,8 +3127,7 @@ try {
                                                                     var schemaWrapper = {
   "description" : "OK",
   "schema" : {
-    "type" : "object",
-    "properties" : { }
+    "$ref" : "#/definitions/Response«object»"
   }
 };
                                                                     var schema = schemaWrapper.schema;
@@ -3415,7 +3398,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Smscodecontroller-sendSmscodeUsingGET-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/smscode?mobile="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/smscode?mobile="
 
 
 </code></pre>
@@ -3439,7 +3422,7 @@ public class SmscodecontrollerApiExample {
         String mobile = mobile_example; // String | 手机号码
         String key = key_example; // String | key，所有api都需要该参数，用户未登录状态下为key=visitor，用户登录状态下为用户key
         try {
-            Object result = apiInstance.sendSmscodeUsingGET(mobile, key);
+            Response«object» result = apiInstance.sendSmscodeUsingGET(mobile, key);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SmscodecontrollerApi#sendSmscodeUsingGET");
@@ -3463,7 +3446,7 @@ public class SmscodecontrollerApiExample {
         String mobile = mobile_example; // String | 手机号码
         String key = key_example; // String | key，所有api都需要该参数，用户未登录状态下为key=visitor，用户登录状态下为用户key
         try {
-            Object result = apiInstance.sendSmscodeUsingGET(mobile, key);
+            Response«object» result = apiInstance.sendSmscodeUsingGET(mobile, key);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SmscodecontrollerApi#sendSmscodeUsingGET");
@@ -3492,7 +3475,7 @@ SmscodecontrollerApi *apiInstance = [[SmscodecontrollerApi alloc] init];
 // 发送验证码
 [apiInstance sendSmscodeUsingGETWith:mobile
     key:key
-              completionHandler: ^(Object output, NSError* error) {
+              completionHandler: ^(Response«object» output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -3552,7 +3535,7 @@ namespace Example
             try
             {
                 // 发送验证码
-                Object result = apiInstance.sendSmscodeUsingGET(mobile, key);
+                Response«object» result = apiInstance.sendSmscodeUsingGET(mobile, key);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3719,8 +3702,7 @@ try {
                                                                     var schemaWrapper = {
   "description" : "OK",
   "schema" : {
-    "type" : "object",
-    "properties" : { }
+    "$ref" : "#/definitions/Response«object»"
   }
 };
                                                                     var schema = schemaWrapper.schema;
@@ -3991,7 +3973,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Smscodecontroller-sendSmscodeValidateUsingGET-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/smscode/validate?mobile="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/smscode/validate?mobile="
 
 
 </code></pre>
@@ -4015,7 +3997,7 @@ public class SmscodecontrollerApiExample {
         String mobile = mobile_example; // String | 手机号码
         String key = key_example; // String | key，所有api都需要该参数，用户未登录状态下为key=visitor，用户登录状态下为用户key
         try {
-            Object result = apiInstance.sendSmscodeValidateUsingGET(mobile, key);
+            Response«object» result = apiInstance.sendSmscodeValidateUsingGET(mobile, key);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SmscodecontrollerApi#sendSmscodeValidateUsingGET");
@@ -4039,7 +4021,7 @@ public class SmscodecontrollerApiExample {
         String mobile = mobile_example; // String | 手机号码
         String key = key_example; // String | key，所有api都需要该参数，用户未登录状态下为key=visitor，用户登录状态下为用户key
         try {
-            Object result = apiInstance.sendSmscodeValidateUsingGET(mobile, key);
+            Response«object» result = apiInstance.sendSmscodeValidateUsingGET(mobile, key);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SmscodecontrollerApi#sendSmscodeValidateUsingGET");
@@ -4068,7 +4050,7 @@ SmscodecontrollerApi *apiInstance = [[SmscodecontrollerApi alloc] init];
 // 验证手机号是否存在
 [apiInstance sendSmscodeValidateUsingGETWith:mobile
     key:key
-              completionHandler: ^(Object output, NSError* error) {
+              completionHandler: ^(Response«object» output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -4128,7 +4110,7 @@ namespace Example
             try
             {
                 // 验证手机号是否存在
-                Object result = apiInstance.sendSmscodeValidateUsingGET(mobile, key);
+                Response«object» result = apiInstance.sendSmscodeValidateUsingGET(mobile, key);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4296,8 +4278,7 @@ try {
                                                                     var schemaWrapper = {
   "description" : "OK",
   "schema" : {
-    "type" : "object",
-    "properties" : { }
+    "$ref" : "#/definitions/Response«object»"
   }
 };
                                                                     var schema = schemaWrapper.schema;
@@ -4572,7 +4553,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-appWeiboRegisterLoginUserUsingPOST-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/weibo/app?device=&deviceId=&deviceToken=&clientId=&accessToken=&refreshToken=&uid=&source="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/weibo/app?device=&deviceId=&deviceToken=&clientId=&accessToken=&refreshToken=&uid=&source="
 
 
 </code></pre>
@@ -5436,7 +5417,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-appWeixinRegisterLoginUserUsingPOST-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/weixin/app?device=&deviceId=&deviceToken=&clientId=&accessToken=&refreshToken=&openid=&unionid=&source="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/weixin/app?device=&deviceId=&deviceToken=&clientId=&accessToken=&refreshToken=&openid=&unionid=&source="
 
 
 </code></pre>
@@ -6342,7 +6323,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-emptyAppDeviceUserUsingPUT-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/device/unbind?deviceId=&source="
+curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/device/unbind?deviceId=&source="
 
 
 </code></pre>
@@ -6962,7 +6943,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-getEasyUIUsersPageUsingGET-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/page?startTime=&endTime=&page=&rows=&id=&name=&email=&mobile=&gender=&label="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/page?startTime=&endTime=&page=&rows=&id=&name=&email=&mobile=&gender=&label="
 
 
 </code></pre>
@@ -6995,7 +6976,7 @@ public class UsercontrollerApiExample {
         String gender = gender_example; // String | gender
         String label = label_example; // String | label
         try {
-            Response«List«int»» result = apiInstance.getEasyUIUsersPageUsingGET(key, startTime, endTime, page, rows, id, name, email, mobile, gender, label);
+            Response«Page«User»» result = apiInstance.getEasyUIUsersPageUsingGET(key, startTime, endTime, page, rows, id, name, email, mobile, gender, label);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsercontrollerApi#getEasyUIUsersPageUsingGET");
@@ -7028,7 +7009,7 @@ public class UsercontrollerApiExample {
         String gender = gender_example; // String | gender
         String label = label_example; // String | label
         try {
-            Response«List«int»» result = apiInstance.getEasyUIUsersPageUsingGET(key, startTime, endTime, page, rows, id, name, email, mobile, gender, label);
+            Response«Page«User»» result = apiInstance.getEasyUIUsersPageUsingGET(key, startTime, endTime, page, rows, id, name, email, mobile, gender, label);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsercontrollerApi#getEasyUIUsersPageUsingGET");
@@ -7075,7 +7056,7 @@ UsercontrollerApi *apiInstance = [[UsercontrollerApi alloc] init];
     mobile:mobile
     gender:gender
     label:label
-              completionHandler: ^(Response«List«int»» output, NSError* error) {
+              completionHandler: ^(Response«Page«User»» output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -7154,7 +7135,7 @@ namespace Example
             try
             {
                 // getEasyUIUsersPage
-                Response«List«int»» result = apiInstance.getEasyUIUsersPageUsingGET(key, startTime, endTime, page, rows, id, name, email, mobile, gender, label);
+                Response«Page«User»» result = apiInstance.getEasyUIUsersPageUsingGET(key, startTime, endTime, page, rows, id, name, email, mobile, gender, label);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -7634,7 +7615,7 @@ try {
                                                                     var schemaWrapper = {
   "description" : "OK",
   "schema" : {
-    "$ref" : "#/definitions/Response«List«int»»"
+    "$ref" : "#/definitions/Response«Page«User»»"
   }
 };
                                                                     var schema = schemaWrapper.schema;
@@ -7905,7 +7886,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-getUserBaseInfoUsingGET-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/{userId}/base"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/{userId}/base"
 
 
 </code></pre>
@@ -7929,7 +7910,7 @@ public class UsercontrollerApiExample {
         String userId = userId_example; // String | userId
         String key = key_example; // String | key，所有api都需要该参数，用户未登录状态下为key=visitor，用户登录状态下为用户key
         try {
-            Response«int» result = apiInstance.getUserBaseInfoUsingGET(userId, key);
+            Response«User» result = apiInstance.getUserBaseInfoUsingGET(userId, key);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsercontrollerApi#getUserBaseInfoUsingGET");
@@ -7953,7 +7934,7 @@ public class UsercontrollerApiExample {
         String userId = userId_example; // String | userId
         String key = key_example; // String | key，所有api都需要该参数，用户未登录状态下为key=visitor，用户登录状态下为用户key
         try {
-            Response«int» result = apiInstance.getUserBaseInfoUsingGET(userId, key);
+            Response«User» result = apiInstance.getUserBaseInfoUsingGET(userId, key);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsercontrollerApi#getUserBaseInfoUsingGET");
@@ -7982,7 +7963,7 @@ UsercontrollerApi *apiInstance = [[UsercontrollerApi alloc] init];
 // getUserBaseInfo
 [apiInstance getUserBaseInfoUsingGETWith:userId
     key:key
-              completionHandler: ^(Response«int» output, NSError* error) {
+              completionHandler: ^(Response«User» output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -8042,7 +8023,7 @@ namespace Example
             try
             {
                 // getUserBaseInfo
-                Response«int» result = apiInstance.getUserBaseInfoUsingGET(userId, key);
+                Response«User» result = apiInstance.getUserBaseInfoUsingGET(userId, key);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -8210,7 +8191,7 @@ try {
                                                                     var schemaWrapper = {
   "description" : "OK",
   "schema" : {
-    "$ref" : "#/definitions/Response«int»"
+    "$ref" : "#/definitions/Response«User»"
   }
 };
                                                                     var schema = schemaWrapper.schema;
@@ -8481,7 +8462,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-getUserDevicetokenUsingGET-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/{userId}/devicetoken?whole=&source="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/{userId}/devicetoken?whole=&source="
 
 
 </code></pre>
@@ -8507,7 +8488,7 @@ public class UsercontrollerApiExample {
         Boolean whole = true; // Boolean | whole
         String source = source_example; // String | source
         try {
-            Response«List«Map»» result = apiInstance.getUserDevicetokenUsingGET(userId, key, whole, source);
+            Response«List«Map«string,string»»» result = apiInstance.getUserDevicetokenUsingGET(userId, key, whole, source);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsercontrollerApi#getUserDevicetokenUsingGET");
@@ -8533,7 +8514,7 @@ public class UsercontrollerApiExample {
         Boolean whole = true; // Boolean | whole
         String source = source_example; // String | source
         try {
-            Response«List«Map»» result = apiInstance.getUserDevicetokenUsingGET(userId, key, whole, source);
+            Response«List«Map«string,string»»» result = apiInstance.getUserDevicetokenUsingGET(userId, key, whole, source);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsercontrollerApi#getUserDevicetokenUsingGET");
@@ -8566,7 +8547,7 @@ UsercontrollerApi *apiInstance = [[UsercontrollerApi alloc] init];
     key:key
     whole:whole
     source:source
-              completionHandler: ^(Response«List«Map»» output, NSError* error) {
+              completionHandler: ^(Response«List«Map«string,string»»» output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -8632,7 +8613,7 @@ namespace Example
             try
             {
                 // getUserDevicetoken
-                Response«List«Map»» result = apiInstance.getUserDevicetokenUsingGET(userId, key, whole, source);
+                Response«List«Map«string,string»»» result = apiInstance.getUserDevicetokenUsingGET(userId, key, whole, source);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -8879,7 +8860,7 @@ try {
                                                                     var schemaWrapper = {
   "description" : "OK",
   "schema" : {
-    "$ref" : "#/definitions/Response«List«Map»»"
+    "$ref" : "#/definitions/Response«List«Map«string,string»»»"
   }
 };
                                                                     var schema = schemaWrapper.schema;
@@ -9150,7 +9131,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-getUserUsingGET-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/{userId}"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/{userId}"
 
 
 </code></pre>
@@ -9726,7 +9707,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-getUsersBaseInfoUsingGET-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/list/base?userIds="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/list/base?userIds="
 
 
 </code></pre>
@@ -10306,7 +10287,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-loginUserUsingPOST-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/login?source=&device=&deviceId=&deviceToken=&clientId=&account=&password="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/login?source=&device=&deviceId=&deviceToken=&clientId=&account=&password="
 
 
 </code></pre>
@@ -11128,7 +11109,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-logoutUserUsingPOST-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/{userId}/logout?device=&deviceId=&source="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/{userId}/logout?device=&deviceId=&source="
 
 
 </code></pre>
@@ -11838,7 +11819,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-mobileExistsUsingGET-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/exists/mobile?mobile="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/exists/mobile?mobile="
 
 
 </code></pre>
@@ -11862,7 +11843,7 @@ public class UsercontrollerApiExample {
         String mobile = mobile_example; // String | mobile
         String key = key_example; // String | key，所有api都需要该参数，用户未登录状态下为key=visitor，用户登录状态下为用户key
         try {
-            Response«string» result = apiInstance.mobileExistsUsingGET(mobile, key);
+            Response«User» result = apiInstance.mobileExistsUsingGET(mobile, key);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsercontrollerApi#mobileExistsUsingGET");
@@ -11886,7 +11867,7 @@ public class UsercontrollerApiExample {
         String mobile = mobile_example; // String | mobile
         String key = key_example; // String | key，所有api都需要该参数，用户未登录状态下为key=visitor，用户登录状态下为用户key
         try {
-            Response«string» result = apiInstance.mobileExistsUsingGET(mobile, key);
+            Response«User» result = apiInstance.mobileExistsUsingGET(mobile, key);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsercontrollerApi#mobileExistsUsingGET");
@@ -11915,7 +11896,7 @@ UsercontrollerApi *apiInstance = [[UsercontrollerApi alloc] init];
 // mobileExists
 [apiInstance mobileExistsUsingGETWith:mobile
     key:key
-              completionHandler: ^(Response«string» output, NSError* error) {
+              completionHandler: ^(Response«User» output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -11975,7 +11956,7 @@ namespace Example
             try
             {
                 // mobileExists
-                Response«string» result = apiInstance.mobileExistsUsingGET(mobile, key);
+                Response«User» result = apiInstance.mobileExistsUsingGET(mobile, key);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -12143,7 +12124,7 @@ try {
                                                                     var schemaWrapper = {
   "description" : "OK",
   "schema" : {
-    "$ref" : "#/definitions/Response«string»"
+    "$ref" : "#/definitions/Response«User»"
   }
 };
                                                                     var schema = schemaWrapper.schema;
@@ -12414,7 +12395,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-mobileRegisterUsingPOST-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/register/mobile?device=&deviceId=&deviceToken=&clientId=&mobile=&smsCode=&password=&source="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/register/mobile?device=&deviceId=&deviceToken=&clientId=&mobile=&smsCode=&password=&source="
 
 
 </code></pre>
@@ -12445,7 +12426,7 @@ public class UsercontrollerApiExample {
         String deviceToken = deviceToken_example; // String | deviceToken
         String clientId = clientId_example; // String | clientId
         try {
-            Object result = apiInstance.mobileRegisterUsingPOST(device, mobile, smsCode, password, source, key, deviceId, deviceToken, clientId);
+            Response«object» result = apiInstance.mobileRegisterUsingPOST(device, mobile, smsCode, password, source, key, deviceId, deviceToken, clientId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsercontrollerApi#mobileRegisterUsingPOST");
@@ -12476,7 +12457,7 @@ public class UsercontrollerApiExample {
         String deviceToken = deviceToken_example; // String | deviceToken
         String clientId = clientId_example; // String | clientId
         try {
-            Object result = apiInstance.mobileRegisterUsingPOST(device, mobile, smsCode, password, source, key, deviceId, deviceToken, clientId);
+            Response«object» result = apiInstance.mobileRegisterUsingPOST(device, mobile, smsCode, password, source, key, deviceId, deviceToken, clientId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsercontrollerApi#mobileRegisterUsingPOST");
@@ -12519,7 +12500,7 @@ UsercontrollerApi *apiInstance = [[UsercontrollerApi alloc] init];
     deviceId:deviceId
     deviceToken:deviceToken
     clientId:clientId
-              completionHandler: ^(Object output, NSError* error) {
+              completionHandler: ^(Response«object» output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -12599,7 +12580,7 @@ namespace Example
             try
             {
                 // mobileRegister
-                Object result = apiInstance.mobileRegisterUsingPOST(device, mobile, smsCode, password, source, key, deviceId, deviceToken, clientId);
+                Response«object» result = apiInstance.mobileRegisterUsingPOST(device, mobile, smsCode, password, source, key, deviceId, deviceToken, clientId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -13006,8 +12987,7 @@ try {
                                                                     var schemaWrapper = {
   "description" : "OK",
   "schema" : {
-    "type" : "object",
-    "properties" : { }
+    "$ref" : "#/definitions/Response«object»"
   }
 };
                                                                     var schema = schemaWrapper.schema;
@@ -13278,7 +13258,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-recordUserUsingPOST-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users?device=&deviceId=&deviceToken=&clientId=&username=&password=&birthday=&gender=&name=&email=&mobile=&nickname=&idCard=&source=&label="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users?device=&deviceId=&deviceToken=&clientId=&username=&password=&birthday=&gender=&name=&email=&mobile=&nickname=&idCard=&source=&label="
 
 
 </code></pre>
@@ -14422,7 +14402,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-searchUsersUsingGET-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/search?page=&rows=&property=&value="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/search?page=&rows=&property=&value="
 
 
 </code></pre>
@@ -14449,7 +14429,7 @@ public class UsercontrollerApiExample {
         String property = property_example; // String | property
         String value = value_example; // String | value
         try {
-            Response«List«string»» result = apiInstance.searchUsersUsingGET(key, page, rows, property, value);
+            Response«Page«User»» result = apiInstance.searchUsersUsingGET(key, page, rows, property, value);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsercontrollerApi#searchUsersUsingGET");
@@ -14476,7 +14456,7 @@ public class UsercontrollerApiExample {
         String property = property_example; // String | property
         String value = value_example; // String | value
         try {
-            Response«List«string»» result = apiInstance.searchUsersUsingGET(key, page, rows, property, value);
+            Response«Page«User»» result = apiInstance.searchUsersUsingGET(key, page, rows, property, value);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsercontrollerApi#searchUsersUsingGET");
@@ -14511,7 +14491,7 @@ UsercontrollerApi *apiInstance = [[UsercontrollerApi alloc] init];
     rows:rows
     property:property
     value:value
-              completionHandler: ^(Response«List«string»» output, NSError* error) {
+              completionHandler: ^(Response«Page«User»» output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -14578,7 +14558,7 @@ namespace Example
             try
             {
                 // searchUsers
-                Response«List«string»» result = apiInstance.searchUsersUsingGET(key, page, rows, property, value);
+                Response«Page«User»» result = apiInstance.searchUsersUsingGET(key, page, rows, property, value);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -14852,7 +14832,7 @@ try {
                                                                     var schemaWrapper = {
   "description" : "OK",
   "schema" : {
-    "$ref" : "#/definitions/Response«List«string»»"
+    "$ref" : "#/definitions/Response«Page«User»»"
   }
 };
                                                                     var schema = schemaWrapper.schema;
@@ -15123,7 +15103,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-updatePasswordByMobileAndSmscodeUsingPUT-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/password/mobile?mobile=&smsCode=&password="
+curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/password/mobile?mobile=&smsCode=&password="
 
 
 </code></pre>
@@ -15781,7 +15761,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-updatePasswordByUserIdUsingPUT-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/{userId}/password?password="
+curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/{userId}/password?password="
 
 
 </code></pre>
@@ -16406,7 +16386,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-updateUserAvatarUsingPUT-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/{userId}/avatar?avatar="
+curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/{userId}/avatar?avatar="
 
 
 </code></pre>
@@ -16431,7 +16411,7 @@ public class UsercontrollerApiExample {
         String avatar = avatar_example; // String | avatar
         String key = key_example; // String | key，所有api都需要该参数，用户未登录状态下为key=visitor，用户登录状态下为用户key
         try {
-            Response result = apiInstance.updateUserAvatarUsingPUT(userId, avatar, key);
+            Response«Success» result = apiInstance.updateUserAvatarUsingPUT(userId, avatar, key);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsercontrollerApi#updateUserAvatarUsingPUT");
@@ -16456,7 +16436,7 @@ public class UsercontrollerApiExample {
         String avatar = avatar_example; // String | avatar
         String key = key_example; // String | key，所有api都需要该参数，用户未登录状态下为key=visitor，用户登录状态下为用户key
         try {
-            Response result = apiInstance.updateUserAvatarUsingPUT(userId, avatar, key);
+            Response«Success» result = apiInstance.updateUserAvatarUsingPUT(userId, avatar, key);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsercontrollerApi#updateUserAvatarUsingPUT");
@@ -16487,7 +16467,7 @@ UsercontrollerApi *apiInstance = [[UsercontrollerApi alloc] init];
 [apiInstance updateUserAvatarUsingPUTWith:userId
     avatar:avatar
     key:key
-              completionHandler: ^(Response output, NSError* error) {
+              completionHandler: ^(Response«Success» output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -16550,7 +16530,7 @@ namespace Example
             try
             {
                 // updateUserAvatar
-                Response result = apiInstance.updateUserAvatarUsingPUT(userId, avatar, key);
+                Response«Success» result = apiInstance.updateUserAvatarUsingPUT(userId, avatar, key);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -16760,7 +16740,7 @@ try {
                                                                     var schemaWrapper = {
   "description" : "OK",
   "schema" : {
-    "$ref" : "#/definitions/Response"
+    "$ref" : "#/definitions/Response«Success»"
   }
 };
                                                                     var schema = schemaWrapper.schema;
@@ -17031,7 +17011,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-updateUserDeviceUsingPUT-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/{userId}/device?device=&deviceId=&deviceToken=&clientId=&status=&source="
+curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/{userId}/device?device=&deviceId=&deviceToken=&clientId=&status=&source="
 
 
 </code></pre>
@@ -17863,7 +17843,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-updateUserGenderUsingPUT-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/{userId}/gender?gender="
+curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/{userId}/gender?gender="
 
 
 </code></pre>
@@ -18489,7 +18469,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-updateUserLabelUsingPUT-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/{userId}/label?label="
+curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/{userId}/label?label="
 
 
 </code></pre>
@@ -19114,7 +19094,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-updateUserNicknameUsingPUT-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/{userId}/nickname?nickname="
+curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/{userId}/nickname?nickname="
 
 
 </code></pre>
@@ -19739,7 +19719,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-updateUserUsingPUT-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/{userId}"
+curl -X <span style="text-transform: uppercase;">put</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/{userId}"
 
 
 </code></pre>
@@ -20376,7 +20356,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-upgradeUserUsingPOST-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/{userId}/upgrade?source=&device=&deviceId=&deviceToken=&clientId="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/{userId}/upgrade?source=&device=&deviceId=&deviceToken=&clientId="
 
 
 </code></pre>
@@ -21166,7 +21146,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-webWeiboRegisterLoginUserUsingPOST-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/weibo/web?code=&source="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/weibo/web?code=&source="
 
 
 </code></pre>
@@ -21786,7 +21766,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Usercontroller-webWeixinRegisterLoginUserUsingPOST-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://127.0.0.1:8080/v2/football/user/users/weixin/web?code=&source="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://54.223.127.33:8300/v2/football/user/users/weixin/web?code=&source="
 
 
 </code></pre>
@@ -22369,7 +22349,7 @@ try {
             </div>
             <div id="generator">
                 <div class="content">
-                    Generated 2017-05-05T19:40:01.391+08:00
+                    Generated 2017-05-10T17:41:36.484+08:00
                 </div>
             </div>
         </div>
