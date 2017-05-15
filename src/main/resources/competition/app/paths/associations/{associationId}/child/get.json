@@ -12,6 +12,13 @@
         },
         {
             "$ref": "#/parameters/associationPath"
+        },
+        {
+            "description": "是否可用, true-可用，false-不可用",
+            "name": "status",
+            "type": "boolean",
+            "required": false,
+            "in": "query"
         }
     ],
 

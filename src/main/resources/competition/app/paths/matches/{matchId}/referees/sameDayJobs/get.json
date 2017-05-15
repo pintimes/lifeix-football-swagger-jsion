@@ -1,0 +1,44 @@
+{
+    "summary": "获取某个裁判员在某个比赛当日的工作安排",
+    "tags": 
+    [
+        "match"
+    ],
+
+    "description": "获取某个裁判员在某个比赛当日的工作安排",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/matchPath"
+        },
+        {
+            "description": "用户ID",
+            "name": "userId",
+            "type": "integer",
+            "format": "int64",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Match"
+                }
+            },
+            "description": "比赛列表"
+        }
+    },
+
+    "operationId": "getRefereeJobsInTheSameDay"
+}
