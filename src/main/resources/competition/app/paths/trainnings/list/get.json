@@ -1,0 +1,49 @@
+{
+    "summary": "获取培训列表new",
+    "tags": 
+    [
+        "trainning"
+    ],
+
+    "description": "获取培训列表new",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "name": "startId",
+            "in": "query",
+            "format": "int64",
+            "type": "integer",
+            "required": false,
+            "description": "不传默认返回第一页数据，向下加载时，传上一页最后一条记录的id"
+        },
+        {
+            "description": "每页数目",
+            "name": "limit",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+   "responses": 
+    {
+         "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+	            "items": 
+	            {
+	                "$ref": "#/definitions/Trainning"
+	            }
+            },
+            "description": "培训列表"
+        }
+    },
+
+    "operationId": "getTrainningList"
+}

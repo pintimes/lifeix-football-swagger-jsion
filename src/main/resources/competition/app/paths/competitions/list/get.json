@@ -1,0 +1,49 @@
+{
+    "summary": "获取赛事列表new",
+    "tags": 
+    [
+        "competition"
+    ],
+
+    "description": "获取赛事列表new",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "description": "不传默认返回第一页数据，向下加载时，传上一页最后一条记录的id",
+            "name": "startId",
+            "format": "int64",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "每页数目",
+            "name": "limit",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+	            "items": 
+	            {
+	                "$ref": "#/definitions/Competition"
+	            }
+            },
+            "description": "赛事列表"
+        }
+    },
+
+    "operationId": "getCompetitionList"
+}
