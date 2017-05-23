@@ -20,6 +20,11 @@
             "format": "int64",
             "type": "integer"
         },
+        "ass": 
+        {
+            "description": "当前归属的协会入口对象",
+            "$ref": "#/definitions/Association"
+        },
 		"name": 
         {
             "description": "名字：李铁",

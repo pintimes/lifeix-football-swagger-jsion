@@ -1,0 +1,49 @@
+{
+    "summary": "获取模板资源列表",
+    "tags": 
+    [
+        "association"
+    ],
+
+    "description": "获取模板资源列表",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "description": "协会ID",
+            "name": "assId",
+            "format": "int64",
+            "type": "integer",
+            "required": true,
+            "in": "query"
+        },
+        {
+            "description": "模板资源类型，0-通用，1-培训班LOGO，2-赛事LOGO",
+            "name": "type",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Template"
+                }
+            },
+            "description": "模板资源列表"
+        }
+    },
+
+    "operationId": "getTemplates"
+}

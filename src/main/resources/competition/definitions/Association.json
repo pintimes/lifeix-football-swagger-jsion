@@ -45,6 +45,15 @@
             "format": "int64",
             "type": "integer"
         },
+        "childAssociations": 
+        {
+            "description": "直属子级",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Association"
+            }
+        },
         "remark": 
         {
             "description": "协会创建年份",

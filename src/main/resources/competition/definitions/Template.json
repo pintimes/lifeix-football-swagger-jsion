@@ -1,0 +1,40 @@
+{
+    "description": "模板资源 ",
+    "type": "object",
+    "properties": 
+    {
+    	"id": 
+        {
+            "description": "主键",
+            "format": "int64",
+            "type": "integer"
+        },
+        "assId": 
+        {
+            "description": "协会ID",
+            "format": "int64",
+            "type": "integer"
+        },
+        "uri": 
+        {
+            "description": "模板资源路径",
+            "type": "string"
+        },
+        "type": 
+        {
+            "description": "模板资源类型，0-通用，1-培训班LOGO，2-赛事LOGO",
+            "format": "int32",
+            "type": "integer"
+        },
+        "desc": 
+        {
+            "description": "模板资源描述",
+            "type": "string"
+        },
+        "status": 
+        {
+            "description": "模板资源状态，true-启用，false-未启用",
+            "type": "boolean"
+        }
+    }
+}
