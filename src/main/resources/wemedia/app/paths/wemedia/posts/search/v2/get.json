@@ -1,0 +1,115 @@
+{
+    "summary": "搜索Post（v2）",
+    "tags": 
+    [
+       "post"
+    ],
+
+	"consumes": 
+    [
+        "application/x-www-form-urlencoded"
+    ],
+    
+    "produces": 
+    [
+        "application/json; charset=UTF-8"
+    ],
+    
+    "description": "根据搜索条件获取Post列表（v2），每次搜索不能超过30条；时间参数使用时间戳格式",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+
+        {
+            "description": "类目id",
+            "name": "categoryId",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "作者id",
+            "name": "authorId",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "查询开始时间戳",
+            "name": "startDate",
+            "type": "integer",
+            "format":"int64",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "查询结束时间戳",
+            "name": "endDate",
+            "type": "integer",
+            "format":"int64",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "时间节点，查询该时间之前的资讯，时间戳格式",
+            "name": "date",
+            "type": "integer",
+            "format":"int64",
+            "required": false,
+            "in": "query"
+        },
+
+        {
+            "description": "每页显示的数据条数",
+            "name": "limit",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "default":10,
+            "in": "query"
+        },
+
+        {
+            "description": "按照某个字段排序",
+            "name": "orderBy",
+            "type": "string",
+            "required": false,
+            "default":"createTime",
+            "in": "query"
+        },
+
+        {
+            "description": "是否倒序排列",
+            "name": "isDesc",
+            "type": "boolean",
+            "required": false,
+            "default":true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/Post"
+                }
+            },
+
+            "description": "Post列表"
+        }
+    },
+
+    "operationId": "search2"
+}
