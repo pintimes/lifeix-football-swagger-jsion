@@ -1,0 +1,39 @@
+{
+    "summary": "培训班签到",
+    "tags": 
+    [
+        "trainning"
+    ],
+
+    "description": "培训班签到",
+    "produces": 
+    [
+         "application/json; charset=UTF-8"
+    ],
+
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+   	   	{
+            "$ref": "#/parameters/trainningPath"
+        }
+        
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/SuccResponse"
+            },
+
+            "description": "SuccResponse响应对象"
+        }
+    },
+
+    "operationId": "signInTrainning"
+}

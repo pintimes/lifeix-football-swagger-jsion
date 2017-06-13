@@ -31,6 +31,20 @@
             "type": "integer",
             "required": true,
             "in": "query"
+        },
+        {
+            "schema": 
+            {
+            	"type": "array",
+		        "items": 
+		        {
+		            "$ref": "#/definitions/AvailableTime"
+		        }      
+            },
+            "description": "裁判可用执法时段，如果是一键设置，则传长度为1的数组并且其中的日期为空",
+            "name": "availableTime",
+            "required": false,
+            "in": "body"
         }
     ],
 

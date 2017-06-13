@@ -147,6 +147,12 @@
         {
             "description": "附件",
             "$ref": "#/definitions/Resource"
+        },
+        "signInStatus": 
+        {
+            "description": " 0--签到未开始， 1--签到进行中，2--已签到",
+            "type": "integer",
+            "format": "int32"
         }
     }
 }

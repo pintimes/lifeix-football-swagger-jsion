@@ -264,6 +264,12 @@
         {
             "description": "比赛裁判职位的分配状态，0-待选派，1-待确认，2-已确认",
             "$ref": "#/definitions/Pairs"
+        },
+        "refereeSignInStatus": 
+        {
+            "description": " 0--签到未开始， 1--签到进行中，2--已签到",
+            "type": "integer",
+            "format": "int32"
         }
     }
 }

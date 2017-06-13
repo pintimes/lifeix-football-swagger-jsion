@@ -1,0 +1,18 @@
+{
+    "description": "可用时段",
+    "type": "object",
+    "properties": 
+    {
+    	"date": 
+        {
+           "description": "日期",
+           "type": "string",
+           "format": "date-time"
+        },
+        "sign": 
+        {
+            "description": "时段描述",
+            "type": "string"
+        }
+    }
+}

@@ -200,6 +200,15 @@
             "format": "int32",
             "type": "integer"
         },
+        "refereeAvailableTime": 
+        {
+            "description": "裁判可用执法时段",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/AvailableTime"
+            }
+        },
         "full": 
         {
             "description": " true-报名满了 false-未满",
@@ -225,6 +234,5 @@
             "description": "支持方,多个时,以‘,’分隔",
             "type": "string"
         }
-       
     }
 }
