@@ -1,11 +1,11 @@
 {
-    "summary": "修改赛事",
+    "summary": "修改赛事报名条件",
     "tags": 
     [
         "applyConfig"
     ],
 
-    "description": "修改赛事",
+    "description": "修改赛事报名条件",
     "parameters": 
     [
     	{
@@ -34,6 +34,13 @@
             "type": "integer",
             "format": "int32",
             "required": true,
+            "in": "query"
+        },
+        {
+            "description": "可执法的裁判等级要求，数据格式为合法定义的裁判等级ID，多个以逗号分隔",
+            "name": "refereeGrades",
+            "type": "string",
+            "required": false,
             "in": "query"
         },
         {

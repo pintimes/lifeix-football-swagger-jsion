@@ -167,11 +167,14 @@
             "description": "赛事的裁判报名状态，1-未开始，2-报名中，3-报名结束",
             "$ref": "#/definitions/Pairs"
         },
-        "minRefereeGrade": 
+        "refereeGrades": 
         {
-            "description": "最低可执法裁判级别 级别 0:待认证 1：三级 2：二级 3：一级 4：国家级 5：fifa",
-            "format": "int32",
-            "type": "integer"
+            "description": "可执法的裁判等级要求",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Pairs"
+            }
         },
         "isElite": 
         {

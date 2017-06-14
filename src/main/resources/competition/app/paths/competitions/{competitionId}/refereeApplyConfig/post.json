@@ -48,6 +48,13 @@
             "in": "query"
         },
         {
+            "description": "可执法的裁判等级要求，数据格式为合法定义的裁判等级ID，多个以逗号分隔",
+            "name": "refereeGrades",
+            "type": "string",
+            "required": false,
+            "in": "query"
+        },
+        {
             "schema": 
             {
             	"type": "array",
