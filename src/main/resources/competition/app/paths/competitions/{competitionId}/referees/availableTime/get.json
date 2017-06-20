@@ -1,0 +1,49 @@
+{
+    "summary": "查看裁判在赛事的某天可用执法时段",
+    "tags": 
+    [
+        "competition"
+    ],
+
+    "description": "查看裁判在赛事的某天可用执法时段",
+    "parameters": 
+    [
+    	{
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/competitionPath"
+        },
+        {
+            "name": "userId",
+            "in": "query",
+            "type": "integer",
+            "format": "int64",
+            "required": true,
+            "description": "要查看的裁判ID"
+        },
+        {
+            "name": "date",
+            "in": "query",
+            "type": "integer",
+            "format": "int64",
+            "required": true,
+            "description": "要查看的日期时间戳"
+        }
+    ],
+
+   "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+                "$ref": "#/definitions/AvailableTime"
+            },
+
+            "description": "可用时段"
+        }
+    },
+
+    "operationId": "getRefereeAvailableTimeInCompetition"
+}
