@@ -1,0 +1,40 @@
+{
+    "summary": "查看协会用户信息配置",
+    "tags": 
+    [
+        "association"
+    ],
+    "description": "查看协会用户信息配置",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/associationPath"
+        },
+        {
+            "description": "配置类型，0-基本信息，1-裁判信息",
+            "name": "type",
+            "type": "integer",
+            "format": "int32",
+            "required": true,
+            "in": "query"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+            "schema": 
+            {
+            	"type": "array",
+                "items": 
+                {
+                    "$ref": "#/definitions/AssociationUserConfig"
+                }
+            },
+            "description": "协会用户信息配置列表"
+        }
+    },
+
+    "operationId": "getAssociationUserConfigs"
+}

@@ -1,0 +1,49 @@
+{
+    "description": "协会用户信息配置",
+    "type": "object",
+    "properties": 
+    {
+    	"id": 
+        {
+            "description": "id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "assId": 
+        {
+            "description": "协会id",
+            "format": "int64",
+            "type": "integer"
+        },
+        "type": 
+        {
+            "description": "配置类型, 0-基本信息，1-裁判信息",
+            "format": "int32",
+            "type": "integer"
+        },
+        "key": 
+        {
+            "description": "字段关键字",
+            "type": "string"
+        },
+        "name": 
+        {
+            "description": "字段名称",
+            "type": "string"
+        },
+        "required": 
+        {
+            "description": "是否必填, true-必填，false-选填",
+            "type": "boolean"
+        },
+        "constantData": 
+        {
+            "description": "常量数据",
+            "type": "array",
+            "items": 
+            {
+                "$ref": "#/definitions/Pairs"
+            }
+        }
+    }
+}
