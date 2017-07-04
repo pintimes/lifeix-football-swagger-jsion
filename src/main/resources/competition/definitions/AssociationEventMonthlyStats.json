@@ -1,0 +1,19 @@
+{
+    "description": "协会事件月度统计",
+    "type": "object",
+    "properties": 
+    {
+        "month": 
+        {
+            "description": "月份",
+            "format": "int32",
+            "type": "integer"
+        },
+        "competitionCount": 
+        {
+            "description": "赛事数量",
+            "format": "int32",
+            "type": "integer"
+        }
+    }
+}

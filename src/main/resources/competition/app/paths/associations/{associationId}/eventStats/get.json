@@ -1,0 +1,36 @@
+{
+    "summary": "查看协会事件统计",
+    "tags": 
+    [
+        "association"
+    ],
+    "description": "查看协会事件统计",
+    "parameters": 
+    [
+        {
+            "$ref": "#/parameters/apiKeyHeader"
+        },
+        {
+            "$ref": "#/parameters/associationPath"
+        }
+    ],
+
+    "responses": 
+    {
+        "200": 
+        {
+        	"description": "协会事件统计，返回结果为有序集合映射，key为年份，value是一个月度统计的列表，例如：{2016: [{month: 5,competitionCount: 10}],2017: [{month: 7,competitionCount: 3},{month: 3,competitionCount: 7}]}",
+            "schema": {
+				"type": "object",
+				"additionalProperties": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/AssociationEventMonthlyStats"
+					}
+				}
+			}
+        }
+    },
+
+    "operationId": "getAssociationEventStats"
+}

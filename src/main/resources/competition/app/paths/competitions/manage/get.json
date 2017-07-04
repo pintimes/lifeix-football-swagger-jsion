@@ -42,6 +42,22 @@
             "type": "integer",
             "required": false,
             "in": "query"
+        },
+        {
+            "description": "年份，不传默认为当前年份",
+            "name": "year",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "月份，不传默认为当前月份",
+            "name": "month",
+            "format": "int32",
+            "type": "integer",
+            "required": false,
+            "in": "query"
         }
     ],
 
