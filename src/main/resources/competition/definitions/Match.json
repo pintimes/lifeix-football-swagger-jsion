@@ -270,6 +270,12 @@
             "description": " 0--签到未开始， 1--签到进行中，2--已签到",
             "type": "integer",
             "format": "int32"
+        },
+        "assignStep": 
+        {
+            "description": "0--初始未选派， 1--预选派，2--选派发布",
+            "type": "integer",
+            "format": "int32"
         }
     }
 }

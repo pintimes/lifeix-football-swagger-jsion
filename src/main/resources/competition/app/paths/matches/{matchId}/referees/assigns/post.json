@@ -29,14 +29,21 @@
             "description": "职位 0-裁判长 1-主裁 2-助理裁判 3-第四官员 以,分隔  例如：1,2,2(主裁,助理裁判,助理裁判)",
             "name": "positions",
             "type": "string",
-            "required": true,
+            "required": false,
             "in": "query"
         },
         {
-            "description": "  以,分隔  例如：11,12,13(用户id,和positions个数保持一致)",
+            "description": "以,分隔  例如：11,12,13(用户id,和positions个数保持一致)",
             "name": "userIds",
             "type": "string",
-            "required": true,
+            "required": false,
+            "in": "query"
+        },
+        {
+            "description": "是否是预选派，true-预选派，不传或者false表示正式选派",
+            "name": "preAssign",
+            "type": "boolean",
+            "required": false,
             "in": "query"
         }
     ],
